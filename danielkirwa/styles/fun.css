@@ -1,0 +1,19 @@
+.fun-quate{width: 60%;
+ margin-left: 20%;
+  text-align: center; 
+  font-size: 22px;
+  font-family: 'Nabla', cursive;
+}
+.fun-holder{
+    width: 80%;
+    margin-left: 10%;
+}
+.fun-item{
+  display: flex;
+}
+.fun-item-left{
+    width: 50%;
+}
+.fun-item-right{
+    width: 50%;
+}

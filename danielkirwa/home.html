@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="index.css">
+  <link rel="stylesheet" type="text/css" href="scrolleffect.css">
+  <link rel="stylesheet" type="text/css" href="styles/background.css">
+	<title>Fun page</title>
+</head>
+<style type="text/css">
+	body{
+		background-image: url("images/background.jpg");
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+  .block{
+   
+    height: 300px;
+    margin-bottom: 20px;
+
+  }
+  html,body, .banner, .container{
+     height: 100%;
+     text-align: center;
+  }
+  .dashboard{
+    position: relative;
+    font-size: 36px;
+    top: 8rem;
+
+  }
+  h2{
+    position: relative;
+    top: -42rem;
+  }
+  .carddisplay{
+    margin: 5px;
+    border: 1px solid #fff;
+  box-shadow: 0 0 0.5rem 0 rgba(0 ,0,0,0.3);
+  padding: 8px;
+  background: #fff;
+  }
+  .div-top-margin-pink{
+  
+   border-top: 3px solid crimson;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+.div-top-margin-blue{
+   border-top: 3px solid #a6cfe3;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+.text-redish{
+  color: #dc3545;;
+}
+
+</style>
+<body>
+ <nav>
+    <div class="nav-content" >
+      <div class="logo" >
+        <a href="#">Daniel kirwa fun page</a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html#skills">Skills</a></li>
+        <li><a href="index.html#projects">Projects</a></li>
+        <li><a href="index.html#education">Education</a></li>
+        <li><a href="index.html#myteam">Team</a></li>
+        <li><a href="index.html#more">More</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+ <div class="container">
+   <div class="dashboard">
+  <div class="caption-dash">
+ <label class="typing">uuh...<span class="myprofession"> </span></label><br>
+ <label class="mybold large">Have fun</label><br>
+ <label class="mybold large">Explore</label><br>
+ <label class="mybold large">Connect</label><br>
+ <label class="mybold large">Enjoy</label><br>
+<br>
+  </div>
+</div>
+ </div>
+ <div class="container">
+
+    <div class="row">
+     <div class="col-md-12 project div-top-margin-pink" ><div class="block carddisplay div-top-margin-blue" data-rotate-y = "270deg" data-move-x="-150%">
+        <center><h1 class="text-redish">View through my fun page</h1></center>
+        <p>
+          Life is a beutifull thing, everyday is a chance to expand, relax and reflect of yesterday for the betterment of today and tommorow,<br>
+          Like the wave in the ocean change so do we change in quest to make ourselfs happy 
+        </p>
+     </div></div>
+
+   </div>
+
+   <div class="row">
+     <div class="col-md-4"><div class="block carddisplay div-top-margin-blue" data-move-x="-500px" data-rotate="90deg"></div></div>
+     <div class="col-md-4"><div class="block carddisplay div-top-margin-pink" data-move-x="-200px" data-rotate="45deg"></div></div>
+     <div class="col-md-4"><div class="block carddisplay div-top-margin-blue" data-move-x="500px" data-rotate="-90deg"></div></div>
+   </div>
+
+   <div class="row">
+     <div class="col-md-3"><div class="block" data-rotate-x="90deg" data-move-z="-500px" data-move-y ="200px"></div></div>
+     <div class="col-md-3"><div class="block" data-rotate-x="90deg" data-move-z="-500px" data-move-y ="200px"></div></div>
+     <div class="col-md-3"><div class="block" data-rotate-x="90deg" data-move-z="-500px" data-move-y ="200px"></div></div>
+     <div class="col-md-3"><div class="block" data-rotate-x="90deg" data-move-z="-500px" data-move-y ="200px"></div></div>
+   </div>
+
+
+   <div class="row">
+     <div class="col-md-6"><div class="block" data-rotate-y = "270deg" data-move-x="-150%"></div></div>
+     <div class="col-md-6"><div class="block" data-rotate-y = "270deg" data-move-x="150%"></div></div>
+   </div>
+
+   
+
+ </div>
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="scripts/fun.js"></script>
+<script type="text/javascript" src="scripts/scroll.js"></script>
+ <script type="text/javascript"  src="https://code.jquery.com/jquery-3.6.0.js"></script>
+ <script type="text/javascript" src="scripts/jquery.smoove.js"></script>
+ <script type="text/javascript">
+   $('.block').smoove({offset: '20%'});
+ </script>
+</body>
+</html>

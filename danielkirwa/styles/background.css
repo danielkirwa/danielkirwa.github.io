@@ -1,0 +1,53 @@
+body, html {
+  height: 100%;
+  margin: 0;
+  font: 400 15px/1.8 "Lato", sans-serif;
+  color: #777;
+}
+.mybold{
+  font-weight: bold;
+}
+.large{
+  font-size: 28px;
+}
+
+.dashboard  {
+  position: relative;
+  opacity: 0.65;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+
+.caption {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: #000;
+  
+}
+.caption-dash {
+  position: absolute;
+  left: 0;
+  top: 30%;
+  width: 100%;
+  text-align: center;
+  color: #000;
+  
+}
+.caption-dash label.typing {
+  color: brown;
+  padding: 12px;
+  font-size: 28px;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+.footer{
+  background: #feffff;
+  border-top: 3px solid #dc3545;
+}
+

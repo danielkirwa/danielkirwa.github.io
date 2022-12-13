@@ -1,0 +1,263 @@
+.skills-holder{
+    width: 100%;
+  display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.language-container{
+  padding: 8px;
+  
+}
+.framework-container{
+  flex: 1 1 310px; /*  Stretching: */
+    flex: 0 1 310px; /*  No stretching: */
+    margin: 5px;
+}
+.technology-container{
+ flex: 1 1 310px; /*  Stretching: */
+    flex: 0 1 310px; /*  No stretching: */
+    margin: 5px;
+}
+.framework-rates{
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  padding: 8px;
+  }
+
+.level-rate{
+  display: flex;
+
+}
+.level-rail{
+  padding-top: -9px;
+ background: teal;
+  height: 16px;
+  overflow: visible;
+ 
+}
+.level-point{
+  background: dodgerblue;
+  color: dodgerblue;
+  max-width: 18px;
+  min-height: 32px;
+  border-top-left-radius: 10px;
+  border-bottom-right-radius: 20px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 20px;
+}
+
+.my-bullet-bg{
+  background: #be0032;
+  max-width: 18px;
+  min-height: 18px;
+  border-radius: 50%;
+}
+.my-bullet-av{
+  background: #ff6961;
+  max-width: 18px;
+  min-height: 18px;
+  border-radius: 50%;
+}
+.my-bullet-sk{
+  background: #ed9121;
+  max-width: 18px;
+  min-height: 18px;
+  border-radius: 50%;
+}
+.my-bullet-sp{
+  background: #8bbe1b;
+  max-width: 18px;
+  min-height: 18px;
+  border-radius: 50%;
+}
+.my-bullet-ex{
+  background: #008000;
+  max-width: 18px;
+  min-height: 18px;
+  border-radius: 50%;
+}
+
+
+
+.bg-level{
+  color: #be0032;
+  font-weight: bold;
+}
+.av-level{
+  color: #ff6961;
+  font-weight: bold;
+}
+.sk-level{
+  color: #ed9121;
+  font-weight: bold;
+}
+.sp-level{
+  color: #8bbe1b;
+  font-weight: bold;
+}
+.ex-level{
+  color: #008000;
+  font-weight: bold;
+}
+
+/*posistion of level*/
+
+.bg-level-point{
+  margin-left: 8%;
+  background: #be0032;
+}
+.av-level-point{
+  margin-left: 28%;
+  background: #ff6961;
+}
+.sk-level-point{
+  margin-left: 48%;
+  background: #ed9121;
+}
+.sp-level-point{
+ margin-left: 69%;
+ background: #8bbe1b;
+}
+.ex-level-point{
+  margin-left: 90%;
+  background: #008000;
+}
+/*color framework*/
+.bg-level-framework{
+  color: #be0032;
+}
+.av-level-framework{
+  color: #ff6961;
+}
+.sk-level-framework{
+  color: #ed9121;
+}
+.sp-level-framework{
+ color: #8bbe1b;
+}
+.ex-level-framework{
+  color: #008000;
+}
+/*color framework rail*/
+.bg-level-rail{
+ background : #be0032;
+}
+.av-level-rail{
+ background : #ff6961;
+}
+.sk-level-rail{
+ background : #ed9121;
+}
+.sp-level-rail{
+ background : #8bbe1b;
+}
+.ex-level-rail{
+ background : #008000;
+}
+
+
+
+
+
+@keyframes load{
+  from {
+    width: 0%
+  }
+}
+@-webkit-keyframes load{
+  from {
+    width: 0%
+  }
+}
+@-moz-keyframes load{
+  from {
+    width: 0%
+  }
+}
+@-o-keyframes load{
+  from {
+    width: 0%
+  }
+}
+
+.bar{
+  background-color: #EEE;
+  padding: 2px;
+  border-radius: 15px;
+  border-right: 1px #1a1110 solid;
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #FFF;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+}
+.bar::before{
+  content:  attr(data-skill);
+  background-color: #f3b0ff;
+  display: inline-block;
+  padding: 5px 0 5px 10px;
+  border-radius: inherit;
+  animation: load 2s 0s;
+  -webkit-animation: load 2s 0s;
+  -moz-animation: load 2s 0s;
+  -o-animation: load 2s 0s;
+}
+
+.bar.front::before{
+  background-color: #ffcc33;
+}
+.bar.middle::before{
+  background-color: #a6cfe3;
+}
+.bar.back::before{
+  background-color: #a6cfe3;
+}
+.bar.strat::before{
+  background-color: #8fbc8b;
+}
+
+.bar.learning::before{
+  width: calc(35% - 10px);
+}
+.bar.basic::before{
+  width: calc(50% - 10px);
+}
+.bar.intermediate::before{
+  width: calc(70% - 10px);
+}
+.bar.advanced::before{
+  width: calc(80% - 10px);
+}
+.bar.loweradvanced::before{
+  width: calc(85% - 10px);
+}
+.bar.expert::before{
+  width: calc(87% - 10px);
+}
+.bar.master::before{
+  width: calc(94% - 10px);
+}
+
+/*style tech*/
+.tech-holder{
+padding: 8px;
+display: flex;
+box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+.tech-item-holder{
+ background: #f05134;
+ padding: 8px;
+ width: 130px;
+ height: 130px;
+ border-radius: 70px;
+}
+.tech-item{
+ 
+ width: 120px;
+ height: 120px;
+ border-radius: 50%;
+}
+.tech-details{
+  width: 100%;
+}
+ 

@@ -50,7 +50,6 @@
         .caixa__card {
             width: 120px;
             height: 150px;
-            background-color: #442222;
             position: absolute;
             display: flex;
             font-weight: bold;
@@ -64,8 +63,8 @@
             text-align: center;
             -webkit-animation-name: efeitomy-language-spinner;
             -moz-animation-name: efeitomy-language-spinner;
-            -webkit-animation-duration: 8s;
-            -moz-animation-duration: 8s;
+            -webkit-animation-duration: 15s;
+            -moz-animation-duration: 15s;
             -webkit-animation-iteration-count: infinite;
             -moz-animation-iteration-count: infinite;
             -webkit-animation-timing-function: linear;
@@ -78,49 +77,57 @@
         }
 
         .caixa__card.cc__1 {
-            background: linear-gradient(-229deg, #f1a7fe, dodgerblue);
+            background: linear-gradient(-229deg, #ffffff, #ffffff);
             -webkit-animation-delay: -7s;
             -moz-animation-delay: -7s;
+            color: #000;
         }
 
         .caixa__card.cc__2 {
 
-            background: linear-gradient(-229deg, #00DBDE, #FC00FF);
+            background: linear-gradient(-229deg, #56ab2f ,#a8e063);
             -webkit-animation-delay: -6s;
             -moz-animation-delay: -6s;
+            color: #000;
         }
 
         .caixa__card.cc__3 {
 
-            background: linear-gradient(-229deg, #50d990, #d4d054);
+            background: linear-gradient(-229deg, #DECBA4, #3E5151);
             -webkit-animation-delay: -5s;
             -moz-animation-delay: -5s;
+            color: #000;
         }
 
         .caixa__card.cc__4 {
-            background: linear-gradient(-229deg, #cf91ff, #5782F5);
+            background: linear-gradient(-229deg, #c6ffdd, #fbd786, #f7797d);
             -webkit-animation-delay: -4s;
             -moz-animation-delay: -4s;
+            color: #000;
         }
 
         .caixa__card.cc__5 {
-            background: linear-gradient(-229deg, #642B73, #C6426E);
+            background: linear-gradient(-229deg,  #00b09b, #96c93d);
             -webkit-animation-delay: -3s;
             -moz-animation-delay: -3s;
+            color: #000;
         }
 
         .caixa__card.cc__6 {
-            background: linear-gradient(-229deg, #D9AFD9, #97D9E1);
+            background: linear-gradient(-229deg, #fceabb, #f8b500);
             -webkit-animation-delay: -2s;
             -moz-animation-delay: -2s;
+            color: #000;
         }
 
         .caixa__card.cc__7 {
-            background: linear-gradient(-229deg, #FBAB7E, #F7CE68);
+            background: linear-gradient(-229deg, #d64c7f,#ee4758);
             -webkit-animation-delay: -1s;
             -moz-animation-delay: -1s;
+            color: #000;
         }
 
         .caixa__card.cc__8 {
-            background: linear-gradient(-229deg, #1472ff, #A8EB12);
+            background: linear-gradient(-229deg, #870000, #190a05);
+            color: #fff;
         }

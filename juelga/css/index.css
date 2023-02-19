@@ -8,7 +8,7 @@ nav{
   background: #f8f9fa;
   color: #dc3545;
   z-index: 1000;
-  border-bottom: 3px solid #17252a;
+  border-bottom: 3px solid #0066a0;
 }
 nav.sticky{
   padding: 8px 100px;

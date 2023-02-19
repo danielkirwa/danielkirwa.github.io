@@ -46,7 +46,16 @@ body, html {
   font-weight: bold;
 }
 .footer{
-  background: #feffff;
-  border-top: 3px solid #dc3545;
-}
+  background: #0067a0;
+  border-top: 3px solid #ff6a13;
+  color: white;
 
+}
+.footer a{
+  text-decoration: none;
+  color: white;
+  
+}
+.orange-text{
+color: #ff6a13;
+}

@@ -37,6 +37,20 @@
   color: tomato;
 }
 
+.btn-apply{
+  width: 100%;
+  outline: none;
+  padding: 6px 8px;
+  color: black;
+  font-weight: bold;
+  background: #0067a0;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+
+
 @media (max-width: 800px) {
  
 }

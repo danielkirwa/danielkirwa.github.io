@@ -39,7 +39,7 @@ body, html {
   
 }
 .caption-dash label.typing {
-  color: #0066a0;
+  color: #ffffff;
   padding: 12px;
   font-size: 28px;
   letter-spacing: 2px;
@@ -59,3 +59,7 @@ body, html {
 .orange-text{
 color: #ff6a13;
 }
+.white-text{
+color: #ffffff;
+}
+

@@ -25,7 +25,7 @@ let letter = '';
 // visitors counter
     
 //firebase configerations 
-
+/*
 var firebaseConfig = {
    //apiKey: "AIzaSyArL98ueDDOZhgnS0Z9PAOfKgP8MUcrho0",
     authDomain: "e-learning-app-d98c7.firebaseapp.com",
@@ -99,12 +99,23 @@ function updatevisitors(newcount) {
 .catch((error) => {
   console.log('counter failed')
 });
-}
+}*/
 
 // get current year
 
 let currentyear = document.getElementById('currentyear');
 let year = new Date();
 currentyear.innerHTML = year.getFullYear();
+
+// get user course
+const links = document.querySelectorAll('.call-apply');
+links.forEach(link => {
+  link.addEventListener('click', (event) => {
+    //event.preventDefault(); // prevent the link from navigating to another page
+    const value = event.target.getAttribute('data-value');
+    localStorage.setItem('applyfor', value);
+    console.log(value);
+  });
+});
 
 

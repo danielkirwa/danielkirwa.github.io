@@ -34,13 +34,14 @@ select {
 button[type="submit"] {
   display: block;
   width: 90%;
-  padding: 10px;
+  padding: 8px;
   margin-top: 20px;
   background-color: #428bca;
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  font-size: 22px;
 }
 
 button[type="submit"]:hover {

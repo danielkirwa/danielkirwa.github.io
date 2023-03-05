@@ -7,25 +7,41 @@ btnsubmitenroll = document.getElementById('btnsubmitenroll');
 //insertcount() ;
 function insertapplication() {
   // body...
+  // get application mode
+  var selectElement = document.getElementById("select-option");
+  var selectedOptionValue = selectElement.value;
 
 	// get application date
-      var newdate = new Date();
-  	var day = newdate.getDate();
-   var month = newdate.getMonth();
-    var year = newdate.getFullYear();
-     var enrolldate = day + "-" + month + "-" + year;
+var today = new Date();
+// Get date components
+var year = today.getFullYear();
+var month = today.getMonth() + 1; // Month is zero-indexed, so we add 1
+var day = today.getDate();
+
+// Get time components
+var hours = today.getHours();
+var minutes = today.getMinutes();
+var seconds = today.getSeconds();
+var dateTimeString = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+
+
+
      // get learning mode and all form details
-     let applicantemail = document.getElementById('name').value;
+     let applicantemail = document.getElementById('email').value;
+     let str = applicantemail;
+     let newStr = str.replace(/@/, "JS");
+     let newStr2 = newStr.replace(/\./, "CR");
      let enrollcourse = courseappling;
      let studentname = document.getElementById('name').value;
-     let othername = document.getElementById('name').value;
-     let phonenumber = document.getElementById('name').value;
-     let locationname = document.getElementById('name').value;
-     let learningmode = document.getElementById('name').value;
+     let othername = document.getElementById('othername').value;
+     let phonenumber = document.getElementById('phone').value;
+     let locationname = document.getElementById('location').value;
+     let learningmode = selectedOptionValue;
 
+     console.log(newStr);
 
     
-  firebase.database().ref('Application/' + applicantemail).set({
+  firebase.database().ref('Application/' + newStr2).set({
 
   Email: applicantemail,
   StudentName: studentname,
@@ -34,7 +50,7 @@ function insertapplication() {
   CourseName: enrollcourse,
   LocationName: locationname,
   LearningMode : learningmode,
-  EnrollDate : enrolldate
+  EnrollDate : dateTimeString
 
     },  (error) => {
   if (error) {

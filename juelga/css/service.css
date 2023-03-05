@@ -27,6 +27,24 @@ width: 70%;
  outline: none;
  color: #ffffff;
 } 
+.in-touch-btn:hover a{
+ cursor: pointer;
+ width: 90%;
+ padding: 6px 8px;
+ font-weight: bold;
+ border: 2px solid #ff6a13;
+ background-color: #ff6a13;
+ outline: none;
+ color: #ffffff;
+} 
+.call-book{
+	text-decoration: none;
+	color: #ff6a13;
+}
+.call-book:hover{
+	text-decoration: none;
+	color: #ffffff;
+}
 
 @media (max-width: 800px) {
  .service-holder{

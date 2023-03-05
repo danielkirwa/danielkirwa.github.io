@@ -27,10 +27,11 @@
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="index.html#projects">Courses</a></li>
+        <li><a href="services.html">Services</a></li>
         <li><a href="about.html">About us</a></li>
       </ul>
     </div>
-     <button class="btndownloadcv"><i class="fa-fa-download"></i><a href="documents/JuelgaPoster.pdf" download="Juelga-solutions" target="_blank">Download courses</a> </button>
+     <button class="btndownloadcv"><i class="fa-fa-download"></i><a href="documents/JuelgaPoster.pdf" download="Juelga-solutions" target="_blank">Download services</a> </button>
   </nav>
 
 <!-- call to action buttons -->
@@ -40,14 +41,14 @@
 <!-- application form -->
 
 <div class="applyform">
-  <h2 class="blue-text"><span id="mycourse"></span> &nbsp; Application</h2>
+  <h2 class="blue-text"> Get in tourch for &nbsp;<span id="mybook"></span> </h2>
   <div class="form-group">
     <label for="name" class="blue-text">First name:</label>
     <input type="text" id="name" name="name" required>
   </div>
    <div class="form-group">
     <label for="name" class="blue-text">Other name:</label>
-    <input type="text" id="othername" name="othername" required>
+    <input type="text" id="name" name="name" required>
   </div>
   <div class="form-group">
     <label for="phone" class="blue-text">Phone/Contact:</label>
@@ -62,15 +63,15 @@
     <input type="text" id="location" name="location" required>
   </div>
   <div class="form-group">
-    <label for="select-option" class="blue-text">Your preferred mode of learning :</label>
+    <label for="select-option" class="blue-text">Your preferred product descriotion :</label>
     <select id="select-option" name="select-option" required>
-      <option value="">--Mode of learning--</option>
-      <option value="option1">Online classes</option>
-      <option value="option2">Physical classes</option>
+      <option value="">--Description--</option>
+      <option value="option1">Need own Customization</option>
+      <option value="option2">Need advised Customization</option>
       <option value="option3">Undecided</option>
     </select>
   </div>
-  <button class="applybtn" id="btnsubmitenroll">Submit</button>
+  <button class="applybtn" id="btnsubmitbook">Submit</button>
 </div>
 
 
@@ -107,12 +108,11 @@
 
 </div>
 
-
   <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-database.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-analytics.js"></script>  
-<script type="text/javascript" src="js/config.js"></script>
-<script type="text/javascript" src="js/application.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-analytics.js"></script> 
+<script type="text/javascript" src="js/config.js"></script> 
+<script type="text/javascript" src="js/booking.js"></script>
 <script type="text/javascript" src="js/scroll.js"></script>
 </body>
 </html>

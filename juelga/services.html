@@ -70,14 +70,14 @@
                 <li>Call to action for your business</li>
             
             </p>
-            <button class="in-touch-btn">Get In Touch</button>
+            <button class="in-touch-btn"><a href="book.html" class="call-book" data-value="Business Websites">Get In Touch</a> </button>
           </div>
         </div>
        </center>
     </div>
     <div class="project about-holder js-scroll slide-left">
       <center>
-       <h2 class="orange-text">E-commerce sites</h2>
+       <h2 class="orange-text">E-commerce website</h2>
        <div class="service-holder">
           <div class="service-image"><img src="assets/images/ecommerce.jpg" width="100%"></div>
           <div class="service-description">
@@ -89,7 +89,7 @@
                 <li>Rating/Reviews and Recommendation</li>
               
             </p>
-            <button class="in-touch-btn">Get In Touch</button>
+             <button class="in-touch-btn"><a href="book.html" class="call-book" data-value="E-commerce website">Get In Touch</a> </button>
           </div>
         </div>
      </center>
@@ -107,7 +107,7 @@
                 <li>Reporting and analytics</li>
                 <li>Integration with other systems</li>
             </p>
-            <button class="in-touch-btn">Get In Touch</button>
+            <button class="in-touch-btn"><a href="book.html" class="call-book" data-value="Store/Invemtory Management">Get In Touch</a> </button>
           </div>
         </div>
      </center>
@@ -155,10 +155,21 @@
 
 </div>
 
+<script type="text/javascript">
+  const links = document.querySelectorAll('.call-book');
+links.forEach(link => {
+  link.addEventListener('click', (event) => {
+    //event.preventDefault(); // prevent the link from navigating to another page
+    const value = event.target.getAttribute('data-value');
+    localStorage.setItem('bookfor', value);
+    console.log(value);
+  });
+});
+</script>
+
 
 <!--  <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-database.js"></script> -->
-<script type="text/javascript" src="js/welcome.js"></script>
 <script type="text/javascript" src="js/scroll.js"></script>
 </body>
 </html>

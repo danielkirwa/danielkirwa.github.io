@@ -1,0 +1,43 @@
+.service-holder{
+display: flex;
+width: 70%;
+}
+.service-image{
+  width: 40%;
+}
+.service-description{
+ width: 60%;
+}
+.in-touch-btn{
+ width: 90%;
+ padding: 6px 8px;
+ font-weight: bold;
+ border: 2px solid #ff6a13;
+ background-color: #ffffff;
+ outline: none;
+ color: #ff6a13;
+} 
+.in-touch-btn:hover{
+ cursor: pointer;
+ width: 90%;
+ padding: 6px 8px;
+ font-weight: bold;
+ border: 2px solid #ff6a13;
+ background-color: #ff6a13;
+ outline: none;
+ color: #ffffff;
+} 
+
+@media (max-width: 800px) {
+ .service-holder{
+display: block;
+width: 100%;
+}
+.service-image{
+  width: 90%;
+}
+.service-description{
+ width: 90%;
+}
+}
+

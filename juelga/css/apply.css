@@ -1,5 +1,5 @@
 
-form {
+.applyform{
   max-width: 600px;
   margin: 0 auto;
   padding: 20px;
@@ -31,7 +31,7 @@ select {
   border-radius: 5px;
 }
 
-button[type="submit"] {
+.applybtn{
   display: block;
   width: 90%;
   padding: 8px;
@@ -44,6 +44,6 @@ button[type="submit"] {
   font-size: 22px;
 }
 
-button[type="submit"]:hover {
+.applybtn:hover {
   background-color: #3071a9;
 }

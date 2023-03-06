@@ -6,15 +6,9 @@
   <meta charset="utf-8">
    <meta name="description" content="danielkirwa portfolio">
    <link rel = "icon" href = "assets/images/welcomeimage.jpeg" type = "image/x-icon">
+  <link rel="stylesheet" type="text/css" href="css/dashboard.css">
   <link rel="stylesheet" type="text/css" href="css/background.css">
-  <link rel="stylesheet" type="text/css" href="css/index.css">
-  <link rel="stylesheet" type="text/css" href="css/content.css">
-    <link rel="stylesheet" type="text/css" href="css/apply.css">
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
- 
-
- 
-
 
  </style>
 </head>
@@ -22,57 +16,72 @@
  <nav>
     <div class="nav-content" >
       <div class="logo" >
-        <a href="index.html"><img src="assets/logo/juelgalogo.png" width="350px"></a>
+        <a href="index.html"><img src="logo/juelgalogo.png" width="350px"></a>
       </div>
       <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="index.html#projects">Courses</a></li>
-        <li><a href="about.html">About us</a></li>
+        <li><a href="">Dashboard</a></li>
+        <li><a href="courseapplication.html">Courses</a></li>
+        <li><a href="serviceapplication.html">Services</a></li>
       </ul>
     </div>
-     <button class="btndownloadcv"><i class="fa-fa-download"></i><a href="documents/JuelgaPoster.pdf" download="Juelga-solutions" target="_blank">Download courses</a> </button>
   </nav>
 
 <!-- call to action buttons -->
-<a href="tel:+255788852510" class="phone-btn"> <i class="fa fa-phone"></i></a>
-<a href="https://wa.me/+255788852510" class="whatsapp-btn"> <i class="fa fa-whatsapp "></i></a>
+
 <br><br><br> <br><br><br>
 <!-- application form -->
 
-<div class="applyform">
-  <h2 class="blue-text"><span id="mycourse"></span> &nbsp; Application</h2>
-  <div class="form-group">
-    <label for="name" class="blue-text">First name:</label>
-    <input type="text" id="name" name="name" required>
+<div class="dash-holder">
+  <div class="dash-card">
+    <center><label class="blue-text large">Course Application</label></center><hr>
+    <center><label class="large">122</label></center>
   </div>
-   <div class="form-group">
-    <label for="name" class="blue-text">Other name:</label>
-    <input type="text" id="othername" name="othername" required>
+  <div class="dash-card">
+    <center><label class="blue-text large">Serivce Booking</label></center><hr>
+    <center><label class="large">122</label></center>
   </div>
-  <div class="form-group">
-    <label for="phone" class="blue-text">Phone/Contact:</label>
-    <input type="tel" id="phone" name="phone" required>
+  <div class="dash-card">
+    <center><label class="blue-text large">Total Courses></center><hr>
+    <center><label class="large">122</label></center>
   </div>
-  <div class="form-group">
-    <label for="email" class="blue-text">Your Email Address:</label>
-    <input type="email" id="email" name="email" required>
+  <div class="dash-card">
+    <center><label class="blue-text large">Visitor Count</label></center><hr>
+    <center><label class="large">122</label></center>
   </div>
-  <div class="form-group">
-    <label for="location" class="blue-text">Location/Town/City:</label>
-    <input type="text" id="location" name="location" required>
-  </div>
-  <div class="form-group">
-    <label for="select-option" class="blue-text">Your preferred mode of learning :</label>
-    <select id="select-option" name="select-option" required>
-      <option value="">--Mode of learning--</option>
-      <option value="Online classes">Online classes</option>
-      <option value="Physical classes">Physical classes</option>
-      <option value="Undecided">Undecided</option>
-    </select>
-  </div>
-  <button class="applybtn" id="btnsubmitenroll">Submit</button>
 </div>
 
+<br>
+
+<!-- table -->
+<div style="overflow-x:auto;">
+  <table>
+    <caption class="large blue-text">Recent Application</caption>
+    <tr>
+      <th>First Name</th>
+      <th>Course</th>
+      <th>Email Adress</th>
+      <th>Phone number</th>
+      <th>Date/Time</th>
+      <th>Action</th>
+    </tr>
+    <tr>
+      <td>Jill</td>
+      <td>Smith</td>
+      <td>50</td>
+      <td>50</td>
+      <td>50</td>
+      <td>50</td>
+    </tr>
+    <tr>
+      <td>Eve</td>
+      <td>Jackson</td>
+      <td>94</td>
+      <td>94</td>
+      <td>94</td>
+      <td>94</td>
+    </tr>
+  </table>
+</div>
 
 
 <br><br>

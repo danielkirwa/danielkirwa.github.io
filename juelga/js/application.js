@@ -37,8 +37,7 @@ var dateTimeString = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
      let phonenumber = document.getElementById('phone').value;
      let locationname = document.getElementById('location').value;
      let learningmode = selectedOptionValue;
-
-     console.log(newStr);
+     let pending = "0"
 
     
   firebase.database().ref('Application/' + newStr2).set({
@@ -50,7 +49,8 @@ var dateTimeString = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
   CourseName: enrollcourse,
   LocationName: locationname,
   LearningMode : learningmode,
-  EnrollDate : dateTimeString
+  EnrollDate : dateTimeString,
+  Status : pending
 
     },  (error) => {
   if (error) {
@@ -59,6 +59,7 @@ var dateTimeString = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
      
   }else{
  alert('Application Succefull will be conducted soon thank you');
+  window.location.href = "index.html";
      
   }
 }

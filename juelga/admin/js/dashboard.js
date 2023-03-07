@@ -26,6 +26,8 @@ let bookingcount = document.getElementById('bookingcount');
         dateCell.innerHTML = childData.EnrollDate;
         actionCell.innerHTML = "View Details";
         actionCell.value = childData.Email;
+        actionCell.setAttribute('id' , 'open-popup-btn');
+        actionCell.setAttribute('class' , 'view-details-course');
         tableRow.appendChild(nameCell);
         tableRow.appendChild(courseCell);
         tableRow.appendChild(emailCell);
@@ -59,6 +61,7 @@ let bookingcount = document.getElementById('bookingcount');
         dateCell.innerHTML = childData.EnrollDate;
         actionCell.innerHTML = "View Details";
         actionCell.value = childData.Email;
+        actionCell.setAttribute('class' , 'view-details-service');
         tableRow.appendChild(nameCell);
         tableRow.appendChild(serviceCell);
         tableRow.appendChild(emailCell);
@@ -85,3 +88,15 @@ let bookingcount = document.getElementById('bookingcount');
   var bookcount = snapshot.numChildren();
   bookingcount.innerHTML = bookcount;
 });
+
+
+ /* JavaScript loop through buttons and get value of clicked button */
+var coursebuttons = document.querySelectorAll(".view-details-course");
+
+coursebuttons.forEach((coursebuttons) => {
+  coursebuttons.addEventListener("click", () => {
+    console.log(coursebuttons.value);
+  });
+});
+
+

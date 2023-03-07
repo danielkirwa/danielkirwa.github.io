@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="utf-8">
    <meta name="description" content="danielkirwa portfolio">
-   <link rel = "icon" href = "assets/images/welcomeimage.jpeg" type = "image/x-icon">
+   <link rel = "icon" href = "logo/welcomeimage.jpeg" type = "image/x-icon">
   <link rel="stylesheet" type="text/css" href="css/dashboard.css">
   <link rel="stylesheet" type="text/css" href="css/background.css">
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -20,8 +20,8 @@
       </div>
       <ul class="nav-links">
         <li><a href="">Dashboard</a></li>
-        <li><a href="courseapplication.html">Courses</a></li>
-        <li><a href="serviceapplication.html">Services</a></li>
+        <li><a href="courseapplication.html">Students</a></li>
+        <li><a href="serviceapplication.html">Clients</a></li>
       </ul>
     </div>
   </nav>
@@ -34,29 +34,29 @@
 <div class="dash-holder">
   <div class="dash-card">
     <center><label class="blue-text large">Course Application</label></center><hr>
-    <center><label class="large">122</label></center>
+    <center><label class="large" id="applicationcount">null</label></center>
   </div>
   <div class="dash-card">
     <center><label class="blue-text large">Serivce Booking</label></center><hr>
-    <center><label class="large">122</label></center>
+    <center><label class="large" id="bookingcount">null</label></center>
   </div>
   <div class="dash-card">
-    <center><label class="blue-text large">Total Courses</center><hr>
-    <center><label class="large">122</label></center>
+    <center><label class="blue-text large">Total Enrolled</center><hr>
+    <center><label class="large">null</label></center>
   </div>
   <div class="dash-card">
-    <center><label class="blue-text large">Visitor Count</label></center><hr>
-    <center><label class="large">122</label></center>
+    <center><label class="blue-text large">Total Booking</label></center><hr>
+    <center><label class="large">null</label></center>
   </div>
 </div>
 
 <br>
 
-<!-- table -->
+<!-- table for course application -->
 <div style="overflow-x:auto;">
   <table>
     <caption class="large blue-text">Recent Application</caption>
-    <tr>
+    <tr class="blue-text">
       <th>First Name</th>
       <th>Course</th>
       <th>Email Adress</th>
@@ -64,7 +64,25 @@
       <th>Date/Time</th>
       <th>Action</th>
     </tr>
-     <tbody id="table-body">
+     <tbody id="table-applications">
+    </tbody>
+  </table>
+</div>
+
+<br>
+<!-- table for service application -->
+<div style="overflow-x:auto;">
+  <table>
+    <caption class="large orange-text">Recent Bookings</caption>
+    <tr  class="orange-text">
+      <th>First Name</th>
+      <th>Item/Service</th>
+      <th>Email Adress</th>
+      <th>Phone number</th>
+      <th>Date/Time</th>
+      <th>Action</th>
+    </tr>
+     <tbody id="table-bookings">
     </tbody>
   </table>
 </div>

@@ -1,0 +1,198 @@
+body, html {
+  height: 100%;
+  margin: 0;
+  font: 400 15px/1.8 "Lato", sans-serif;
+  color: #777;
+}
+.mybold{
+  font-weight: bold;
+}
+.large{
+  font-size: 28px;
+}
+
+.dashboard  {
+  position: relative;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+
+.caption {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: #000;
+  
+}
+.caption-dash {
+  position: absolute;
+  left: 0;
+  top: 30%;
+  width: 100%;
+  text-align: center;
+  color: #000;
+  
+}
+.caption-dash label.typing {
+  color: #ffffff;
+  padding: 12px;
+  font-size: 28px;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+.footer{
+  background: #0067a0;
+  border-top: 3px solid #ff6a13;
+  color: white;
+
+}
+.footer a{
+  text-decoration: none;
+  color: white;
+  
+}
+.orange-text{
+color: #ff6a13;
+}
+.white-text{
+color: #ffffff;
+}
+.blue-text{
+color: #0067a0;
+}
+
+
+/* social media icons*/
+
+.social-icons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 16px;
+}
+.social-icon{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 50px;
+    height: 50px;
+    margin: 0 0.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+    font-family: "Halvetica Neue",sans-serif,"Arial";
+    font-size: 2.5rem;
+    text-decoration: none;
+    transition: all 0.15s ease;
+    box-shadow: inset 1px 1px 2px #1a1110,
+                inset -1px -1px 2px #1a1110,
+                2px 2px 4px #1a1110,
+                -2px -2px 4px #1a1110;
+    border: 2px solid rgba(230,228,228);            
+}
+/* Tooltips */
+.tooltip {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    padding: 0.8rem 1rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    opacity: 0;
+    pointer-events: none;
+    text-transform: lowercase;
+    transform: translate(-50%, -100%);
+    transition: all 0.3s ease;
+    z-index: 1;
+  }
+  .tooltip:after {
+    display: block;
+    position: absolute;
+    bottom: 1px;
+    left: 50%;
+    width: 0;
+    height: 0;
+    content: "";
+    border: solid;
+    border-width: 10px 10px 0 10px;
+    border-color: transparent;
+    transform: translate(-50%, 100%);
+  }
+
+/* color */
+.social-icon--email{
+    background: #800000;
+    color: #fff;
+}
+.social-icon--github{
+    background: #4284c0;
+    color: #fff;
+}
+.social-icon--twitter{
+    background: #2b97f1;
+    color: #fff;
+}
+.social-icon--linkedin{
+    background: #3b5a9b;
+    color: white;
+}
+/* Hover Effect*/
+.social-icon:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+    transform: translate(-50%, -150%);
+}
+.social-icon--email .tooltip{
+    background: #800000;
+    columns: currentColor;
+}
+.social-icon--email .tooltip::after{
+    border-top-color: #800000;
+}
+
+.social-icon--linkedin .tooltip{
+    background: #3b5a9b;
+    columns: currentColor;
+}
+.social-icon--linkedin .tooltip::after{
+    border-top-color: #3b5a9a;
+}
+.social-icon--twitter .tooltip{
+    background: #2b97f1;
+    columns: currentColor;
+}
+.social-icon--twitter .tooltip::after{
+    border-top-color: #2b97f1;
+}
+
+
+.social-icon--github .tooltip{
+    background: #4284c0;
+    columns: currentColor;
+}
+/* icon after effect */
+.social-icon--github .tooltip::after{
+    border-top-color: #4284c0;
+}
+
+.caption {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: #000;
+  
+}
+ hr{
+        height: 2px;
+        background-color: #ff6a13;
+        border: none;
+    }

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <title>Juelga solution</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+   <meta name="description" content="danielkirwa portfolio">
+   <link rel = "icon" href = "assets/logo/juelgalogo.png" type = "image/x-icon">
+  <link rel="stylesheet" type="text/css" href="css/background.css">
+  <link rel="stylesheet" type="text/css" href="css/index.css">
+  <link rel="stylesheet" type="text/css" href="css/content.css">
+   <link rel="stylesheet" type="text/css" href="css/slider.css">
+    <link rel="stylesheet" type="text/css" href="css/scrolleffect.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ 
+
+ <style type="text/css">
+.dashboard {
+  background-image: url("assets/images/background2.jpg");
+  min-height: 100%;
+}
+.reflection{
+  -webkit-box-reflect: below 0px linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.2));
+}
+
+.morecert1{
+  display: none;
+}
+ 
+
+
+ </style>
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EQLBQHB9RE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EQLBQHB9RE');
+</script>
+<body>
+ <nav>
+    <div class="nav-content" >
+      <div class="logo" >
+        <a href="#"><img src="assets/logo/juelgalogo.png" width="350px"></a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About us</a></li>
+      </ul>
+    </div>
+
+  </nav>
+<br><br><br><br><br><br>
+<div class="slideshow-container">
+
+<div class="mySlides fade">
+  <div class="numbertext">1 / 3</div>
+  <img src="assets/images/background1.jpeg" style="width:100%">
+  <div class="text">Education Center</div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">2 / 3</div>
+  <img src="assets/images/background4.jpeg" style="width:100%">
+  <div class="text">Shopping Center</div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">3 / 3</div>
+  <img src="assets/images/background3.jpeg" style="width:100%">
+  <div class="text">Software Center</div>
+</div>
+
+</div>
+
+<br>
+
+<div style="text-align:center">
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+</div>
+
+
+<!-- call to action buttons -->
+<a href="tel:+255788852510" class="phone-btn"> <i class="fa fa-phone"></i></a>
+<a href="https://wa.me/+255788852510" class="whatsapp-btn"> <i class="fa fa-whatsapp "></i></a>
+
+<!-- content -->
+
+<!-- link pages -->
+
+<br><br>
+<div class="redirect-holder">
+  <button class="new-redirect link-button"><a href="education.html">Education Center >></a> </button>
+  <button class="new-redirect link-button"><a href="shopping.html">Shopping Center >></a> </button>
+  <button class="new-redirect link-button"><a href="services.html">Software Center >></a></button>
+</div>
+
+
+
+<!-- profile -->
+ <section class="scroll-container" id="about">
+  <div class="scroll-element">
+     <div class="profile-holder">
+        <div class="image-container js-scroll slide-left">
+    <h1 class="orange-text">Juelga Solution</h1>
+         <div>
+           <img src="assets/images/welcomeimage.jpeg" width="100%" alt="organization image">
+         </div>
+  </div>
+   <div class="journey-container js-scroll slide-right">
+    <h1 class="orange-text">About</h1>
+    <p>
+    Welcome to Juelga Solution, a leading institution for web development and coding education. Our institute is dedicated to providing our students with the skills and knowledge needed to become successful software development.  
+    <br>
+    We offer a comprehensive curriculum that covers a range of programming languages, development frameworks, and tools that are in high demand in the tech industry
+    </p>
+  </div>
+  </div>
+ 
+  </div>
+  
+</section>
+
+
+
+
+<div class="footer">
+
+ <div class="social-icons">
+        <a href="" class="social-icon social-icon--email">
+          <i class="fa fa-envelope"></i> 
+          <div class="tooltip">info@juelgasolutions.co.tz</div>
+        </a>
+        <!--2nd-->
+        <a href="#" class="social-icon social-icon--github" target="_blank">
+            <i class="fa fa-github"></i> 
+            <div class="tooltip">412&nbsp;+&nbsp;Public Repositories</div>
+          </a>
+         
+          <a href="#" class="social-icon social-icon--twitter">
+            <i class="fa fa-phone"></i> 
+            <div class="tooltip">+255&nbsp;788&nbsp;852&nbsp;510</div>
+          </a> 
+
+          <!--3th-->
+          <a href="" class="social-icon social-icon--linkedin" target="_blank">
+            <i class="fa fa-linkedin"></i> 
+            <div class="tooltip">Connect&nbsp;&nbsp;with&nbsp;&nbsp;us</div>
+          </a>
+
+    </div>
+  <div class="enddiv">
+     Juelga solution &copy; 2023 - &nbsp;<span id="currentyear"></span> &nbsp;&nbsp;<a href="https://www.juelgasolutions.co.tz">juelgasolution </a> &trade;
+  </div>
+
+</div>
+
+<script>
+let slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}    
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+  setTimeout(showSlides, 2000); // Change image every 2 seconds
+}
+</script>
+
+
+<!--  <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-database.js"></script> -->
+<script type="text/javascript" src="js/welcome.js"></script>
+<script type="text/javascript" src="js/scroll.js"></script>
+</body>
+</html>

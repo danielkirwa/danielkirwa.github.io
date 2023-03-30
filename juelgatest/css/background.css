@@ -1,0 +1,68 @@
+body, html {
+  height: 100%;
+  margin: 0;
+  font: 400 15px/1.8 "Lato", sans-serif;
+  color: #777;
+}
+.mybold{
+  font-weight: bold;
+}
+.large{
+  font-size: 28px;
+}
+
+.dashboard  {
+  position: relative;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+
+.caption {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: #000;
+  
+}
+.caption-dash {
+  position: absolute;
+  left: 0;
+  top: 30%;
+  width: 100%;
+  text-align: center;
+  color: #000;
+  
+}
+.caption-dash label.typing {
+  color: #ffffff;
+  padding: 12px;
+  font-size: 28px;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+.footer{
+  background: #0067a0;
+  border-top: 3px solid #ff6a13;
+  color: white;
+
+}
+.footer a{
+  text-decoration: none;
+  color: white;
+  
+}
+.orange-text{
+color: #ff6a13;
+}
+.white-text{
+color: #ffffff;
+}
+.blue-text{
+color: #0067a0;
+}
+

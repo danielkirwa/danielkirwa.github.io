@@ -1,0 +1,368 @@
+nav{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 8px;
+  transition: all 0.4s ease;
+  background: #f8f9fa;
+  color: #dc3545;
+  z-index: 1000;
+  border-bottom: 3px solid #0066a0;
+}
+nav.sticky{
+  padding: 8px 100px;
+  background: #1a1110;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+nav .nav-content{
+  height: 100%;
+  margin: auto;
+}
+nav.sticky .logo a{
+  color: #dc3545;
+}
+.nav-links{
+  display: flex;
+}
+.nav-content{
+  display: flex;
+}
+.nav-content .nav-links li{
+  list-style: none;
+  margin: 0 2px;
+}
+ .nav-links li a{
+  text-decoration: none;
+  color: #17252a;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 10px 4px;
+  transition: all 0.3s ease;
+}
+ .nav-links li a:hover{
+   color: #0067a0;;
+ }
+ .nav-links .active{
+  color: #0067a0;
+ }
+ nav.sticky .nav-links li a{
+   color: #fff;
+   transition: all 0.4s ease;
+}
+ nav.sticky .nav-links li a:hover{
+  color: #0067a0;;
+}
+.enddiv{
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+
+
+
+
+
+/* social media icons*/
+
+.social-icons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 16px;
+}
+.social-icon{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 50px;
+    height: 50px;
+    margin: 0 0.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+    font-family: "Halvetica Neue",sans-serif,"Arial";
+    font-size: 2.5rem;
+    text-decoration: none;
+    transition: all 0.15s ease;
+    box-shadow: inset 1px 1px 2px #1a1110,
+                inset -1px -1px 2px #1a1110,
+                2px 2px 4px #1a1110,
+                -2px -2px 4px #1a1110;
+    border: 2px solid rgba(230,228,228);            
+}
+/* Tooltips */
+.tooltip {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    padding: 0.8rem 1rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    opacity: 0;
+    pointer-events: none;
+    text-transform: lowercase;
+    transform: translate(-50%, -100%);
+    transition: all 0.3s ease;
+    z-index: 1;
+  }
+  .tooltip:after {
+    display: block;
+    position: absolute;
+    bottom: 1px;
+    left: 50%;
+    width: 0;
+    height: 0;
+    content: "";
+    border: solid;
+    border-width: 10px 10px 0 10px;
+    border-color: transparent;
+    transform: translate(-50%, 100%);
+  }
+
+/* color */
+.social-icon--email{
+    background: #800000;
+    color: #fff;
+}
+.social-icon--github{
+    background: #4284c0;
+    color: #fff;
+}
+.social-icon--twitter{
+    background: #2b97f1;
+    color: #fff;
+}
+.social-icon--linkedin{
+    background: #3b5a9b;
+    color: white;
+}
+/* Hover Effect*/
+.social-icon:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+    transform: translate(-50%, -150%);
+}
+.social-icon--email .tooltip{
+    background: #800000;
+    columns: currentColor;
+}
+.social-icon--email .tooltip::after{
+    border-top-color: #800000;
+}
+
+.social-icon--linkedin .tooltip{
+    background: #3b5a9b;
+    columns: currentColor;
+}
+.social-icon--linkedin .tooltip::after{
+    border-top-color: #3b5a9a;
+}
+.social-icon--twitter .tooltip{
+    background: #2b97f1;
+    columns: currentColor;
+}
+.social-icon--twitter .tooltip::after{
+    border-top-color: #2b97f1;
+}
+
+
+.social-icon--github .tooltip{
+    background: #4284c0;
+    columns: currentColor;
+}
+/* icon after effect */
+.social-icon--github .tooltip::after{
+    border-top-color: #4284c0;
+}
+
+.caption {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: #000;
+  
+}
+
+ /* profile */
+ .profile-holder{
+    width: 100%;
+  display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.image-container{
+  flex: 1 1 310px; /*  Stretching: */
+    flex: 0 1 310px; /*  No stretching: */
+    margin: 5px;
+}
+
+
+ /* redirect */
+ .redirect-holder{
+    width: 100%;
+  display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.new-redirect{
+  flex: 1 1 310px; /*  Stretching: */
+    flex: 0 1 310px; /*  No stretching: */
+    margin: 5px;
+}
+.link-button{
+    background: #ffffff;
+    font-size: 26px;
+    outline: none;
+    border: none;
+}
+.link-button a{
+   text-decoration: none;
+    animation: myredirect 5s infinite;
+    font-weight: bold;
+}
+
+
+@keyframes myredirect {
+  0%   {color: #0066a0;}
+  25%  {color: #0097ed;}
+  75%  {color: #ff9a60;}
+  100% {color: #ff6a13;}
+}
+
+
+
+
+
+.journey-container{
+ flex: 1 1 510px; /*  Stretching: */
+    flex: 0 1 510px; /*  No stretching: */
+    margin: 5px;
+}
+
+.events-holder{
+     width: 100%;
+  display: flex;
+    flex-wrap: wrap;
+    justify-content: center
+}
+
+.more-holder{
+ flex: 1 1 510px; /*  Stretching: */
+    flex: 0 1 510px; /*  No stretching: */
+    margin: 5px;
+}
+
+.school-holder{
+      flex: 1 1 300px; /*  Stretching: */
+    flex: 0 1 300px; /*  No stretching: */
+    margin: 5px;
+    border: 1px solid #fff;
+  box-shadow: 0 0 0.5rem 0 rgba(0 ,0,0,0.3);
+  padding: 8px;
+  background: #fff;
+
+}
+.text-blue{
+    color: #0066a0;
+}
+
+
+
+.btndownloadcv{
+    background: dodgerblue;
+    padding: 6px 8px;
+    outline: none;
+    border: none;
+    color: black;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    box-shadow: 0 0 0.5rem 0 rgba(0 ,0,0,0.3);
+    float: right;
+    margin-right: 32px;
+
+}
+.btndownloadcv a{
+    background: dodgerblue;
+    padding: 6px 8px;
+    outline: none;
+    border: none;
+    color: black;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    box-shadow: 0 0 0.5rem 0 rgba(0 ,0,0,0.3);
+    float: right;
+    margin-right: 32px;
+    text-decoration: none;
+
+}
+.phone-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  font-size: 24px;
+  line-height: 50px;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+}
+
+.phone-btn:hover {
+  background-color: #0062cc;
+  transform: scale(1.1);
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Style for the WhatsApp button */
+.whatsapp-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+  background-color: mediumseagreen;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  font-size: 24px;
+  line-height: 50px;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+}
+
+.whatsapp-btn:hover {
+  background-color:  mediumseagreen;
+  transform: scale(1.1);
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.3);
+}
+.call-apply{
+    text-decoration: none;
+    color: white;
+}
+
+
+
+
+@media (max-width: 800px) {
+ .nav-content{
+  display: block;
+ }
+}

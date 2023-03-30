@@ -46,6 +46,24 @@ width: 70%;
 	color: #ffffff;
 }
 
+
+ /* profile */
+ .badge-holder{
+    width: 100%;
+  display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.badge-container{
+  flex: 1 1 310px; /*  Stretching: */
+    flex: 0 1 310px; /*  No stretching: */
+    margin: 5px;
+}
+
+
+
+
 @media (max-width: 800px) {
  .service-holder{
 display: block;

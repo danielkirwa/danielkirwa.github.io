@@ -1,0 +1,148 @@
+
+
+.action-div{
+	background: #C0C0C0;
+}
+.input-holder{
+  display: flex;
+  background: #00000000;
+  flex-wrap: wrap;
+    justify-content: center;
+
+}
+.card{
+  flex: 1 1 310px; /*  Stretching: */
+    flex: 0 1 310px; /*  No stretching: */
+    margin: 5px;
+    background: blue;
+     background-color: #00000000;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 40px 80px #FBE4E0;
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
+}
+.small-card{
+   flex: 1 1 250px; /*  Stretching: */
+    flex: 0 1 250px; /*  No stretching: */
+    margin: 5px;
+    background: blue;
+     background-color: #00000000;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 40px 80px #FBE4E0;
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
+}
+.my-btn{
+	padding: 6px 8px;
+	background:#0067a0;
+	outline: none;
+	width: 300px;
+	border: none;
+	 font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+
+}
+.my-btn:hover{
+	cursor: pointer;
+    color: #ff6a13;
+
+}
+.my-textarea{
+  width: 500px;
+ min-width: 300px;
+ min-height: 90px;
+}
+.small-label{
+    font-size: 18px;
+    font-weight: bold;
+    color: #000000;
+}
+
+.scroll-table{
+  overflow: hidden;
+  overflow-x: scroll;
+}
+.table-holder{
+   background: #fff;
+   width: 80%;
+   min-width: 750px;
+  margin-left: 10%;
+  border: 1px solid #fff;
+  box-shadow: 0 0 0.5rem 0 rgba(0 ,0,0,0.3);
+  padding: 8px;
+ margin-top: 20px;
+ margin-bottom: 20px;
+
+}
+.table-caption{
+  display: flex;
+ justify-content: center;
+  width: 100%;
+  border-bottom: 2px solid grey;
+  padding-bottom: 8px;
+}
+.table-holder table{
+  width: 100%;
+ }
+ .table-holder thead{
+  color: #0067a0;
+  font-size: 21px;
+  text-align: center;
+  background-color: #fff;
+
+ }
+ .table-holder th{
+  padding: 12px 8px;
+
+ }
+  .table-holder td{
+    text-align: center;
+    font-size: 18px;
+    padding: 8px 6px;
+  }
+  .table-holder tbody tr:nth-child(odd){background-color: #f2f2f2;}
+  .table-holder tbody tr:hover{background-color: #ddd; }
+.hoverme{
+ cursor: pointer;
+}
+
+.pagination {   
+        display: inline-block;   
+    }   
+    .pagination a {   
+        font-weight:bold;   
+        font-size:18px;   
+        color: black;   
+        float: left;   
+        padding: 8px 16px;   
+        text-decoration: none;   
+        border:1px solid black;   
+    }   
+    .pagination a.active {   
+            background-color: pink;   
+    }   
+    .pagination a:hover:not(.active) {   
+        background-color: skyblue;   
+    } 
+       .inline{   
+            display: inline-block;   
+            float: right;   
+            margin: 20px 0px;   
+        }   
+  
+
+.item-picker{
+   background: #fff;
+   width: 80%;
+   min-width: 750px;
+  margin-left: 10%;
+  border: 1px solid #fff;
+  box-shadow: 0 0 0.5rem 0 rgba(0 ,0,0,0.3);
+  padding: 8px;
+ margin-top: 20px;
+ margin-bottom: 20px;
+
+}

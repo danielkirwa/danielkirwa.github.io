@@ -7,6 +7,7 @@
   const firebaseConfig = {
     apiKey: "AIzaSyAp4xtYhDcZPEsdC_ZlIYf_cGI3nF2TKXE",
     authDomain: "juelga-inventory-mangement.firebaseapp.com",
+    databaseURL: "https://juelga-inventory-mangement-default-rtdb.europe-west1.firebasedatabase.app",
     projectId: "juelga-inventory-mangement",
     storageBucket: "juelga-inventory-mangement.appspot.com",
     messagingSenderId: "273045603480",
@@ -16,4 +17,5 @@
 
   // Initialize Firebase
    firebase.initializeApp(firebaseConfig);
+   const auth = firebase.auth();
 

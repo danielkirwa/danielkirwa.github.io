@@ -146,3 +146,36 @@
  margin-bottom: 20px;
 
 }
+
+
+/* alert */
+#alertBox {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  width: 300px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 5px rgba(0,0,0,.3);
+}
+
+#alertTitle {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+#alertMessage {
+  margin-bottom: 20px;
+}
+
+#alertBox button {
+  width: 100px;
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}

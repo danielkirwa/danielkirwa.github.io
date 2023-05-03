@@ -48,6 +48,25 @@ color: #0067a0;
     color: #ff6a13;
 
 }
+.login-btn-trans{
+	padding: 6px 8px;
+	background:#00000000;
+	outline: none;
+	width: 300px;
+	border: none;
+	 font-size: 16px;
+    font-weight: bold;
+    color: #0067a0;
+
+}
+.login-btn-trans:hover{
+	cursor: pointer;
+    color: #ff6a13;
+
+}
+
+
+
 .my-label{
     font-size: 22px;
     font-weight: bold;

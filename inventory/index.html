@@ -7,6 +7,7 @@
 	<title>Login now</title>
 	<link rel = "icon" href = "assets/logo/juelgaicon.png" type = "image/x-icon">
 	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<link rel="stylesheet" type="text/css" href="css/elements.css">
 	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
@@ -22,18 +23,35 @@
 	 <div class="login-form">
 	 	<center><h3>Log now</h3></center>
         <div>
-        	<form action="index.html" method="POST" name=""><center>
-        	<label class="my-label">Username</label><br><br>
-        	<input type="" name="username" placeholder="Enter Username" class="my-input"><br><br>
+        <center>
+             <label class="my-label">Username</label><br><br>
+        	<input type="" id="username" placeholder="Enter Username" class="my-input"><br><br>
         	<label class="my-label">Password</label><br><br>
-        	<input type="password" name="userpassword" placeholder="***********" class="my-input"><br><br>
-        	<input type="submit" name="logintoaccount" value="Login Now" class="login-btn"><br><br>
+        	<input type="password" id="userpassword" placeholder="***********" class="my-input"><br><br>
+        	<button class="login-btn" id="logintoaccount">Login Now</button><br><br>
+        	<button class="login-btn-trans" id="forgotpassword">Forgot password</button>
         	</center>
-        	</form>
+        	
         </div>
 	 </div>
 
 </div>
+
+
+
+
+<!-- alerts here -->
+
+<div id="alertBox">
+  <h2 id="alertTitle"></h2>
+  <p id="alertMessage"></p>
+  <center>
+  <button onclick="hideAlert()">OK</button>
+  </center>
+</div>
+
+
+
 
 <!-- end of login -->
 <div class="footer">

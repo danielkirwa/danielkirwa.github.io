@@ -99,6 +99,7 @@ var selectedRoleOption = selectrole.value;
   } else {
     // Data saved successfully!
     myAlert(success, "New user registered and account created");
+    resetForm();
        firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
   .then(() => {
    
@@ -109,6 +110,7 @@ var selectedRoleOption = selectrole.value;
     // New sign-in will be persisted with session persistence.
     return firebase.auth().createUserWithEmailAndPassword(email, idnumber);
     myAlert(success, "New user registered and account created");
+    resetForm();
   })
 
 

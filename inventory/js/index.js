@@ -56,10 +56,63 @@ let userpassword = document.getElementById('userpassword').value;
      myAlert(warning, fillerror)
 
   }else{
-      myAlert(success, "ready")
+     
+     // body...
+     logintoaccount.innerHTML = "please wait ..."
+    firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
+  .then(() => {
+    // Existing and future Auth states are now persisted in the current
+    // session only. Closing the window would clear any existing state even
+    // if a user forgets to sign out.
+    // ...
+    // New sign-in will be persisted with session persistence.
+    return firebase.auth().signInWithEmailAndPassword(username, userpassword);
+
+    window.location.href='createbusiness.html';
+  })
+  .catch((error) => {
+    // Handle Errors here.
+    let Wrongpassworderror = 'The password is invalid or the user does not have a password.';
+    let nousererror = 'There is no user record corresponding to this identifier. The user may have been deleted.';
+    if (error.message == nousererror) {
+      seconds = 2;
+      //alert('No such user please register');
+      myAlert(failed, "Check out the cridentials and try again");
+      logintoaccount.innerHTML = "Login Now"
+    }else if(error.message == Wrongpassworderror){
+      //alert('Wrong password');
+      seconds = 2;
+      myAlert(failed, "Check out the cridentials and try again");
+      logintoaccount.innerHTML = "Login Now"
+     // console.log(seconds);
+    }else{
+      seconds = 2;
+      // alert('An error occured');
+       myAlert(failed, "Check out the cridentials and try again");
+       logintoaccount.innerHTML = "Login Now"
+    }
+   
+    btnsigninnewuser.innerHTML = "Log In"
+  });
+
+
+   // end of the login 
   }
 
 })
+
+
+
+    auth.onAuthStateChanged(function(user){
+      if(user){
+        var email = user.email;
+        //alert("Active user" + email);
+        window.location.href='createbusiness.html';
+      }else{
+        //alert("No Active user");
+      }
+    })
+
 
 
 

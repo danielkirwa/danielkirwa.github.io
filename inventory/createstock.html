@@ -5,7 +5,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Customer</title>
+	<title>Stock</title>
 
 		<link rel="stylesheet" type="text/css" href="css/index.css">
 	<link rel="stylesheet" type="text/css" href="css/nav.css">
@@ -16,7 +16,7 @@
 <div>
     <div class="banner">
     	<div class="vender-logo"><img src="assets/logo/juelgaicon.png"> </div>
-    	<div class="shop-name"><center><h3>#############</h3></center></div>
+    	<div class="shop-name"><center><h3 id="lbbusinessname"></h3></center></div>
     </div>
 </div>
 <!-- nav -->
@@ -64,7 +64,7 @@
   <a href="setting.html">Settings</a>
   <a href="saledesk.html">Sale Desk</a>
   <div class="subnav">
-    <button class="subnavbtn">##user<i class="fa fa-caret-down"></i></button>
+    <button class="subnavbtn"><span id="usernamedisplay"></span><i class="fa fa-caret-down"></i></button>
     <div class="subnav-content">
       <a href="profile.html">Profile</a>
       <a href="logout.html">Logout</a>
@@ -194,7 +194,11 @@
    <h3></h3>
 </div>
 
-
+<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script>
+ <script type="text/javascript" src="js/config.js"></script>
+ <script type="text/javascript" src="js/dashboard.js"></script>
  
 </body>
 </html>

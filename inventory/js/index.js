@@ -107,7 +107,7 @@ let userpassword = document.getElementById('userpassword').value;
       if(user){
         var email = user.email;
         //alert("Active user" + email);
-        window.location.href='createbusiness.html';
+        window.location.href='dashboard.html';
       }else{
         //alert("No Active user");
       }

@@ -73,20 +73,19 @@
 </div>
 <!-- end of nav bar -->
 <div class="action-div">
-  <form action="" method="POST" name="" id="submitform">
 	 <center><h3 class="my-label">Stock management</h3></center>
 
 	 <div class="input-holder">
       <div class="card">
       	<center>
           <label class="small-label">Stock Name</label><br>
-          <input type="text" name="stockname" placeholder="Enter stock name" class="my-input">
+          <input type="text" id="stockname" placeholder="Enter stock name" class="my-input">
           </center>
       </div>
       <div class="card">
         <center>
           <label class="small-label">Stock Code</label><br>
-          <input type="text" name="code" placeholder="Enter code eg. S101D" class="my-input">
+          <input type="text" id="code" placeholder="Enter code eg. S101D" class="my-input">
           </center>
       </div>
    </div>
@@ -97,7 +96,7 @@
           <label class="small-label">Description</label><br>
            </center>
           </textarea>
-          <textarea name="description" rows="4" cols="40" placeholder="Describe stock here..."></textarea>
+          <textarea id="description" rows="4" cols="40" placeholder="Describe stock here..."></textarea>
          
       </div>
          </div>
@@ -106,7 +105,8 @@
       <div class="card">
       	<center>
           <label class="small-label">Unit Measure </label><br>
-          <select class="my-input" name="unit">
+          <select class="my-input" id="unit">
+            <option value="" disabled selected>Choose Unit Measure</option>
             <option value="Kg">option one</option>
             <option value="Grams">option two</option>
           </select>
@@ -115,7 +115,7 @@
       <div class="card">
       	<center>
       	<label class="small-label">Unit Count</label><br>
-          <input type="text" name="unitcount" placeholder="Unit count" class="my-input">
+          <input type="text" id="unitcount" placeholder="Unit count" class="my-input">
           </center>
       </div>
    </div>
@@ -124,36 +124,28 @@
             <div class="card">
         <center>
         <label class="small-label">Units to Sale</label><br>
-          <input type="text" name="unitsale" placeholder="Units to sale" class="my-input">
+          <input type="text" id="unitsale" placeholder="Units to sale" class="my-input">
           </center>
       </div>
        <div class="card">
         <center>
         <label class="small-label">Clear Date</label><br>
-          <input type="date" name="clearby" class="my-input">
+          <input type="date" id="clearby" class="my-input">
           </center>
       </div>
 
 
    </div>
-
-
-
-
-
 
    <div class="input-holder">
       <div class="card">
       	<center>
-          <input type="submit" name="addstock" value="Save Supplier" class="my-btn">
+          <button id="addstock" class="my-btn">Save New Stock</button>
           </center>
       </div>
-      <div class="card">
-      
-      	
-      </div>
+    
    </div>
-</form>
+
 </div>
 
 
@@ -163,9 +155,9 @@
 <div class="scroll-table">
   <div class="table-holder">
     <div class="table-caption">
-      <label class="my-label">List of Suppliers  </label>
+      <label class="my-label">List of Stock  </label>
     </div>
-  <table>
+  <table id="stocktable">
     <thead>
       <th>Stock Name</th>
       <th>Sale Units </th>
@@ -185,6 +177,16 @@
 </div>
 
 
+<!-- alerts here -->
+
+<div id="alertBox">
+  <h2 id="alertTitle"></h2>
+  <p id="alertMessage"></p>
+  <center>
+  <button onclick="hideAlert()">OK</button>
+  </center>
+</div>
+
 
 <br><br><br><br>
 <!-- footer starts -->
@@ -198,7 +200,7 @@
 <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-database.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script>
  <script type="text/javascript" src="js/config.js"></script>
- <script type="text/javascript" src="js/dashboard.js"></script>
+ <script type="text/javascript" src="js/createstock.js"></script>
  
 </body>
 </html>

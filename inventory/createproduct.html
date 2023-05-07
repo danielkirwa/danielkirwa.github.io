@@ -15,7 +15,7 @@
 <div>
     <div class="banner">
     	<div class="vender-logo"><img src="assets/logo/juelgaicon.png"> </div>
-    	<div class="shop-name"><center><h3>#############</h3></center></div>
+    	<div class="shop-name"><center><h3 id="lbbusinessname"></h3></center></div>
     </div>
 </div>
 <!-- nav -->
@@ -63,7 +63,7 @@
   <a href="setting.html">Settings</a>
   <a href="saledesk.html">Sale Desk</a>
   <div class="subnav">
-    <button class="subnavbtn">##user<i class="fa fa-caret-down"></i></button>
+    <button class="subnavbtn"><span id="usernamedisplay"></span><i class="fa fa-caret-down"></i></button>
     <div class="subnav-content">
       <a href="profile.html">Profile</a>
       <a href="logout.html">Logout</a>
@@ -73,47 +73,42 @@
 <!-- end of nav bar -->
 
 <div class="action-div">
-  <form action="createproduct.html" method="POST" name="" id="submitform">
    <center><h3 class="my-label">Search Stock to create products</h3></center>
 
    <div class="input-holder">
       <div class="card">
         <center>
           <label class="small-label">Entet Code/name</label><br>
-          <input type="text" name="code" placeholder="Enter stock code or Name" class="my-input">
+          <input type="text" id="searchcode" placeholder="Enter stock code or Name" class="my-input">
           </center>
       </div>
       <div class="card">
          <center>
           <br>
-          <input type="submit" name="searchstock" value="Search now" class="my-btn">
+          <input type="submit" id="searchstock" value="Search now" class="my-btn">
           </center>
 
       </div>
    </div>
-
-
-</form>
 </div>
 
 <!-- create product -->
 <div class="action-div">
-  <form action="" method="POST" name="" id="submitform">
      
-   <center><h3 class="my-label">#### &nbsp; product creation</h3></center>
+   <center><h3 class="my-label"><span id="lbstockname"></span> &nbsp; product creation</h3></center>
 
    <div class="input-holder">
       <div class="card">
         <center>
           <label class="small-label">Stock Name</label><br>
-          <label>Full Name </label>
+          <label id="lbstockfullname">Full Name </label>
           </center>
       </div>
       <div class="card">
         <center>
         <label class="small-label">Stock CODE</label><br>
         <input type="hidden" name="stockcode" value="">
-         <label>CODE</label>
+         <label id="lbstockcode">CODE</label>
           </center>
       </div>
    </div>
@@ -122,17 +117,15 @@
       <div class="card">
         <center>
           <label class="small-label">Available Units</label><br>
-             
-            
                <input type="hidden" name="saleunits" value="">
-                 <label>Available Units : <span id="Availableunits"></span></label><br> 
+                 <label>Available Units : <span id="availableunits"></span></label><br> 
           </center>
       </div>
       <div class="card">
         <center>
         <label class="small-label">Created By</label><br>
-        <input type="hidden" name="Createdby" value="">
-         <label>Author</label><br>
+        <input type="hidden" value="">
+         <label id="createdby">Author</label><br>
           </center>
       </div>
    </div>
@@ -191,7 +184,7 @@
          <div class="card">
         <center>
           <label class="small-label">Units Still in Stock</label><br>
-         <input type="text" name="unitsinstock" value=""class="my-input" id="txtunitinstock">
+         <input type="text" id="unitsinstock" value="" class="my-input" id="txtunitinstock">
           </center>
       </div>
      
@@ -206,12 +199,11 @@
       </div>
       <div class="card">
         <center>
-         <label>Product will created out of </label><br>
+         <label>Product must be cleared by : <span id="lbclearby"></span> </label><br>
           </center>
       </div>
    </div>
             
-</form>
 </div>
 
 
@@ -253,6 +245,16 @@
 </div>
 
 
+<!-- alerts here -->
+
+<div id="alertBox">
+  <h2 id="alertTitle"></h2>
+  <p id="alertMessage"></p>
+  <center>
+  <button onclick="hideAlert()">OK</button>
+  </center>
+</div>
+
 
 <br><br><br><br>
 <!-- footer starts -->
@@ -270,8 +272,8 @@
  
   txtunittosale.addEventListener("input", function(){ 
      let txtunittosale = document.getElementById('txtunittosale');
-  let txtunitinstock = document.getElementById('txtunitinstock');
-  let availableunits = document.getElementById('Availableunits');
+  let txtunitinstock = document.getElementById('unitsinstock');
+  let availableunits = document.getElementById('availableunits');
   const  available = availableunits.textContent;
   var saleunits = txtunittosale.value;
   var remainder = 0;
@@ -284,6 +286,12 @@
 });
 
 </script>
+
+ <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script>
+ <script type="text/javascript" src="js/config.js"></script>
+ <script type="text/javascript" src="js/createproduct.js"></script>
 
 </body>
 </html>

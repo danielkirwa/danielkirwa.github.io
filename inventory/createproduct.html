@@ -34,6 +34,7 @@
     <div class="subnav-content">
       <a href="createproduct.html">Add Product</a>
       <a href="createunits.html">Add Units</a>
+      <a href="createcategory.html">Categories</a>
     </div>
   </div> 
   <div class="subnav">
@@ -148,6 +149,18 @@
 
 
    <div class="input-holder">
+
+      <div class="card">
+        <center>
+          <label class="small-label">Categorise the Product</label><br>
+           </center>
+         <select class="my-input" id="selectcategory">
+          <option>Select Category</option>
+         </select>
+          
+         
+      </div>
+
       <div class="card">
         <center>
           <label class="small-label">Description</label><br>
@@ -156,7 +169,9 @@
           <textarea name="description" rows="4" cols="40" placeholder="Describe unit here..."></textarea>
          
       </div>
-         </div>
+
+
+   </div>
 
 
    <div class="input-holder">
@@ -219,6 +234,7 @@
   <table>
     <thead>
       <th>Product</th>
+      <th>Category</th>
       <th>Initial Price </th>
       <th>Current Price</th>
       <th>Description</th>
@@ -226,15 +242,7 @@
       <th>State</th>
     </thead>
     <tbody>   
-      
-            <tr>     
-             <td></td>     
-            <td></td>   
-            <td></td>   
-            <td></td>      
-            <td></td>  
-              <td></td>                                             
-            </tr>     
+           
                  
           </tbody>
      </table>

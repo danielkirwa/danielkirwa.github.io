@@ -49,10 +49,25 @@ searchstock.addEventListener('click', () =>{
 })
 
 
+ // Retrieve data from Firebase database category
+      var selectcategory = document.getElementById("selectcategory");
+      var ref = firebase.database().ref("Mycategory");
+       selectcategory.innerHTML = "";
+      ref.on("value", function(snapshot) {
+        snapshot.forEach(function(childSnapshot) {
+          var childData = childSnapshot.val();
+          var category = childData.Category;
+           var option = document.createElement("option");
+            option.text = category;
+            option.value = category;
+            selectcategory.add(option);
+        });
+      });
 
 
 
-// off your code 
+
+// end off your code 
 // alert 
 
 function myAlert(title,message) {

@@ -139,6 +139,23 @@ var selectedUnitOption = selectunit.value;
 
 
 
+ // Retrieve data from Firebase database units
+      var selectcategory = document.getElementById("unit");
+      var ref = firebase.database().ref("Myunits");
+       selectcategory.innerHTML = "";
+      ref.on("value", function(snapshot) {
+        snapshot.forEach(function(childSnapshot) {
+          var childData = childSnapshot.val();
+          var unit = childData.Unit;
+          var abbreviation = childData.Abbreviation;
+           var option = document.createElement("option");
+            option.text = unit;
+            option.value = abbreviation;
+            selectcategory.add(option);
+        });
+      });
+
+
 
 // off your code 
 // alert 

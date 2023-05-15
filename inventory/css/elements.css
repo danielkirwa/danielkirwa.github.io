@@ -179,3 +179,17 @@
   border: none;
   cursor: pointer;
 }
+.remove-btn{
+  background: #00000000;
+  outline: none;
+  border: none;
+  color: #00000000;
+
+}
+.remove-btn:hover{
+  background: crimson;
+  outline: none;
+  border: none;
+  color: #ffffff;
+
+}

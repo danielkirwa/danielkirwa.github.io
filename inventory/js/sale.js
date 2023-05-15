@@ -33,8 +33,9 @@ var newavailableproductunittoupdate;
 
 // for local storage 
 
-let recieptitemsarray = [];
 
+let recieptitemsarray = [];
+let storedArray;
 
 itemselected.addEventListener("change", function(){ 
 item = Itemselected.options[Itemselected.selectedIndex].text;
@@ -88,7 +89,7 @@ var price = Itemselected.options[Itemselected.selectedIndex].value;
 var code = Itemselected.options[Itemselected.selectedIndex].id;
 	  // Get the table
 
-  var table = document.getElementById("reciepttable");
+  /*var table = document.getElementById("reciepttable");
 
   // Create a new row
   var row = table.insertRow(-1);
@@ -112,15 +113,16 @@ var code = Itemselected.options[Itemselected.selectedIndex].id;
   priceholder.innerHTML = grandamount;
   tblpriceholder.innerHTML = grandamount;
   tblgrandpriceholder.innerHTML = grandamount;
-  snolabel.innerHTML = recieptitems;
+  snolabel.innerHTML = recieptitems;*/
 let remover = '<button class="remove-btn" onclick="removeRow(this)">X</button>';
-
+ recieptitemsarray = storedArray;
+ console.log(recieptitemsarray);
    // push to an array
  let newitemtoreciept = [item,code, count, totalamount,remover];
  recieptitemsarray.push(newitemtoreciept);
 let storedreciept = JSON.stringify(recieptitemsarray);
 localStorage.setItem('curentreciept', storedreciept);
-
+onreloadshowitems();
 }else{
 	alert("Select new item to add ");
 }
@@ -137,7 +139,7 @@ function onreloadshowitems(argument) {
 	}else{
 
 // Convert the array string back to an array using JSON.parse()
-let storedArray = JSON.parse(storeditems);
+ storedArray = JSON.parse(storeditems);
 
 // Get the table body element
 let tableBody = document.getElementById('recieptbody');
@@ -153,10 +155,18 @@ storedArray.forEach(function(innerArray) {
     let cell = document.createElement('td');
     cell.innerHTML = element;
     row.appendChild(cell);
+
   });
-  
+ 
   tableBody.appendChild(row);
 });
+ grandamount = storedArray.reduce((a, b) => a + +b[3],0);
+ recieptitems = storedArray.reduce((a, b) => a + +b[2],0);
+  console.log(grandamount);
+  priceholder.innerHTML = grandamount;
+  tblpriceholder.innerHTML = grandamount;
+  tblgrandpriceholder.innerHTML = grandamount;
+  snolabel.innerHTML = recieptitems;
 }
 
 
@@ -171,12 +181,12 @@ function removeRow(button) {
 	var removecount;
 	var row = button.parentNode.parentNode;
 	 removeditem = row.getElementsByTagName("td")[3].textContent;
-	 removecount = row.getElementsByTagName("td")[1].textContent;
+	 removecount = row.getElementsByTagName("td")[2].textContent;
 	 grandamount = grandamount - +removeditem;
 	 priceholder.innerHTML = grandamount;
 	 tblpriceholder.innerHTML = grandamount;
      tblgrandpriceholder.innerHTML = grandamount;
-     recieptitems = +recieptitems - 1;
+     recieptitems = +recieptitems - removecount;
   snolabel.innerHTML = recieptitems;
 
   			console.log(removecount);

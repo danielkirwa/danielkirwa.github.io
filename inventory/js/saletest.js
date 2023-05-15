@@ -31,10 +31,6 @@ var availableproductunittoupdate;
 var newavailableproductunittoupdate;
 
 
-// for local storage 
-
-let recieptitemsarray = [];
-
 
 itemselected.addEventListener("change", function(){ 
 item = Itemselected.options[Itemselected.selectedIndex].text;
@@ -72,7 +68,7 @@ function updateValue(e) {
 	newselectprice.innerHTML= "Ksh. " +totalamount;
 	txtnewselectitem.innerHTML =  "" +item;
 	txtnewselectprice.innerHTML = "" +price;
-	//console.log(newavailableproductunittoupdate);
+	console.log(newavailableproductunittoupdate);
 	}
 	
 }
@@ -113,13 +109,6 @@ var code = Itemselected.options[Itemselected.selectedIndex].id;
   tblpriceholder.innerHTML = grandamount;
   tblgrandpriceholder.innerHTML = grandamount;
   snolabel.innerHTML = recieptitems;
-let remover = '<button class="remove-btn" onclick="removeRow(this)">X</button>';
-
-   // push to an array
- let newitemtoreciept = [item,code, count, totalamount,remover];
- recieptitemsarray.push(newitemtoreciept);
-let storedreciept = JSON.stringify(recieptitemsarray);
-localStorage.setItem('curentreciept', storedreciept);
 
 }else{
 	alert("Select new item to add ");
@@ -127,40 +116,6 @@ localStorage.setItem('curentreciept', storedreciept);
   
 })
 
-// retain table of the reciept data for refresh and picking up
-onreloadshowitems();
-function onreloadshowitems(argument) {
-	// body...
-	let storeditems = localStorage.getItem('curentreciept');
-	if (storeditems == null) {
-
-	}else{
-
-// Convert the array string back to an array using JSON.parse()
-let storedArray = JSON.parse(storeditems);
-
-// Get the table body element
-let tableBody = document.getElementById('recieptbody');
-
-// Clear any existing rows in the table
-tableBody.innerHTML = '';
-
-// Iterate over the array and create table rows
-storedArray.forEach(function(innerArray) {
-  let row = document.createElement('tr');
-  
-  innerArray.forEach(function(element) {
-    let cell = document.createElement('td');
-    cell.innerHTML = element;
-    row.appendChild(cell);
-  });
-  
-  tableBody.appendChild(row);
-});
-}
-
-
-}
 
 
 
@@ -275,6 +230,6 @@ auth.onAuthStateChanged(function(user){
          receiptname.innerHTML = email;
       }else{
         //alert("No Active user");
-        window.location.href='index.html';
+        //window.location.href='index.html';
       }
     })

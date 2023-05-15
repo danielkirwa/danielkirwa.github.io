@@ -35,7 +35,7 @@ var newavailableproductunittoupdate;
 
 
 let recieptitemsarray = [];
-let storedArray;
+let storedArray = [];
 
 itemselected.addEventListener("change", function(){ 
 item = Itemselected.options[Itemselected.selectedIndex].text;
@@ -178,6 +178,7 @@ storedArray.forEach(function(innerArray) {
 
 // delete item
 function removeRow(button) {
+	let rowtoremoveformarray;
 	var removecount;
 	var row = button.parentNode.parentNode;
 	 removeditem = row.getElementsByTagName("td")[3].textContent;
@@ -188,8 +189,13 @@ function removeRow(button) {
      tblgrandpriceholder.innerHTML = grandamount;
      recieptitems = +recieptitems - removecount;
   snolabel.innerHTML = recieptitems;
+   rowtoremoveformarray = row.rowIndex - 1;
 
-  			console.log(removecount);
+  recieptitemsarray = storedArray;
+   recieptitemsarray.splice(rowtoremoveformarray,1);
+   let storedreciept = JSON.stringify(recieptitemsarray);
+localStorage.setItem('curentreciept', storedreciept);
+//console.log(recieptitemsarray);
 			//remove row after subtraction
 			row.parentNode.removeChild(row);
 			

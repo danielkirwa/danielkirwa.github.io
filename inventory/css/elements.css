@@ -50,6 +50,25 @@
     color: #ff6a13;
 
 }
+.my-btn-del{
+  padding: 6px 8px;
+  background:crimson;
+  outline: none;
+  width: 300px;
+  border: none;
+   font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+
+}
+.my-btn-del:hover{
+  cursor: pointer;
+    color: #000000;
+
+}
+
+
+
 .my-textarea{
   width: 500px;
  min-width: 300px;

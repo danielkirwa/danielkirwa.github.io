@@ -66,7 +66,7 @@ function updateValue(e) {
 	if (count < 1) {
      itemcounter.value = 1;
      newavailableproductunittoupdate = availableproductunittoupdate - count;
-     console.log(newavailableproductunittoupdate);
+     //console.log(newavailableproductunittoupdate);
 	}else{
 		newavailableproductunittoupdate = availableproductunittoupdate - count
     totalamount = +count * +price;
@@ -116,12 +116,25 @@ var code = Itemselected.options[Itemselected.selectedIndex].id;
   snolabel.innerHTML = recieptitems;*/
 let remover = '<button class="remove-btn" onclick="removeRow(this)">X</button>';
  recieptitemsarray = storedArray;
- console.log(recieptitemsarray);
+ //console.log(recieptitemsarray);
    // push to an array
  let newitemtoreciept = [item,code, count, totalamount,remover];
  recieptitemsarray.push(newitemtoreciept);
 let storedreciept = JSON.stringify(recieptitemsarray);
 localStorage.setItem('curentreciept', storedreciept);
+// update stock
+
+/// update 
+        firebase.database().ref('Myproduct/' + code + '/AvailableUnits').transaction(function(AvailableUnits) {
+  if (AvailableUnits === null) {
+    return 0; // If the value doesn't exist, set it to 1
+  } else {
+    return AvailableUnits - count; // Increment the value by 1
+  }
+});
+
+
+
 onreloadshowitems();
 }else{
 	alert("Select new item to add ");
@@ -162,7 +175,7 @@ storedArray.forEach(function(innerArray) {
 });
  grandamount = storedArray.reduce((a, b) => a + +b[3],0);
  recieptitems = storedArray.reduce((a, b) => a + +b[2],0);
-  console.log(grandamount);
+  //console.log(grandamount);
   priceholder.innerHTML = grandamount;
   tblpriceholder.innerHTML = grandamount;
   tblgrandpriceholder.innerHTML = grandamount;
@@ -179,10 +192,11 @@ storedArray.forEach(function(innerArray) {
 // delete item
 function removeRow(button) {
 	let rowtoremoveformarray;
-	var removecount;
+	var removecount,remocevode;
 	var row = button.parentNode.parentNode;
 	 removeditem = row.getElementsByTagName("td")[3].textContent;
 	 removecount = row.getElementsByTagName("td")[2].textContent;
+	 removecode = row.getElementsByTagName("td")[1].textContent;
 	 grandamount = grandamount - +removeditem;
 	 priceholder.innerHTML = grandamount;
 	 tblpriceholder.innerHTML = grandamount;
@@ -190,6 +204,10 @@ function removeRow(button) {
      recieptitems = +recieptitems - removecount;
   snolabel.innerHTML = recieptitems;
    rowtoremoveformarray = row.rowIndex - 1;
+// data to delete
+ //console.log(removeditem);
+ //console.log(removecount);
+ //console.log(removecode)
 
   recieptitemsarray = storedArray;
    recieptitemsarray.splice(rowtoremoveformarray,1);
@@ -197,6 +215,15 @@ function removeRow(button) {
 localStorage.setItem('curentreciept', storedreciept);
 //console.log(recieptitemsarray);
 			//remove row after subtraction
+/// update product count
+        firebase.database().ref('Myproduct/' + removecode + '/AvailableUnits').transaction(function(AvailableUnits) {
+  if (AvailableUnits === null) {
+    return 0; // If the value doesn't exist, set it to 1
+  } else {
+    return +AvailableUnits + +removecount; // Increment the value by 1
+  }
+});
+
 			row.parentNode.removeChild(row);
 			
 
@@ -205,19 +232,53 @@ localStorage.setItem('curentreciept', storedreciept);
 
 // print reciept
 
-printer = document.getElementById('printer');
-printer.addEventListener('click', () =>{
-	var divToPrint = document.getElementById("readyreciept").innerHTML;
-			var newWin = window.open('', 'Print-Window');
-			newWin.document.open();
-			newWin.document.write('<html><body onload="window.print()">' + divToPrint + '</body></html>');
-			newWin.document.close();
-			setTimeout(function(){newWin.close();},10);
+printer.addEventListener('click', () => {
+  var divToPrint = document.getElementById("readyreciept").innerHTML;
+  var donotprint = document.querySelectorAll(".remove-btn");
+  var timestamp = Date.now();
+   console.log(timestamp);
+  donotprint.forEach(function(element) {
+    element.style.visibility = "none";
+  });
+  // save sale and print reciept
+   //myAlert(success, "ready to save sale");
+  	 recieptitemsarray = storedArray;
+     // remove all the button create code form the reciept
+     for (let i = 0; i < recieptitemsarray.length; i++) {
+     	for(let j = 0; j < recieptitemsarray[i].length; j++){
+     		if (recieptitemsarray[i][j] === "<button class=\"remove-btn\" onclick=\"removeRow(this)\">X</button>") {
+     			recieptitemsarray[i].splice(j,1);
+     		}
+     	}
+      }
+
+  	 let storedreciepttodatabase = JSON.stringify(recieptitemsarray);
+     console.log(storedreciepttodatabase);
+    /// update product count
+        firebase.database().ref('Mysale/' + timestamp).set(storedreciepttodatabase)
+  .then(function() {
+    myAlert(success, "Sale completed ");
+    localStorage.removeItem("curentreciept");
+    location.reload();
+  })
+  .catch(function(error) {
+     myAlert(failed, "Sale not completed ");
+  });
+
+
+  var newWin = window.open('', 'Print-Window');
+  newWin.document.open();
+  newWin.document.write('<html><body onload="window.print()">' + divToPrint + '</body></html>');
+  newWin.document.close();
+  setTimeout(function() {
+    newWin.close();
+
+  }, 10);
+ 
 
 
 
-
-})
+});
 
 
 

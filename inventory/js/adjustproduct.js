@@ -9,6 +9,7 @@ let usernamedisplay = document.getElementById('usernamedisplay');
 
 let searchstock = document.getElementById('searchstock');
 let searchcode = document.getElementById('searchcode');
+let openstockforproduct = document.getElementById('openstockforproduct');
 // get display holders
 let lbstockname = document.getElementById('lbstockname');
 let lbstockfullname = document.getElementById('lbstockfullname');
@@ -18,6 +19,9 @@ let createdby = document.getElementById('createdby');
 let unitsinstock = document.getElementById('unitsinstock');
 let lbclearby = document.getElementById('lbclearby');
 let addproduct = document.getElementById('addproduct');
+let buyingprice = document.getElementById('buyingprice');
+let sellingprice = document.getElementById('sellingprice');
+let lbproductcode = document.getElementById('lbproductcode');
 
 // write code here 
 searchstock.addEventListener('click', () =>{
@@ -26,7 +30,7 @@ searchstock.addEventListener('click', () =>{
   if (newsearchcode == "") {
     myAlert(warning, "Enter code to search")
   }else{
-  let searchnode = "Mystock/"+ newsearchcode ;
+  let searchnode = "Myproduct/"+ newsearchcode ;
   // get the stock 
   var ref = firebase.database().ref(searchnode);
   ref.once('value').then(function(snapshot) {
@@ -34,12 +38,13 @@ searchstock.addEventListener('click', () =>{
   if (childData == null) {
      myAlert(failed, "Search code not found")
   }else{
-    lbstockname.innerHTML = childData.StockName;
-    lbstockfullname.innerHTML = childData.StockName;
-    lbstockcode.innerHTML = childData.Code;
-    availableunits.innerHTML = childData.UnitSale;
-    createdby.innerHTML = childData.Createby;
-    unitsinstock.value = childData.UnitSale;
+    lbstockname.innerHTML = childData.ProductName;
+    lbstockfullname.innerHTML = childData.Category;
+    lbstockcode.innerHTML = childData.StockCodeRef;
+    lbproductcode.innerHTML = childData.Code;
+    availableunits.innerHTML = childData.AvailableUnits;
+    buyingprice.innerHTML = childData.Buying;
+    sellingprice.innerHTML = childData.Selling;
     lbclearby.innerHTML = childData.ClearBy;
 
   }
@@ -178,39 +183,11 @@ let unitsinstock = document.getElementById('unitsinstock').value;
 
 })
 
+ openstockforproduct.addEventListener("click", () => {
+  let newstockcode = lbstockcode.innerHTML;
 
- // Retrieve data from Firebase database all product restricted number of items
-      var table = document.getElementById("producttable");
-      var ref = firebase.database().ref("Myproduct");
-      ref.on("value", function(snapshot) {
-        snapshot.forEach(function(childSnapshot) {
-          var childData = childSnapshot.val();
-          var row = table.insertRow(-1);
-          var cell1 = row.insertCell(0);
-          var cell2 = row.insertCell(1);
-          var cell3 = row.insertCell(2);
-          var cell4 = row.insertCell(3);
-          var cell5 = row.insertCell(4);
-          var cell6 = row.insertCell(5);
-          var newstatus;
-          if (childData.Status == 1) {
-            newstatus = "Active";
-          }else{
-            newstatus = "Not Active";
-          }
-
-          cell1.innerHTML = childData.ProductName;
-          cell2.innerHTML = childData.Category;
-          cell3.innerHTML = childData.Buying;
-          cell4.innerHTML = childData.Selling;
-          cell5.innerHTML = childData.Description;
-          cell6.innerHTML = newstatus;
-        });
-      });
-
-
-
-
+   myAlert(success, newstockcode);
+ })
 
 
 // end off your code 

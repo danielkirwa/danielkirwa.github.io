@@ -101,33 +101,33 @@
    <div class="input-holder">
       <div class="card">
         <center>
-          <label class="small-label">Stock Name</label><br>
+          <label class="small-label">Product  Name</label><br>
           <label id="lbstockfullname">Full Name </label>
+          </center>
+           <center>
+        <label class="small-label">Pricing</label><br>
+         <label>Buying price:  </label><label id="buyingprice">Author</label><br>
+         <label>Current selling: </label><label id="sellingprice">Author</label>
           </center>
       </div>
       <div class="card">
         <center>
         <label class="small-label">Stock CODE</label><br>
         <input type="hidden" name="stockcode" value="">
-         <label id="lbstockcode">CODE</label>
+         Stock code : <label id="lbstockcode">CODE</label><br>
+         Product code : <label id="lbproductcode">CODE</label>
+          </center>
+           <center>
+          <label class="small-label">Available Units</label><br>
+               <input type="hidden" name="saleunits" value="">
+                 <label>Available Units : <span id="availableunits"></span></label><br> 
           </center>
       </div>
    </div>
 
    <div class="input-holder">
       <div class="card">
-        <center>
-          <label class="small-label">Available Units</label><br>
-               <input type="hidden" name="saleunits" value="">
-                 <label>Available Units : <span id="availableunits"></span></label><br> 
-          </center>
-      </div>
-      <div class="card">
-        <center>
-        <label class="small-label">Created By</label><br>
-        <input type="hidden" value="">
-         <label id="createdby">Author</label><br>
-          </center>
+       <button class="my-btn" id="openstockforproduct">Open stock for product</button>
       </div>
    </div>
 
@@ -229,25 +229,9 @@
 <div class="scroll-table">
   <div class="table-holder">
     <div class="table-caption">
-      <label class="my-label">List of products  </label>
+      <label class="my-label">Product adjustment and update </label>
     </div>
-  <table id="producttable">
-    <thead>
-      <th>Product</th>
-      <th>Category</th>
-      <th>Initial Price </th>
-      <th>Current Price</th>
-      <th>Description</th>
-      <th>Status</th>
-      <th>State</th>
-    </thead>
-    <tbody>   
-           
-                 
-          </tbody>
-     </table>
-
-
+     <!--  for table if need be-->
 
   </div>
 </div>

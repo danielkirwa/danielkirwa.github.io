@@ -19,7 +19,7 @@ let district = document.getElementById('district');
 let town = document.getElementById('town');
 let village = document.getElementById('village');
 var selectedgender = document.getElementById("gender");
-
+let NewStatus;
 
 
 let addcustomer = document.getElementById('addcustomer');
@@ -125,6 +125,43 @@ var newselectedgender = selectedgender.value;
 
 
 })
+
+
+
+// selected all data 
+
+ // Retrieve data from Firebase database
+      var table = document.getElementById("customertable");
+      var ref = firebase.database().ref("Mycustomer");
+      ref.on("value", function(snapshot) {
+        snapshot.forEach(function(childSnapshot) {
+          var childData = childSnapshot.val();
+          var row = table.insertRow(-1);
+          var cell1 = row.insertCell(0);
+          var cell2 = row.insertCell(1);
+          var cell3 = row.insertCell(2);
+          var cell4 = row.insertCell(3);
+          var cell5 = row.insertCell(4);
+          var cell6 = row.insertCell(5);
+
+          if (childData.Status == 1) {
+             NewStatus = "Active";
+          }else{
+               NewStatus = "Not Active";
+          }
+
+          cell1.innerHTML = childData.FirstName;
+          cell2.innerHTML = childData.CustomerEmail;
+          cell3.innerHTML = childData.CustomerPhone;
+          cell4.innerHTML = childData.CustomerDistrict;
+          cell5.innerHTML = childData.CustomerGender;
+          cell6.innerHTML = NewStatus;
+        });
+      });
+
+
+
+
 
 
 

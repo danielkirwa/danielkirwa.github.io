@@ -79,7 +79,7 @@ var selecrcategory = document.getElementById("selectcategory");
 var selectedcategoryOption = selecrcategory.value;
 let stockcodeupdate = document.getElementById('lbstockcode').innerText;
 let unitsinstock = document.getElementById('unitsinstock').value;
-
+let stockref = document.getElementById('lbstockcode').innerText;
 
 // validate data
  
@@ -143,6 +143,7 @@ let unitsinstock = document.getElementById('unitsinstock').value;
       AvailableUnits: unitstosale,
       ClearBy: clearby,
       Category: selectedcategoryOption,
+      StockCodeRef: stockref,
       Status: 1
 
     },  (error) => {

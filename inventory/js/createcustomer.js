@@ -83,7 +83,43 @@ var newselectedgender = selectedgender.value;
   fillerror = 'Fill in the following :  ' + fillerror1 +  fillerror2 +  fillerror3 +  fillerror4 +  fillerror5  + fillerror6 + fillerror7 + fillerror8 ;
   myAlert(warning, fillerror);
   }else{
-    myAlert(warning, "Ready");
+    
+      // insert data or write
+    firebase.database().ref('Mycustomer/' + newidnumber).set({
+
+     FirstName: newfirstname,
+     OtherName:  newothername,
+     IDNumber: newidnumber,
+     CustomerPhone: newphone,
+     CustomerEmail: newemail,
+     CustomerOtherPhone: newotherphone,
+     CustomerRiegion: newregion,
+     CustomerDistrict: newdistrict,
+     CustomerTown: newtown,
+     CustomerVillage: newvillage,
+     CustomerGender: newselectedgender,
+     CreatedBy: email,
+     DateAdded: datetoday,
+     Status: 1
+
+    },  (error) => {
+  if (error) {
+    // The write failed...
+     myAlert(failed, "Failed to save new customert");
+     
+  } else {
+    // Data saved successfully!
+    myAlert(success, "New Customer save ");
+    
+    // Refresh the page after a delay of 3 seconds
+    setTimeout(function(){
+    location.reload();
+     }, 3000); // 
+ 
+  }
+} );
+
+
   }
 
 

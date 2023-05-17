@@ -96,7 +96,7 @@
 <!-- create product -->
 <div class="action-div">
      
-   <center><h3 class="my-label"><span id="lbstockname"></span> &nbsp; product adjustment</h3></center>
+   <center><h3 class="my-label"><span id="lbproductkname"></span> &nbsp; product adjustment</h3></center>
 
    <div class="input-holder">
       <div class="card">
@@ -120,7 +120,7 @@
            <center>
           <label class="small-label">Available Units</label><br>
                <input type="hidden" name="saleunits" value="">
-                 <label>Available Units : <span id="availableunits"></span></label><br> 
+                 <label>Available Units : <span id="stockavailableunits"></span></label><br> 
           </center>
       </div>
    </div>
@@ -133,12 +133,25 @@
 
     <div class="input-holder">
       <div class="card">
-        <center>
-          <label class="small-label">Product name : </label><br>
-         <input type="text" id="productname" value="" class="my-input" placeholder="Enter product name">
+          <center>
+        <label class="small-label">Stock CODE</label><br>
+        <input type="hidden" name="stockcode" value="">
+         Stock code : <label id="lbstockname">NAME</label><br>
+         Product code : <label id="stockcleardate">DATE</label>
           </center>
+           <center>
+          <label class="small-label">Available Units in stock</label><br>
+                 <label>Available Units : <span id="availableunits"></span></label><br> 
+          </center>
+
       </div>
        <div class="card">
+        <center>
+          <label class="small-label">Categorise the Product</label><br>
+           </center>
+         <select class="my-input" id="selectcategory">
+          <option>Select Category</option>
+         </select>
         <center>
           <label class="small-label">Product code : </label><br>
          <input type="text" id="productcode" value="" class="my-input"  placeholder="Enter code P-S00-1">
@@ -148,30 +161,6 @@
 
 
 
-   <div class="input-holder">
-
-      <div class="card">
-        <center>
-          <label class="small-label">Categorise the Product</label><br>
-           </center>
-         <select class="my-input" id="selectcategory">
-          <option>Select Category</option>
-         </select>
-          
-         
-      </div>
-
-      <div class="card">
-        <center>
-          <label class="small-label">Description</label><br>
-           </center>
-          
-          <textarea id="description" rows="4" cols="40" placeholder="Describe unit here..."></textarea>
-         
-      </div>
-
-
-   </div>
 
 
    <div class="input-holder">

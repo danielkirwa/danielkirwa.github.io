@@ -19,17 +19,20 @@ let availableunits = document.getElementById('availableunits');
 let createdby = document.getElementById('createdby');
 let unitsinstock = document.getElementById('unitsinstock');
 let lbclearby = document.getElementById('lbclearby');
-let addproduct = document.getElementById('addproduct');
+let updatedproduct = document.getElementById('updatedproduct');
 let buyingprice = document.getElementById('buyingprice');
 let sellingprice = document.getElementById('sellingprice');
 let lbproductcode = document.getElementById('lbproductcode');
 let stockcleardate = document.getElementById('stockcleardate');
 let lbstockname = document.getElementById('lbstockname');
+let lbnewstockcode = document.getElementById('lbnewstockcode');
+let lbnewstockname = document.getElementById('lbnewstockname');
+let btndeleteproduct = document.getElementById('btndeleteproduct');
 
 // write code here 
 searchstock.addEventListener('click', () =>{
   let newsearchcode = searchcode.value;
-  
+   let selling = document.getElementById('selling');
   if (newsearchcode == "") {
     myAlert(warning, "Enter code to search")
   }else{
@@ -49,6 +52,7 @@ searchstock.addEventListener('click', () =>{
     buyingprice.innerHTML = childData.Buying;
     sellingprice.innerHTML = childData.Selling;
     lbclearby.innerHTML = childData.ClearBy;
+    selling.value = childData.Selling;
 
   }
   
@@ -58,112 +62,80 @@ searchstock.addEventListener('click', () =>{
 })
 
 
- // Retrieve data from Firebase database category
-      var selectcategory = document.getElementById("selectcategory");
-      var ref = firebase.database().ref("Mycategory");
-       selectcategory.innerHTML = "";
-      ref.on("value", function(snapshot) {
-        snapshot.forEach(function(childSnapshot) {
-          var childData = childSnapshot.val();
-          var category = childData.Category;
-           var option = document.createElement("option");
-            option.text = category;
-            option.value = category;
-            selectcategory.add(option);
-        });
-      });
-
 // insert new product
 
-addproduct.addEventListener("click", () =>{
-let productname = document.getElementById('productname').value.toUpperCase();
-let productcode = document.getElementById('productcode').value;
-let description = document.getElementById('description').value;
-let buying = document.getElementById('buying').value;
+updatedproduct.addEventListener("click", () =>{
 let selling = document.getElementById('selling').value;
 let unitstosale = document.getElementById('txtunittosale').value;
-let clearby = document.getElementById('lbclearby').innerText;
-var selecrcategory = document.getElementById("selectcategory");
-var selectedcategoryOption = selecrcategory.value;
-let stockcodeupdate = document.getElementById('lbstockcode').innerText;
 let unitsinstock = document.getElementById('unitsinstock').value;
-
-
+let producttoupdate = lbproductcode.innerHTML;
+let clearby = lbclearby.innerHTML;
+let stocktoupdate = lbstockcode.innerHTML;
+let existingunits = stockavailableunits.innerHTML 
 // validate data
  
- if (productname == "" || productcode == "" || buying == "" || selling == "" || unitstosale == "" || clearby == "" || selectedcategoryOption == "") {
+ if (selling == "" || unitstosale == "" || unitsinstock == "" || producttoupdate == "" || clearby == "" || stocktoupdate == "" || existingunits == "") {
   let fillerror,fillerror1,fillerror2,fillerror3,fillerror4,fillerror5,fillerror6,fillerror7;
-   if (productname == "") {
-      fillerror1 = " <br> Enter Product Name";
+   if (selling == "") {
+      fillerror1 = " <br> Missing selling price";
     }else{
       fillerror1 = "";
     }
-    if (productcode == "") {
-      fillerror2 = " <br> Enter product code";
+    if (unitstosale == "") {
+      fillerror2 = " <br> Missing units to sale";
     }else{
       fillerror2 = "";
     }
-    if (buying == "") {
-      fillerror3 = "<br>  Add buying price";
+    if (unitsinstock == "") {
+      fillerror3 = "<br>  Missing units in stock <b> You can open stock </b>";
     }else{
       fillerror3 = "";
     }
-    if (selling == "") {
-      fillerror4 = "<br> Enter selling price";
+    if (producttoupdate == "") {
+      fillerror4 = "<br>  Product code Missing";
     }else{
       fillerror4 = "";
     }
-    if (unitstosale == "") {
-      fillerror5 = "<br> Enter units to sale";
+    if (clearby == "") {
+      fillerror5 = "<br>  Missing clear date";
     }else{
       fillerror5 = "";
     }
-    if (clearby == "") {
-      fillerror6 = " <br> Clear date missing";
+    if (stocktoupdate == "") {
+      fillerror6 = "<br>  No Stock selected";
     }else{
       fillerror6 = "";
     }
-    if (selectedcategoryOption == "") {
-      fillerror7 = " <br> Category missing";
+     if (existingunits == "") {
+      fillerror7 = "<br>  Error No Existing Units";
     }else{
       fillerror7 = "";
     }
-  
-
-
-
-
-  fillerror = 'Fill in the following :  ' + fillerror1 +  fillerror2 +  fillerror3 +  fillerror4 +  fillerror5 +  fillerror6 +  fillerror7;
+   
+   
+  fillerror = 'Fill in the following :  ' + fillerror1 +  fillerror2 +  fillerror3 + fillerror4 + fillerror5 + fillerror6 + fillerror7;
   myAlert(warning, fillerror)
 
  }else{
   
   // insert data or write
-    firebase.database().ref('Myproduct/' + productcode).set({
+    firebase.database().ref('Myproduct/' + producttoupdate).update({
 
-      ProductName: productname,
-      Description: description,
-      Code: productcode,
-      Createby: email,
-      DateAdded: datetoday,
-      Buying: buying,
       Selling: selling,
-      AvailableUnits: unitstosale,
-      ClearBy: clearby,
-      Category: selectedcategoryOption,
-      Status: 1
+      AvailableUnits: +unitstosale + +existingunits,
+      ClearBy: clearby
 
     },  (error) => {
   if (error) {
     // The write failed...
-     myAlert(failed, "Failed add new Product");
+     myAlert(failed, "Failed To Update Product");
      
   } else {
     // Data saved successfully!
-    myAlert(success, "New product added ");
+    myAlert(success, "Product Update  ");
     
         /// update 
-        firebase.database().ref('Mystock/' + stockcodeupdate).update({ 
+        firebase.database().ref('Mystock/' + stocktoupdate).update({ 
           UnitSale: unitsinstock
            })
   .then(() => {
@@ -202,9 +174,9 @@ let unitsinstock = document.getElementById('unitsinstock').value;
   }else{
     unitsinstock.value = childData.UnitSale;
     availableunits.innerHTML = childData.UnitSale;
-    stockcleardate.innerHTML = childData.ClearBy;
-    lbstockname.innerHTML = childData.StockName;
-
+    lbclearby.innerHTML = childData.ClearBy;
+    lbnewstockname.innerHTML = childData.StockName;
+    lbnewstockcode.innerHTML = childData.Code;
 
   }
   
@@ -213,6 +185,15 @@ let unitsinstock = document.getElementById('unitsinstock').value;
 }
 
  })
+
+// delete product here
+
+btndeleteproduct.addEventListener("click" , () =>{
+
+   myAlert(success, "Ready to delete")
+})
+
+
 
 
 // end off your code 

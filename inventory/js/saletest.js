@@ -5,6 +5,7 @@ var today = new Date();
 var email;
 var datetoday = today.toLocaleDateString();
 let usernamedisplay = document.getElementById('usernamedisplay');
+
 //start of code
 
 let itemselected = document.getElementById('Itemselected');

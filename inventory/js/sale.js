@@ -5,6 +5,10 @@ var today = new Date();
 var email;
 var datetoday = today.toLocaleDateString();
 let usernamedisplay = document.getElementById('usernamedisplay');
+const currentMonth = new Date().toLocaleString('default', { month: 'long' });
+const currentYear = new Date().getFullYear();
+console.log(currentYear);
+console.log(currentMonth+currentYear);
 //start of code
 
 let itemselected = document.getElementById('Itemselected');
@@ -236,7 +240,7 @@ printer.addEventListener('click', () => {
   var divToPrint = document.getElementById("readyreciept").innerHTML;
   var donotprint = document.querySelectorAll(".remove-btn");
   var timestamp = Date.now();
-   console.log(timestamp);
+  // console.log(timestamp);
   donotprint.forEach(function(element) {
     element.style.visibility = "none";
   });
@@ -253,19 +257,52 @@ printer.addEventListener('click', () => {
       }
 
   	 let storedreciepttodatabase = JSON.stringify(recieptitemsarray);
-     console.log(storedreciepttodatabase);
+     //console.log(storedreciepttodatabase);
     /// update product count
         firebase.database().ref('Mysale/' + timestamp).set(storedreciepttodatabase)
   .then(function() {
+     // update monthly sales 
+
     myAlert(success, "Sale completed ");
     localStorage.removeItem("curentreciept");
-    location.reload();
+    //location.reload();
   })
   .catch(function(error) {
      myAlert(failed, "Sale not completed ");
   });
+   // update monthly sales 
+
+    let monthlysalenode = "Mymonthly/"+ currentMonth+currentYear ;
+        firebase.database().ref(monthlysalenode).update({
+
+       TotalSale: firebase.database.ServerValue.increment(grandamount)       
+   
+      }).then(() => {
+   
+  })
+  .catch((error) => {
+     myAlert(failed, "Cummulative not sales captured");
+  });
+
+  // update cashier sales 
+     
+     email = email.replace(/[@.]/g, "&");
+
+    let cashiersales = "Mycashiersales/"+ email ;
+        firebase.database().ref(cashiersales).update({
+
+       CashierTotalSale: firebase.database.ServerValue.increment(grandamount)       
+   
+      }).then(() => {
+       
+  })
+  .catch((error) => {
+     myAlert(failed, "Cummulative not cashier sales captured");
+  });
 
 
+
+   
   var newWin = window.open('', 'Print-Window');
   newWin.document.open();
   newWin.document.write('<html><body onload="window.print()">' + divToPrint + '</body></html>');

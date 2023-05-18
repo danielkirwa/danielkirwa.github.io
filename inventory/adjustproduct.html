@@ -114,8 +114,8 @@
         <center>
         <label class="small-label">Stock CODE</label><br>
         <input type="hidden" name="stockcode" value="">
-         Stock code : <label id="lbstockcode">CODE</label><br>
-         Product code : <label id="lbproductcode">CODE</label>
+         Stock code : <label id="lbstockcode"></label><br>
+         Product code : <label id="lbproductcode"></label>
           </center>
            <center>
           <label class="small-label">Available Units</label><br>
@@ -136,8 +136,8 @@
           <center>
         <label class="small-label">Stock CODE</label><br>
         <input type="hidden" name="stockcode" value="">
-         Stock code : <label id="lbstockname">NAME</label><br>
-         Product code : <label id="stockcleardate">DATE</label>
+         Stock Name : <label id="lbnewstockname">NAME</label><br>
+         Product Code : <label id="lbnewstockcode">CODE</label>
           </center>
            <center>
           <label class="small-label">Available Units in stock</label><br>
@@ -145,50 +145,41 @@
           </center>
 
       </div>
-       <div class="card">
-        <center>
-          <label class="small-label">Categorise the Product</label><br>
-           </center>
-         <select class="my-input" id="selectcategory">
-          <option>Select Category</option>
-         </select>
-        <center>
-          <label class="small-label">Product code : </label><br>
-         <input type="text" id="productcode" value="" class="my-input"  placeholder="Enter code P-S00-1">
-          </center>
-      </div>
-   </div>
 
-
-
-
-
-   <div class="input-holder">
+      <div class="input-holder">
+    
       <div class="card">
         <center>
-          <label class="small-label">Buying Price</label><br>
-         <input type="text" id="buying" value="" class="my-input" placeholder="Enter whole number 2000">
-          </center>
-      </div>
-      <div class="card">
-        <center>
-        <label class="small-label">Selling Price </label><br>
+        <label class="small-label">New Selling Price </label><br>
         <input type="text" id="selling" value="" class="my-input" placeholder="Enter whole number 2000">
           </center>
-      </div>
-   </div>
-
-   <div class="input-holder">
-      <div class="card">
-        <center>
+          <center>
           <label class="small-label">Units to sale</label><br>
          <input type="text" value=""class="my-input" id="txtunittosale">
           </center>
       </div>
+   </div>
+      
+   </div>
+
+
+
+
+
+   
+
+   <div class="input-holder">
+     
          <div class="card">
         <center>
           <label class="small-label">Units Still in Stock</label><br>
          <input type="text" id="unitsinstock" value="" class="my-input" id="txtunitinstock">
+          </center>
+      </div>
+
+      <div class="card">
+        <center>
+         <label>Product must be cleared by : <span id="lbclearby"></span> </label><br>
           </center>
       </div>
      
@@ -198,25 +189,17 @@
    <div class="input-holder">
       <div class="card">
         <center>
-          <input type="submit" id="addproduct" value="Create Product" class="my-btn">
+          <input type="submit" id="updatedproduct" value="Update Product" class="my-btn">
           </center>
       </div>
       <div class="card">
         <center>
-         <label>Product must be cleared by : <span id="lbclearby"></span> </label><br>
+         <button class="my-btn-del" id="btndeleteproduct"> Delete the Product</button>
           </center>
       </div>
+      
    </div>
-   <div class="input-holder">
-      <div class="card">
-       
-      </div>
-      <div class="card">
-        <center>
-         <button class="my-btn-del"> Delete the Product</button>
-          </center>
-      </div>
-   </div>
+   
             
 </div>
 

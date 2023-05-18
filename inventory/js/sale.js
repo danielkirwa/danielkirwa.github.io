@@ -7,8 +7,7 @@ var datetoday = today.toLocaleDateString();
 let usernamedisplay = document.getElementById('usernamedisplay');
 const currentMonth = new Date().toLocaleString('default', { month: 'long' });
 const currentYear = new Date().getFullYear();
-console.log(currentYear);
-console.log(currentMonth+currentYear);
+
 //start of code
 
 let itemselected = document.getElementById('Itemselected');

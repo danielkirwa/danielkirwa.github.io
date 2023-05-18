@@ -193,6 +193,7 @@ let stockref = document.getElementById('lbstockcode').innerText;
           var cell4 = row.insertCell(3);
           var cell5 = row.insertCell(4);
           var cell6 = row.insertCell(5);
+          var cell7 = row.insertCell(6)
           var newstatus;
           if (childData.Status == 1) {
             newstatus = "Active";
@@ -206,6 +207,8 @@ let stockref = document.getElementById('lbstockcode').innerText;
           cell4.innerHTML = childData.Selling;
           cell5.innerHTML = childData.Description;
           cell6.innerHTML = newstatus;
+          cell7.innerHTML = childData.AvailableUnits;
+
         });
       });
 

@@ -22,6 +22,20 @@
   border-top-left-radius: 14px;
   border-top-right-radius: 14px;
 }
+.card-long{
+  flex: 1 1 800px; /*  Stretching: */
+    flex: 0 1 800px; /*  No stretching: */
+    margin: 5px;
+    background: blue;
+     background-color: #00000000;
+  flex-direction: column;
+  justify-content: center;
+   border: 1px solid #fff;
+  box-shadow: 0 0 0.5rem 0 rgba(0 ,0,0,0.3);
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
+}
+
 .small-card{
    flex: 1 1 250px; /*  Stretching: */
     flex: 0 1 250px; /*  No stretching: */
@@ -33,6 +47,10 @@
   box-shadow: 0 40px 80px #FBE4E0;
   border-top-left-radius: 14px;
   border-top-right-radius: 14px;
+}
+.backgroundPrimary{
+  background: #0067a0;
+  color: #fff;
 }
 .my-btn{
 	padding: 6px 8px;

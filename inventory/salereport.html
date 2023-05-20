@@ -82,24 +82,50 @@
     <div class="table-caption">
       <label class="my-label">Sale report </label>
     </div>
-     
+     <!-- start of report analysis -->
      <div class="input-holder">
-      <div class="card">
+      <div class="card-long">
         <center>
-          <label class="small-label">Total Items</label><br>
+          <label class="small-label">Monthly Analysis</label><br>
            </center>
-            2 
+            <canvas id="barGraphMonthlySale" width="50%"></canvas>
          
       </div>
-      <div class="card">
+
+      <!-- end of monthly sales -->
+      <div class="card-long">
         <center>
-          <label class="small-label">Total Amount</label><br>
+          <label class="small-label">All Cashier Sales</label><br>
            </center>
-            2
+            
+              <table id="cahierstable">
+    <thead style="background: #0067a0;color: #fff;">
+      <th>Cashier  Name</th>
+      <th>Total Sales</th>
+      <th>Sales in %</th>
+    </thead>
+    <tbody>   
+      
+              
+          </tbody>
+     </table>
          
       </div>
+
+      <!-- end of cashier -->
+
+        <div class="card-long">
+        <center>
+          <label class="small-label">Product sold</label><br>
+           </center>
+            
+
+         
          </div>
 
+
+         </div>
+ <!-- end of report analysis -->
 
   </div>
 </div>
@@ -132,6 +158,7 @@
 <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-database.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script>
  <script type="text/javascript" src="js/config.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
  <script type="text/javascript" src="js/salereport.js"></script>
 
 </body>

@@ -93,7 +93,7 @@
           </center>
           <hr>
            <center><img src="assets/growthicon.png"> </center>
-          <center><label class="my-label">Up/Down. <span id="lbgrowth"></span></label><br><br>
+          <center><label class="my-label"><span id="lbgrowth"></span></label><br><br>
           </center>
 
       </div>
@@ -114,7 +114,7 @@
           </center>
           <hr>
            <center><img src="assets/customericon.png"> </center>
-          <center><label class="my-label">0</label><br><br>
+          <center><label class="my-label" id="customercounter">0</label><br><br>
           </center>
 
       </div>
@@ -127,64 +127,7 @@
 <div class="scroll-table">
   <div class="table-holder" id="readyreciept">
    
-    <!-- totals and all other data -->
-     <div class="general-banner">
-   
-      <div class="small-card">
-        <center> <label class="my-label">Orders</label><br>
-    </center>
-
-     <table style="min-width: 600px;">
-       <thead>
-        <th>Custoner Name</th>
-         <th>Order</th>
-         <th>Amount</th>
-         <th>Due Date</th>
-       </thead>
-       <tr>
-        <td>
-          ###
-        </td>
-         <td id="tblpriceholder">0.00</td>
-         <td>0.00</td>
-         <td id="tblgrandpriceholder">0.00</td>
-       </tr>
-     </table>
-
-     </div>
-
   
-   </div>
-
-
-    <!-- totals and all other data -->
-     <div class="general-banner">
-   
-      <div class="small-card">
-        <center> <label class="my-label">Over Due Loan</label><br>
-    </center>
-
-     <table style="min-width: 600px;">
-       <thead>
-        <th>Payment information</th>
-         <th>Total</th>
-         <th>Discount</th>
-         <th>Grand Total</th>
-       </thead>
-       <tr>
-        <td>
-          ###
-        </td>
-         <td id="tblpriceholder">0.00</td>
-         <td>0.00</td>
-         <td id="tblgrandpriceholder">0.00</td>
-       </tr>
-     </table>
-
-     </div>
-
-  
-   </div>
     <!-- totals and all other data -->
      <div class="general-banner">
    
@@ -192,21 +135,16 @@
         <center> <label class="my-label">Out of Stock</label><br>
     </center>
 
-     <table style="min-width: 600px;">
+     <table style="min-width: 600px;" id="outofstocktable">
        <thead>
-        <th>Payment information</th>
-         <th>Total</th>
-         <th>Discount</th>
-         <th>Grand Total</th>
+        <th>Item/Product</th>
+         <th>Product/Code</th>
+         <th>StockCode</th>
+         <th>Available/Units</th>
        </thead>
-       <tr>
-        <td>
-          ###
-        </td>
-         <td id="tblpriceholder">0.00</td>
-         <td>0.00</td>
-         <td id="tblgrandpriceholder">0.00</td>
-       </tr>
+          <tbody>
+            
+          </tbody>
      </table>
 
      </div>
@@ -218,24 +156,19 @@
      <div class="general-banner">
    
       <div class="small-card">
-        <center> <label class="my-label">Expiries</label><br>
+        <center> <label class="my-label">Expiries / Clear date approaching</label><br>
     </center>
 
-     <table style="min-width: 600px;">
+     <table style="min-width: 600px;" id="expirytable">
        <thead>
-        <th>Payment information</th>
-         <th>Total</th>
-         <th>Discount</th>
-         <th>Grand Total</th>
+        <th>Item/Product</th>
+         <th>Product/Code</th>
+         <th>StockCode</th>
+         <th>Expiry</th>
        </thead>
-       <tr>
-        <td>
-          ###
-        </td>
-         <td id="tblpriceholder">0.00</td>
-         <td>0.00</td>
-         <td id="tblgrandpriceholder">0.00</td>
-       </tr>
+        <tbody>
+          
+        </tbody>
      </table>
 
      </div>
@@ -243,34 +176,7 @@
   
    </div>
 
-    <!-- totals and all other data -->
-     <div class="general-banner">
-   
-      <div class="small-card">
-        <center> <label class="my-label">Upcoming Expiries</label><br>
-    </center>
-
-     <table style="min-width: 600px;">
-       <thead>
-        <th>Payment information</th>
-         <th>Total</th>
-         <th>Discount</th>
-         <th>Grand Total</th>
-       </thead>
-       <tr>
-        <td>
-          ###
-        </td>
-         <td id="tblpriceholder">0.00</td>
-         <td>0.00</td>
-         <td id="tblgrandpriceholder">0.00</td>
-       </tr>
-     </table>
-
-     </div>
-
-  
-   </div>
+    
 
    <hr>
     <br>
@@ -282,6 +188,19 @@
 </div>
 
 <!-- end of dashboard -->
+
+ 
+<!-- alerts here -->
+
+<div id="alertBox">
+  <h2 id="alertTitle"></h2>
+  <p id="alertMessage"></p>
+  <center>
+  <button onclick="hideAlert()">OK</button>
+  </center>
+</div>
+
+
 
 
 <br><br><br><br><br><br>

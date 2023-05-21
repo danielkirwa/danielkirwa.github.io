@@ -90,33 +90,6 @@ btnaddtorecipt.addEventListener('click', () =>{
 var item = Itemselected.options[Itemselected.selectedIndex].text;
 var price = Itemselected.options[Itemselected.selectedIndex].value;
 var code = Itemselected.options[Itemselected.selectedIndex].id;
-	  // Get the table
-
-  /*var table = document.getElementById("reciepttable");
-
-  // Create a new row
-  var row = table.insertRow(-1);
-
-  // Insert new cells
-  var cell1 = row.insertCell(0);
-  var cell2 = row.insertCell(1);
-  var cell3 = row.insertCell(2);
-  var cell4 = row.insertCell(3);
-  var cell5 = row.insertCell(4);
-
-  // Add values to the cells
-  cell4.innerHTML = totalamount;
-  cell3.innerHTML = count;
-  cell2.innerHTML = code;
-  cell1.innerHTML = item;
-  cell5.innerHTML = `<button class="remove-btn" onclick="removeRow(this)">X</button>`;
-  cell2.style.visibility = "hidden";
-  grandamount = +grandamount + +totalamount;
-  recieptitems = +recieptitems + 1;
-  priceholder.innerHTML = grandamount;
-  tblpriceholder.innerHTML = grandamount;
-  tblgrandpriceholder.innerHTML = grandamount;
-  snolabel.innerHTML = recieptitems;*/
 let remover = '<button class="remove-btn" onclick="removeRow(this)">X</button>';
  recieptitemsarray = storedArray;
  //console.log(recieptitemsarray);
@@ -131,12 +104,14 @@ localStorage.setItem('curentreciept', storedreciept);
         firebase.database().ref('Myproduct/' + code + '/AvailableUnits').transaction(function(AvailableUnits) {
   if (AvailableUnits === null) {
     return 0; // If the value doesn't exist, set it to 1
+   // location.reload();
   } else {
     return AvailableUnits - count; // Increment the value by 1
+    //location.reload();
   }
 });
 
-
+location.reload();
 
 onreloadshowitems();
 }else{

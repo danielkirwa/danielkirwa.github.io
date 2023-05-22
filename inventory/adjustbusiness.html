@@ -4,12 +4,40 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Register</title>
+	<title>Adjust Business</title>
 
 		<link rel="stylesheet" type="text/css" href="css/index.css">
 	<link rel="stylesheet" type="text/css" href="css/nav.css">
 	<link rel="stylesheet" type="text/css" href="css/elements.css">
 </head>
+<style type="text/css">
+  
+  .general-banner{
+  width: 80%;
+  margin-left: 10%;
+    display: flex;
+  flex-wrap: wrap;
+    justify-content: center;
+     border: 1px solid #fff;
+  box-shadow: 0 0 0.5rem 0 rgba(0 ,0,0,0.3);
+}
+.my-btn-long{
+  padding: 6px 8px;
+  background:#0067a0;
+  outline: none;
+  width: 100%;
+  border: none;
+   font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+
+}
+.my-btn-long:hover{
+  cursor: pointer;
+    color: #ff6a13;
+
+}
+</style>
 <body>
 <div>
     <div class="banner">
@@ -71,6 +99,13 @@
 </div>
 <!-- end of nav bar -->
 <div class="action-div">
+
+   <br><br><br><br>
+     <div class="general-banner">
+  
+        <button id="searchbusinessid" class="my-btn-long">Search Business to update details</button>
+      
+   </div>
  
 	 <center><h3 class="my-label">Create  Business</h3></center>
 
@@ -150,11 +185,13 @@
    <div class="input-holder">
       <div class="card">
       	<center>
-          <button id="addbusiness" class="my-btn">Save my Business</button>
+          <button id="updatebusiness" class="my-btn">Update Business</button>
           </center>
       </div>
       <div class="card">
-      
+        <center>
+          <button id="deletebusiness" class="my-btn-del">Close Business</button>
+          </center>
       	
       </div>
    </div>
@@ -168,20 +205,9 @@
 <div class="scroll-table">
   <div class="table-holder">
     <div class="table-caption">
-      <label class="my-label">Available Business  </label>
+      <label class="my-label">Business  Adjustment</label>
     </div>
-  <table id="busniesstable">
-    <thead>
-      <th>Business name</th>
-      <th>Email </th>
-      <th>Phone</th>
-      <th>Adress</th>
-      
-    </thead>
-    <tbody>      
-               
-          </tbody>
-     </table>
+
 
 
 
@@ -214,6 +240,6 @@
 <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-database.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script>
  <script type="text/javascript" src="js/config.js"></script>
- <script type="text/javascript" src="js/createbusiness.js"></script>
+ <script type="text/javascript" src="js/adjustbusiness.js"></script>
 </body>
 </html>

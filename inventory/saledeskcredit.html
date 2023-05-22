@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Sale Desk</title>
+	<title>Sale Credit</title>
 	<link rel="stylesheet" type="text/css" href="css/index.css">
 	<link rel="stylesheet" type="text/css" href="css/nav.css">
   <link rel="stylesheet" type="text/css" href="css/dashboard.css">
@@ -101,46 +101,50 @@
 
  
  <div class="general-banner">
-    <div class="small-card">
-      
-       <select name="courseName" class="my-input" id="Itemselected">
-   <option>Select Product/Item</option>
- 
-</select>
-
-    </div>
-   
+  
       <div class="small-card">
-     <input type="text" name="productcode" value="" class="my-input"  placeholder="Enter code P-S00-1 or Name">
+     <input type="text" name="productcode" value="" class="my-input"  placeholder="Enter customer ID">
       </div>
       <div class="small-card">
-        <input type="submit" name="selectproduct" value="Select Product/Item" class="my-btn">
+        <button name="searchcustomerid" class="my-btn"> Search Customer</button>
       </div>
    
    </div>
    <div class="general-banner">
 
     <div class="small-card">
+      <label id="newcustomername">No customer found</label><br>
+      <label id="newcustomerstatus">Status</label><br>
+       <label id="newcustomer">Email</label><br>
+       <label id="newcustomerphone">Primary Phone</label><br>
+      <!-- add hidden inputs to hold values  -->
+    </div>
 
-
-      <label id="newselectitem">No item selected</label><br>
-      <input type="hidden" name="itemname" value="" id="txtnewselectitem">
-      <label id="newselectprice">0.00</label><br>
-      <input type="hidden" name="itemprice" value="" id="txtnewselectprice">
-       <label id="newselectcode"></label><br>
-      <input type="hidden" name="itemprice" value="" id="txtnewselectedcode">
+    <div class="small-card">
+      <label id="newcustomerotherphone">Secondary Phone</label><br>
+      <label id="newcustomerregion">Region</label><br>
+      <label id="newcustomertown">Town</label><br>
+      <label id="newcustomervillage">Village</label><br>
       <!-- add hidden inputs to hold values  -->
    
     </div>
-      <div class="small-card">
-     <input type="number" name="itemnumber" value="" class="my-input" id="itemcounter">
-       </div>
-      <div class="small-card" >
-        <input type="submit" value="Add to Reciept" class="my-btn" id="btnaddtorecipt" name="makesale">
-      </div>
-     
         </div>
 
+         <div class="general-banner">
+           <div class="small-card" >
+        <input type="date" name="" id="cutomerpaydate" class="my-input">
+      </div>
+
+        </div>
+
+        <div class="general-banner">
+           <div class="small-card" >
+        <button id="creditcustomer" class="my-btn"> Credit Customer</button>
+      </div>
+
+        </div>
+
+        
 
 <!-- end of select item -->
  
@@ -183,7 +187,7 @@
         <center> <label class="my-label">Totals</label><br>
     </center>
 
-     <table style="min-width: 600px;">
+     <table style="min-width: 800px;">
        <thead>
         <th>Payment information</th>
          <th>Total</th>
@@ -194,7 +198,25 @@
         <td>
           <label>Served by :  <span id="receiptname"></span></label><br>
     <label>Date : <span id="receiptdate"></span></label><br>
-    <label><span>Sale type : </span> Cash/Deposit</label><br>
+    <label><span>Sale type : </span> Credited Customer</label><br>
+        </td>
+         <td id="">--</td>
+         <td>--</td>
+         <td id="">--</td>
+       </tr>
+
+       <!-- customer details -->
+
+        <tr>
+        <td>
+          <label>Customer :  <span id="recieptcustomername"></span></label><br>
+          <label>Email :  <span id="recieptcustomername"></span></label><br>
+          <label>Phone :  <span id="recieptcustomername"></span></label><br>
+          <label>Date : <span id="receiptdate"></span></label><br>
+          <label><span>Sale type : </span> Credit </label><br>
+          <label>Clear date : <span id="receiptcleardate"></span></label><br>
+          <label>Location :  <span id="recieptcustomerlocation"></span></label><br>
+          <label>Address :  <span id="recieptcustomeraddress"></span></label><br>
         </td>
          <td id="tblpriceholder">0.00</td>
          <td>0.00</td>
@@ -255,7 +277,7 @@
 <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-database.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script>
  <script type="text/javascript" src="js/config.js"></script>
-<script type="text/javascript" src="js/sale.js"></script>
+<script type="text/javascript" src="js/salecredit.js"></script>
 
 
 </body>

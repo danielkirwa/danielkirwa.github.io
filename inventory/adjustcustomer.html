@@ -4,13 +4,25 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Customer</title>
+	<title>Adjust Customer</title>
 
 		<link rel="stylesheet" type="text/css" href="css/index.css">
 	<link rel="stylesheet" type="text/css" href="css/nav.css">
 	<link rel="stylesheet" type="text/css" href="css/elements.css">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+<style type="text/css">
+  
+  .general-banner{
+  width: 80%;
+  margin-left: 10%;
+    display: flex;
+  flex-wrap: wrap;
+    justify-content: center;
+     border: 1px solid #fff;
+  box-shadow: 0 0 0.5rem 0 rgba(0 ,0,0,0.3);
+}
+</style>
 <body>
 <div>
     <div class="banner">
@@ -26,7 +38,7 @@
     <div class="subnav-content">
       <a href="#company">Add Business</a>
       <a href="#">Add Customer</a>
-      <a href="adjustcustomer.html">Adjust Customer</a>
+      <a href="adjustcutomer.html">Adjust Customer</a>
     </div>
   </div> 
   <div class="subnav">
@@ -72,8 +84,21 @@
 </div>
 <!-- end of nav bar -->
 <div class="action-div">
+    <br><br><br><br>
+     <div class="general-banner">
+  
+      <div class="small-card">
+     <input type="text" id="txtsearchcustomerid" value="" class="my-input"  placeholder="Enter customer ID">
+      </div>
+      <div class="small-card">
+        <button id="searchcustomerid" class="my-btn"> Search Customer</button>
+      </div>
+   
+   </div>
+
+
  
-	 <center><h3 class="my-label">Customer management</h3></center>
+	 <center><h3 class="my-label">Customer details update</h3></center>
 
 	 <div class="input-holder">
       <div class="card">
@@ -175,12 +200,12 @@
       <div class="card">
       	<center>
          
-          <button id="addcustomer" class="my-btn">Save Customer</button>
+          <button id="updatecustomer" class="my-btn">Save Customer</button>
           </center>
       </div>
       <div class="card">
       
-      	
+      	<button id="deletecustomer" class="my-btn-del">Save Customer</button>
       </div>
    </div>
 
@@ -193,22 +218,8 @@
 <div class="scroll-table">
   <div class="table-holder">
     <div class="table-caption">
-      <label class="my-label">List of staff  </label>
+      <label class="my-label">Adjust Customer  </label>
     </div>
-  <table id="customertable">
-    <thead>
-      <th>First Name</th>
-      <th>Email </th>
-      <th>Phone</th>
-      <th>District</th>
-      <th>Gender</th>
-      <th>Status</th>
-    </thead>
-    <tbody>   
-       
-               
-          </tbody>
-     </table>
 
 
 
@@ -239,6 +250,6 @@
 <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-database.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script>
  <script type="text/javascript" src="js/config.js"></script>
- <script type="text/javascript" src="js/createcustomer.js"></script>
+ <script type="text/javascript" src="js/adjustcustomer.js"></script>
 </body>
 </html>

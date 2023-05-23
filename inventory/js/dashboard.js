@@ -22,7 +22,8 @@ let lbcurrentmonth = document.getElementById('lbcurrentmonth');
 let lbcurent = document.getElementById('lbcurent');
 let lbprevios = document.getElementById('lbprevios');
 let lbgrowth = document.getElementById('lbgrowth');
-
+let cardpreviousmonth = document.getElementById('cardpreviousmonth');
+let cardcurrentmonth = document.getElementById('cardcurrentmonth');
 
 
 
@@ -55,7 +56,9 @@ let thismonthsales = "Mymonthly/"+ currentMonth+currentYear ;
   }else{
     previousmonth = childData.TotalSale
    businessdiv = +thismonth - +previousmonth;
-   console.log(businessdiv);
+   cardpreviousmonth.innerHTML = previousMonthName +" Sale = " + previousmonth;
+   cardcurrentmonth.innerHTML =  currentMonth +" Sale = " + thismonth;
+    //console.log(businessdiv);
    if (businessdiv > 0) {
      lbgrowth.innerHTML = "Up : " + '&#128316;  ' + businessdiv;
    }else{

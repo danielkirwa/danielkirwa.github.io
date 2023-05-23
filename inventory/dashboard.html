@@ -10,7 +10,9 @@
   <link rel="stylesheet" type="text/css" href="css/dashboard.css">
    <link rel="stylesheet" type="text/css" href="css/elements.css">
 	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
+</head> 
+<style type="text/css">
+</style>
 <body>
 	<div>
     <div class="banner">
@@ -74,32 +76,60 @@
 </div>
 <!-- end nav -->
 
-<!-- start of dashboard -->
-<br><br>
-<div class="dashboard"><b>Welcome to ### account type Dashboard</b>
-   <div class="general-banner">
+<!-- new dashboard desing -->
 
-    <div class="card">
+<div class="scroll-table">
+  <div class="table-holder">
+    <div class="table-caption">
+      <label class="my-label">Welcome to the Dashboard </label>
+    </div>
+     <!-- start of report analysis -->
+     <div class="input-holder">
+         
+         <div class="general-banner">
+    <div class="card-margin">
       <center><label class="my-label" id="lbcurrentmonth">This Month sale</label><br>
           </center>
           <hr>
-          <center><img src="assets/saleicon.png"> </center>
-          <center><label class="my-label">Tsh. <span id="lbthismonthsale"></span></label><br><br>
-          </center>
-        </div>
-
-      <div class="card">
-        <center><label class="my-label"><span id="lbcurent"></span> Vs <span id="lbprevios"></span></label><br>
+           <div class="card-inner">
+            <div>
+               <center><img src="assets/saleicon.png"> </center>
+            </div>
+            <div class="float-right">
+              <label class="my-label">Cash</label><br>
+               <label class="my-label">Credit</label>
+            </div> 
+          </div>
+          
+          <hr>
+          <center><label class="my-label">Tsh. <span id="lbthismonthsale"></span></label><br>
           </center>
           <hr>
-           <center><img src="assets/growthicon.png"> </center>
-          <center><label class="my-label"><span id="lbgrowth"></span></label><br><br>
+        </div>
+
+      <div class="card-margin">
+        <center><label class="my-label"><span id="lbprevios"></span> Vs <span id="lbcurent"></span></label><br>
           </center>
+          <hr>
+          <div class="card-inner">
+            <div>
+               <center><img src="assets/growthicon.png"> </center>
+            </div>
+            <div class="float-right">
+              <label class="my-label" id="cardpreviousmonth">Previous</label><br>
+              <label class="my-label" id="cardcurrentmonth">Current</label>
+            </div> 
+          </div>
+            
+           <hr>
+          <center><label class="my-label"><span id="lbgrowth"></span></label><br>
+          </center>
+          <hr>
 
       </div>
 
 
-      <div class="card">
+      <div class="card-margin">
         <center><label class="my-label">Unpaid Loan</label><br>
           </center>
           <hr>
@@ -109,7 +139,7 @@
 
       </div>
 
-        <div class="card">
+        <div class="card-margin">
         <center><label class="my-label">Our Customers</label><br>
           </center>
           <hr>
@@ -120,72 +150,66 @@
       </div>
     
    </div>
-   
-<!-- tables of list upadate -->
-   <!-- start of sale dashboard -->
 
-<div class="scroll-table">
-  <div class="table-holder" id="readyreciept">
-   
-  
-    <!-- totals and all other data -->
-     <div class="general-banner">
-   
-      <div class="small-card">
-        <center> <label class="my-label">Out of Stock</label><br>
-    </center>
-
-     <table style="min-width: 600px;" id="outofstocktable">
-       <thead>
-        <th>Item/Product</th>
-         <th>Product/Code</th>
-         <th>StockCode</th>
-         <th>Available/Units</th>
-       </thead>
-          <tbody>
+         <!-- table -->
+      <div class="card-long">
+        <center>
+          <label class="small-label">Out of Stock Alerts</label><br>
+           </center>
             
+              <table id="outofstocktable">
+     <thead>
+        <th style="background: #0067a0;color: #fff;">Item/Product</th>
+         <th style="background: #0067a0;color: #fff;">Product/Code</th>
+         <th style="background: #0067a0;color: #fff;">StockCode</th>
+         <th style="background: #0067a0;color: #fff;">Available/Units</th>
+       </thead>
+    <tbody>   
+      
+              
           </tbody>
      </table>
+         
+      </div>
 
-     </div>
-
-  
-   </div>
-
-    <!-- totals and all other data -->
-     <div class="general-banner">
-   
-      <div class="small-card">
-        <center> <label class="my-label">Expiries / Clear date approaching</label><br>
-    </center>
-
-     <table style="min-width: 600px;" id="expirytable">
-       <thead>
-        <th>Item/Product</th>
-         <th>Product/Code</th>
-         <th>StockCode</th>
-         <th>Expiry</th>
+      <!-- expiry table -->
+        <div class="card-long">
+        <center>
+          <label class="small-label">Expiries / Clear date approaching</label><br>
+           </center>
+            
+              <table id="expirytable">
+     <thead>
+        <th style="background: #0067a0;color: #fff;">Item/Product</th>
+         <th style="background: #0067a0;color: #fff;">Product/Code</th>
+         <th style="background: #0067a0;color: #fff;">StockCode</th>
+         <th style="background: #0067a0;color: #fff;">Expiry Date</th>
        </thead>
-        <tbody>
-          
-        </tbody>
+    <tbody>   
+      
+              
+          </tbody>
      </table>
+         
+      </div>
 
-     </div>
+      <!-- end of cashier -->
 
-  
-   </div>
+       
 
-    
 
-   <hr>
-    <br>
-    <hr>
-    <!-- end other data -->
-   
+         </div>
+ <!-- end of report analysis -->
+
+  </div>
 </div>
 
-</div>
+
+<!-- start of dashboard -->
+<br><br>
+
+
+
 
 <!-- end of dashboard -->
 

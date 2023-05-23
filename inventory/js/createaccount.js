@@ -100,18 +100,11 @@ var selectedRoleOption = selectrole.value;
     // Data saved successfully!
     myAlert(success, "New user registered and account created");
     resetForm();
-       firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
-  .then(() => {
-   
-    // Existing and future Auth states are now persisted in the current
-    // session only. Closing the window would clear any existing state even
-    // if a user forgets to sign out.
-    // ...
-    // New sign-in will be persisted with session persistence.
-    return firebase.auth().createUserWithEmailAndPassword(email, idnumber);
-    myAlert(success, "New user registered and account created");
-    resetForm();
-  })
+       firebase.auth().createUserWithEmailAndPassword(email, idnumber)
+    .then((userCredential) => {
+      // User creation success
+      myAlert(success, "New account created for <br>" + email);
+    })
 
 
 
@@ -204,7 +197,7 @@ function resetForm(){
 
 
 
-auth.onAuthStateChanged(function(user){
+/*auth.onAuthStateChanged(function(user){
       if(user){
         var email = user.email;
         //alert("Active user" + email);
@@ -213,4 +206,18 @@ auth.onAuthStateChanged(function(user){
         //alert("No Active user");
         window.location.href='index.html';
       }
-    })
+    })*/
+
+auth.onAuthStateChanged(function(user){
+  if(user){
+    var email = user.email;
+    // Check if the newly created user's email matches the authenticated user's email
+    if (email !== emailFromRegistration) {
+      // Update the display with the authenticated user's email
+      usernamedisplay.innerHTML = email;
+    }
+  } else {
+    // Redirect to the index.html page
+    window.location.href='index.html';
+  }
+})

@@ -32,6 +32,14 @@ var Bname,Baddress,Bphone,Bemail;
       });
 
 
+
+let forgotpassword = document.getElementById('forgotpassword');
+forgotpassword.addEventListener("click", () =>{
+    window.location.href='reset.html';
+})
+
+
+
 // authentication 
 let logintoaccount = document.getElementById('logintoaccount');
 let fillerror,fillerror1,fillerror2;

@@ -72,6 +72,10 @@ color: #0067a0;
     font-weight: bold;
     color: #0067a0;
 }
+.my-label-small{
+    font-size: 15px;
+    font-weight: bold;
+}
 .footer {
    position: fixed;
    left: 0;

@@ -53,7 +53,7 @@
    <div class="subnav">
     <button class="subnavbtn">Register <i class="fa fa-caret-down"></i></button>
     <div class="subnav-content">
-      <a href="register.html">Add Staff</a>
+      <a href="register.html" target="_blank">Add Staff</a>
       <a href="adjuststaff.html">Adjust Staff</a>
     </div>
   </div>
@@ -96,8 +96,8 @@
                <center><img src="assets/saleicon.png"> </center>
             </div>
             <div class="float-right">
-              <label class="my-label">Cash</label><br>
-               <label class="my-label">Credit</label>
+              <label class="my-label-small orange-text">Cash</label><br>
+               <label class="my-label-small orange-text">Credit</label>
             </div> 
           </div>
           
@@ -116,8 +116,8 @@
                <center><img src="assets/growthicon.png"> </center>
             </div>
             <div class="float-right">
-              <label class="my-label" id="cardpreviousmonth">Previous</label><br>
-              <label class="my-label" id="cardcurrentmonth">Current</label>
+              <label class="my-label-small orange-text" id="cardpreviousmonth">Previous</label><br>
+              <label class="my-label-small orange-text" id="cardcurrentmonth">Current</label>
             </div> 
           </div>
             
@@ -133,9 +133,20 @@
         <center><label class="my-label">Unpaid Loan</label><br>
           </center>
           <hr>
-           <center><img src="assets/loanicon.png"> </center>
-          <center><label class="my-label"><span>Up/Down </span>0.00</label><br><br>
+           
+           <div class="card-inner">
+            <div>
+               <center><img src="assets/loanicon.png"> </center>
+            </div>
+            <div class="float-right">
+              <label class="my-label-small orange-text">Over due</label><br>
+               <label class="my-label-small orange-text">open</label>
+            </div> 
+          </div>
+            <hr>
+          <center><span class="my-label">Up/Down </span><label class="my-label">0.00</label><br>
           </center>
+            <hr>
 
       </div>
 
@@ -143,10 +154,20 @@
         <center><label class="my-label">Our Customers</label><br>
           </center>
           <hr>
-           <center><img src="assets/customericon.png"> </center>
-          <center><label class="my-label" id="customercounter">0</label><br><br>
+           
+            <div class="card-inner">
+            <div>
+               <center><img src="assets/customericon.png"> </center>
+            </div>
+            <div class="float-right">
+              <label class="my-label-small orange-text">On loan</label><br>
+               <label class="my-label-small orange-text">open</label>
+            </div> 
+          </div>
+            <hr>
+          <center><span class="my-label">Active : </span><label class="my-label" id="customercounter">0</label><br>
           </center>
-
+            <hr>
       </div>
     
    </div>

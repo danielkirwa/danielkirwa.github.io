@@ -23,6 +23,7 @@ let snolabel = document.getElementById('snolabel');
 let priceholder = document.getElementById('priceholder');
 let tblpriceholder = document.getElementById('tblpriceholder');
 let tblgrandpriceholder = document.getElementById('tblgrandpriceholder');
+let newcustomeridnumber = document.getElementById('newcustomeridnumber');
 var count;
 var item 
 var totalamount;
@@ -155,7 +156,7 @@ printer.addEventListener('click', () => {
   	 let storedreciepttodatabase = JSON.stringify(recieptitemsarray);
      //console.log(storedreciepttodatabase);
     /// update product count
-        firebase.database().ref('Mysale/' + timestamp).set(storedreciepttodatabase)
+        firebase.database().ref('Mycreditsale/' + timestamp).set(storedreciepttodatabase)
   .then(function() {
      // update monthly sales 
 
@@ -166,12 +167,29 @@ printer.addEventListener('click', () => {
   .catch(function(error) {
      myAlert(failed, "Sale not completed ");
   });
+
+
+  // customer reciept 
+      firebase.database().ref('Mycustomerreceipt/' + timestamp).set(storedreciepttodatabase)
+  .then(function() {
+     // update monthly sales 
+
+    myAlert(success, "Sale completed ");
+    localStorage.removeItem("curentreciept");
+    //location.reload();
+  })
+  .catch(function(error) {
+     myAlert(failed, "Sale not completed ");
+  });
+
+
+
    // update monthly sales 
 
-    let monthlysalenode = "Mymonthly/"+ currentMonth+currentYear ;
+    let monthlysalenode = "Mymonthlycredit/"+ currentMonth+currentYear ;
         firebase.database().ref(monthlysalenode).update({
 
-       TotalSale: firebase.database.ServerValue.increment(grandamount)       
+       TotalCredit: firebase.database.ServerValue.increment(grandamount)       
    
       }).then(() => {
    
@@ -184,7 +202,7 @@ printer.addEventListener('click', () => {
      
      email = email.replace(/[@.]/g, "&");
 
-    let cashiersales = "Mycashiersales/"+ email ;
+    let cashiersales = "Mycashiercreditsales/"+ email ;
         firebase.database().ref(cashiersales).update({
 
        CashierTotalSale: firebase.database.ServerValue.increment(grandamount)       
@@ -214,10 +232,134 @@ printer.addEventListener('click', () => {
 });
 
 
+// get customer and pin with credit 
+
+let searchcustomerid = document.getElementById('searchcustomerid');
+let customersearchid = document.getElementById('customersearchid');
+searchcustomerid.addEventListener("click", () => {
+
+  // get lables 
+  let newcustomername = document.getElementById('newcustomername');
+  let newcustomerstatus = document.getElementById('newcustomerstatus');
+  let newcustomeremail = document.getElementById('newcustomeremail');
+  let newcustomerphone = document.getElementById('newcustomerphone');
+  let newcustomerotherphone = document.getElementById('newcustomerotherphone');
+  let newcustomerregion = document.getElementById('newcustomerregion');
+  let newcustomertown = document.getElementById('newcustomertown');
+  let newcustomervillage = document.getElementById('newcustomervillage');
 
 
+  // get for reciept
+
+   let recieptcustomername = document.getElementById('recieptcustomername');
+   let recieptcustomeremail = document.getElementById('recieptcustomeremail');
+   let recieptcustomerphone = document.getElementById('recieptcustomerphone');
+   let receiptcleardate = document.getElementById('receiptcleardate');
+   let recieptcustomerlocation = document.getElementById('recieptcustomerlocation');
+   let recieptcustomeraddress = document.getElementById('recieptcustomeraddress');
 
 
+  let newsearchcode = customersearchid.value;
+  let selectedstatus;
+  
+  if (newsearchcode == "") {
+    myAlert(warning, "Enter code to search")
+  }else{
+  let searchnode = "Mycustomer/"+ newsearchcode ;
+  // get the stock 
+  var ref = firebase.database().ref(searchnode);
+  ref.once('value').then(function(snapshot) {
+  var childData = snapshot.val();
+  if (childData == null) {
+     myAlert(failed, "Search customer found")
+    newcustomername.innerHTML = "";
+    newcustomerstatus.innerHTML = "";
+    newcustomeremail.innerHTML = "";
+    newcustomerphone.innerHTML = "";
+    newcustomerotherphone.innerHTML = "";
+    newcustomerregion.innerHTML = "";
+    newcustomertown.innerHTML = "";
+    newcustomervillage.innerHTML = "";
+    newcustomeridnumber.innerHTML = "";
+  }else{
+     if (childData.Status == 1) {
+      selectedstatus = "Active";
+       myAlert(success, "Customer : " + childData.FirstName + "<br>" + "Click OK to credit customer");
+    newcustomername.innerHTML = childData.FirstName;
+    newcustomerstatus.innerHTML = selectedstatus;
+    newcustomeremail.innerHTML = childData.CustomerEmail;
+    newcustomerphone.innerHTML = childData.CustomerPhone;
+    newcustomerotherphone.innerHTML = childData.CustomerOtherPhone;
+    newcustomerregion.innerHTML = childData.CustomerRiegion;
+    newcustomertown.innerHTML = childData.CustomerTown;
+    newcustomervillage.innerHTML = childData.CustomerVillage;
+    newcustomeridnumber.innerHTML = childData.IDNumber;
+    // show on reciept 
+
+    recieptcustomername.innerHTML = childData.FirstName + "  " + childData.OtherName;
+    recieptcustomeremail.innerHTML = childData.CustomerEmail
+    recieptcustomerphone.innerHTML = childData.CustomerPhone;
+    recieptcustomerlocation.innerHTML = childData.CustomerRiegion + " , " + childData.CustomerTown;
+    recieptcustomeraddress.innerHTML = childData.CustomerVillage
+
+     }else{
+      selectedstatus = "Not Active"
+      myAlert(warning, "Customer : " + childData.FirstName + "<br>" + "Not active and can not be credited");
+     }
+   
+
+  }
+  
+
+});
+}
+
+})
+
+
+// check date customer status and credit\
+let creditcustomer = document.getElementById('creditcustomer');
+
+creditcustomer.addEventListener("click" , () => {
+ let checknewcustomerstatus = document.getElementById('newcustomerstatus');
+ let cutomerpaydate = document.getElementById('cutomerpaydate');
+ let receiptcleardate = document.getElementById('receiptcleardate');
+ if (checknewcustomerstatus.innerText == "Active") {
+  if (cutomerpaydate.value == "") {
+  myAlert(warning, "Select credit due date");
+
+  }else{
+    receiptcleardate.innerHTML = cutomerpaydate.value;
+    myAlert(success, "Customer ready to be credited :" + "Due : " + cutomerpaydate.value);
+  }
+    
+ }else if(checknewcustomerstatus.innerText == "Not Active"){
+  myAlert(warning, "Customer not active and can not be credited for status check");
+ }else{
+  myAlert(failed, "Customer status can not be established search or contact Admin");
+ }
+  
+})
+
+// credit data validation 
+
+ function validatecreditDate() {
+    var inputDate = new Date(document.getElementById("cutomerpaydate").value);
+      var currentDate = new Date();
+
+      // Add one month to the current date
+      var maxDate = new Date();
+      maxDate.setMonth(currentDate.getMonth() + 1);
+
+      // Set the minimum date to tomorrow
+      var minDate = new Date();
+      minDate.setDate(currentDate.getDate() + 1);
+
+      if (inputDate < minDate || inputDate > maxDate) {
+        myAlert(failed, "Please select a date within one month from the current date and not earlier than tomorrow.");
+        document.getElementById("cutomerpaydate").value = ""; // Clear the input field
+      }
+    }
 
 
 // end off your code 

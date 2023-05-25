@@ -74,7 +74,7 @@
 
 <!-- start of dashboard -->
 <br><br>
-<div class="dashboard">Welcome to ###account type Sale desk
+<div class="dashboard">Welcome to credit sale desk
    <div class="general-banner">
     <div class="small-card">
     <center> <label class="my-label">Total Items</label><br>
@@ -103,36 +103,36 @@
  <div class="general-banner">
   
       <div class="small-card">
-     <input type="text" name="productcode" value="" class="my-input"  placeholder="Enter customer ID">
+     <input type="text" id="customersearchid" value="" class="my-input"  placeholder="Enter customer ID">
       </div>
       <div class="small-card">
-        <button name="searchcustomerid" class="my-btn"> Search Customer</button>
+        <button id="searchcustomerid" class="my-btn"> Search Customer</button>
       </div>
    
    </div>
    <div class="general-banner">
 
     <div class="small-card">
-      <label id="newcustomername">No customer found</label><br>
-      <label id="newcustomerstatus">Status</label><br>
-       <label id="newcustomer">Email</label><br>
-       <label id="newcustomerphone">Primary Phone</label><br>
+      <span><b>Name : </b></span><label id="newcustomername">No customer found</label><br>
+      <span><b>Status : </b></span><label id="newcustomerstatus">Status</label><br>
+       <span><b>Email : </b></span><label id="newcustomeremail">Email</label><br>
+       <span><b>Phone : </b></span><label id="newcustomerphone">Primary Phone</label><br>
       <!-- add hidden inputs to hold values  -->
     </div>
 
     <div class="small-card">
-      <label id="newcustomerotherphone">Secondary Phone</label><br>
-      <label id="newcustomerregion">Region</label><br>
-      <label id="newcustomertown">Town</label><br>
-      <label id="newcustomervillage">Village</label><br>
+    <span><b>Other Phone :</b></span><label id="newcustomerotherphone">Secondary Phone</label><br>
+      <span><b>Region : </b></span><label id="newcustomerregion">Region</label><br>
+      <span><b>Town : </b></span><label id="newcustomertown">Town</label><br>
+      <span><b>Village : </b></span><label id="newcustomervillage">Village</label><br>
+      <span><b>ID Number : </b></span><label id="newcustomeridnumber"></label><br>
       <!-- add hidden inputs to hold values  -->
-   
     </div>
         </div>
 
          <div class="general-banner">
            <div class="small-card" >
-        <input type="date" name="" id="cutomerpaydate" class="my-input">
+        <input type="date" name="" id="cutomerpaydate" class="my-input" onchange="validatecreditDate()">
       </div>
 
         </div>
@@ -210,9 +210,8 @@
         <tr>
         <td>
           <label>Customer :  <span id="recieptcustomername"></span></label><br>
-          <label>Email :  <span id="recieptcustomername"></span></label><br>
-          <label>Phone :  <span id="recieptcustomername"></span></label><br>
-          <label>Date : <span id="receiptdate"></span></label><br>
+          <label>Email :  <span id="recieptcustomeremail"></span></label><br>
+          <label>Phone :  <span id="recieptcustomerphone"></span></label><br>
           <label><span>Sale type : </span> Credit </label><br>
           <label>Clear date : <span id="receiptcleardate"></span></label><br>
           <label>Location :  <span id="recieptcustomerlocation"></span></label><br>

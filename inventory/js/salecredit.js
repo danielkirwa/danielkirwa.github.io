@@ -40,47 +40,6 @@ var newavailableproductunittoupdate;
 let recieptitemsarray = [];
 let storedArray = [];
 
-itemselected.addEventListener("change", function(){ 
-item = Itemselected.options[Itemselected.selectedIndex].text;
-var price = Itemselected.options[Itemselected.selectedIndex].value;
-producttocodeupdate = Itemselected.options[Itemselected.selectedIndex].id;
-availableproductunittoupdate = Itemselected.options[Itemselected.selectedIndex].data;
-	newselectitem.innerHTML=  "Item. " +item;
-	newselectprice.innerHTML= "Ksh. " +price;
-	newselectcode.innerHTML = "Code. " + producttocodeupdate;
-	txtnewselectitem.value =  "" +item;
-	txtnewselectprice.value = "" +price;
-	txtnewselectedcode.value = "" + producttocodeupdate;
-	count = 1;
-	totalamount = price;
-	newavailableproductunittoupdate = availableproductunittoupdate - 1;
-	//console.log(newavailableproductunittoupdate);
-	//console.log(producttocodeupdate);
-
-});
-
-
-
-itemcounter.addEventListener("input", updateValue);
-
-function updateValue(e) {
-	var price = Itemselected.options[Itemselected.selectedIndex].value;
-	 count = e.target.value;
-	if (count < 1) {
-     itemcounter.value = 1;
-     newavailableproductunittoupdate = availableproductunittoupdate - count;
-     //console.log(newavailableproductunittoupdate);
-	}else{
-		newavailableproductunittoupdate = availableproductunittoupdate - count
-    totalamount = +count * +price;
-	newselectprice.innerHTML= "Ksh. " +totalamount;
-	txtnewselectitem.innerHTML =  "" +item;
-	txtnewselectprice.innerHTML = "" +price;
-	//console.log(newavailableproductunittoupdate);
-	}
-	
-}
-
 
 
 // retain table of the reciept data for refresh and picking up
@@ -263,6 +222,12 @@ printer.addEventListener('click', () => {
 
 // end off your code 
 // alert 
+
+let makecashsale = document.getElementById('makecashsale');
+makecashsale.addEventListener("click" , () => {
+  window.location.href='saledesk.html';
+})
+
 
 function myAlert(title,message) {
   var alertBox = document.getElementById("alertBox");

@@ -317,6 +317,14 @@ printer.addEventListener('click', () => {
 
 
 // end off your code 
+
+
+let printercredit = document.getElementById('printercredit');
+printercredit.addEventListener("click", () =>{
+	window.location.href='saledeskcredit.html';
+})
+
+
 // alert 
 
 function myAlert(title,message) {

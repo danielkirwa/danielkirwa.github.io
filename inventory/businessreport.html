@@ -1,0 +1,221 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Product</title>
+
+		<link rel="stylesheet" type="text/css" href="css/index.css">
+	<link rel="stylesheet" type="text/css" href="css/nav.css">
+	<link rel="stylesheet" type="text/css" href="css/elements.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<div>
+    <div class="banner">
+    	<div class="vender-logo"><img src="assets/logo/juelgaicon.png"> </div>
+    	<div class="shop-name"><center><h3 id="lbbusinessname"></h3></center></div>
+    </div>
+</div>
+<!-- nav -->
+<div class="navbar">
+    <a href="dashboard.html">Dashboard</a>
+  <div class="subnav">
+    <button class="subnavbtn">My Business <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="createbusiness.html">Add Business</a>
+      <a href="createcustomer.html">Add Customer</a>
+      <a href="createsupplier.html">Add Supplier</a>
+    </div>
+  </div> 
+  <div class="subnav">
+    <button class="subnavbtn" style=" background:  #0067a0;">Product <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="createproduct.html">Add Product</a>
+      <a href="createunits.html">Add Units</a>
+      <a href="createcategory.html">Categories</a>
+      <a href="adjustproduct.html">Adjust Product</a>
+    </div>
+  </div> 
+  <div class="subnav">
+    <button class="subnavbtn">Stock <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="createstock.html">Add Stock</a>
+      <a href="adjuststock.html">Adjust Stock</a>
+    </div>
+  </div>
+   <div class="subnav">
+    <button class="subnavbtn">Register <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="register.html">Add Staff</a>
+      <a href="createrole.html">Add Role</a>
+      <a href="createaccount.html">Create Acount</a>
+    </div>
+  </div>
+  <div class="subnav">
+    <button class="subnavbtn">Reports <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="businessreport.html">Business Report</a>
+      <a href="salereport.html">Saler Report</a>
+    </div>
+  </div>
+  <a href="setting.html">Settings</a>
+  <a href="saledesk.html">Sale Desk</a>
+  <div class="subnav">
+    <button class="subnavbtn"><span id="usernamedisplay"></span><i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="profile.html">Profile</a>
+      <a href="#" onclick="logout()">Logout</a>
+    </div>
+  </div>
+</div>
+<!-- end of nav bar -->
+
+<!-- Report begins -->
+<br><br>
+
+<div class="scroll-table">
+  <div class="table-holder">
+    <div class="table-caption">
+      <label class="my-label">Business report </label>
+    </div>
+     <!-- start of report analysis 1-->
+     <div class="input-holder">
+      <div class="card-midium">
+        <center>
+          <label class="small-label">Monthly cash sale  last 1 year</label><br>
+           </center>
+            <canvas id="barGraphMonthlySalebusiness" width="50%"></canvas>
+         
+      </div>
+
+      <!-- end of monthly sales -->
+       <div class="card-midium">
+        <center>
+          <label class="small-label">Monthly credit sale last 1 year</label><br>
+           </center>
+            <canvas id="barGraphMonthlyCreditbusiness" width="50%"></canvas>
+         </div>
+  
+
+         </div>
+
+       <!-- start of report analysis 2-->
+     <div class="input-holder">
+      <div class="card-long">
+        <center>
+          <label class="small-label">Cash/ Credit sale comparison last 1 year</label><br>
+           </center>
+            <canvas id="barGraphMonthlySale" width="50%"></canvas>
+         
+      </div>
+
+      <!-- end of monthly sales -->
+       <div class="card-long">
+        <center>
+          <label class="small-label">General business trends showing spikes and dips</label><br>
+           </center>
+            <canvas id="lineGraphMonthlySale" width="50%" height="200px"></canvas>
+         </div>
+         <!-- cashier -->
+      <div class="card-long">
+        <center>
+          <label class="small-label">Total Business Numbers and % in relation to all transaction</label><br>
+           </center>
+            
+              <table id="cahierstable">
+    <thead>
+      <th style="background: #0067a0;color: #fff;">Total <br> Cash sale</th>
+      <th style="background: #0067a0;color: #fff;">Total <br> Credit sale</th>
+      <th style="background: #0067a0;color: #fff;">Total <br> Paid Credit</th>
+      <th style="background: #0067a0;color: #fff;">Total <br> Unpaid Credit</th>
+      <th style="background: #0067a0;color: #fff;">Grand Total <br> Recieved</th>
+    </thead>
+    <tbody>  
+     <tr>
+       <td style="background: #ed5564; font-size: 22px; font-weight:bold ;">
+          <br><br>
+       0.0
+       <br><br>
+     </td>
+       <td style="background: #ffce54; font-size: 22px; font-weight:bold ;">
+          <br><br>
+       0.0
+       <br><br>
+     </td>
+       <td style="background: #ac92eb; font-size: 22px; font-weight:bold ;">
+          <br><br>
+       0.0
+       <br><br>
+     </td>
+       <td style="background: #4fc1e8; font-size: 22px; font-weight:bold ;">
+          <br><br>
+       0.0
+       <br><br>
+     </td>
+       <td style="background: #a0d568; font-size: 22px; font-weight:bold ;">
+          <br><br>
+       0.0
+       <br><br>
+     </td>
+     </tr> 
+     <tr>
+       <td style="color: #ed5564; font-size: 28px; font-weight:bold ;">0.0 %</td>
+       <td style="color: #ffce54; font-size: 28px; font-weight:bold ;">0.0 %</td>
+       <td style="color: #ac92eb; font-size: 28px; font-weight:bold ;">0.0 %</td>
+       <td style="color: #4fc1e8; font-size: 28px; font-weight:bold ;">0.0 %</td>
+       <td style="color: #a0d568; font-size: 28px; font-weight:bold ;">0.0 %</td>
+     </tr> 
+      
+              
+          </tbody>
+     </table>
+         
+      </div>
+
+      <!-- end of cashier -->
+
+         </div>
+
+
+
+
+ <!-- end of report analysis -->
+
+  </div>
+</div>
+
+
+<!-- alerts here -->
+
+<div id="alertBox">
+  <h2 id="alertTitle"></h2>
+  <p id="alertMessage"></p>
+  <center>
+  <button onclick="hideAlert()">OK</button>
+  </center>
+</div>
+
+
+<br><br><br><br>
+<!-- footer starts -->
+<div class="footer">
+	 <h3></h3>
+   Juelga solution &copy;  &nbsp;&nbsp;<a href="https://www.juelgasolutions.co.tz" style="text-decoration: none; color: #ffffff">juelgasolution </a><br>
+   <h3></h3>
+</div>
+
+
+
+  
+
+ <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script>
+ <script type="text/javascript" src="js/config.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+ <script type="text/javascript" src="js/businessreport.js"></script>
+
+</body>
+</html>

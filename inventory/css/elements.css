@@ -48,6 +48,20 @@
   border-top-left-radius: 14px;
   border-top-right-radius: 14px;
 }
+.card-midium{
+  flex: 1 1 400px; /*  Stretching: */
+    flex: 0 1 400px; /*  No stretching: */
+    margin: 5px;
+    background: blue;
+     background-color: #00000000;
+  flex-direction: column;
+  justify-content: center;
+   border: 1px solid #fff;
+  box-shadow: 0 0 0.5rem 0 rgba(0 ,0,0,0.3);
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
+}
+
 
 .small-card{
    flex: 1 1 250px; /*  Stretching: */

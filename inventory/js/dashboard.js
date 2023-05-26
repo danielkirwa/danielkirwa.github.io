@@ -3,7 +3,7 @@ var failed = "&#10060; Failed";
 var warning = "&#10071; Warning";
 var today = new Date();
 var email;
-var thismonth,previousmonth;
+var thismonth,previousmonth,previousmonthcredit,thismonthcredit;
 var datetoday = today.toLocaleDateString();
 let usernamedisplay = document.getElementById('usernamedisplay');
 const currentMonth = new Date().toLocaleString('default', { month: 'long' });
@@ -15,13 +15,17 @@ const currentDate = new Date();
 const previousMonthIndex = currentDate.getMonth() - 1;
 const previousMonthName = months[previousMonthIndex];
 var businessdiv = 0;
+var businessdivcredit = 0;
 
 // start of the code
 let lbthismonthsale = document.getElementById('lbthismonthsale');
 let lbcurrentmonth = document.getElementById('lbcurrentmonth');
 let lbcurent = document.getElementById('lbcurent');
 let lbprevios = document.getElementById('lbprevios');
+let lbloancurent = document.getElementById('lbloancurent');
+let lbloanprevios = document.getElementById('lbloanprevios');
 let lbgrowth = document.getElementById('lbgrowth');
+let lbgrowthcredit = document.getElementById('lbgrowthcredit');
 let cardpreviousmonth = document.getElementById('cardpreviousmonth');
 let cardcurrentmonth = document.getElementById('cardcurrentmonth');
 
@@ -30,6 +34,8 @@ let cardcurrentmonth = document.getElementById('cardcurrentmonth');
 //displays 
 lbprevios.innerHTML = previousMonthName + " / " + currentYear;
 lbcurent.innerHTML = currentMonth + " / "  + currentYear;
+lbloanprevios.innerHTML = previousMonthName + " / " + currentYear;
+lbloancurent.innerHTML = currentMonth + " / "  + currentYear;
 lbcurrentmonth.innerHTML = currentMonth + " / "  + currentYear;
 
 // current month sales
@@ -99,7 +105,7 @@ let thismonthcreditsales = "Mymonthlycredit/"+ currentMonth+currentYear ;
   }else{
     innerthismonthcredit.innerHTML = "Credit = " + childData.TotalCredit;
     cardcurrentmonthcredit.innerHTML = currentMonth + " Credit = " + childData.TotalCredit;
-    //thismonth = childData.TotalSale;
+    thismonthcredit = childData.TotalCredit;
     // get previous
     let previousmonthcreditsales = "Mymonthlycredit/"+ previousMonthName+currentYear ;
   // get the stock 
@@ -109,9 +115,20 @@ let thismonthcreditsales = "Mymonthlycredit/"+ currentMonth+currentYear ;
   if (childData == null) {
      cardpreviousmonthcredit.innerHTML = previousMonthName +" Credit = " + 0;
      //lbgrowth.innerHTML = "Up : " + '&#128316;'   + thismonth - 0;
+     lbgrowthcredit.innerHTML = "Up : " + '&#128681;  ' + thismonthcredit;
   }else{
    
    cardpreviousmonthcredit.innerHTML = previousMonthName +" Credit = " + childData.TotalCredit;
+   // calculate loan variation 
+   previousmonthcredit = childData.TotalCredit;
+   businessdivcredit = +thismonthcredit - +previousmonthcredit;
+ 
+   if (businessdivcredit > 0) {
+     
+     lbgrowthcredit.innerHTML = "Up : " + '&#128681;  ' + businessdivcredit;
+   }else{
+    lbgrowthcredit.innerHTML = "Down : " + '&#128316;  ' + businessdivcredit;
+   }
    
  
   }
@@ -132,9 +149,9 @@ getCurrentcreditsales();
     // body...
 
     let customercounter = document.getElementById('customercounter');
+    let lbcustomersonloan = document.getElementById('lbcustomersonloan');
     // Get a reference to the "Mycustomer" node
 var myCustomerRef = firebase.database().ref("Mycustomer");
-
 // Retrieve the data once
 myCustomerRef.once("value")
   .then(function(snapshot) {
@@ -145,6 +162,23 @@ myCustomerRef.once("value")
   .catch(function(error) {
     myAlert(failed, "Can not get the customers in your business")
   });
+  /*------------------------*/
+var myCustomerloanRef = firebase.database().ref("Mycustomercredit");
+  // get on loan
+   var onloancount = 0;
+// Retrieve the child nodes and check their values
+myCustomerloanRef.once('value', function(snapshot) {
+  snapshot.forEach(function(childSnapshot) {
+    var childData = childSnapshot.val();
+    // Check if the value of CustomerTotalCredit is greater than 1
+    if (childData.CustomerTotalCredit > 1) {
+      onloancount++;
+    }
+  });
+  
+  lbcustomersonloan.innerHTML = "On loan : " + onloancount;
+});
+
   }
 getAllCustomers();
 

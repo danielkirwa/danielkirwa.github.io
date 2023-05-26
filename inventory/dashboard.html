@@ -96,6 +96,7 @@
                <center><img src="assets/saleicon.png"> </center>
             </div>
             <div class="float-right">
+              <label class="my-label-small blue-text">Sales desk summary this month</label><br>
               <label class="my-label-small orange-text" id="innerthismonthsale">Cash</label><br>
                <label class="my-label-small orange-text" id="innerthismonthcredit">Credit</label>
             </div> 
@@ -116,10 +117,10 @@
                <center><img src="assets/growthicon.png"> </center>
             </div>
             <div class="float-right">
+              <label class="my-label-small blue-text">Sales summary and comparison</label><br>
               <label class="my-label-small orange-text" id="cardpreviousmonth">Previous</label><br>
               <label class="my-label-small orange-text" id="cardcurrentmonth">Current</label><br>
-              <label class="my-label-small orange-text" id="cardpreviousmonthcredit">Previous</label><br>
-              <label class="my-label-small orange-text" id="cardcurrentmonthcredit">Current</label>
+
             </div> 
           </div>
             
@@ -132,7 +133,8 @@
 
 
       <div class="card-margin">
-        <center><label class="my-label">Unpaid Loan</label><br>
+        <center>
+          <label class="my-label"><span id="lbloanprevios"></span> / <span id="lbloancurent"></span></label><br>
           </center>
           <hr>
            
@@ -141,12 +143,13 @@
                <center><img src="assets/loanicon.png"> </center>
             </div>
             <div class="float-right">
-              <label class="my-label-small orange-text">Over due</label><br>
-               <label class="my-label-small orange-text">open</label>
+              <label class="my-label-small blue-text">Loan summary and comparison</label><br>
+              <label class="my-label-small orange-text" id="cardpreviousmonthcredit">Previous</label><br>
+              <label class="my-label-small orange-text" id="cardcurrentmonthcredit">Current</label>
             </div> 
           </div>
             <hr>
-          <center><span class="my-label">Up/Down </span><label class="my-label">0.00</label><br>
+          <center><label class="my-label" id="lbgrowthcredit"></label><br>
           </center>
             <hr>
 
@@ -162,8 +165,9 @@
                <center><img src="assets/customericon.png"> </center>
             </div>
             <div class="float-right">
-              <label class="my-label-small orange-text">On loan</label><br>
-               <label class="my-label-small orange-text">open</label>
+              <label class="my-label-small blue-text">Customers to your business</label><br>
+              <label class="my-label-small orange-text" id="lbcustomersonloan">On loan</label><br>
+               
             </div> 
           </div>
             <hr>

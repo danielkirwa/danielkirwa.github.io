@@ -34,6 +34,9 @@ lbcurrentmonth.innerHTML = currentMonth + " / "  + currentYear;
 
 // current month sales
  function getCurrentsales() {
+  let innerthismonthsale = document.getElementById('innerthismonthsale');
+
+  /*--------------------------------------*/
 let thismonthsales = "Mymonthly/"+ currentMonth+currentYear ;
   // get the stock 
   var ref = firebase.database().ref(thismonthsales);
@@ -43,6 +46,7 @@ let thismonthsales = "Mymonthly/"+ currentMonth+currentYear ;
      myAlert(failed, "No sales found")
   }else{
     lbthismonthsale.innerHTML = childData.TotalSale;
+    innerthismonthsale.innerHTML = "Cash = " + childData.TotalSale;
     thismonth = childData.TotalSale;
     // get previous
     let previousmonthsales = "Mymonthly/"+ previousMonthName+currentYear ;
@@ -76,6 +80,52 @@ let thismonthsales = "Mymonthly/"+ currentMonth+currentYear ;
 });
 }
  getCurrentsales();
+
+
+  // get credit sales
+
+    function getCurrentcreditsales() {
+   let innerthismonthcredit = document.getElementById('innerthismonthcredit');
+   let cardcurrentmonthcredit = document.getElementById('cardcurrentmonthcredit');
+   let cardpreviousmonthcredit = document.getElementById('cardpreviousmonthcredit');
+  /*--------------------------------------*/
+let thismonthcreditsales = "Mymonthlycredit/"+ currentMonth+currentYear ;
+  // get the stock 
+  var ref = firebase.database().ref(thismonthcreditsales);
+  ref.once('value').then(function(snapshot) {
+  var childData = snapshot.val();
+  if (childData == null) {
+     myAlert(failed, "No credit sales found")
+  }else{
+    innerthismonthcredit.innerHTML = "Credit = " + childData.TotalCredit;
+    cardcurrentmonthcredit.innerHTML = currentMonth + " Credit = " + childData.TotalCredit;
+    //thismonth = childData.TotalSale;
+    // get previous
+    let previousmonthcreditsales = "Mymonthlycredit/"+ previousMonthName+currentYear ;
+  // get the stock 
+  var ref = firebase.database().ref(previousmonthcreditsales);
+  ref.once('value').then(function(snapshot) {
+  var childData = snapshot.val();
+  if (childData == null) {
+     cardpreviousmonthcredit.innerHTML = previousMonthName +" Credit = " + 0;
+     //lbgrowth.innerHTML = "Up : " + '&#128316;'   + thismonth - 0;
+  }else{
+   
+   cardpreviousmonthcredit.innerHTML = previousMonthName +" Credit = " + childData.TotalCredit;
+   
+ 
+  }
+  
+
+
+});
+  }
+  
+
+});
+}
+
+getCurrentcreditsales();
 
 
   function getAllCustomers() {

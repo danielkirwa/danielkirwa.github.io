@@ -107,65 +107,54 @@
         <center>
           <label class="small-label">Cash/ Credit sale comparison last 1 year</label><br>
            </center>
-            <canvas id="barGraphMonthlySale" width="50%"></canvas>
+            <canvas id="lingraphcomparison" width="50%" height="200px"></canvas>
          
       </div>
 
       <!-- end of monthly sales -->
-       <div class="card-long">
-        <center>
-          <label class="small-label">General business trends showing spikes and dips</label><br>
-           </center>
-            <canvas id="lineGraphMonthlySale" width="50%" height="200px"></canvas>
-         </div>
+    
          <!-- cashier -->
       <div class="card-long">
         <center>
-          <label class="small-label">Total Business Numbers and % in relation to all transaction</label><br>
+          <label class="small-label">Total Business Numbers and % in relation to all transaction last 1 year</label><br>
            </center>
             
               <table id="cahierstable">
     <thead>
       <th style="background: #0067a0;color: #fff;">Total <br> Cash sale</th>
       <th style="background: #0067a0;color: #fff;">Total <br> Credit sale</th>
-      <th style="background: #0067a0;color: #fff;">Total <br> Paid Credit</th>
-      <th style="background: #0067a0;color: #fff;">Total <br> Unpaid Credit</th>
       <th style="background: #0067a0;color: #fff;">Grand Total <br> Recieved</th>
     </thead>
     <tbody>  
      <tr>
        <td style="background: #ed5564; font-size: 22px; font-weight:bold ;">
           <br><br>
-       0.0
+        <span id="tbltotalsale"></span><br>
+         <span id="tbltotalsaleav"></span>
        <br><br>
      </td>
        <td style="background: #ffce54; font-size: 22px; font-weight:bold ;">
           <br><br>
-       0.0
-       <br><br>
-     </td>
-       <td style="background: #ac92eb; font-size: 22px; font-weight:bold ;">
-          <br><br>
-       0.0
-       <br><br>
-     </td>
-       <td style="background: #4fc1e8; font-size: 22px; font-weight:bold ;">
-          <br><br>
-       0.0
+        <span id="tbltotalcredit"></span><br>
+         <span id="tbltotalcreditav"></span>
        <br><br>
      </td>
        <td style="background: #a0d568; font-size: 22px; font-weight:bold ;">
           <br><br>
-       0.0
+       <span id="tblgrandtotal"></span>
        <br><br>
      </td>
      </tr> 
      <tr>
-       <td style="color: #ed5564; font-size: 28px; font-weight:bold ;">0.0 %</td>
-       <td style="color: #ffce54; font-size: 28px; font-weight:bold ;">0.0 %</td>
-       <td style="color: #ac92eb; font-size: 28px; font-weight:bold ;">0.0 %</td>
-       <td style="color: #4fc1e8; font-size: 28px; font-weight:bold ;">0.0 %</td>
-       <td style="color: #a0d568; font-size: 28px; font-weight:bold ;">0.0 %</td>
+       <td style="color: #ed5564; font-size: 28px; font-weight:bold ;">
+           <span id="tbltotalsalepercent"></span>
+       </td>
+       <td style="color: #ffce54; font-size: 28px; font-weight:bold ;">
+         <span id="tbltotalcreditpercent"></span>
+       </td>
+       <td style="color: #a0d568; font-size: 28px; font-weight:bold ;">
+         <span id="tblgrandtotalpercent"></span>
+       </td>
      </tr> 
       
               

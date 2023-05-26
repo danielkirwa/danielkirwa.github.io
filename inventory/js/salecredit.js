@@ -24,6 +24,7 @@ let priceholder = document.getElementById('priceholder');
 let tblpriceholder = document.getElementById('tblpriceholder');
 let tblgrandpriceholder = document.getElementById('tblgrandpriceholder');
 let newcustomeridnumber = document.getElementById('newcustomeridnumber');
+ let cutomerpaydate = document.getElementById('cutomerpaydate');
 var count;
 var item 
 var totalamount;
@@ -134,6 +135,10 @@ localStorage.setItem('curentreciept', storedreciept);
 // print reciept
 
 printer.addEventListener('click', () => {
+ if (newcustomeridnumber.innerText == "" || cutomerpaydate.value == "") {
+     myAlert(warning, "No customer credited to make sale select customer and make credit sale and ensure that the due date is selected");
+ }else{
+
   var divToPrint = document.getElementById("readyreciept").innerHTML;
   var donotprint = document.querySelectorAll(".remove-btn");
   var timestamp = Date.now();
@@ -155,6 +160,8 @@ printer.addEventListener('click', () => {
 
   	 let storedreciepttodatabase = JSON.stringify(recieptitemsarray);
      //console.log(storedreciepttodatabase);
+
+/*------------------------------------------------------------*/
     /// update product count
         firebase.database().ref('Mycreditsale/' + timestamp).set(storedreciepttodatabase)
   .then(function() {
@@ -168,9 +175,9 @@ printer.addEventListener('click', () => {
      myAlert(failed, "Sale not completed ");
   });
 
-
+/*------------------------------------------------------------*/
   // customer reciept 
-      firebase.database().ref('Mycustomerreceipt/' + timestamp).set(storedreciepttodatabase)
+      firebase.database().ref('Mycustomerreceipt/'+ newcustomeridnumber.innerText + "/" + timestamp).set(storedreciepttodatabase)
   .then(function() {
      // update monthly sales 
 
@@ -183,7 +190,7 @@ printer.addEventListener('click', () => {
   });
 
 
-
+/*------------------------------------------------------------*/
    // update monthly sales 
 
     let monthlysalenode = "Mymonthlycredit/"+ currentMonth+currentYear ;
@@ -198,6 +205,7 @@ printer.addEventListener('click', () => {
      myAlert(failed, "Cummulative not sales captured");
   });
 
+/*------------------------------------------------------------*/
   // update cashier sales 
      
      email = email.replace(/[@.]/g, "&");
@@ -205,15 +213,29 @@ printer.addEventListener('click', () => {
     let cashiersales = "Mycashiercreditsales/"+ email ;
         firebase.database().ref(cashiersales).update({
 
-       CashierTotalSale: firebase.database.ServerValue.increment(grandamount)       
+       CashierTotalCreditSale: firebase.database.ServerValue.increment(grandamount)       
    
       }).then(() => {
        
   })
   .catch((error) => {
-     myAlert(failed, "Cummulative not cashier sales captured");
+     myAlert(failed, "Cummulative cashier credit sales not captured");
   });
 
+  /*------------------------------------------------------------*/
+  let customercredit = "Mycustomercredit/"+ newcustomeridnumber.innerText ;
+        firebase.database().ref(customercredit).update({
+
+       CustomerTotalCredit: firebase.database.ServerValue.increment(grandamount),
+       CreditDueDate: cutomerpaydate.value      
+   
+      }).then(() => {
+       
+  })
+  .catch((error) => {
+     myAlert(failed, "Cummulative customer credit not captured");
+  });
+  /*------------------------------------------------------------*/
 
 
    
@@ -227,7 +249,7 @@ printer.addEventListener('click', () => {
   }, 10);
  
 
-
+}
 
 });
 
@@ -264,6 +286,15 @@ searchcustomerid.addEventListener("click", () => {
   
   if (newsearchcode == "") {
     myAlert(warning, "Enter code to search")
+    newcustomername.innerHTML = "";
+    newcustomerstatus.innerHTML = "";
+    newcustomeremail.innerHTML = "";
+    newcustomerphone.innerHTML = "";
+    newcustomerotherphone.innerHTML = "";
+    newcustomerregion.innerHTML = "";
+    newcustomertown.innerHTML = "";
+    newcustomervillage.innerHTML = "";
+    newcustomeridnumber.innerHTML = "";
   }else{
   let searchnode = "Mycustomer/"+ newsearchcode ;
   // get the stock 
@@ -322,7 +353,6 @@ let creditcustomer = document.getElementById('creditcustomer');
 
 creditcustomer.addEventListener("click" , () => {
  let checknewcustomerstatus = document.getElementById('newcustomerstatus');
- let cutomerpaydate = document.getElementById('cutomerpaydate');
  let receiptcleardate = document.getElementById('receiptcleardate');
  if (checknewcustomerstatus.innerText == "Active") {
   if (cutomerpaydate.value == "") {

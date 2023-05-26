@@ -237,7 +237,7 @@ printer.addEventListener('click', () => {
   .then(function() {
      // update monthly sales 
 
-    myAlert(success, "Sale completed ");
+    myAlertRefresh(success, "Sale completed ");
     localStorage.removeItem("curentreciept");
     //location.reload();
   })
@@ -341,6 +341,26 @@ function hideAlert() {
   var alertBox = document.getElementById("alertBox");
   alertBox.style.display = "none";
 }
+// alert refresh 
+
+function myAlertRefresh(title,message) {
+  var alertBox = document.getElementById("alertBoxRefresh");
+  var alertTitle = document.getElementById("alertTitle1");
+  var alertMessage = document.getElementById("alertMessage1");
+  
+  alertTitle.innerHTML = title;
+  alertMessage.innerHTML = message;
+  alertBox.style.display = "block";
+}
+
+function hideAlertRefresh() {
+  var alertBox = document.getElementById("alertBoxRefresh");
+  alertBox.style.display = "none";
+  location.reload();
+}
+
+
+
 
 /// get business name and data 
 

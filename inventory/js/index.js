@@ -114,10 +114,64 @@ let userpassword = document.getElementById('userpassword').value;
     auth.onAuthStateChanged(function(user){
       if(user){
         var email = user.email;
-        //alert("Active user" + email);
+        //check the role and open page
+         
+      const database = firebase.database();
+
+// Function to find a staff member's role by email
+function findStaffRoleByEmail(email) {
+  const staffRef = database.ref('Mystaff');
+
+  return staffRef.once('value')
+    .then((snapshot) => {
+      let role = null;
+      snapshot.forEach((childSnapshot) => {
+        const staffMember = childSnapshot.val();
+        if (staffMember.Email === email) {
+          role = staffMember.Role;
+          return true; // Break the loop if the email is found
+        }
+      });
+      return role;
+    })
+    .catch((error) => {
+      //console.error('Error finding staff member role:', error);
+      myAlert(failed, "You have not been given access to the the system kindly contact admin");
+      throw error;
+    });
+}
+
+// Example usage:
+const targetEmail = email; // The email to search for
+
+findStaffRoleByEmail(targetEmail)
+  .then((role) => {
+    if (role) {
+       // open pages accodingly
+      
+      if (role == "Admin") {
         window.location.href='dashboard.html';
+      }
+      if (role == "Cashier") {
+        window.location.href='saledesk.html';
+      }
+      if (role == "SalesLead") {
+        window.location("saledesk.html")
+      }
+
+    } else {
+      //console.log('Staff member not found with email:', targetEmail);
+      myAlert(failed, "You have not been given access to the the system kindly contact admin");
+      // Handle the case when the staff member is not found
+    }
+  })
+  .catch((error) => {
+    // Handle the error
+  });
+  
+  
       }else{
-        //alert("No Active user");
+        //myAlert("No Active user");
       }
     })
 

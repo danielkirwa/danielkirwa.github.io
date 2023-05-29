@@ -9,6 +9,7 @@ const currentMonth = new Date().toLocaleString('default', { month: 'long' });
 const currentYear = new Date().getFullYear();
 
 //start of code
+let itemnumber  = document.getElementById('itemnumber');
 
 let itemselected = document.getElementById('Itemselected');
 let newselectitem = document.getElementById('newselectitem');
@@ -33,6 +34,52 @@ var producttocodeupdate;
 var availableproductunittoupdate;
 var newavailableproductunittoupdate;
 
+/*function updateValue(e) {
+  var price = Itemselected.options[Itemselected.selectedIndex].value;
+  count = e.target.value;
+
+  if (count < 1) {
+    itemcounter.value = 1;
+    newavailableproductunittoupdate = availableproductunittoupdate - count;
+    //console.log(newavailableproductunittoupdate);
+  } else {
+    newavailableproductunittoupdate = availableproductunittoupdate - count;
+    if (newavailableproductunittoupdate < 1) {
+      myAlert(warning, "All items have been sold. No more items available for sale.");
+    } else {
+      totalamount = +count * +price;
+      newselectprice.innerHTML = "Ksh. " + totalamount;
+      txtnewselectitem.innerHTML = "" + item;
+      txtnewselectprice.innerHTML = "" + price;
+      console.log(newavailableproductunittoupdate);
+    }
+  }
+}*/
+
+function updateValue(e) {
+  var price = Itemselected.options[Itemselected.selectedIndex].value;
+  count = e.target.value;
+
+  if (count < 1) {
+    itemcounter.value = 1;
+    newavailableproductunittoupdate = availableproductunittoupdate - count;
+  } else {
+    newavailableproductunittoupdate = availableproductunittoupdate - count;
+    //console.log(newavailableproductunittoupdate);
+    if (newavailableproductunittoupdate == 0) {
+    	newavailableproductunittoupdate = newavailableproductunittoupdate;
+      myAlert(warning, "All items have been sold. No more items available for sale. <br> <b> Click add to reciept to sale selected item </b>");
+      itemcounter.disabled = true;
+
+    } else {
+      totalamount = +count * +price;
+      newselectprice.innerHTML = "Ksh. " + totalamount;
+      txtnewselectitem.innerHTML = "" + item;
+      txtnewselectprice.innerHTML = "" + price;
+     // console.log(newavailableproductunittoupdate);
+    }
+  }
+}
 
 // for local storage 
 
@@ -51,6 +98,7 @@ availableproductunittoupdate = Itemselected.options[Itemselected.selectedIndex].
 	txtnewselectitem.value =  "" +item;
 	txtnewselectprice.value = "" +price;
 	txtnewselectedcode.value = "" + producttocodeupdate;
+	//itemcounter.value = 1;
 	count = 1;
 	totalamount = price;
 	newavailableproductunittoupdate = availableproductunittoupdate - 1;
@@ -63,7 +111,7 @@ availableproductunittoupdate = Itemselected.options[Itemselected.selectedIndex].
 
 itemcounter.addEventListener("input", updateValue);
 
-function updateValue(e) {
+/*function updateValue(e) {
 	var price = Itemselected.options[Itemselected.selectedIndex].value;
 	 count = e.target.value;
 	if (count < 1) {
@@ -72,14 +120,21 @@ function updateValue(e) {
      //console.log(newavailableproductunittoupdate);
 	}else{
 		newavailableproductunittoupdate = availableproductunittoupdate - count
+		if (newavailableproductunittoupdate < 1) {
+         myAlert(warning, "All item select No more item to sale");
+		}else{
     totalamount = +count * +price;
 	newselectprice.innerHTML= "Ksh. " +totalamount;
 	txtnewselectitem.innerHTML =  "" +item;
 	txtnewselectprice.innerHTML = "" +price;
-	//console.log(newavailableproductunittoupdate);
+	console.log(newavailableproductunittoupdate);
+      }
 	}
 	
-}
+}*/
+  
+
+
 
 btnaddtorecipt.addEventListener('click', () =>{
 	if (totalamount >= 1) {
@@ -296,7 +351,7 @@ printer.addEventListener('click', () => {
 
 // select product and add to the sale desk
 
-      var ref = firebase.database().ref("Myproduct");
+      /*var ref = firebase.database().ref("Myproduct");
        itemselected.innerHTML = "";
       ref.on("value", function(snapshot) {
         snapshot.forEach(function(childSnapshot) {
@@ -312,7 +367,32 @@ printer.addEventListener('click', () => {
             option.data = available;
             itemselected.add(option);
         });
-      });
+      });*/
+
+/*=====================================*/
+// select only items that more than one
+
+var ref = firebase.database().ref("Myproduct");
+itemselected.innerHTML = "";
+ref.on("value", function(snapshot) {
+  snapshot.forEach(function(childSnapshot) {
+    var childData = childSnapshot.val();
+    var product = childData.ProductName;
+    var selling = childData.Selling;
+    var code = childData.Code;
+    var available = childData.AvailableUnits;
+    
+    if (available >= 1) { // Add condition to check if AvailableUnits > 1
+      var option = document.createElement("option");
+      option.text = product;
+      option.value = selling;
+      option.id = code;
+      option.data = available;
+      itemselected.add(option);
+    }
+  });
+});
+
 
 
 

@@ -148,15 +148,15 @@ findStaffRoleByEmail(targetEmail)
   .then((role) => {
     if (role) {
        // open pages accodingly
-      
+       console.log(role);
       if (role == "Admin") {
-        window.location.href='dashboard.html';
+        window.location.href='invadmin/dashboard.html';
       }
       if (role == "Cashier") {
-        window.location.href='saledesk.html';
+        window.location.href='cashier/saledesk.html';
       }
-      if (role == "Sales Lead") {
-        window.location("saledesk.html")
+      if (role == "SalesLead") {
+        window.location.href='sales/saledesk.html';
       }
 
     } else {

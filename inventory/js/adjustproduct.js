@@ -225,13 +225,84 @@ function hideAlert() {
 
 
 
-auth.onAuthStateChanged(function(user){
+ auth.onAuthStateChanged(function(user){
       if(user){
-        email = user.email;
-        //alert("Active user" + email);
-         usernamedisplay.innerHTML = email;
+        var email = user.email;
+        //check the role and open page
+         
+      const database = firebase.database();
+
+// Function to find a staff member's role by email
+function findStaffRoleByEmail(email) {
+  const staffRef = database.ref('Mystaff');
+
+  return staffRef.once('value')
+    .then((snapshot) => {
+      let role = null;
+      snapshot.forEach((childSnapshot) => {
+        const staffMember = childSnapshot.val();
+        if (staffMember.Email === email) {
+          role = staffMember.Role;
+          return true; // Break the loop if the email is found
+        }
+      });
+      return role;
+    })
+    .catch((error) => {
+      //console.error('Error finding staff member role:', error);
+      myAlert(failed, "You have not been given access to the the system kindly contact admin");
+      throw error;
+    });
+}
+
+// Example usage:
+const targetEmail = email; // The email to search for
+
+findStaffRoleByEmail(targetEmail)
+  .then((role) => {
+    if (role) {
+       // open pages accodingly
+      console.log(role);
+      if (role == "Admin") {
+       // window.location.href='dashboard.html';
+        usernamedisplay.innerHTML = email;
+      }
+      if (role == "Cashier") {
+        
+       hideElementsByClassName("nocashier");
+       usernamedisplay.innerHTML = email;
+       window.location.href='saledesk.html';
+      }
+      if (role == "SalesLead") {
+        hideElementsByClassName("nosalelead");
+        usernamedisplay.innerHTML = email;
+        //window.location.href='saledesk.html';
+      }
+
+    } else {
+      //console.log('Staff member not found with email:', targetEmail);
+      myAlert(failed, "You have not been given access to the the system kindly contact admin");
+      // Handle the case when the staff member is not found
+    }
+  })
+  .catch((error) => {
+    // Handle the error
+  });
+  
+  
       }else{
-        //alert("No Active user");
-        window.location.href='index.html';
+        //myAlert("No Active user");
       }
     })
+
+
+
+
+// hide tabs cashier
+   function hideElementsByClassName(className) {
+  var elements = document.getElementsByClassName(className);
+  for (var i = 0; i < elements.length; i++) {
+    elements[i].style.display = "none";
+   console.log(i);
+  }
+}

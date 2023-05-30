@@ -4,17 +4,17 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Product</title>
+	<title>Units management</title>
 
-		<link rel="stylesheet" type="text/css" href="css/index.css">
-	<link rel="stylesheet" type="text/css" href="css/nav.css">
-	<link rel="stylesheet" type="text/css" href="css/elements.css">
+		<link rel="stylesheet" type="text/css" href="../css/index.css">
+	<link rel="stylesheet" type="text/css" href="../css/nav.css">
+	<link rel="stylesheet" type="text/css" href="../css/elements.css">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 <div>
     <div class="banner">
-    	<div class="vender-logo"><img src="assets/logo/juelgaicon.png"> </div>
+    	<div class="vender-logo"><img src="../assets/logo/juelgaicon.png"> </div>
     	<div class="shop-name"><center><h3 id="lbbusinessname"></h3></center></div>
     </div>
 </div>
@@ -31,7 +31,7 @@
     </div>
   </div> 
   <div class="subnav">
-    <button class="subnavbtn">Product <i class="fa fa-caret-down"></i></button>
+    <button class="subnavbtn"  style=" background:  #0067a0;">Product <i class="fa fa-caret-down"></i></button>
     <div class="subnav-content">
       <a href="createproduct.html">Add Product</a>
       <a href="createunits.html">Add Units</a>
@@ -49,12 +49,12 @@
    <div class="subnav">
     <button class="subnavbtn">Register <i class="fa fa-caret-down"></i></button>
     <div class="subnav-content">
-      <a href="register.html" target="_blank">Add Staff</a>
+     <a href="register.html" target="_blank">Add Staff</a>
       <a href="adjuststaff.html">Adjust Staff</a>
     </div>
   </div>
   <div class="subnav">
-    <button class="subnavbtn" style=" background:  #0067a0;">Reports <i class="fa fa-caret-down"></i></button>
+    <button class="subnavbtn">Reports <i class="fa fa-caret-down"></i></button>
     <div class="subnav-content">
       <a href="businessreport.html">Business Report</a>
       <a href="salereport.html">Saler Report</a>
@@ -72,59 +72,78 @@
   </div>
 </div>
 <!-- end of nav bar -->
+<div class="action-div">
 
-<!-- Report begins -->
+	 <center><h3 class="my-label">Unit management</h3></center>
+
+	 <div class="input-holder">
+      <div class="card">
+      	<center>
+          <label class="small-label">Units </label><br>
+          <input type="text" id="units" placeholder="Enter units" class="my-input">
+          </center>
+      </div>
+      <div class="card">
+        <center>
+          <label class="small-label">Abbreviation</label><br>
+          <input type="text" id="abbreviation" placeholder="Enter Kg, M, g" class="my-input">
+          </center>
+      </div>
+   </div>
+
+   <div class="input-holder">
+      <div class="card">
+      	<center>
+          <label class="small-label">Description</label><br>
+           </center>
+          <textarea id="description" rows="4" cols="40" placeholder="Describe unit here..."></textarea>
+         
+      </div>
+         </div>
+
+    <div class="input-holder">
+      <div class="card">
+      	<center>
+      	<label class="small-label">Unit Code</label><br>
+          <input type="text" id="unitcode" placeholder="Unit code KG-01" class="my-input">
+          </center>
+      </div>
+   </div>
+ 
+   <div class="input-holder">
+      <div class="card">
+      	<center>
+          <button id="addunit" class="my-btn">Save New Unit</button>
+          </center>
+      </div>
+   </div>
+
+</div>
+
+
+<!-- table -->
 <br><br>
 
 <div class="scroll-table">
   <div class="table-holder">
     <div class="table-caption">
-      <label class="my-label">Sale report </label>
+      <label class="my-label">List of Units  </label>
     </div>
-     <!-- start of report analysis -->
-     <div class="input-holder">
-      <div class="card-long">
-        <center>
-          <label class="small-label">Monthly Analysis last 1 year</label><br>
-           </center>
-            <canvas id="barGraphMonthlySale" width="50%"></canvas>
-         
-      </div>
-
-      <!-- end of monthly sales -->
-       <div class="card-long">
-        <center>
-          <label class="small-label">Sales trends showing spikes and dips</label><br>
-           </center>
-            <canvas id="lineGraphMonthlySale" width="50%" height="200px"></canvas>
-         </div>
-         <!-- cashier -->
-      <div class="card-long">
-        <center>
-          <label class="small-label">All Cashier Sales</label><br>
-           </center>
-            
-              <table id="cahierstable">
+  <table id="unitstable">
     <thead>
-      <th style="background: #0067a0;color: #fff;">Cashier  Name</th>
-      <th style="background: #0067a0;color: #fff;">Total Sales</th>
-      <th style="background: #0067a0;color: #fff;">Sales in %</th>
+      <th>Unit</th>
+      <th>Abbreviation </th>
+      <th>Code</th>
+      <th>Date added</th>
+      <th>Status</th>
     </thead>
     <tbody>   
-      
-              
+         
           </tbody>
      </table>
-         
-      </div>
-
-      <!-- end of cashier -->
-
-       
 
 
-         </div>
- <!-- end of report analysis -->
+
 
   </div>
 </div>
@@ -141,6 +160,9 @@
 </div>
 
 
+
+
+
 <br><br><br><br>
 <!-- footer starts -->
 <div class="footer">
@@ -149,16 +171,10 @@
    <h3></h3>
 </div>
 
-
-
-  
-
- <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-database.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script>
- <script type="text/javascript" src="js/config.js"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
- <script type="text/javascript" src="js/salereport.js"></script>
-
+ <script type="text/javascript" src="../js/config.js"></script>
+ <script type="text/javascript" src="../js/createunits.js"></script>  
 </body>
 </html>

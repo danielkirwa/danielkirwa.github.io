@@ -4,12 +4,11 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Adjust Customer</title>
+	<title>Adjust Business</title>
 
-		<link rel="stylesheet" type="text/css" href="css/index.css">
-	<link rel="stylesheet" type="text/css" href="css/nav.css">
-	<link rel="stylesheet" type="text/css" href="css/elements.css">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="../css/index.css">
+	<link rel="stylesheet" type="text/css" href="../css/nav.css">
+	<link rel="stylesheet" type="text/css" href="../css/elements.css">
 </head>
 <style type="text/css">
   
@@ -22,18 +21,34 @@
      border: 1px solid #fff;
   box-shadow: 0 0 0.5rem 0 rgba(0 ,0,0,0.3);
 }
+.my-btn-long{
+  padding: 6px 8px;
+  background:#0067a0;
+  outline: none;
+  width: 100%;
+  border: none;
+   font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+
+}
+.my-btn-long:hover{
+  cursor: pointer;
+    color: #ff6a13;
+
+}
 </style>
 <body>
 <div>
     <div class="banner">
-    	<div class="vender-logo"><img src="assets/logo/juelgaicon.png"> </div>
+    	<div class="vender-logo"><img src="../assets/logo/juelgaicon.png"> </div>
     	<div class="shop-name"><center><h3 id="lbbusinessname"></h3></center></div>
     </div>
 </div>
 <!-- nav -->
 <div class="navbar">
-	  <a href="dashboard.html">Dashboard</a>
-  <div class="subnav">
+	  <a href="dashboard.html" class="nosalelead">Dashboard</a>
+  <div class="subnav nosalelead">
     <button class="subnavbtn" style=" background:  #0067a0;">My Business <i class="fa fa-caret-down"></i></button>
     <div class="subnav-content">
       <a href="createbusiness.html">Add Business</a>
@@ -42,7 +57,7 @@
       <a href="adjustcustomer.html">Adjust Customer</a>
     </div>
   </div> 
-  <div class="subnav">
+  <div class="subnav adminnav">
     <button class="subnavbtn">Product <i class="fa fa-caret-down"></i></button>
     <div class="subnav-content">
       <a href="createproduct.html">Add Product</a>
@@ -51,67 +66,61 @@
       <a href="adjustproduct.html">Adjust Product</a>
     </div>
   </div> 
-  <div class="subnav">
+  <div class="subnav adminnav">
     <button class="subnavbtn">Stock <i class="fa fa-caret-down"></i></button>
     <div class="subnav-content">
-      <a href="#link1">Add Stock</a>
-      <a href="#link2">Adjust Stock</a>
+      <a href="createstock.html">Add Stock</a>
+      <a href="adjuststock.html">Adjust Stock</a>
     </div>
   </div>
-   <div class="subnav">
+   <div class="subnav nosalelead">
     <button class="subnavbtn">Register <i class="fa fa-caret-down"></i></button>
     <div class="subnav-content">
       <a href="register.html" target="_blank">Add Staff</a>
       <a href="adjuststaff.html">Adjust Staff</a>
     </div>
   </div>
-  <div class="subnav">
+  <div class="subnav nosalelead">
     <button class="subnavbtn">Reports <i class="fa fa-caret-down"></i></button>
     <div class="subnav-content">
       <a href="businessreport.html">Business Report</a>
       <a href="salereport.html">Saler Report</a>
     </div>
   </div>
-  <a href="#contact">Settings</a>
-  <a href="#contact">Sale Desk</a>
+  <a href="#contact" class="nosalelead">Settings</a>
+  <a href="saledesk.html">Sale Desk</a>
   <div class="subnav">
     <button class="subnavbtn"><span id="usernamedisplay"></span><i class="fa fa-caret-down"></i></button>
     <div class="subnav-content">
        <a href="profile.html">Profile</a>
-      <a href="adminmanual.html">Manual</a>
+      <a href="adminmanual.html" class="nocashier">Manual</a>
       <a href="#" onclick="logout()">Logout</a>
     </div>
   </div>
 </div>
 <!-- end of nav bar -->
 <div class="action-div">
-    <br><br><br><br>
+
+   <br><br><br><br>
      <div class="general-banner">
   
-      <div class="small-card">
-     <input type="text" id="txtsearchcustomerid" value="" class="my-input"  placeholder="Enter customer ID">
-      </div>
-      <div class="small-card">
-        <button id="searchcustomerid" class="my-btn"> Search Customer</button>
-      </div>
-   
+        <button id="searchbusinessid" class="my-btn-long">Search Business to update details</button>
+      
    </div>
-
-
  
-	 <center><h3 class="my-label">Customer details update</h3></center>
+	 <center><h3 class="my-label">Create  Business</h3></center>
 
 	 <div class="input-holder">
       <div class="card">
       	<center>
-          <label class="small-label">First Name</label><br>
-          <input type="text" id="firstname" placeholder="Enter First Name" class="my-input">
+          <label class="small-label">Business Name</label><br>
+          <input type="text" id="businessname" placeholder="Enter Name" class="my-input">
           </center>
       </div>
       <div class="card">
-      	<center>
-      	<label class="small-label">Other Name</label><br>
-          <input type="text" id="othername" placeholder="Enter Other Name" class="my-input">
+        <center>
+          <label class="small-label">Business Address </label><br>
+          <input type="text" id="address" placeholder="Enter Business Address" class="my-input">
           </center>
       </div>
    </div>
@@ -119,14 +128,14 @@
    <div class="input-holder">
       <div class="card">
       	<center>
-          <label class="small-label">ID Number</label><br>
-          <input type="text" id="idnumber" placeholder="Enter ID Number" class="my-input">
+          <label class="small-label">Phone Number</label><br>
+          <input type="text" id="phone" placeholder="+2557xxxxxxx" class="my-input">
           </center>
       </div>
       <div class="card">
       	<center>
-      	<label class="small-label">Phone Number</label><br>
-          <input type="text" id="phone" placeholder="+2557xxxxxxx" class="my-input">
+      	<label class="small-label">Other Phone Number</label><br>
+          <input type="text" id="otherphone" placeholder="+2557xxxxxxx" class="my-input">
           </center>
       </div>
    </div>
@@ -140,59 +149,36 @@
       </div>
       <div class="card">
       	<center>
-      	<label class="small-label">Other Number</label><br>
-          <input type="text" id="otherphone" placeholder="+2557xxxxxxx" class="my-input">
+      	<label class="small-label">Other Email</label><br>
+          <input type="text" id="otheremail" placeholder="Enter other email" class="my-input">
+          </center>
+      </div>
+   </div>
+
+
+     <div class="input-holder">
+      <div class="card">
+        <center>
+          <label class="small-label">Location (Region) </label><br>
+          <input type="text" id="region" placeholder="Enter Business Region" class="my-input">
+          </center>
+      </div>
+      <div class="card">
+        <center>
+        <label class="small-label">Location (Town)</label><br>
+          <input type="text" id="town" placeholder="Enter Business Town" class="my-input">
           </center>
       </div>
    </div>
  
-    <div class="input-holder">
-            <div class="card">
-      	<center>
-      	<label class="small-label">Gender</label><br>
-          <select class="my-input" id="gender">
-            <option value="" disabled selected>Choose Gender</option>
-           	<option value="Male">Male</option>
-           	<option value="Female">Female</option>
-           </select>
-          </center>
-      </div>
-        <div class="card">
-      
-        
-      </div>
-
-
-   </div>
+   
 
      <div class="input-holder">
       <div class="card">
       	<center>
-        <label class="small-label">Region</label><br>
-          <input type="text" id="region" placeholder="Region" class="my-input">
+          <label class="small-label">Business Slogan</label><br>
           </center>
-      </div>
-      <div class="card">
-      	<center>
-        <label class="small-label">District</label><br>
-          <input type="text" id="district" placeholder="District" class="my-input">
-          </center>
-        </div>
-   </div>
-
-
-
-     <div class="input-holder">
-      <div class="card">
-        <label class="small-label">Town/Center</label><br>
-          <input type="text" id="town" placeholder="Town/center" class="my-input">
-          </center>
-      </div>
-      <div class="card">
-       <label class="small-label">Village/Home</label><br>
-          <input type="text" id="village" placeholder="Village/home" class="my-input">
-          </center>
-        
+          <textarea id="slogan" rows="4" cols="40" placeholder="Business slogan here ..."></textarea>
       </div>
    </div>
 
@@ -200,13 +186,14 @@
    <div class="input-holder">
       <div class="card">
       	<center>
-         
-          <button id="updatecustomer" class="my-btn">Save Customer</button>
+          <button id="updatebusiness" class="my-btn">Update Business</button>
           </center>
       </div>
       <div class="card">
-      
-      	<button id="deletecustomer" class="my-btn-del">Save Customer</button>
+        <center>
+          <button id="deletebusiness" class="my-btn-del">Close Business</button>
+          </center>
+      	
       </div>
    </div>
 
@@ -219,14 +206,16 @@
 <div class="scroll-table">
   <div class="table-holder">
     <div class="table-caption">
-      <label class="my-label">Adjust Customer  </label>
+      <label class="my-label">Business  Adjustment</label>
     </div>
+
 
 
 
 
   </div>
 </div>
+
 
 <!-- alerts here -->
 
@@ -238,6 +227,8 @@
   </center>
 </div>
 
+
+
 <br><br><br><br>
 <!-- footer starts -->
 <div class="footer">
@@ -246,11 +237,10 @@
    <h3></h3>
 </div>
 
- 
- <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-database.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script>
- <script type="text/javascript" src="js/config.js"></script>
- <script type="text/javascript" src="js/adjustcustomer.js"></script>
+ <script type="text/javascript" src="../js/config.js"></script>
+ <script type="text/javascript" src="../js/adjustbusiness.js"></script>
 </body>
 </html>

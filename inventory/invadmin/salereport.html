@@ -6,15 +6,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Product</title>
 
-		<link rel="stylesheet" type="text/css" href="css/index.css">
-	<link rel="stylesheet" type="text/css" href="css/nav.css">
-	<link rel="stylesheet" type="text/css" href="css/elements.css">
+		<link rel="stylesheet" type="text/css" href="../css/index.css">
+	<link rel="stylesheet" type="text/css" href="../css/nav.css">
+	<link rel="stylesheet" type="text/css" href="../css/elements.css">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 <div>
     <div class="banner">
-    	<div class="vender-logo"><img src="assets/logo/juelgaicon.png"> </div>
+    	<div class="vender-logo"><img src="../assets/logo/juelgaicon.png"> </div>
     	<div class="shop-name"><center><h3 id="lbbusinessname"></h3></center></div>
     </div>
 </div>
@@ -31,7 +31,7 @@
     </div>
   </div> 
   <div class="subnav">
-    <button class="subnavbtn" >Product <i class="fa fa-caret-down"></i></button>
+    <button class="subnavbtn">Product <i class="fa fa-caret-down"></i></button>
     <div class="subnav-content">
       <a href="createproduct.html">Add Product</a>
       <a href="createunits.html">Add Units</a>
@@ -79,84 +79,38 @@
 <div class="scroll-table">
   <div class="table-holder">
     <div class="table-caption">
-      <label class="my-label">Business report </label>
+      <label class="my-label">Sale report </label>
     </div>
-     <!-- start of report analysis 1-->
-     <div class="input-holder">
-      <div class="card-midium">
-        <center>
-          <label class="small-label">Monthly cash sale  last 1 year</label><br>
-           </center>
-            <canvas id="barGraphMonthlySalebusiness" width="50%"></canvas>
-         
-      </div>
-
-      <!-- end of monthly sales -->
-       <div class="card-midium">
-        <center>
-          <label class="small-label">Monthly credit sale last 1 year</label><br>
-           </center>
-            <canvas id="barGraphMonthlyCreditbusiness" width="50%"></canvas>
-         </div>
-  
-
-         </div>
-
-       <!-- start of report analysis 2-->
+     <!-- start of report analysis -->
      <div class="input-holder">
       <div class="card-long">
         <center>
-          <label class="small-label">Cash/ Credit sale comparison last 1 year</label><br>
+          <label class="small-label">Monthly Analysis last 1 year</label><br>
            </center>
-            <canvas id="lingraphcomparison" width="50%" height="200px"></canvas>
+            <canvas id="barGraphMonthlySale" width="50%"></canvas>
          
       </div>
 
       <!-- end of monthly sales -->
-    
+       <div class="card-long">
+        <center>
+          <label class="small-label">Sales trends showing spikes and dips</label><br>
+           </center>
+            <canvas id="lineGraphMonthlySale" width="50%" height="200px"></canvas>
+         </div>
          <!-- cashier -->
       <div class="card-long">
         <center>
-          <label class="small-label">Total Business Numbers and % in relation to all transaction last 1 year</label><br>
+          <label class="small-label">All Cashier Sales</label><br>
            </center>
             
               <table id="cahierstable">
     <thead>
-      <th style="background: #0067a0;color: #fff;">Total <br> Cash sale</th>
-      <th style="background: #0067a0;color: #fff;">Total <br> Credit sale</th>
-      <th style="background: #0067a0;color: #fff;">Grand Total <br> Recieved</th>
+      <th style="background: #0067a0;color: #fff;">Cashier  Name</th>
+      <th style="background: #0067a0;color: #fff;">Total Sales</th>
+      <th style="background: #0067a0;color: #fff;">Sales in %</th>
     </thead>
-    <tbody>  
-     <tr>
-       <td style="background: #ed5564; font-size: 22px; font-weight:bold ;">
-          <br><br>
-        <span id="tbltotalsale"></span><br>
-         <span id="tbltotalsaleav"></span>
-       <br><br>
-     </td>
-       <td style="background: #ffce54; font-size: 22px; font-weight:bold ;">
-          <br><br>
-        <span id="tbltotalcredit"></span><br>
-         <span id="tbltotalcreditav"></span>
-       <br><br>
-     </td>
-       <td style="background: #a0d568; font-size: 22px; font-weight:bold ;">
-          <br><br>
-       <span id="tblgrandtotal"></span>
-       <br><br>
-     </td>
-     </tr> 
-     <tr>
-       <td style="color: #ed5564; font-size: 28px; font-weight:bold ;">
-           <span id="tbltotalsalepercent"></span>
-       </td>
-       <td style="color: #ffce54; font-size: 28px; font-weight:bold ;">
-         <span id="tbltotalcreditpercent"></span>
-       </td>
-       <td style="color: #a0d568; font-size: 28px; font-weight:bold ;">
-         <span id="tblgrandtotalpercent"></span>
-       </td>
-     </tr> 
+    <tbody>   
       
               
           </tbody>
@@ -166,11 +120,10 @@
 
       <!-- end of cashier -->
 
+       
+
+
          </div>
-
-
-
-
  <!-- end of report analysis -->
 
   </div>
@@ -203,9 +156,9 @@
  <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-database.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script>
- <script type="text/javascript" src="js/config.js"></script>
+ <script type="text/javascript" src="../js/config.js"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
- <script type="text/javascript" src="js/businessreport.js"></script>
+ <script type="text/javascript" src="../js/salereport.js"></script>
 
 </body>
 </html>

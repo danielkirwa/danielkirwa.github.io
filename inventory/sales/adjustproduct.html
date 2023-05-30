@@ -1,0 +1,248 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Adjust Product</title>
+
+		<link rel="stylesheet" type="text/css" href="../css/index.css">
+	<link rel="stylesheet" type="text/css" href="../css/nav.css">
+	<link rel="stylesheet" type="text/css" href="../css/elements.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<div>
+    <div class="banner">
+    	<div class="vender-logo"><img src="../assets/logo/juelgaicon.png"> </div>
+    	<div class="shop-name"><center><h3 id="lbbusinessname"></h3></center></div>
+    </div>
+</div>
+<!-- nav -->
+<div class="navbar">
+     
+  <div class="subnav">
+    <button class="subnavbtn" style=" background:  #0067a0;">Product <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="createproduct.html">Add Product</a>
+      <a href="createunits.html">Add Units</a>
+      <a href="createcategory.html">Categories</a>
+      <a href="adjustproduct.html">Adjust Product</a>
+    </div>
+  </div> 
+  <div class="subnav">
+    <button class="subnavbtn">Stock <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="createstock.html">Add Stock</a>
+      <a href="adjuststock.html">Adjust Stock</a>
+    </div>
+  </div>
+   
+  <a href="saledesk.html">Sale Desk</a>
+  <div class="subnav">
+    <button class="subnavbtn"><span id="usernamedisplay"></span><i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+       <a href="profile.html">Profile</a>
+      <a href="adminmanual.html">Manual</a>
+      <a href="#" onclick="logout()">Logout</a>
+    </div>
+  </div>
+</div>
+<!-- end of nav bar -->
+
+<div class="action-div">
+   <center><h3 class="my-label">Product adjustment search</h3></center>
+
+   <div class="input-holder">
+      <div class="card">
+        <center>
+          <label class="small-label">Entet Code/name</label><br>
+          <input type="text" id="searchcode" placeholder="Enter stock code or Name" class="my-input">
+          </center>
+      </div>
+      <div class="card">
+         <center>
+          <br>
+          <input type="submit" id="searchstock" value="Search now" class="my-btn">
+          </center>
+
+      </div>
+   </div>
+</div>
+
+<!-- create product -->
+<div class="action-div">
+     
+   <center><h3 class="my-label"><span id="lbproductkname"></span> &nbsp; product adjustment</h3></center>
+
+   <div class="input-holder">
+      <div class="card">
+        <center>
+          <label class="small-label">Product  Name</label><br>
+          <label id="lbstockfullname">Full Name </label>
+          </center>
+           <center>
+        <label class="small-label">Pricing</label><br>
+         <label>Buying price:  </label><label id="buyingprice">Author</label><br>
+         <label>Current selling: </label><label id="sellingprice">Author</label>
+          </center>
+      </div>
+      <div class="card">
+        <center>
+        <label class="small-label">Stock CODE</label><br>
+        <input type="hidden" name="stockcode" value="">
+         Stock code : <label id="lbstockcode"></label><br>
+         Product code : <label id="lbproductcode"></label>
+          </center>
+           <center>
+          <label class="small-label">Available Units</label><br>
+               <input type="hidden" name="saleunits" value="">
+                 <label>Available Units : <span id="stockavailableunits"></span></label><br> 
+          </center>
+      </div>
+   </div>
+
+   <div class="input-holder">
+      <div class="card">
+       <button class="my-btn" id="openstockforproduct">Open stock for product</button>
+      </div>
+   </div>
+
+    <div class="input-holder">
+      <div class="card">
+          <center>
+        <label class="small-label">Stock CODE</label><br>
+        <input type="hidden" name="stockcode" value="">
+         Stock Name : <label id="lbnewstockname">NAME</label><br>
+         Product Code : <label id="lbnewstockcode">CODE</label>
+          </center>
+           <center>
+          <label class="small-label">Available Units in stock</label><br>
+                 <label>Available Units : <span id="availableunits"></span></label><br> 
+          </center>
+
+      </div>
+
+      <div class="input-holder">
+    
+      <div class="card">
+        <center>
+        <label class="small-label">New Selling Price </label><br>
+        <input type="text" id="selling" value="" class="my-input" placeholder="Enter whole number 2000">
+          </center>
+          <center>
+          <label class="small-label">Units to sale</label><br>
+         <input type="text" value=""class="my-input" id="txtunittosale">
+          </center>
+      </div>
+   </div>
+      
+   </div>
+
+
+
+
+
+   
+
+   <div class="input-holder">
+     
+         <div class="card">
+        <center>
+          <label class="small-label">Units Still in Stock</label><br>
+         <input type="text" id="unitsinstock" value="" class="my-input" id="txtunitinstock">
+          </center>
+      </div>
+
+      <div class="card">
+        <center>
+         <label>Product must be cleared by : <span id="lbclearby"></span> </label><br>
+          </center>
+      </div>
+     
+   </div>
+
+
+   <div class="input-holder">
+      <div class="card">
+        <center>
+          <input type="submit" id="updatedproduct" value="Update Product" class="my-btn">
+          </center>
+      </div>
+      <div class="card">
+        <center>
+         <button class="my-btn-del" id="btndeleteproduct"> Delete the Product</button>
+          </center>
+      </div>
+      
+   </div>
+   
+            
+</div>
+
+
+
+<!-- table -->
+<br><br>
+
+<div class="scroll-table">
+  <div class="table-holder">
+    <div class="table-caption">
+      <label class="my-label">Product adjustment and update </label>
+    </div>
+     <!--  for table if need be-->
+
+  </div>
+</div>
+
+
+<!-- alerts here -->
+
+<div id="alertBox">
+  <h2 id="alertTitle"></h2>
+  <p id="alertMessage"></p>
+  <center>
+  <button onclick="hideAlert()">OK</button>
+  </center>
+</div>
+
+
+<br><br><br><br>
+<!-- footer starts -->
+<div class="footer">
+	 <h3></h3>
+   Juelga solution &copy;  &nbsp;&nbsp;<a href="https://www.juelgasolutions.co.tz" style="text-decoration: none; color: #ffffff">juelgasolution </a><br>
+   <h3></h3>
+</div>
+
+
+
+   
+
+<script type="text/javascript">
+ 
+  txtunittosale.addEventListener("input", function(){ 
+     let txtunittosale = document.getElementById('txtunittosale');
+  let txtunitinstock = document.getElementById('unitsinstock');
+  let availableunits = document.getElementById('availableunits');
+  const  available = availableunits.textContent;
+  var saleunits = txtunittosale.value;
+  var remainder = 0;
+  remainder = +available - +saleunits
+  txtunitinstock.value = remainder; 
+ 
+
+ 
+
+});
+
+</script>
+
+ <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script>
+ <script type="text/javascript" src="../js/config.js"></script>
+ <script type="text/javascript" src="../js/adjustproduct.js"></script>
+
+</body>
+</html>

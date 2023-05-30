@@ -62,7 +62,7 @@ function hideAlert() {
          lbbusinessname.innerHTML = storedBusiness[0];
 
 
-    auth.onAuthStateChanged(function(user){
+   auth.onAuthStateChanged(function(user){
       if(user){
         var email = user.email;
         //check the role and open page
@@ -99,15 +99,15 @@ findStaffRoleByEmail(targetEmail)
   .then((role) => {
     if (role) {
        // open pages accodingly
-      
+      console.log(role);
       if (role == "Admin") {
-        
+        usernamedisplay.innerHTML = email;
       }
       if (role == "Cashier") {
-       // window.location.href='saledesk.html';
+       window.location.href='../cashier/saledesk.html';
       }
       if (role == "SalesLead") {
-       // window.location("saledesk.html")
+       usernamedisplay.innerHTML = email;
       }
 
     } else {

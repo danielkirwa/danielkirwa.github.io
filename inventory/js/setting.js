@@ -41,15 +41,13 @@ findStaffRoleByEmail(targetEmail)
        // open pages accodingly
       
       if (role == "Admin") {
-        window.location.href='dashboard.html';
+         usernamedisplay.innerHTML = email;
       }
       if (role == "Cashier") {
-        //window.location.href='saledesk.html';
-       hideElementsByClassName("adminnav");
-       usernamedisplay.innerHTML = email;
+       window.location.href='../cashier/saledesk.html';
       }
       if (role == "Sales Lead") {
-        window.location("saledesk.html")
+         usernamedisplay.innerHTML = email;
       }
 
     } else {

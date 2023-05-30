@@ -23,7 +23,7 @@ function logout(){
   // body...
   firebase.auth().signOut().then(function() {
   // Sign-out successful.
-  window.location.href='index.html';
+  window.location.href='../index.html';
 }).catch(function(error) {
   // An error happened.
   myAlert(failed, "Failed to log out refresh and try again")

@@ -2,28 +2,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Register</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Adjust Stock</title>
 
-		<link rel="stylesheet" type="text/css" href="css/index.css">
-	<link rel="stylesheet" type="text/css" href="css/nav.css">
-	<link rel="stylesheet" type="text/css" href="css/elements.css">
+    <link rel="stylesheet" type="text/css" href="../css/index.css">
+  <link rel="stylesheet" type="text/css" href="../css/nav.css">
+  <link rel="stylesheet" type="text/css" href="../css/elements.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 <div>
     <div class="banner">
-    	<div class="vender-logo"><img src="assets/logo/juelgaicon.png"> </div>
-    	<div class="shop-name"><center><h3 id="lbbusinessname"></h3></center></div>
+      <div class="vender-logo"><img src="../assets/logo/juelgaicon.png"> </div>
+      <div class="shop-name"><center><h3 id="lbbusinessname"></h3></center></div>
     </div>
 </div>
 <!-- nav -->
 <div class="navbar">
-	  <a href="dashboard.html">Dashboard</a>
+    <a href="dashboard.html">Dashboard</a>
   <div class="subnav">
-    <button class="subnavbtn" style=" background:  #0067a0;">My Business <i class="fa fa-caret-down"></i></button>
+    <button class="subnavbtn">My Business <i class="fa fa-caret-down"></i></button>
     <div class="subnav-content">
-      <a href="#company">Add Business</a>
       <a href="createbusiness.html">Add Business</a>
       <a href="adjustbusiness.html">Adjust Business</a>
       <a href="createcustomer.html">Add Customer</a>
@@ -40,7 +40,7 @@
     </div>
   </div> 
   <div class="subnav">
-    <button class="subnavbtn">Stock <i class="fa fa-caret-down"></i></button>
+    <button class="subnavbtn"  style=" background:  #0067a0;">Stock <i class="fa fa-caret-down"></i></button>
     <div class="subnav-content">
       <a href="createstock.html">Add Stock</a>
       <a href="adjuststock.html">Adjust Stock</a>
@@ -56,11 +56,11 @@
   <div class="subnav">
     <button class="subnavbtn">Reports <i class="fa fa-caret-down"></i></button>
     <div class="subnav-content">
-      <a href="businessreport.html">Business Report</a>
+       <a href="businessreport.html">Business Report</a>
       <a href="salereport.html">Saler Report</a>
     </div>
   </div>
-  <a href="#contact">Settings</a>
+  <a href="setting.html">Settings</a>
   <a href="saledesk.html">Sale Desk</a>
   <div class="subnav">
     <button class="subnavbtn"><span id="usernamedisplay"></span><i class="fa fa-caret-down"></i></button>
@@ -72,94 +72,104 @@
   </div>
 </div>
 <!-- end of nav bar -->
+
+<!-- search account to add -->
+
 <div class="action-div">
- 
-	 <center><h3 class="my-label">Create  Business</h3></center>
-
-	 <div class="input-holder">
-      <div class="card">
-      	<center>
-          <label class="small-label">Business Name</label><br>
-          <input type="text" id="businessname" placeholder="Enter Name" class="my-input">
-          </center>
-      </div>
-      <div class="card">
-        <center>
-          <label class="small-label">Business Address </label><br>
-          <input type="text" id="address" placeholder="Enter Business Address" class="my-input">
-          </center>
-      </div>
-   </div>
+   <center><h3 class="my-label">Search Stock to adjust</h3></center>
 
    <div class="input-holder">
       <div class="card">
-      	<center>
-          <label class="small-label">Phone Number</label><br>
-          <input type="text" id="phone" placeholder="+2557xxxxxxx" class="my-input">
-          </center>
-      </div>
-      <div class="card">
-      	<center>
-      	<label class="small-label">Other Phone Number</label><br>
-          <input type="text" id="otherphone" placeholder="+2557xxxxxxx" class="my-input">
-          </center>
-      </div>
-   </div>
-
-    <div class="input-holder">
-      <div class="card">
-      	<center>
-          <label class="small-label">Email </label><br>
-          <input type="text" id="email" placeholder="Enter email" class="my-input">
-          </center>
-      </div>
-      <div class="card">
-      	<center>
-      	<label class="small-label">Other Email</label><br>
-          <input type="text" id="otheremail" placeholder="Enter other email" class="my-input">
-          </center>
-      </div>
-   </div>
-
-
-     <div class="input-holder">
-      <div class="card">
         <center>
-          <label class="small-label">Location (Region) </label><br>
-          <input type="text" id="region" placeholder="Enter Business Region" class="my-input">
+          <label class="small-label">Entet Code/name</label><br>
+          <input type="text" id="searchcode" placeholder="Enter Code or Name" class="my-input">
           </center>
       </div>
       <div class="card">
-        <center>
-        <label class="small-label">Location (Town)</label><br>
-          <input type="text" id="town" placeholder="Enter Business Town" class="my-input">
+         <center>
+          <br>
+          <button class="my-btn" id="searchstock"> Search Stock</button>
           </center>
-      </div>
-   </div>
- 
-   
 
-     <div class="input-holder">
-      <div class="card">
-      	<center>
-          <label class="small-label">Business Slogan</label><br>
-          </center>
-          <textarea id="slogan" rows="4" cols="40" placeholder="Business slogan here ..."></textarea>
       </div>
    </div>
 
 
-   <div class="input-holder">
-      <div class="card">
-      	<center>
-          <button id="addbusiness" class="my-btn">Save my Business</button>
-          </center>
-      </div>
-      <div class="card">
+
+</div>
+
+<br>
+<!-- add account form -->
+<div class="action-div">
+
       
-      	
+   <center><h3 class="my-label"> Stock name &nbsp; Stock information</h3></center>
+
+   <div class="input-holder">
+      <div class="card">
+        <center>
+          <label class="small-label">Stock Name</label><br>
+          <label id="lbstockname">Stock Name</label>
+          </center>
+      </div>
+      <div class="card">
+        <center>
+        <label class="small-label">Code</label><br>
+         <label id="lbstockcode">Code :</label>
+          </center>
       </div>
    </div>
+
+   <div class="input-holder">
+      <div class="card">
+        <center>
+          <label class="small-label">Measure/Units</label><br>
+       <label id="availableunits">Available </label><br> 
+       <label id="lbmeasure">Units</label>                                          
+           
+          </center>
+      </div>
+      <div class="card">
+        <center>
+        <label class="small-label">Stock Details</label><br>
+         <label id="createdby">Author </label><br>
+         <label  id="lbclearby">Expiry </label>
+          </center>
+      </div>
+   </div>
+
+<!-- update fields here -->
+   <div class="input-holder">
+      <div class="card">
+        <center>
+          <label class="small-label">Stock Units to adjust</label><br>
+         <input type="text" name="" id="txtadjustunit" placeholder="New stock unit to add" class="my-input">                                        
+          </center>
+      </div>
+      <div class="card">
+        <center>
+        <label class="small-label">Ajust expiry</label><br>
+        <input type="date" name=""  id="txtadjustdate" placeholder="" class="my-input">
+          </center>
+      </div>
+   </div>
+
+           
+
+
+   <div class="input-holder">
+      <div class="card">
+        <center>
+          <button  class="my-btn" id="btnupdatestock">Update Stock</button>
+          </center>
+      </div>
+      <div class="card">
+        <center>
+           <button  class="my-btn-del" id="btndeletestock">Delete Stock</button>
+          </center>
+      </div>
+   </div>
+              
 
 </div>
 
@@ -170,26 +180,14 @@
 <div class="scroll-table">
   <div class="table-holder">
     <div class="table-caption">
-      <label class="my-label">Available Business  </label>
+      <label class="my-label">Stock Adjustments</label>
     </div>
-  <table id="busniesstable">
-    <thead>
-      <th>Business name</th>
-      <th>Email </th>
-      <th>Phone</th>
-      <th>Adress</th>
-      
-    </thead>
-    <tbody>      
-               
-          </tbody>
-     </table>
-
-
-
-
+  
+ 
   </div>
 </div>
+
+
 
 
 <!-- alerts here -->
@@ -202,20 +200,17 @@
   </center>
 </div>
 
-
-
 <br><br><br><br>
 <!-- footer starts -->
 <div class="footer">
-	 <h3></h3>
+   <h3></h3>
    Juelga solution &copy;  &nbsp;&nbsp;<a href="https://www.juelgasolutions.co.tz" style="text-decoration: none; color: #ffffff">juelgasolution </a><br>
    <h3></h3>
 </div>
-
-<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+ <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-database.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script>
- <script type="text/javascript" src="js/config.js"></script>
- <script type="text/javascript" src="js/createbusiness.js"></script>
+ <script type="text/javascript" src="../js/config.js"></script>
+ <script type="text/javascript" src="../js/adjuststock.js"></script>
 </body>
 </html>

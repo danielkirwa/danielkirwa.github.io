@@ -4,34 +4,25 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Category management</title>
+	<title>Units management</title>
 
-		<link rel="stylesheet" type="text/css" href="css/index.css">
-	<link rel="stylesheet" type="text/css" href="css/nav.css">
-	<link rel="stylesheet" type="text/css" href="css/elements.css">
+		<link rel="stylesheet" type="text/css" href="../css/index.css">
+	<link rel="stylesheet" type="text/css" href="../css/nav.css">
+	<link rel="stylesheet" type="text/css" href="../css/elements.css">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 <div>
     <div class="banner">
-    	<div class="vender-logo"><img src="assets/logo/juelgaicon.png"> </div>
+    	<div class="vender-logo"><img src="../assets/logo/juelgaicon.png"> </div>
     	<div class="shop-name"><center><h3 id="lbbusinessname"></h3></center></div>
     </div>
 </div>
 <!-- nav -->
 <div class="navbar">
-    <a href="dashboard.html">Dashboard</a>
+   
   <div class="subnav">
-    <button class="subnavbtn">My Business <i class="fa fa-caret-down"></i></button>
-    <div class="subnav-content">
-      <a href="createbusiness.html">Add Business</a>
-      <a href="adjustbusiness.html">Adjust Business</a>
-      <a href="createcustomer.html">Add Customer</a>
-      <a href="adjustcustomer.html">Adjust Customer</a>
-    </div>
-  </div> 
-  <div class="subnav">
-    <button class="subnavbtn" style=" background:  #0067a0;">Product <i class="fa fa-caret-down"></i></button>
+    <button class="subnavbtn"  style=" background:  #0067a0;">Product <i class="fa fa-caret-down"></i></button>
     <div class="subnav-content">
       <a href="createproduct.html">Add Product</a>
       <a href="createunits.html">Add Units</a>
@@ -46,21 +37,7 @@
       <a href="adjuststock.html">Adjust Stock</a>
     </div>
   </div>
-   <div class="subnav">
-    <button class="subnavbtn">Register <i class="fa fa-caret-down"></i></button>
-    <div class="subnav-content">
-      <a href="register.html" target="_blank">Add Staff</a>
-      <a href="adjuststaff.html">Adjust Staff</a>
-    </div>
-  </div>
-  <div class="subnav">
-    <button class="subnavbtn">Reports <i class="fa fa-caret-down"></i></button>
-    <div class="subnav-content">
-      <a href="businessreport.html">Business Report</a>
-      <a href="salereport.html">Saler Report</a>
-    </div>
-  </div>
-  <a href="setting.html">Settings</a>
+
   <a href="saledesk.html">Sale Desk</a>
   <div class="subnav">
     <button class="subnavbtn"><span id="usernamedisplay"></span><i class="fa fa-caret-down"></i></button>
@@ -74,13 +51,19 @@
 <!-- end of nav bar -->
 <div class="action-div">
 
-	 <center><h3 class="my-label">Category management</h3></center>
+	 <center><h3 class="my-label">Unit management</h3></center>
 
 	 <div class="input-holder">
       <div class="card">
       	<center>
-          <label class="small-label">Category Name </label><br>
-          <input type="text" id="categoryname" placeholder="Enter category" class="my-input">
+          <label class="small-label">Units </label><br>
+          <input type="text" id="units" placeholder="Enter units" class="my-input">
+          </center>
+      </div>
+      <div class="card">
+        <center>
+          <label class="small-label">Abbreviation</label><br>
+          <input type="text" id="abbreviation" placeholder="Enter Kg, M, g" class="my-input">
           </center>
       </div>
    </div>
@@ -90,15 +73,24 @@
       	<center>
           <label class="small-label">Description</label><br>
            </center>
-          <textarea id="description" rows="4" cols="40" placeholder="Describe category here..."></textarea>
+          <textarea id="description" rows="4" cols="40" placeholder="Describe unit here..."></textarea>
          
       </div>
          </div>
+
+    <div class="input-holder">
+      <div class="card">
+      	<center>
+      	<label class="small-label">Unit Code</label><br>
+          <input type="text" id="unitcode" placeholder="Unit code KG-01" class="my-input">
+          </center>
+      </div>
+   </div>
  
    <div class="input-holder">
       <div class="card">
       	<center>
-          <button id="addcategory" class="my-btn">Save New Category</button>
+          <button id="addunit" class="my-btn">Save New Unit</button>
           </center>
       </div>
    </div>
@@ -112,13 +104,14 @@
 <div class="scroll-table">
   <div class="table-holder">
     <div class="table-caption">
-      <label class="my-label">List of Category  </label>
+      <label class="my-label">List of Units  </label>
     </div>
-  <table id="categorytable">
+  <table id="unitstable">
     <thead>
-      <th>Category</th>
-      <th>Description </th>
-      <th>Created on</th>
+      <th>Unit</th>
+      <th>Abbreviation </th>
+      <th>Code</th>
+      <th>Date added</th>
       <th>Status</th>
     </thead>
     <tbody>   
@@ -158,7 +151,7 @@
   <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-database.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script>
- <script type="text/javascript" src="js/config.js"></script>
- <script type="text/javascript" src="js/createcategory.js"></script>  
+ <script type="text/javascript" src="../js/config.js"></script>
+ <script type="text/javascript" src="../js/createunits.js"></script>  
 </body>
 </html>

@@ -208,16 +208,68 @@ function resetForm(){
       }
     })*/
 
-auth.onAuthStateChanged(function(user){
-  if(user){
-    var email = user.email;
-    // Check if the newly created user's email matches the authenticated user's email
-    if (email !== emailFromRegistration) {
-      // Update the display with the authenticated user's email
-      usernamedisplay.innerHTML = email;
+ auth.onAuthStateChanged(function(user){
+      if(user){
+        var email = user.email;
+        //check the role and open page
+         
+      const database = firebase.database();
+
+// Function to find a staff member's role by email
+function findStaffRoleByEmail(email) {
+  const staffRef = database.ref('Mystaff');
+
+  return staffRef.once('value')
+    .then((snapshot) => {
+      let role = null;
+      snapshot.forEach((childSnapshot) => {
+        const staffMember = childSnapshot.val();
+        if (staffMember.Email === email) {
+          role = staffMember.Role;
+          return true; // Break the loop if the email is found
+        }
+      });
+      return role;
+    })
+    .catch((error) => {
+      //console.error('Error finding staff member role:', error);
+      myAlert(failed, "You have not been given access to the the system kindly contact admin");
+      throw error;
+    });
+}
+
+// Example usage:
+const targetEmail = email; // The email to search for
+
+findStaffRoleByEmail(targetEmail)
+  .then((role) => {
+    if (role) {
+       // open pages accodingly
+      
+      if (role == "Admin") {
+       usernamedisplay.innerHTML = email;
+       receiptname.innerHTML = email
+      }
+      if (role == "Cashier") {
+        
+       window.location.href='../cashier/saledesk.html';
+      }
+      if (role == "SalesLead") {
+        window.location.href='../sales/saledesk.html';
+      }
+
+    } else {
+      //console.log('Staff member not found with email:', targetEmail);
+      myAlert(failed, "You have not been given access to the the system kindly contact admin");
+      // Handle the case when the staff member is not found
     }
-  } else {
-    // Redirect to the index.html page
-    window.location.href='index.html';
-  }
-})
+  })
+  .catch((error) => {
+    // Handle the error
+  });
+  
+  
+      }else{
+        //myAlert("No Active user");
+      }
+    })

@@ -1,0 +1,227 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Customer</title>
+
+		<link rel="stylesheet" type="text/css" href="../css/index.css">
+	<link rel="stylesheet" type="text/css" href="../css/nav.css">
+	<link rel="stylesheet" type="text/css" href="../css/elements.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<div>
+    <div class="banner">
+    	<div class="vender-logo"><img src="../assets/logo/juelgaicon.png"> </div>
+    	<div class="shop-name"><center><h3>#############</h3></center></div>
+    </div>
+</div>
+<!-- nav -->
+<div class="navbar">
+	  <a href="dashboard.html">Dashboard</a>
+  <div class="subnav">
+    <button class="subnavbtn" style=" background:  #0067a0;">My Business <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="createbusiness.html">Add Business</a>
+      <a href="adjustbusiness.html">Adjust Business</a>
+      <a href="createcustomer.html">Add Customer</a>
+      <a href="adjustcustomer.html">Adjust Customer</a>
+    </div>
+  </div> 
+  <div class="subnav">
+    <button class="subnavbtn">Product <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="createproduct.html">Add Product</a>
+      <a href="createunits.html">Add Units</a>
+      <a href="createcategory.html">Categories</a>
+      <a href="adjustproduct.html">Adjust Product</a>
+    </div>
+  </div> 
+  <div class="subnav">
+    <button class="subnavbtn">Stock <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="createstock.html">Add Stock</a>
+      <a href="adjuststock.html">Adjust Stock</a>
+    </div>
+  </div>
+   <div class="subnav">
+    <button class="subnavbtn">Register <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="register.html" target="_blank">Add Staff</a>
+      <a href="adjuststaff.html">Adjust Staff</a>
+    </div>
+  </div>
+  <div class="subnav">
+    <button class="subnavbtn">Reports <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="businessreport.html">Business Report</a>
+      <a href="salereport.html">Saler Report</a>
+    </div>
+  </div>
+  <a href="#contact">Settings</a>
+  <a href="#contact">Sale Desk</a>
+  <div class="subnav">
+    <button class="subnavbtn">###user<i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+       <a href="profile.html">Profile</a>
+      <a href="adminmanual.html">Manual</a>
+      <a href="#" onclick="logout()">Logout</a>
+    </div>
+  </div>
+</div>
+<!-- end of nav bar -->
+<div class="action-div">
+  <form action="" method="POST" name="" id="submitform">
+	 <center><h3 class="my-label">Supplier management</h3></center>
+
+	 <div class="input-holder">
+      <div class="card">
+      	<center>
+          <label class="small-label">First Name</label><br>
+          <input type="text" name="firstname" placeholder="Enter supplier name" class="my-input">
+          </center>
+      </div>
+   </div>
+
+   <div class="input-holder">
+      <div class="card">
+      	<center>
+          <label class="small-label">Phone Number</label><br>
+          <input type="text" name="phone" placeholder="+2557xxxxxxx" class="my-input">
+          </center>
+      </div>
+      <div class="card">
+      	<center>
+      	<label class="small-label">Other Number</label><br>
+          <input type="text" name="otherphone" placeholder="+2557xxxxxxx" class="my-input">
+          </center>
+      </div>
+   </div>
+
+    <div class="input-holder">
+      <div class="card">
+      	<center>
+          <label class="small-label">Email </label><br>
+          <input type="text" name="email" placeholder="Enter email" class="my-input">
+          </center>
+      </div>
+      <div class="card">
+      	<center>
+      	<label class="small-label">Address</label><br>
+          <input type="text" name="address" placeholder="Add address" class="my-input">
+          </center>
+      </div>
+   </div>
+ 
+    <div class="input-holder">
+            <div class="card">
+      	<center>
+      	<label class="small-label">Supplier Type</label><br>
+          <select class="my-input" name="type">
+            <option value="" disabled selected>Choose Type</option>
+           	<option value="Individual">Individual</option>
+           	<option value="Company">Company</option>
+            <option value="Organization">Organization</option>
+            <option value="Government">Government</option>
+           </select>
+          </center>
+      </div>
+        <div class="card">
+      
+        
+      </div>
+
+
+   </div>
+
+     <div class="input-holder">
+      <div class="card">
+      	<center>
+        <label class="small-label">Region</label><br>
+          <input type="text" name="region" placeholder="Region" class="my-input">
+          </center>
+      </div>
+      <div class="card">
+      	<center>
+        <label class="small-label">District</label><br>
+          <input type="text" name="district" placeholder="District" class="my-input">
+          </center>
+        </div>
+   </div>
+
+
+
+     <div class="input-holder">
+      <div class="card">
+        <label class="small-label">Town/Center</label><br>
+          <input type="text" name="town" placeholder="Town/center" class="my-input">
+          </center>
+      </div>
+      <div class="card">
+       <label class="small-label">Supplier Code</label><br>
+          <input type="text" name="code" placeholder="Enter code S001-2023" class="my-input">
+          </center>
+        
+      </div>
+   </div>
+
+
+   <div class="input-holder">
+      <div class="card">
+      	<center>
+          <input type="submit" name="addsupplier" value="Save Supplier" class="my-btn">
+          </center>
+      </div>
+      <div class="card">
+      
+      	
+      </div>
+   </div>
+</form>
+</div>
+
+
+<!-- table -->
+<br><br>
+
+<div class="scroll-table">
+  <div class="table-holder">
+    <div class="table-caption">
+      <label class="my-label">List of Suppliers  </label>
+    </div>
+  <table>
+    <thead>
+      <th>Supplier Name</th>
+      <th>Email </th>
+      <th>Phone</th>
+      <th>Location</th>
+      <th>Type</th>
+      <th>Status</th>
+    </thead>
+    <tbody>   
+     
+          </tbody>
+     </table>
+
+
+
+
+  </div>
+</div>
+
+
+
+<br><br><br><br>
+<!-- footer starts -->
+<div class="footer">
+	 <h3></h3>
+   Juelga solution &copy;  &nbsp;&nbsp;<a href="https://www.juelgasolutions.co.tz" style="text-decoration: none; color: #ffffff">juelgasolution </a><br>
+   <h3></h3>
+</div>
+
+
+ 
+</body>
+</html>

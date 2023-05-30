@@ -1,20 +1,21 @@
 
+
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Units management</title>
+	<title>Create Stock</title>
 
-		<link rel="stylesheet" type="text/css" href="css/index.css">
-	<link rel="stylesheet" type="text/css" href="css/nav.css">
-	<link rel="stylesheet" type="text/css" href="css/elements.css">
+		<link rel="stylesheet" type="text/css" href="../css/index.css">
+	<link rel="stylesheet" type="text/css" href="../css/nav.css">
+	<link rel="stylesheet" type="text/css" href="../css/elements.css">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 <div>
     <div class="banner">
-    	<div class="vender-logo"><img src="assets/logo/juelgaicon.png"> </div>
+    	<div class="vender-logo"><img src="../assets/logo/juelgaicon.png"> </div>
     	<div class="shop-name"><center><h3 id="lbbusinessname"></h3></center></div>
     </div>
 </div>
@@ -31,7 +32,7 @@
     </div>
   </div> 
   <div class="subnav">
-    <button class="subnavbtn"  style=" background:  #0067a0;">Product <i class="fa fa-caret-down"></i></button>
+    <button class="subnavbtn">Product <i class="fa fa-caret-down"></i></button>
     <div class="subnav-content">
       <a href="createproduct.html">Add Product</a>
       <a href="createunits.html">Add Units</a>
@@ -40,7 +41,7 @@
     </div>
   </div> 
   <div class="subnav">
-    <button class="subnavbtn">Stock <i class="fa fa-caret-down"></i></button>
+    <button class="subnavbtn" style=" background:  #0067a0;">Stock <i class="fa fa-caret-down"></i></button>
     <div class="subnav-content">
       <a href="createstock.html">Add Stock</a>
       <a href="adjuststock.html">Adjust Stock</a>
@@ -73,20 +74,19 @@
 </div>
 <!-- end of nav bar -->
 <div class="action-div">
-
-	 <center><h3 class="my-label">Unit management</h3></center>
+	 <center><h3 class="my-label">Stock management</h3></center>
 
 	 <div class="input-holder">
       <div class="card">
       	<center>
-          <label class="small-label">Units </label><br>
-          <input type="text" id="units" placeholder="Enter units" class="my-input">
+          <label class="small-label">Stock Name</label><br>
+          <input type="text" id="stockname" placeholder="Enter stock name" class="my-input">
           </center>
       </div>
       <div class="card">
         <center>
-          <label class="small-label">Abbreviation</label><br>
-          <input type="text" id="abbreviation" placeholder="Enter Kg, M, g" class="my-input">
+          <label class="small-label">Stock Code</label><br>
+          <input type="text" id="code" placeholder="Enter code eg. S101D" class="my-input">
           </center>
       </div>
    </div>
@@ -96,7 +96,8 @@
       	<center>
           <label class="small-label">Description</label><br>
            </center>
-          <textarea id="description" rows="4" cols="40" placeholder="Describe unit here..."></textarea>
+          </textarea>
+          <textarea id="description" rows="4" cols="40" placeholder="Describe stock here..."></textarea>
          
       </div>
          </div>
@@ -104,18 +105,44 @@
     <div class="input-holder">
       <div class="card">
       	<center>
-      	<label class="small-label">Unit Code</label><br>
-          <input type="text" id="unitcode" placeholder="Unit code KG-01" class="my-input">
+          <label class="small-label">Unit Measure </label><br>
+          <select class="my-input" id="unit">
+            <option value="" disabled selected>Choose Unit Measure</option>
+          </select>
+          </center>
+      </div>
+      <div class="card">
+      	<center>
+      	<label class="small-label">Unit Count</label><br>
+          <input type="text" id="unitcount" placeholder="Unit count" class="my-input">
           </center>
       </div>
    </div>
  
+    <div class="input-holder">
+            <div class="card">
+        <center>
+        <label class="small-label">Units to Sale</label><br>
+          <input type="text" id="unitsale" placeholder="Units to sale" class="my-input">
+          </center>
+      </div>
+       <div class="card">
+        <center>
+        <label class="small-label">Clear Date</label><br>
+          <input type="date" id="clearby" class="my-input">
+          </center>
+      </div>
+
+
+   </div>
+
    <div class="input-holder">
       <div class="card">
       	<center>
-          <button id="addunit" class="my-btn">Save New Unit</button>
+          <button id="addstock" class="my-btn">Save New Stock</button>
           </center>
       </div>
+    
    </div>
 
 </div>
@@ -127,22 +154,22 @@
 <div class="scroll-table">
   <div class="table-holder">
     <div class="table-caption">
-      <label class="my-label">List of Units  </label>
+      <label class="my-label">List of Stock  </label>
     </div>
-  <table id="unitstable">
+  <table id="stocktable">
     <thead>
-      <th>Unit</th>
-      <th>Abbreviation </th>
+      <th>Stock Name</th>
+      <th>Sale Units </th>
       <th>Code</th>
-      <th>Date added</th>
+      <th>Measure</th>
+      <th>Clear by</th>
       <th>Status</th>
     </thead>
     <tbody>   
-         
+      
+              
           </tbody>
      </table>
-
-
 
 
   </div>
@@ -160,9 +187,6 @@
 </div>
 
 
-
-
-
 <br><br><br><br>
 <!-- footer starts -->
 <div class="footer">
@@ -171,10 +195,11 @@
    <h3></h3>
 </div>
 
-  <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-database.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script>
- <script type="text/javascript" src="js/config.js"></script>
- <script type="text/javascript" src="js/createunits.js"></script>  
+ <script type="text/javascript" src="../js/config.js"></script>
+ <script type="text/javascript" src="../js/createstock.js"></script>
+ 
 </body>
 </html>

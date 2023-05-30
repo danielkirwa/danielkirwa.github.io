@@ -4,18 +4,30 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Customer</title>
+	<title>Adjust Customer</title>
 
-		<link rel="stylesheet" type="text/css" href="css/index.css">
-	<link rel="stylesheet" type="text/css" href="css/nav.css">
-	<link rel="stylesheet" type="text/css" href="css/elements.css">
+		<link rel="stylesheet" type="text/css" href="../css/index.css">
+	<link rel="stylesheet" type="text/css" href="../css/nav.css">
+	<link rel="stylesheet" type="text/css" href="../css/elements.css">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+<style type="text/css">
+  
+  .general-banner{
+  width: 80%;
+  margin-left: 10%;
+    display: flex;
+  flex-wrap: wrap;
+    justify-content: center;
+     border: 1px solid #fff;
+  box-shadow: 0 0 0.5rem 0 rgba(0 ,0,0,0.3);
+}
+</style>
 <body>
 <div>
     <div class="banner">
-    	<div class="vender-logo"><img src="assets/logo/juelgaicon.png"> </div>
-    	<div class="shop-name"><center><h3>#############</h3></center></div>
+    	<div class="vender-logo"><img src="../assets/logo/juelgaicon.png"> </div>
+    	<div class="shop-name"><center><h3 id="lbbusinessname"></h3></center></div>
     </div>
 </div>
 <!-- nav -->
@@ -42,8 +54,8 @@
   <div class="subnav">
     <button class="subnavbtn">Stock <i class="fa fa-caret-down"></i></button>
     <div class="subnav-content">
-      <a href="createstock.html">Add Stock</a>
-      <a href="adjuststock.html">Adjust Stock</a>
+      <a href="#link1">Add Stock</a>
+      <a href="#link2">Adjust Stock</a>
     </div>
   </div>
    <div class="subnav">
@@ -63,7 +75,7 @@
   <a href="#contact">Settings</a>
   <a href="#contact">Sale Desk</a>
   <div class="subnav">
-    <button class="subnavbtn">###user<i class="fa fa-caret-down"></i></button>
+    <button class="subnavbtn"><span id="usernamedisplay"></span><i class="fa fa-caret-down"></i></button>
     <div class="subnav-content">
        <a href="profile.html">Profile</a>
       <a href="adminmanual.html">Manual</a>
@@ -73,14 +85,33 @@
 </div>
 <!-- end of nav bar -->
 <div class="action-div">
-  <form action="" method="POST" name="" id="submitform">
-	 <center><h3 class="my-label">Supplier management</h3></center>
+    <br><br><br><br>
+     <div class="general-banner">
+  
+      <div class="small-card">
+     <input type="text" id="txtsearchcustomerid" value="" class="my-input"  placeholder="Enter customer ID">
+      </div>
+      <div class="small-card">
+        <button id="searchcustomerid" class="my-btn"> Search Customer</button>
+      </div>
+   
+   </div>
+
+
+ 
+	 <center><h3 class="my-label">Customer details update</h3></center>
 
 	 <div class="input-holder">
       <div class="card">
       	<center>
           <label class="small-label">First Name</label><br>
-          <input type="text" name="firstname" placeholder="Enter supplier name" class="my-input">
+          <input type="text" id="firstname" placeholder="Enter First Name" class="my-input">
+          </center>
+      </div>
+      <div class="card">
+      	<center>
+      	<label class="small-label">Other Name</label><br>
+          <input type="text" id="othername" placeholder="Enter Other Name" class="my-input">
           </center>
       </div>
    </div>
@@ -88,14 +119,14 @@
    <div class="input-holder">
       <div class="card">
       	<center>
-          <label class="small-label">Phone Number</label><br>
-          <input type="text" name="phone" placeholder="+2557xxxxxxx" class="my-input">
+          <label class="small-label">ID Number</label><br>
+          <input type="text" id="idnumber" placeholder="Enter ID Number" class="my-input">
           </center>
       </div>
       <div class="card">
       	<center>
-      	<label class="small-label">Other Number</label><br>
-          <input type="text" name="otherphone" placeholder="+2557xxxxxxx" class="my-input">
+      	<label class="small-label">Phone Number</label><br>
+          <input type="text" id="phone" placeholder="+2557xxxxxxx" class="my-input">
           </center>
       </div>
    </div>
@@ -104,13 +135,13 @@
       <div class="card">
       	<center>
           <label class="small-label">Email </label><br>
-          <input type="text" name="email" placeholder="Enter email" class="my-input">
+          <input type="text" id="email" placeholder="Enter email" class="my-input">
           </center>
       </div>
       <div class="card">
       	<center>
-      	<label class="small-label">Address</label><br>
-          <input type="text" name="address" placeholder="Add address" class="my-input">
+      	<label class="small-label">Other Number</label><br>
+          <input type="text" id="otherphone" placeholder="+2557xxxxxxx" class="my-input">
           </center>
       </div>
    </div>
@@ -118,13 +149,11 @@
     <div class="input-holder">
             <div class="card">
       	<center>
-      	<label class="small-label">Supplier Type</label><br>
-          <select class="my-input" name="type">
-            <option value="" disabled selected>Choose Type</option>
-           	<option value="Individual">Individual</option>
-           	<option value="Company">Company</option>
-            <option value="Organization">Organization</option>
-            <option value="Government">Government</option>
+      	<label class="small-label">Gender</label><br>
+          <select class="my-input" id="gender">
+            <option value="" disabled selected>Choose Gender</option>
+           	<option value="Male">Male</option>
+           	<option value="Female">Female</option>
            </select>
           </center>
       </div>
@@ -140,13 +169,13 @@
       <div class="card">
       	<center>
         <label class="small-label">Region</label><br>
-          <input type="text" name="region" placeholder="Region" class="my-input">
+          <input type="text" id="region" placeholder="Region" class="my-input">
           </center>
       </div>
       <div class="card">
       	<center>
         <label class="small-label">District</label><br>
-          <input type="text" name="district" placeholder="District" class="my-input">
+          <input type="text" id="district" placeholder="District" class="my-input">
           </center>
         </div>
    </div>
@@ -156,12 +185,12 @@
      <div class="input-holder">
       <div class="card">
         <label class="small-label">Town/Center</label><br>
-          <input type="text" name="town" placeholder="Town/center" class="my-input">
+          <input type="text" id="town" placeholder="Town/center" class="my-input">
           </center>
       </div>
       <div class="card">
-       <label class="small-label">Supplier Code</label><br>
-          <input type="text" name="code" placeholder="Enter code S001-2023" class="my-input">
+       <label class="small-label">Village/Home</label><br>
+          <input type="text" id="village" placeholder="Village/home" class="my-input">
           </center>
         
       </div>
@@ -171,15 +200,16 @@
    <div class="input-holder">
       <div class="card">
       	<center>
-          <input type="submit" name="addsupplier" value="Save Supplier" class="my-btn">
+         
+          <button id="updatecustomer" class="my-btn">Save Customer</button>
           </center>
       </div>
       <div class="card">
       
-      	
+      	<button id="deletecustomer" class="my-btn-del">Save Customer</button>
       </div>
    </div>
-</form>
+
 </div>
 
 
@@ -189,21 +219,8 @@
 <div class="scroll-table">
   <div class="table-holder">
     <div class="table-caption">
-      <label class="my-label">List of Suppliers  </label>
+      <label class="my-label">Adjust Customer  </label>
     </div>
-  <table>
-    <thead>
-      <th>Supplier Name</th>
-      <th>Email </th>
-      <th>Phone</th>
-      <th>Location</th>
-      <th>Type</th>
-      <th>Status</th>
-    </thead>
-    <tbody>   
-     
-          </tbody>
-     </table>
 
 
 
@@ -211,7 +228,15 @@
   </div>
 </div>
 
+<!-- alerts here -->
 
+<div id="alertBox">
+  <h2 id="alertTitle"></h2>
+  <p id="alertMessage"></p>
+  <center>
+  <button onclick="hideAlert()">OK</button>
+  </center>
+</div>
 
 <br><br><br><br>
 <!-- footer starts -->
@@ -221,7 +246,11 @@
    <h3></h3>
 </div>
 
-
  
+ <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script>
+ <script type="text/javascript" src="../js/config.js"></script>
+ <script type="text/javascript" src="../js/adjustcustomer.js"></script>
 </body>
 </html>

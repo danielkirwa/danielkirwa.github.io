@@ -457,7 +457,7 @@ function hideAlertRefresh() {
 
  auth.onAuthStateChanged(function(user){
       if(user){
-        var email = user.email;
+        email = user.email;
         //check the role and open page
          
       const database = firebase.database();
@@ -494,16 +494,18 @@ findStaffRoleByEmail(targetEmail)
        // open pages accodingly
       
       if (role == "Admin") {
-        window.location.href='dashboard.html';
+       usernamedisplay.innerHTML = email;
+       receiptname.innerHTML = email
       }
       if (role == "Cashier") {
         
-       hideElementsByClassName("adminnav");
+       receiptname.innerHTML = email
        usernamedisplay.innerHTML = email;
        //window.location.href='saledesk.html';
       }
-      if (role == "Sales Lead") {
-        window.location("saledesk.html")
+      if (role == "SalesLead") {
+        receiptname.innerHTML = email
+        usernamedisplay.innerHTML = email;
       }
 
     } else {
@@ -522,14 +524,3 @@ findStaffRoleByEmail(targetEmail)
       }
     })
 
-
-
-
-// hide tabs
-   function hideElementsByClassName(className) {
-  var elements = document.getElementsByClassName(className);
-  for (var i = 0; i < elements.length; i++) {
-    elements[i].style.display = "none";
-   console.log(i);
-  }
-}

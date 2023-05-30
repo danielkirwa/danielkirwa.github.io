@@ -465,7 +465,7 @@ function hideAlertRefresh() {
 
  auth.onAuthStateChanged(function(user){
       if(user){
-        var email = user.email;
+        email = user.email;
         //check the role and open page
          
       const database = firebase.database();
@@ -500,18 +500,20 @@ findStaffRoleByEmail(targetEmail)
   .then((role) => {
     if (role) {
        // open pages accodingly
-      
       if (role == "Admin") {
-        window.location.href='dashboard.html';
+       // window.location.href='dashboard.html';
+      	usernamedisplay.innerHTML = email;
+      	receiptname.innerHTML = email;
       }
       if (role == "Cashier") {
         
-       hideElementsByClassName("adminnav");
        usernamedisplay.innerHTML = email;
        //window.location.href='saledesk.html';
+       receiptname.innerHTML = email
       }
-      if (role == "Sales Lead") {
-        window.location("saledesk.html")
+      if (role == "SalesLead") {
+        usernamedisplay.innerHTML = email;
+        receiptname.innerHTML = email
       }
 
     } else {
@@ -532,12 +534,3 @@ findStaffRoleByEmail(targetEmail)
 
 
 
-
-// hide tabs
-   function hideElementsByClassName(className) {
-  var elements = document.getElementsByClassName(className);
-  for (var i = 0; i < elements.length; i++) {
-    elements[i].style.display = "none";
-   console.log(i);
-  }
-}

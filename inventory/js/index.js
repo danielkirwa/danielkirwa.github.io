@@ -155,7 +155,7 @@ findStaffRoleByEmail(targetEmail)
       if (role == "Cashier") {
         window.location.href='saledesk.html';
       }
-      if (role == "SalesLead") {
+      if (role == "Sales Lead") {
         window.location("saledesk.html")
       }
 

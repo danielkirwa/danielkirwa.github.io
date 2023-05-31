@@ -206,6 +206,35 @@
   </center>
 </div>
 
+<!-- alert with refresh -->
+
+<div id="alertBoxRefresh">
+  <h2 id="alertTitle1"></h2>
+  <p id="alertMessage1"></p>
+  <center>
+  <button onclick="hideAlertRefresh()">OK</button>
+  </center>
+</div>
+
+
+
+<!-- confrimation -->
+<div id="confirmationModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2 style="color: crimson;">Confirm Deletion</h2>
+    <p>Are you sure you want to delete: 
+       <br>
+      <b> <label id="deleteiteminfor"></label></b>
+      <span><h2 style="color: crimson;">This action can not be undone</h2></span>
+    </p>
+    <div class="button-container">
+      <button id="confirmDelete" class="confrim-button" style="background: crimson;">Delete</button>
+      <button id="cancelDelete" class="confrim-button">Cancel</button>
+    </div>
+  </div>
+</div>
+
 
 <br><br><br><br>
 <!-- footer starts -->

@@ -28,6 +28,7 @@ let lbstockname = document.getElementById('lbstockname');
 let lbnewstockcode = document.getElementById('lbnewstockcode');
 let lbnewstockname = document.getElementById('lbnewstockname');
 let btndeleteproduct = document.getElementById('btndeleteproduct');
+let deleteiteminfor = document.getElementById('deleteiteminfor');
 
 // write code here 
 searchstock.addEventListener('click', () =>{
@@ -53,6 +54,7 @@ searchstock.addEventListener('click', () =>{
     sellingprice.innerHTML = childData.Selling;
     lbclearby.innerHTML = childData.ClearBy;
     selling.value = childData.Selling;
+    deleteiteminfor.innerHTML = childData.ProductName + " <br> " + "Available Units  :" + childData.AvailableUnits
 
   }
   
@@ -189,9 +191,65 @@ let existingunits = stockavailableunits.innerHTML
 // delete product here
 
 btndeleteproduct.addEventListener("click" , () =>{
-
-   myAlert(success, "Ready to delete")
+  let lbstockcode = document.getElementById('lbstockcode');
+  if (lbstockcode.innerText == "") {
+      myAlert(warning, "Enter product CODE to Delete");
+  }else{
+    showConfirmationModal();
+  }
+  
 })
+
+// Get the elements
+var deleteButton = document.getElementById("deleteButton");
+var confirmationModal = document.getElementById("confirmationModal");
+var confirmDeleteButton = document.getElementById("confirmDelete");
+var cancelDeleteButton = document.getElementById("cancelDelete");
+var closeIcon = document.getElementsByClassName("close")[0];
+
+// Function to display the confirmation modal
+function showConfirmationModal() {
+  confirmationModal.style.display = "block";
+}
+
+// Function to hide the confirmation modal
+function hideConfirmationModal() {
+  confirmationModal.style.display = "none";
+}
+
+// Attach event listeners
+confirmDeleteButton.addEventListener("click", deleteItem);
+cancelDeleteButton.addEventListener("click", hideConfirmationModal);
+closeIcon.addEventListener("click", hideConfirmationModal);
+
+// Function to delete the item
+function deleteItem() {
+  // Your deletion logic goes here
+    let lbproductcode = document.getElementById('lbproductcode');
+    let deletecode = lbproductcode.innerText;
+    console.log(deletecode);
+    var nodeRef = firebase.database().ref("Myproduct/" + deletecode);
+  // Remove the node
+  nodeRef.remove()
+    .then(function() {
+      myAlertRefresh(success, "Deleted")
+      hideConfirmationModal();
+    })
+    .catch(function(error) {
+      myAlertRefresh(failed, "Error deleting node:" + error);
+      hideConfirmationModal();
+    });
+
+
+  
+
+}
+
+
+
+
+
+
 
 
 
@@ -213,6 +271,29 @@ function hideAlert() {
   var alertBox = document.getElementById("alertBox");
   alertBox.style.display = "none";
 }
+
+
+function myAlertRefresh(title,message) {
+  var alertBox = document.getElementById("alertBoxRefresh");
+  var alertTitle = document.getElementById("alertTitle1");
+  var alertMessage = document.getElementById("alertMessage1");
+  
+  alertTitle.innerHTML = title;
+  alertMessage.innerHTML = message;
+  alertBox.style.display = "block";
+}
+
+function hideAlertRefresh() {
+  var alertBox = document.getElementById("alertBoxRefresh");
+  alertBox.style.display = "none";
+  location.reload();
+}
+
+
+
+
+
+
 
 /// get business name and data 
 
@@ -261,22 +342,17 @@ const targetEmail = email; // The email to search for
 findStaffRoleByEmail(targetEmail)
   .then((role) => {
     if (role) {
-       // open pages accodingly
       console.log(role);
+       // open pages accodingly
       if (role == "Admin") {
-       // window.location.href='dashboard.html';
         usernamedisplay.innerHTML = email;
-      }
-      if (role == "Cashier") {
-        
-       hideElementsByClassName("nocashier");
+      }else if (role == "Cashier") {
        usernamedisplay.innerHTML = email;
        window.location.href='saledesk.html';
-      }
-      if (role == "SalesLead") {
-        hideElementsByClassName("nosalelead");
+      }else if (role == "SalesLead") {
         usernamedisplay.innerHTML = email;
-        //window.location.href='saledesk.html';
+      }else{
+        window.location.href='../index.html'
       }
 
     } else {
@@ -294,15 +370,3 @@ findStaffRoleByEmail(targetEmail)
         //myAlert("No Active user");
       }
     })
-
-
-
-
-// hide tabs cashier
-   function hideElementsByClassName(className) {
-  var elements = document.getElementsByClassName(className);
-  for (var i = 0; i < elements.length; i++) {
-    elements[i].style.display = "none";
-   console.log(i);
-  }
-}

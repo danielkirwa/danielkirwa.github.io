@@ -175,6 +175,23 @@ function hideAlert() {
   alertBox.style.display = "none";
 }
 
+function myAlertRefresh(title,message) {
+  var alertBox = document.getElementById("alertBoxRefresh");
+  var alertTitle = document.getElementById("alertTitle1");
+  var alertMessage = document.getElementById("alertMessage1");
+  
+  alertTitle.innerHTML = title;
+  alertMessage.innerHTML = message;
+  alertBox.style.display = "block";
+}
+
+function hideAlertRefresh() {
+  var alertBox = document.getElementById("alertBoxRefresh");
+  alertBox.style.display = "none";
+  location.reload();
+}
+
+
 
 function resetForm(){
   firstname.value = "";
@@ -207,19 +224,9 @@ auth.onAuthStateChanged(function(user){
          usernamedisplay.innerHTML = email;
       }else{
         //alert("No Active user");
-        window.location.href='index.html';
+        window.location.href='../index.html';
       }
     })
 
 // log out
 
-function logout(){
-  // body...
-  firebase.auth().signOut().then(function() {
-  // Sign-out successful.
-  window.location.href='index.html';
-}).catch(function(error) {
-  // An error happened.
-  myAlert(failed, "Failed to log out refresh and try again")
-});
-}

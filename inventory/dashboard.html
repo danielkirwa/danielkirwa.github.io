@@ -26,53 +26,10 @@
 </div>
 <!-- nav -->
 <div class="navbar">
-	  <a href="dashboard.html"  style=" background:  #0067a0;">Dashboard</a>
-  <div class="subnav">
-    <button class="subnavbtn">My Business <i class="fa fa-caret-down"></i></button>
-    <div class="subnav-content">
-      <a href="createbusiness.html">Add Business</a>
-      <a href="adjustbusiness.html">Adjust Business</a>
-      <a href="createcustomer.html">Add Customer</a>
-      <a href="adjustcustomer.html">Adjust Customer</a>
-    </div>
-  </div> 
-  <div class="subnav">
-    <button class="subnavbtn">Product <i class="fa fa-caret-down"></i></button>
-    <div class="subnav-content">
-      <a href="createproduct.html">Add Product</a>
-      <a href="createunits.html">Add Units</a>
-      <a href="createcategory.html">Categories</a>
-      <a href="adjustproduct.html">Adjust Product</a>
-    </div>
-  </div> 
-  <div class="subnav">
-    <button class="subnavbtn">Stock <i class="fa fa-caret-down"></i></button>
-    <div class="subnav-content">
-      <a href="createstock.html">Add Stock</a>
-      <a href="adjuststock.html">Adjust Stock</a>
-    </div>
-  </div>
-   <div class="subnav">
-    <button class="subnavbtn">Register <i class="fa fa-caret-down"></i></button>
-    <div class="subnav-content">
-      <a href="register.html" target="_blank">Add Staff</a>
-      <a href="adjuststaff.html">Adjust Staff</a>
-    </div>
-  </div>
-  <div class="subnav">
-    <button class="subnavbtn">Reports <i class="fa fa-caret-down"></i></button>
-    <div class="subnav-content">
-      <a href="businessreport.html">Business Report</a>
-      <a href="salereport.html">Saler Report</a>
-    </div>
-  </div>
-  <a href="setting.html">Settings</a>
-  <a href="saledesk.html">Sale Desk</a>
+	 
   <div class="subnav">
     <button class="subnavbtn"><span id="usernamedisplay"></span><i class="fa fa-caret-down"></i></button>
     <div class="subnav-content">
-      <a href="profile.html">Profile</a>
-      <a href="adminmanual.html">Manual</a>
       <a href="#" onclick="logout()">Logout</a>
     </div>
   </div>
@@ -84,153 +41,13 @@
 <div class="scroll-table">
   <div class="table-holder">
     <div class="table-caption">
-      <label class="my-label">Welcome to the Dashboard </label>
+      <label class="my-label"> <h3>Welcome <i> you have no access click request if you need to notify Admin </i></h3></label>
+      <br>
     </div>
-     <!-- start of report analysis -->
-     <div class="input-holder">
-         
-         <div class="general-banner">
-    <div class="card-margin">
-      <center><label class="my-label" id="lbcurrentmonth">This Month sale</label><br>
-          </center>
-          <hr>
-           <div class="card-inner">
-            <div>
-               <center><img src="assets/saleicon.png"> </center>
-            </div>
-            <div class="float-right">
-              <label class="my-label-small blue-text">Sales desk summary this month</label><br>
-              <label class="my-label-small orange-text" id="innerthismonthsale">Cash</label><br>
-               <label class="my-label-small orange-text" id="innerthismonthcredit">Credit</label>
-            </div> 
-          </div>
-          
-          <hr>
-          <center><label class="my-label">Tsh. <span id="lbthismonthsale"></span></label><br>
-          </center>
-          <hr>
-        </div>
-
-      <div class="card-margin">
-        <center><label class="my-label"><span id="lbprevios"></span> Vs <span id="lbcurent"></span></label><br>
-          </center>
-          <hr>
-          <div class="card-inner">
-            <div>
-               <center><img src="assets/growthicon.png"> </center>
-            </div>
-            <div class="float-right">
-              <label class="my-label-small blue-text">Sales summary and comparison</label><br>
-              <label class="my-label-small orange-text" id="cardpreviousmonth">Previous</label><br>
-              <label class="my-label-small orange-text" id="cardcurrentmonth">Current</label><br>
-
-            </div> 
-          </div>
-            
-           <hr>
-          <center><label class="my-label"><span id="lbgrowth"></span></label><br>
-          </center>
-          <hr>
-
-      </div>
-
-
-      <div class="card-margin">
-        <center>
-          <label class="my-label"><span id="lbloanprevios"></span> / <span id="lbloancurent"></span></label><br>
-          </center>
-          <hr>
-           
-           <div class="card-inner">
-            <div>
-               <center><img src="assets/loanicon.png"> </center>
-            </div>
-            <div class="float-right">
-              <label class="my-label-small blue-text">Loan summary and comparison</label><br>
-              <label class="my-label-small orange-text" id="cardpreviousmonthcredit">Previous</label><br>
-              <label class="my-label-small orange-text" id="cardcurrentmonthcredit">Current</label>
-            </div> 
-          </div>
-            <hr>
-          <center><label class="my-label" id="lbgrowthcredit"></label><br>
-          </center>
-            <hr>
-
-      </div>
-
-        <div class="card-margin">
-        <center><label class="my-label">Our Customers</label><br>
-          </center>
-          <hr>
-           
-            <div class="card-inner">
-            <div>
-               <center><img src="assets/customericon.png"> </center>
-            </div>
-            <div class="float-right">
-              <label class="my-label-small blue-text">Customers to your business</label><br>
-              <label class="my-label-small orange-text" id="lbcustomersonloan">On loan</label><br>
-               
-            </div> 
-          </div>
-            <hr>
-          <center><span class="my-label">Active : </span><label class="my-label" id="customercounter">0</label><br>
-          </center>
-            <hr>
-      </div>
-    
-   </div>
-
-         <!-- table -->
-      <div class="card-long">
-        <center>
-          <label class="small-label">Out of Stock Alerts</label><br>
-           </center>
-            
-              <table id="outofstocktable">
-     <thead>
-        <th style="background: #0067a0;color: #fff;">Item/Product</th>
-         <th style="background: #0067a0;color: #fff;">Product/Code</th>
-         <th style="background: #0067a0;color: #fff;">StockCode</th>
-         <th style="background: #0067a0;color: #fff;">Available/Units</th>
-       </thead>
-    <tbody>   
-      
-              
-          </tbody>
-     </table>
-         
-      </div>
-
-      <!-- expiry table -->
-        <div class="card-long">
-        <center>
-          <label class="small-label">Expiries / Clear date approaching</label><br>
-           </center>
-            
-              <table id="expirytable">
-     <thead>
-        <th style="background: #0067a0;color: #fff;">Item/Product</th>
-         <th style="background: #0067a0;color: #fff;">Product/Code</th>
-         <th style="background: #0067a0;color: #fff;">StockCode</th>
-         <th style="background: #0067a0;color: #fff;">Expiry Date</th>
-       </thead>
-    <tbody>   
-      
-              
-          </tbody>
-     </table>
-         
-      </div>
-
-      <!-- end of cashier -->
-
-       
-
-
-         </div>
- <!-- end of report analysis -->
-
+     <br><br>
+     <center>
+        <button class="my-btn" id="requestaccess">Request account Access</button>
+      </center>
   </div>
 </div>
 
@@ -270,6 +87,6 @@
 <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-database.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script>
  <script type="text/javascript" src="js/config.js"></script>
- <script type="text/javascript" src="js/dashboard.js"></script>
+ <script type="text/javascript" src="js/opendashboard.js"></script>
 </body>
 </html>

@@ -151,12 +151,12 @@ findStaffRoleByEmail(targetEmail)
        console.log(role);
       if (role == "Admin") {
         window.location.href='invadmin/dashboard.html';
-      }
-      if (role == "Cashier") {
+      } else if (role == "Cashier") {
         window.location.href='cashier/saledesk.html';
-      }
-      if (role == "SalesLead") {
+      }else if (role == "SalesLead") {
         window.location.href='sales/saledesk.html';
+      }else{
+         window.location.href='dashboard.html';
       }
 
     } else {

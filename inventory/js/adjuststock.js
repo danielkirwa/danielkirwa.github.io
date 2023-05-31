@@ -15,7 +15,7 @@ let availableunits = document.getElementById('availableunits');
 let createdby = document.getElementById('createdby');
 let lbclearby = document.getElementById('lbclearby');
 let lbmeasure = document.getElementById('lbmeasure');
-
+let deleteiteminfor = document.getElementById('deleteiteminfor');
 
 // button to add action
 let btnupdatestock = document.getElementById('btnupdatestock');
@@ -47,6 +47,7 @@ searchstock.addEventListener('click', () =>{
     lbmeasure.innerHTML = childData.Unit;
     lbclearby.innerHTML = childData.ClearBy;
     currentunit = childData.UnitSale;
+    deleteiteminfor.innerHTML = childData.StockName + " <br>" +  "Available Units : " + childData.UnitSale;
   }
   
 
@@ -104,10 +105,67 @@ let newadjustdate = txtadjustdate.value;
 
 // delete stock here
 
-btndeletestock.addEventListener("click" , () =>{
 
-   myAlert(success, "Ready to delete")
+btndeletestock.addEventListener("click" , () =>{
+  let lbstockcode = document.getElementById('lbstockcode');
+  if (lbstockcode.innerText == "") {
+      myAlert(warning, "Enter product CODE to Delete");
+  }else{
+    showConfirmationModal();
+  }
+  
 })
+
+// Get the elements
+var deleteButton = document.getElementById("deleteButton");
+var confirmationModal = document.getElementById("confirmationModal");
+var confirmDeleteButton = document.getElementById("confirmDelete");
+var cancelDeleteButton = document.getElementById("cancelDelete");
+var closeIcon = document.getElementsByClassName("close")[0];
+
+// Function to display the confirmation modal
+function showConfirmationModal() {
+  confirmationModal.style.display = "block";
+}
+
+// Function to hide the confirmation modal
+function hideConfirmationModal() {
+  confirmationModal.style.display = "none";
+}
+
+// Attach event listeners
+confirmDeleteButton.addEventListener("click", deleteItem);
+cancelDeleteButton.addEventListener("click", hideConfirmationModal);
+closeIcon.addEventListener("click", hideConfirmationModal);
+
+// Function to delete the item
+function deleteItem() {
+  // Your deletion logic goes here
+    let lbstockcode = document.getElementById('lbstockcode');
+    let deletecode = lbstockcode.innerText;
+    console.log(deletecode);
+    var nodeRef = firebase.database().ref("Mystock/" + deletecode);
+  // Remove the node
+  nodeRef.remove()
+    .then(function() {
+      myAlertRefresh(success, "Deleted")
+      hideConfirmationModal();
+    })
+    .catch(function(error) {
+      myAlertRefresh(failed, "Error deleting node:" + error);
+      hideConfirmationModal();
+    });
+
+
+  
+
+}
+
+
+
+
+
+
 
 
 
@@ -130,6 +188,24 @@ function hideAlert() {
   alertBox.style.display = "none";
 }
 
+function myAlertRefresh(title,message) {
+  var alertBox = document.getElementById("alertBoxRefresh");
+  var alertTitle = document.getElementById("alertTitle1");
+  var alertMessage = document.getElementById("alertMessage1");
+  
+  alertTitle.innerHTML = title;
+  alertMessage.innerHTML = message;
+  alertBox.style.display = "block";
+}
+
+function hideAlertRefresh() {
+  var alertBox = document.getElementById("alertBoxRefresh");
+  alertBox.style.display = "none";
+  location.reload();
+}
+
+
+
 /// get business name and data 
 
          // Retrieve the array from local storage and parse it back into an array
@@ -148,6 +224,6 @@ auth.onAuthStateChanged(function(user){
          usernamedisplay.innerHTML = email;
       }else{
         //alert("No Active user");
-        window.location.href='index.html';
+        window.location.href='../index.html';
       }
     })

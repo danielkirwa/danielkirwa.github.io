@@ -31,6 +31,43 @@ let cardcurrentmonth = document.getElementById('cardcurrentmonth');
 
 
 
+/*=======================================*/ 
+// get business details for newly logined in 
+ // Retrieve data from Firebase database
+var Bname,Baddress,Bphone,Bemail;
+      var ref = firebase.database().ref("Mybusiness");
+      ref.on("value", function(snapshot) {
+        snapshot.forEach(function(childSnapshot) {
+        var childData = childSnapshot.val();
+          Bname = childData.BusinessName;
+          Bemail = childData.Email;
+          Bphone = childData.Phone;
+          Baddress = childData.Address;
+            
+             console.log(Bname + "Here");
+
+          // Create an array to keep business data
+          let myArray = [Bname, Bemail, Bphone, Baddress];
+
+         // Convert the array to a string and store it in local storage
+         localStorage.setItem('BusinessDetails', JSON.stringify(myArray));
+
+         // Retrieve the array from local storage and parse it back into an array
+        let storedBusiness = JSON.parse(localStorage.getItem('BusinessDetails'));
+
+          // Access a specific index of the array
+         lbbusinessname = document.getElementById('lbbusinessname');
+         lbbusinessname.innerHTML = storedBusiness[0];
+          
+        });
+      });
+
+
+
+
+
+
+
 //displays 
 lbprevios.innerHTML = previousMonthName + " / " + currentYear;
 lbcurent.innerHTML = currentMonth + " / "  + currentYear;
@@ -350,10 +387,10 @@ findStaffRoleByEmail(targetEmail)
       }
       if (role == "Cashier") {
 
-       window.location.href='saledesk.html';
+       window.location.href='../cashier/saledesk.html';
       }
       if (role == "SalesLead") {
-        window.location.href='saledesk.html';
+        window.location.href='../sales/saledesk.html';
       }
 
     } else {

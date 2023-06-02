@@ -131,6 +131,6 @@ auth.onAuthStateChanged(function(user){
          usernamedisplay.innerHTML = email;
       }else{
         //alert("No Active user");
-        window.location.href='index.html';
+        window.location.href='../index.html';
       }
     })

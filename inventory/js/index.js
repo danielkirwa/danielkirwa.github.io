@@ -13,7 +13,8 @@ var Bname,Baddress,Bphone,Bemail;
           Bemail = childData.Email;
           Bphone = childData.Phone;
           Baddress = childData.Address;
-
+            
+             console.log(Bname + "Here");
 
           // Create an array to keep business data
           let myArray = [Bname, Bemail, Bphone, Baddress];

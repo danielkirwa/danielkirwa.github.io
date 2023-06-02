@@ -27,7 +27,7 @@ requestaccess.addEventListener('click' , () => {
      
   } else {
     // Data saved successfully!
-    myAlert(success, "Account request sent wait for Admin action ");
+    myAlert(success, "Account request sent wait for Admin action <br> <b> Do not send another request this increase your waiting time</b>");
     // Refresh the page after a delay of 3 seconds
     setTimeout(function(){
     location.reload();
@@ -89,13 +89,13 @@ findStaffRoleByEmail(targetEmail)
        // open pages accodingly
       console.log(role);
       if (role == "Admin") {
-        usernamedisplay.innerHTML = email;
-      }
-      if (role == "Cashier") {
+         window.location.href='../invadmin/dashboard.html';
+      }else if (role == "Cashier") {
        window.location.href='../cashier/saledesk.html';
-      }
-      if (role == "SalesLead") {
-       usernamedisplay.innerHTML = email;
+      }else if (role == "SalesLead") {
+        window.location.href='../sales/saledesk.html';
+      }else{
+      	usernamedisplay.innerHTML = email;
       }
 
     } else {
@@ -128,3 +128,13 @@ function hideAlert() {
   var alertBox = document.getElementById("alertBox");
   alertBox.style.display = "none";
 }
+auth.onAuthStateChanged(function(user){
+      if(user){
+        var email = user.email;
+        //alert("Active user" + email);
+         usernamedisplay.innerHTML = email;
+      }else{
+        //alert("No Active user");
+        window.location.href='index.html';
+      }
+    })

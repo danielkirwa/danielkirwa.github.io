@@ -249,13 +249,13 @@ findStaffRoleByEmail(targetEmail)
       if (role == "Admin") {
        usernamedisplay.innerHTML = email;
        receiptname.innerHTML = email
-      }
-      if (role == "Cashier") {
+      }else if (role == "Cashier") {
         
        window.location.href='../cashier/saledesk.html';
-      }
-      if (role == "SalesLead") {
+      }else if (role == "SalesLead") {
         window.location.href='../sales/saledesk.html';
+      }else{
+         window.location.href='../index.html';
       }
 
     } else {

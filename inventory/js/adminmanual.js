@@ -123,6 +123,7 @@ findStaffRoleByEmail(targetEmail)
   
       }else{
         //myAlert("No Active user");
+        window.location.href='../index.html';
       }
     })
 

@@ -86,7 +86,7 @@ let thismonthsales = "Mymonthly/"+ currentMonth+currentYear ;
   ref.once('value').then(function(snapshot) {
   var childData = snapshot.val();
   if (childData == null) {
-     myAlert(failed, "No sales found")
+     myAlert(warning, "No Cash sales found this month of : <br>" + currentMonth + " " + currentYear);
   }else{
     lbthismonthsale.innerHTML = childData.TotalSale;
     innerthismonthsale.innerHTML = "Cash = " + childData.TotalSale;
@@ -138,7 +138,7 @@ let thismonthcreditsales = "Mymonthlycredit/"+ currentMonth+currentYear ;
   ref.once('value').then(function(snapshot) {
   var childData = snapshot.val();
   if (childData == null) {
-     myAlert(failed, "No credit sales found")
+     myAlert(warning, "No credit sales found this month of : <br>" + currentMonth + " " + currentYear);
   }else{
     innerthismonthcredit.innerHTML = "Credit = " + childData.TotalCredit;
     cardcurrentmonthcredit.innerHTML = currentMonth + " Credit = " + childData.TotalCredit;

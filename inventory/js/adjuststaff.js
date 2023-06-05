@@ -5,7 +5,7 @@ var failed = "&#10060; Failed";
 var warning = "&#10071; Warning";
 var today = new Date();
 var datetoday = today.toLocaleDateString();
-
+let btndeletestaff = document.getElementById('btndeletestaff');
 
 searchstaffid.addEventListener('click', () =>{
   let txtsearchstaffid = document.getElementById('txtsearchstaffid').value;
@@ -46,6 +46,7 @@ searchstaffid.addEventListener('click', () =>{
      selectstation.value = childData.Station;
      selectrole.value = childData.Role;
      doB.value = childData.Dob;
+     idnumber.disabled = true;
 
   }
 }); 
@@ -150,6 +151,64 @@ var selectedRoleOption = selectrole.value;
 
 })
 
+
+/*========================*/
+// delete staff details
+
+btndeletestaff.addEventListener("click" , () =>{
+  let idnumber = document.getElementById('idnumber');
+  if (idnumber.value == "") {
+      myAlert(warning, "Staff ID Number missing  search staff first to delete staff");
+  }else{
+    showConfirmationModal();
+  }
+  
+})
+
+// Get the elements
+var deleteButton = document.getElementById("deleteButton");
+var confirmationModal = document.getElementById("confirmationModal");
+var confirmDeleteButton = document.getElementById("confirmDelete");
+var cancelDeleteButton = document.getElementById("cancelDelete");
+var closeIcon = document.getElementsByClassName("close")[0];
+
+// Function to display the confirmation modal
+function showConfirmationModal() {
+  confirmationModal.style.display = "block";
+}
+
+// Function to hide the confirmation modal
+function hideConfirmationModal() {
+  confirmationModal.style.display = "none";
+}
+
+// Attach event listeners
+confirmDeleteButton.addEventListener("click", deleteItem);
+cancelDeleteButton.addEventListener("click", hideConfirmationModal);
+closeIcon.addEventListener("click", hideConfirmationModal);
+
+// Function to delete the item
+function deleteItem() {
+  // Your deletion logic goes here
+    let idnumber = document.getElementById('idnumber');
+    let deletecode = idnumber.value;
+    console.log(deletecode);
+    var nodeRef = firebase.database().ref("Mystaff/" + deletecode);
+  // Remove the node
+  nodeRef.remove()
+    .then(function() {
+      myAlertRefresh(success, "Deleted")
+      hideConfirmationModal();
+    })
+    .catch(function(error) {
+      myAlertRefresh(failed, "Error deleting node:" + error);
+      hideConfirmationModal();
+    });
+
+
+  
+
+}
 
 
 

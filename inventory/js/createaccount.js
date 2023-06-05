@@ -207,7 +207,7 @@ function resetForm(){
         window.location.href='index.html';
       }
     })*/
-
+console.log("helo");
  auth.onAuthStateChanged(function(user){
       if(user){
         var email = user.email;

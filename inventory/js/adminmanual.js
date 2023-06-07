@@ -102,12 +102,12 @@ findStaffRoleByEmail(targetEmail)
       console.log(role);
       if (role == "Admin") {
         usernamedisplay.innerHTML = email;
-      }
-      if (role == "Cashier") {
+      }else if (role == "Cashier") {
        window.location.href='../cashier/saledesk.html';
-      }
-      if (role == "SalesLead") {
+      }else if (role == "SalesLead") {
        usernamedisplay.innerHTML = email;
+      }else{
+        window.location.href='../index.html';
       }
 
     } else {

@@ -7,7 +7,8 @@ var email;
 var datetoday = today.toLocaleDateString();
 let usernamedisplay = document.getElementById('usernamedisplay');
 var remainder = 0;
-var saleunits = 0;
+var amountpaidtocleared = 0;
+var receiptready = 0;
 
 /*============================*/
 
@@ -21,6 +22,7 @@ let hidecurrentcredit = document.getElementById('hidecurrentcredit');
 let tbltotalcredit = document.getElementById('tbltotalcredit');
 let tblpaiedcredit = document.getElementById('tblpaiedcredit');
 let tblcreditbalance = document.getElementById('tblcreditbalance');
+let printerclearance = document.getElementById('printerclearance');
 
 
 searchcustomerid.addEventListener("click", () => {
@@ -140,8 +142,8 @@ searchcustomerid.addEventListener("click", () => {
 /*===================================*/
 let generatereciept = document.getElementById('generatereciept');
 generatereciept.addEventListener('click', () =>{
-  if (newcustomeridnumber.innerText == "" || newamounttorepay.value == "") {
-    let fillerror,fillerror1,fillerror2;
+  if (newcustomeridnumber.innerText == "" || newamounttorepay.value == "" || cutomerpaydate.value == "") {
+    let fillerror,fillerror1,fillerror2,fillerror3;
    if (newcustomeridnumber.innerText == "") {
       fillerror1 = " <br> Select customer to clear";
     }else{
@@ -152,8 +154,13 @@ generatereciept.addEventListener('click', () =>{
     }else{
       fillerror2 = "";
     }
+     if (cutomerpaydate.value == "") {
+      fillerror3 = " <br> Enter clear date or new extended date ";
+    }else{
+      fillerror3 = "";
+    }
     
-  fillerror = 'Fill in the following :  ' + fillerror1 +  fillerror2;
+  fillerror = 'Fill in the following :  ' + fillerror1 +  fillerror2 + fillerror3;
   myAlertRefresh(warning, fillerror)
   }else{
 
@@ -161,8 +168,10 @@ generatereciept.addEventListener('click', () =>{
 
 	myAlert(success,"Generated Successfully");
   tbltotalcredit.innerHTML = hidecurrentcredit.value;
-  tblpaiedcredit.innerHTML = saleunits;
+  tblpaiedcredit.innerHTML = amountpaidtocleared;
   tblcreditbalance.innerHTML = remainder;
+  receiptcleardate.innerHTML = cutomerpaydate.value;
+  receiptready = 1;
 }
 })
 
@@ -173,25 +182,152 @@ newamounttorepay.addEventListener("input", function(event) {
   let newamounttorepay = document.getElementById('newamounttorepay');
   let currentcredit = document.getElementById('currentcredit');
   const constcurrentcredit = hidecurrentcredit.value;
-  saleunits = newamounttorepay.value;
+  amountpaidtocleared = newamounttorepay.value;
 
-  if (isNaN(saleunits)) {
+  if (isNaN(amountpaidtocleared)) {
     newamounttorepay.value = "";
     currentcredit.textContent = constcurrentcredit;
     myAlert(warning,"<b> Enter a number in the amount section</b>");
     return; // Reject the input if it is not a number
   }
-   remainder = +constcurrentcredit - +saleunits;
+   remainder = +constcurrentcredit - +amountpaidtocleared;
   currentcredit.textContent = remainder;
   if(remainder < 0){
     newamounttorepay.value = "";
     currentcredit.textContent = constcurrentcredit;
     myAlert(warning,"<b> Amount entered exceeds the expected amount </b>");
+     receiptready = 0;
     return; // Reject the input if it is not a number
   }
 
  
 });
+
+
+
+
+
+
+function validatecreditDate() {
+    var inputDate = new Date(document.getElementById("cutomerpaydate").value);
+      var currentDate = new Date();
+
+      // Add one month to the current date
+      var maxDate = new Date();
+      maxDate.setMonth(currentDate.getMonth() + 1);
+
+      // Set the minimum date to tomorrow
+      var minDate = new Date();
+      minDate.setDate(currentDate.getDate() + 1);
+
+      if (inputDate < minDate || inputDate > maxDate) {
+        myAlert(failed, "Please select a date within one month from the current date and not earlier than tomorrow.");
+        document.getElementById("cutomerpaydate").value = ""; // Clear the input field
+      }
+    }
+
+
+
+
+
+printerclearance.addEventListener('click', () =>{
+  var divToPrint = document.getElementById("readyreciept").innerHTML;
+  var timestamp = Date.now();
+   if (receiptready == 0 ) {
+    myAlert(warning, "Generate the reciept and also ensure that the deatils are correct !");
+   }else if(receiptready == 1){
+     // get all data 
+    var clearedcustomer = newcustomeridnumber.innerText;
+    var clearingstaff = email;
+    var clearingdate = datetoday;
+    var  clearedamount = amountpaidtocleared;
+    var customernewbalance = remainder;
+     
+      let clearencereciept = [
+  ["Customer", clearedcustomer ],
+  ["Staff",clearingstaff ],
+  ["Date", clearingdate ],
+  ["Paid", clearedamount ],
+  ["Balance",customernewbalance ]
+  ];
+     clearencereciept = JSON.stringify(clearencereciept);
+     console.log(clearencereciept);
+
+     firebase.database().ref('Mycreditclearance/' + timestamp).set(clearencereciept)
+  .then(function() {
+     // update monthly sales 
+
+    myAlertRefresh(success, "Clearance completed ");
+    
+  })
+  .catch(function(error) {
+     myAlert(failed, "Clearance not completed ");
+  });
+
+    /*===========================================*/
+     
+         // update monthly sales 
+
+   /* let monthlysalenode = "Mymonthly/"+ currentMonth+currentYear ;
+        firebase.database().ref(monthlysalenode).update({
+
+       TotalSale: firebase.database.ServerValue.increment(grandamount)       
+   
+      }).then(() => {
+   
+  })
+  .catch((error) => {
+     myAlert(failed, "Cummulative not sales captured");
+  });
+
+  // update cashier sales 
+     
+     email = email.replace(/[@.]/g, "&");
+
+    let cashiersales = "Mycashierclearence/"+ email ;
+        firebase.database().ref(cashiersales).update({
+
+       //CashierTotalSale: firebase.database.ServerValue.increment(grandamount)       
+   
+      }).then(() => {
+       
+  })
+  .catch((error) => {
+     myAlert(failed, "Cummulative not cashier sales captured");
+  });
+
+
+
+   
+  var newWin = window.open('', 'Print-Window');
+  newWin.document.open();
+  newWin.document.write('<html><body onload="window.print()">' + divToPrint + '</body></html>');
+  newWin.document.close();
+  setTimeout(function() {
+    newWin.close();
+
+  }, 10);
+ 
+   */
+
+
+
+    /*=============================================*/
+
+   }else{
+    myAlert(failed, "Generation status not clear refresh and regenerate");
+       }
+})
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -116,8 +116,28 @@ searchcustomerid.addEventListener("click", () => {
          cutomerpaydate.value = "";
   
      }else{
+
+        var originalDate = childData.CreditDueDate;
+        console.log(originalDate);
+var regex = /^\d{1,2}\/\d{1,2}\/\d{4}$/;
+
+if (regex.test(originalDate)) {
+  var parts = originalDate.split('/');
+  var month = parts[0];
+  var day = parts[1];
+  var year = parts[2];
+  
+  var formattedDate = year + '-' + month.padStart(2, '0') + '-' + day.padStart(2, '0');
+  
+  cutomerpaydate.value = formattedDate;
+} else {
+  console.log('Date format is already in the desired format. Skipping conversion.');
+  cutomerpaydate.value = childData.CreditDueDate;
+}
+
+
          currentcredit.innerHTML = childData.CustomerTotalCredit;
-         cutomerpaydate.value = childData.CreditDueDate;
+         
          hidecurrentcredit.value = childData.CustomerTotalCredit;
 
      }
@@ -253,6 +273,8 @@ printerclearance.addEventListener('click', () =>{
      clearencereciept = JSON.stringify(clearencereciept);
      console.log(clearencereciept);
 
+      /*===========================================*/
+// business receipt
      firebase.database().ref('Mycreditclearance/' + timestamp).set(clearencereciept)
   .then(function() {
      // update monthly sales 
@@ -264,39 +286,36 @@ printerclearance.addEventListener('click', () =>{
      myAlert(failed, "Clearance not completed ");
   });
 
-    /*===========================================*/
-     
-         // update monthly sales 
+  // customer reciept
 
-   /* let monthlysalenode = "Mymonthly/"+ currentMonth+currentYear ;
-        firebase.database().ref(monthlysalenode).update({
+   firebase.database().ref('Mycustomercreditclearance/'+ clearedcustomer + "/" + timestamp).set(clearencereciept)
+  .then(function() {
+     // update monthly sales 
 
-       TotalSale: firebase.database.ServerValue.increment(grandamount)       
-   
-      }).then(() => {
-   
+    myAlertRefresh(success, "Clearance completed ");
+    
   })
-  .catch((error) => {
-     myAlert(failed, "Cummulative not sales captured");
+  .catch(function(error) {
+     myAlert(failed, "Clearance not completed ");
   });
 
-  // update cashier sales 
-     
-     email = email.replace(/[@.]/g, "&");
-
-    let cashiersales = "Mycashierclearence/"+ email ;
-        firebase.database().ref(cashiersales).update({
-
-       //CashierTotalSale: firebase.database.ServerValue.increment(grandamount)       
    
-      }).then(() => {
+     
+         // update customer credit
+
+   let updatethiscustomer = "Mycustomercredit/"+ clearedcustomer;
+        firebase.database().ref(updatethiscustomer).update({
+
+       CreditDueDate: clearingdate,
+       CustomerTotalCredit : customernewbalance
        
+   
+      }).then(() => {
+   
   })
   .catch((error) => {
-     myAlert(failed, "Cummulative not cashier sales captured");
+     myAlert(failed, "Cummulative credit  captured");
   });
-
-
 
    
   var newWin = window.open('', 'Print-Window');
@@ -308,7 +327,7 @@ printerclearance.addEventListener('click', () =>{
 
   }, 10);
  
-   */
+   
 
 
 
@@ -318,15 +337,6 @@ printerclearance.addEventListener('click', () =>{
     myAlert(failed, "Generation status not clear refresh and regenerate");
        }
 })
-
-
-
-
-
-
-
-
-
 
 
 

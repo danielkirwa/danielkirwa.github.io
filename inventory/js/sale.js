@@ -538,16 +538,16 @@ findStaffRoleByEmail(targetEmail)
        // window.location.href='dashboard.html';
       	usernamedisplay.innerHTML = email;
       	receiptname.innerHTML = email;
-      }
-      if (role == "Cashier") {
+      }else if (role == "Cashier") {
         
        usernamedisplay.innerHTML = email;
        //window.location.href='saledesk.html';
        receiptname.innerHTML = email
-      }
-      if (role == "SalesLead") {
+      }else if (role == "SalesLead") {
         usernamedisplay.innerHTML = email;
         receiptname.innerHTML = email
+      }else{;
+      	window.location.href='../index.html';
       }
 
     } else {
@@ -562,7 +562,7 @@ findStaffRoleByEmail(targetEmail)
   
   
       }else{
-        //myAlert("No Active user");
+        window.location.href='../index.html';
       }
     })
 

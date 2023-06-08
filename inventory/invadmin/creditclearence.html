@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Sale Desk</title>
+	<title>Customer clearence</title>
 	<link rel="stylesheet" type="text/css" href="../css/index.css">
 	<link rel="stylesheet" type="text/css" href="../css/nav.css">
   <link rel="stylesheet" type="text/css" href="../css/dashboard.css">
@@ -61,13 +61,7 @@
     </div>
   </div>
   <a href="setting.html" class="nocashier nosalelead">Settings</a>
-  <div class="subnav nocashier nosalelead">
-    <button class="subnavbtn" style=" background:  #0067a0;">Sales <i class="fa fa-caret-down"></i></button>
-    <div class="subnav-content">
-      <a href="saledesk.html">Sales Desk</a>
-      <a href="creditclearence.html">Credit</a>
-    </div>
-  </div>
+  <a href="saledesk.html" style=" background:  #0067a0;">Sale Desk</a>
   <div class="subnav">
     <button class="subnavbtn"><span id="usernamedisplay"></span><i class="fa fa-caret-down"></i></button>
     <div class="subnav-content">
@@ -81,24 +75,12 @@
 
 <!-- start of dashboard -->
 <br><br>
-<div class="dashboard">Welcome to cash/deposit sale desk
+<div class="dashboard">Welcome to credit clearence desk
    <div class="general-banner">
     <div class="small-card">
-    <center> <label class="my-label">Total Items</label><br>
-    <label class="my-label" id="snolabel">0</label>
+    <center> <label class="my-label" style="color: crimson;">Once customer cleared can not be undone</label><br>
     </center>
     </div>
-      <div class="small-card">
-        <center> <label class="my-label">Total Discount</label><br>
-    <label class="my-label">0</label>
-    </center>
-      </div>
-       <div class="small-card">
-         
-           <center> <label class="my-label">Total Amount</label><br>
-    <label class="my-label" id="priceholder">0</label>
-    </center>
-       </div>
     
    </div>
 
@@ -108,46 +90,81 @@
 
  
  <div class="general-banner">
-    <div class="small-card">
-      
-       <select name="courseName" class="my-input" id="Itemselected">
-   <option>Select Product/Item</option>
- 
-</select>
-
-    </div>
-   
+  
       <div class="small-card">
-     <input type="text" name="productcode" value="" class="my-input"  placeholder="Enter code P-S00-1 or Name">
+     <input type="text" id="customersearchid" value="" class="my-input"  placeholder="Enter customer ID">
       </div>
       <div class="small-card">
-        <input type="submit" name="selectproduct" value="Select Product/Item" class="my-btn">
+        <button id="searchcustomerid" class="my-btn"> Search Customer to clear</button>
       </div>
    
    </div>
    <div class="general-banner">
 
     <div class="small-card">
-
-
-      <label id="newselectitem">No item selected</label><br>
-      <input type="hidden" name="itemname" value="" id="txtnewselectitem">
-      <label id="newselectprice">0.00</label><br>
-      <input type="hidden" name="itemprice" value="" id="txtnewselectprice">
-       <label id="newselectcode"></label><br>
-      <input type="hidden" name="itemprice" value="" id="txtnewselectedcode">
+      <span><b>Name : </b></span><label id="newcustomername">No customer found</label><br>
+      <span><b>Status : </b></span><label id="newcustomerstatus">Status</label><br>
+       <span><b>Email : </b></span><label id="newcustomeremail">Email</label><br>
+       <span><b>Phone : </b></span><label id="newcustomerphone">Primary Phone</label><br>
       <!-- add hidden inputs to hold values  -->
-   
     </div>
-      <div class="small-card">
-     <input type="number" value="" class="my-input" id="itemcounter">
-       </div>
-      <div class="small-card" >
-        <input type="submit" value="Add to Reciept" class="my-btn" id="btnaddtorecipt" name="makesale">
-      </div>
-     
+
+    <div class="small-card">
+    <span><b>Other Phone :</b></span><label id="newcustomerotherphone">Secondary Phone</label><br>
+      <span><b>Region : </b></span><label id="newcustomerregion">Region</label><br>
+      <span><b>Town : </b></span><label id="newcustomertown">Town</label><br>
+      <span><b>Village : </b></span><label id="newcustomervillage">Village</label><br>
+      <span><b>ID Number : </b></span><label id="newcustomeridnumber"></label><br>
+      <!-- add hidden inputs to hold values  -->
+    </div>
         </div>
 
+          <div class="general-banner">
+          <div class="small-card">
+    <center> <label class="my-label">Current amount :</label><br>
+    </center>
+    </div>
+    <div class="small-card">
+    <center> <label class="my-label" id="currentcredit">0</label><br>
+      <input type="hidden" name="" id="hidecurrentcredit" value="">
+    </center>
+    </div>
+    
+   </div>
+
+      
+       <div class="general-banner">
+          <div class="small-card">
+    <center> <label class="my-label">Amount to pay:</label><br>
+    </center>
+    </div>
+    <div class="small-card">
+    <center> <input type="text" name="" class="my-input" id="newamounttorepay"> <br>
+    </center>
+    </div>
+    
+   </div>
+
+
+
+         <div class="general-banner">
+           <div class="small-card">
+    <center> <label class="my-label">Extend if balance:</label><br>
+    </center>
+    </div>
+           <div class="small-card" >
+        <input type="date" name="" id="cutomerpaydate" class="my-input" onchange="validatecreditDate()">
+      </div>
+
+        </div>
+
+        <div class="general-banner">
+           <div class="small-card" >
+        <button id="generatereciept" class="my-btn"> Generate Reciept</button>
+      </div>
+        </div>
+
+        
 
 <!-- end of select item -->
  
@@ -170,10 +187,10 @@
     </div>
   <table id="reciepttable">
     <thead>
-      <th>Item </th>
+      <th> </th>
       <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-      <th>Count</th>
-      <th>Amount</th>
+      <th>Credit Clearance </th>
+      <th></th>
       <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
     </thead>
     <tbody id="recieptbody">       
@@ -190,22 +207,39 @@
         <center> <label class="my-label">Totals</label><br>
     </center>
 
-     <table style="min-width: 600px;">
+     <table style="min-width: 800px;">
        <thead>
         <th>Payment information</th>
-         <th>Total</th>
-         <th>Discount</th>
-         <th>Grand Total</th>
+         <th>Total Credit</th>
+         <th>Amount Paid</th>
+         <th>New Balance</th>
        </thead>
        <tr>
         <td>
           <label>Served by :  <span id="receiptname"></span></label><br>
     <label>Date : <span id="receiptdate"></span></label><br>
-    <label><span>Sale type : </span> Cash/Deposit</label><br>
+    <label><span>Sale type : </span> Credited Customer</label><br>
         </td>
-         <td id="tblpriceholder">0.00</td>
-         <td>0.00</td>
-         <td id="tblgrandpriceholder">0.00</td>
+         <td id="">--</td>
+         <td>--</td>
+         <td id="">--</td>
+       </tr>
+
+       <!-- customer details -->
+
+        <tr>
+        <td>
+          <label>Customer :  <span id="recieptcustomername"></span></label><br>
+          <label>Email :  <span id="recieptcustomeremail"></span></label><br>
+          <label>Phone :  <span id="recieptcustomerphone"></span></label><br>
+          <label><span>Sale type : </span> Credit </label><br>
+          <label>Clear date : <span id="receiptcleardate"></span></label><br>
+          <label>Location :  <span id="recieptcustomerlocation"></span></label><br>
+          <label>Address :  <span id="recieptcustomeraddress"></span></label><br>
+        </td>
+         <td id="tbltotalcredit">0.00</td>
+         <td id="tblpaiedcredit">0.00</td>
+         <td id="tblcreditbalance">0.00</td>
        </tr>
      </table>
 
@@ -224,12 +258,9 @@
 </div>
 
  <div class="general-banner">
-    <div class="small-card">      
-     <center> <button class="my-btn" id="printer">Make Cash Sale</button> </center>
-    </div>
-   
+       
       <div class="small-card">
-     <center> <button class="my-btn" id="printercredit">Make Credit Sale  >>></button> </center>
+     <center> <button class="my-btn" id="printer">Clear Customer</button> </center>
       </div>
  
    </div>
@@ -259,6 +290,26 @@
 
 
 
+<!-- confrimation -->
+<div id="confirmationModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2 style="color: crimson;">Confirm Deletion</h2>
+    <p>Are you sure you want to delete: 
+       <br>
+      <b> <label id="deleteiteminfor"></label></b>
+      <span><h2 style="color: crimson;">This action can not be undone</h2></span>
+    </p>
+    <div class="button-container">
+      <button id="confirmDelete" class="confrim-button" style="background: crimson;">Delete</button>
+      <button id="cancelDelete" class="confrim-button">Cancel</button>
+    </div>
+  </div>
+</div>
+
+
+
+
 
 
 <br><br><br><br><br><br>
@@ -272,7 +323,7 @@
 <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-database.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script>
  <script type="text/javascript" src="../js/config.js"></script>
-<script type="text/javascript" src="../js/sale.js"></script>
+<script type="text/javascript" src="../js/creditclearence.js"></script>
 
 
 </body>

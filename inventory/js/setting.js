@@ -42,12 +42,12 @@ findStaffRoleByEmail(targetEmail)
       
       if (role == "Admin") {
          usernamedisplay.innerHTML = email;
-      }
-      if (role == "Cashier") {
+      }else if (role == "Cashier") {
        window.location.href='../cashier/saledesk.html';
-      }
-      if (role == "Sales Lead") {
+      }else if (role == "Sales Lead") {
          usernamedisplay.innerHTML = email;
+      }else{
+        window.location.href='../index.html'
       }
 
     } else {
@@ -62,7 +62,7 @@ findStaffRoleByEmail(targetEmail)
   
   
       }else{
-        //myAlert("No Active user");
+         window.location.href='../index.html'
       }
     })
 

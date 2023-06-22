@@ -386,7 +386,7 @@ let thismonthsales = "Mymonthly/"+ currentMonth+currentYear ;
   }else{
     profitprev = +childData.TotalSale - +childData.TotalStockAmount;
     innerpreviousmonthsale.innerHTML = childData.TotalSale;
-    innerpreviousmonthstock.innerHTML = childData.TotalSale;
+    innerpreviousmonthstock.innerHTML = childData.TotalStockAmount;
     innerpreviousmonthprofit.innerHTML  = +childData.TotalSale - +childData.TotalStockAmount;
     lbtwomonthprofit.innerHTML = +profitprev + +profitthis;
      console.log(+profitprev + +profitthis);

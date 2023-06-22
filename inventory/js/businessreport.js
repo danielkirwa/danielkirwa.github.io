@@ -344,6 +344,68 @@ function getCreditStock() {
 }
 
 
+/// get profits for the months currently in 
+
+
+ function getCurrentProfit() {
+ let  innerpreviousmonthstock = document.getElementById('innerpreviousmonthstock');
+let innerpreviousmonthsale = document.getElementById('innerpreviousmonthsale');
+ let innerpreviousmonthprofit = document.getElementById('innerpreviousmonthprofit');
+let innerthismonthstock = document.getElementById('innerthismonthstock');
+ let innerthismonthsale = document.getElementById('innerthismonthsale');
+ let innerthismonthprofit = document.getElementById('innerthismonthprofit'); 
+let lbtwomonthprofit = document.getElementById('lbtwomonthprofit');
+let lbcurrentmonthprofit = document.getElementById('lbcurrentmonthprofit');
+let lbviewprevious = document.getElementById('lbviewprevious');
+let lbviewthis = document.getElementById('lbviewthis');
+lbcurrentmonthprofit.innerHTML = "Profits of : "  + previousMonthName + " /" + currentYear +  " vs " + currentMonth + " /" + currentYear;
+lbviewthis.innerHTML = currentMonth + " /" + currentYear;
+lbviewprevious.innerHTML = previousMonthName + " /" + currentYear;
+   let profitprev = 0 , profitthis = 0;
+  /*--------------------------------------*/
+let thismonthsales = "Mymonthly/"+ currentMonth+currentYear ;
+  // get the stock 
+  var ref = firebase.database().ref(thismonthsales);
+  ref.once('value').then(function(snapshot) {
+  var childData = snapshot.val();
+  if (childData == null) {
+     myAlert(warning, "No Cash sales found this month of : <br>" + currentMonth + " " + currentYear);
+  }else{
+    profitthis = +childData.TotalSale - +childData.TotalStockAmount;
+    innerthismonthsale.innerHTML = "Sales :" + childData.TotalSale;
+    innerthismonthstock.innerHTML = "Stock :" + childData.TotalStockAmount;
+    innerthismonthprofit.innerHTML  = +childData.TotalSale - +childData.TotalStockAmount;
+    // get previous
+    let previousmonthsales = "Mymonthly/"+ previousMonthName+currentYear ;
+  // get the stock 
+  var ref = firebase.database().ref(previousmonthsales);
+  ref.once('value').then(function(snapshot) {
+  var childData = snapshot.val();
+  if (childData == null) {
+     myAlert(failed, "No sales found")
+  }else{
+    profitprev = +childData.TotalSale - +childData.TotalStockAmount;
+    innerpreviousmonthsale.innerHTML = childData.TotalSale;
+    innerpreviousmonthstock.innerHTML = childData.TotalSale;
+    innerpreviousmonthprofit.innerHTML  = +childData.TotalSale - +childData.TotalStockAmount;
+    lbtwomonthprofit.innerHTML = +profitprev + +profitthis;
+     console.log(+profitprev + +profitthis);
+  }
+  
+});
+  }
+  
+
+});
+
+  lbtwomonthprofit.innerHTML = +profitprev + +profitthis;
+  console.log(+profitprev + +profitthis);
+}
+getCurrentProfit();
+
+
+
+
 
 
 /// get business name and data 

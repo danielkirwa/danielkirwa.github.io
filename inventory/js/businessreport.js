@@ -13,6 +13,10 @@ let averagecredit = 0;
 let totalcredit = 0;
 let averageSales = 0;
 let totalSales = 0;
+// stock variables 
+let totalStockCash = 0;
+let totalStockCredit = 0;
+let totalStockWorth = 0;
 /* =============================================================*/
   // cash sale select
 // Fetch sales data for a specific month
@@ -254,6 +258,91 @@ getAllMonthsSales()
   .catch((error) => {
     console.error("Error:", error);
   });
+
+
+
+
+/// get the stock worth for the business since start
+
+
+
+
+  function getStockWorthSince() {
+  let tbltotalcashstock = document.getElementById('tbltotalcashstock');
+  let tbltotalcreditstock = document.getElementById('tbltotalcreditstock');
+  let tblgrandtotalstock = document.getElementById('tblgrandtotalstock');
+  let tbltotalcachstockpercent = document.getElementById('tbltotalcachstockpercent');
+  let tbltotalcreditstockpercent = document.getElementById('tbltotalcreditstockpercent');
+  let tblgrandtotalstockpercent = document.getElementById('tblgrandtotalstockpercent');
+  getCashStock()
+    .then((cashWorth) => {
+      totalStockCash = cashWorth;
+      return getCreditStock();
+    })
+    .then((creditWorth) => {
+      totalStockCredit = creditWorth;
+
+       totalStockWorth = totalStockCash + totalStockCredit;
+      console.log("Total Stock Worth:", totalStockWorth);
+      tbltotalcashstock.innerHTML = totalStockCash;
+      tbltotalcreditstock.innerHTML = totalStockCredit;
+      tblgrandtotalstock.innerHTML = totalStockWorth;
+      tbltotalcachstockpercent.innerHTML = ((totalStockCash/totalStockWorth)*100).toFixed(2) +"%"
+      tbltotalcreditstockpercent.innerHTML = ((totalStockCredit/totalStockWorth)*100).toFixed(2) +"%"
+      tblgrandtotalstockpercent.innerHTML = (((totalStockCash/totalStockWorth)*100) + ((totalStockCredit/totalStockWorth)*100)).toFixed(2) + "%";
+
+      // Do further processing or display the stock worth as needed
+    })
+    .catch((error) => {
+      console.error("Error retrieving stock worth:", error);
+    });
+}
+
+
+
+getStockWorthSince();
+function getCashStock() {
+  return new Promise((resolve, reject) => {
+    const cashRef = firebase.database().ref("StockWorth/Cash");
+    cashRef.once("value")
+      .then((snapshot) => {
+        const childData = snapshot.val();
+        if (childData == null) {
+          resolve(0);
+        } else {
+          totalStockCash = childData.TotalCashWorth;
+          console.log(totalStockCash);
+          resolve(totalStockCash);
+        }
+      })
+      .catch((error) => {
+        console.error("Error retrieving sales data for cash stock", error);
+        reject(error);
+      });
+  });
+}
+
+function getCreditStock() {
+  return new Promise((resolve, reject) => {
+    const creditRef = firebase.database().ref("StockWorth/Credit");
+    creditRef.once("value")
+      .then((snapshot) => {
+        const childData = snapshot.val();
+        if (childData == null) {
+          resolve(0);
+        } else {
+          totalStockCredit = childData.TotalCreditWorth;
+          console.log(totalStockCredit);
+          resolve(totalStockCredit);
+        }
+      })
+      .catch((error) => {
+        console.error("Error retrieving sales data for cash stock", error);
+        reject(error);
+      });
+  });
+}
+
 
 
 

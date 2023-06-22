@@ -27,12 +27,15 @@ let tblgrandpriceholder = document.getElementById('tblgrandpriceholder');
 var count;
 var item 
 var totalamount;
+var totalamountbusiness;
 var removeditem = 0;
 var grandamount = 0;
 var recieptitems = 0
+var grandamountbuying = 0;
 var producttocodeupdate;
 var availableproductunittoupdate;
 var newavailableproductunittoupdate;
+var selectedbuyingprice = 0;
 
 /*function updateValue(e) {
   var price = Itemselected.options[Itemselected.selectedIndex].value;
@@ -107,10 +110,12 @@ function updateValue(e) {
 
     } else {
       totalamount = +count * +price;
+      totalamountbusiness = +count * +selectedbuyingprice;
       newselectprice.innerHTML = "Ksh. " + totalamount;
       txtnewselectitem.innerHTML = "" + item;
       txtnewselectprice.innerHTML = "" + price;
      // console.log(newavailableproductunittoupdate);
+      console.log(totalamountbusiness);
     }
   }
 }
@@ -120,12 +125,15 @@ function updateValue(e) {
 
 let recieptitemsarray = [];
 let storedArray = [];
+let recieptitemsarraybuying = [];
+let storedArraybuying = [];
 
 itemselected.addEventListener("change", function(){ 
 item = Itemselected.options[Itemselected.selectedIndex].text;
 var price = Itemselected.options[Itemselected.selectedIndex].value;
 producttocodeupdate = Itemselected.options[Itemselected.selectedIndex].id;
 availableproductunittoupdate = Itemselected.options[Itemselected.selectedIndex].data;
+selectedbuyingprice = Itemselected.options[Itemselected.selectedIndex].dataBuying;
 	newselectitem.innerHTML=  "Item. " +item;
 	newselectprice.innerHTML= "Ksh. " +price;
 	newselectcode.innerHTML = "Code. " + producttocodeupdate;
@@ -137,7 +145,7 @@ availableproductunittoupdate = Itemselected.options[Itemselected.selectedIndex].
 	totalamount = price;
 	newavailableproductunittoupdate = availableproductunittoupdate - 1;
 	//console.log(newavailableproductunittoupdate);
-	//console.log(producttocodeupdate);
+	console.log(selectedbuyingprice);
 
 });
 
@@ -181,12 +189,17 @@ var price = Itemselected.options[Itemselected.selectedIndex].value;
 var code = Itemselected.options[Itemselected.selectedIndex].id;
 let remover = '<button class="remove-btn" onclick="removeRow(this)">X</button>';
  recieptitemsarray = storedArray;
+ recieptitemsarraybuying = storedArraybuying;
  //console.log(recieptitemsarray);
    // push to an array
  let newitemtoreciept = [item,code, count, totalamount,remover];
+ let newbuyingprice = [item,code,totalamountbusiness];
  recieptitemsarray.push(newitemtoreciept);
+ recieptitemsarraybuying.push(newbuyingprice);
 let storedreciept = JSON.stringify(recieptitemsarray);
+let storedbuying = JSON.stringify(recieptitemsarraybuying);
 localStorage.setItem('curentreciept', storedreciept);
+localStorage.setItem('curentbuying', storedbuying);
 // update stock
 
 /// update 
@@ -214,12 +227,14 @@ onreloadshowitems();
 function onreloadshowitems(argument) {
 	// body...
 	let storeditems = localStorage.getItem('curentreciept');
-	if (storeditems == null) {
+	let storedbuyingprices = localStorage.getItem('curentbuying');
+	if (storeditems == null || storedbuyingprices == null) {
 
 	}else{
 
 // Convert the array string back to an array using JSON.parse()
  storedArray = JSON.parse(storeditems);
+ storedArraybuying = JSON.parse(storedbuyingprices);
 
 // Get the table body element
 let tableBody = document.getElementById('recieptbody');
@@ -242,7 +257,9 @@ storedArray.forEach(function(innerArray) {
 });
  grandamount = storedArray.reduce((a, b) => a + +b[3],0);
  recieptitems = storedArray.reduce((a, b) => a + +b[2],0);
-  //console.log(grandamount);
+ grandamountbuying = storedArraybuying.reduce((a,b) => a + +b[2],0);
+  console.log(grandamount);
+ console.log(grandamountbuying)
   priceholder.innerHTML = grandamount;
   tblpriceholder.innerHTML = grandamount;
   tblgrandpriceholder.innerHTML = grandamount;
@@ -277,9 +294,13 @@ function removeRow(button) {
  //console.log(removecode)
 
   recieptitemsarray = storedArray;
+  recieptitemsarraybuying = storedArraybuying;
    recieptitemsarray.splice(rowtoremoveformarray,1);
+   recieptitemsarraybuying.splice(rowtoremoveformarray,1);
    let storedreciept = JSON.stringify(recieptitemsarray);
+   let storedbuying = JSON.stringify(recieptitemsarraybuying);
 localStorage.setItem('curentreciept', storedreciept);
+localStorage.setItem('curentbuying', storedbuying);
 //console.log(recieptitemsarray);
 			//remove row after subtraction
 /// update product count
@@ -299,7 +320,12 @@ localStorage.setItem('curentreciept', storedreciept);
 
 // print reciept
 
+
 printer.addEventListener('click', () => {
+  if (storedArray.length === 0) {
+  myAlertRefresh(warning, "Select item and add it to the reciept");
+} else {
+
   var divToPrint = document.getElementById("readyreciept").innerHTML;
   var donotprint = document.querySelectorAll(".remove-btn");
   var timestamp = Date.now();
@@ -338,7 +364,8 @@ printer.addEventListener('click', () => {
     let monthlysalenode = "Mymonthly/"+ currentMonth+currentYear ;
         firebase.database().ref(monthlysalenode).update({
 
-       TotalSale: firebase.database.ServerValue.increment(grandamount)       
+       TotalSale: firebase.database.ServerValue.increment(grandamount),
+       TotalStockAmount : firebase.database.ServerValue.increment(grandamountbuying)       
    
       }).then(() => {
    
@@ -377,7 +404,7 @@ printer.addEventListener('click', () => {
  
 
 
-
+}
 });
 
 
@@ -415,6 +442,7 @@ ref.on("value", function(snapshot) {
     var selling = childData.Selling;
     var code = childData.Code;
     var available = childData.AvailableUnits;
+    var buying = childData.Buying;
     
     if (available >= 1) { // Add condition to check if AvailableUnits > 1
       var option = document.createElement("option");
@@ -422,6 +450,7 @@ ref.on("value", function(snapshot) {
       option.value = selling;
       option.id = code;
       option.data = available;
+      option.dataBuying = buying;
       itemselected.add(option);
     }
   });

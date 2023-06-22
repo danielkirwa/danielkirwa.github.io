@@ -96,11 +96,21 @@
       	<center>
           <label class="small-label">Description</label><br>
            </center>
-          </textarea>
           <textarea id="description" rows="4" cols="40" placeholder="Describe stock here..."></textarea>
          
       </div>
-         </div>
+       <div class="card">
+        <center>
+          <label class="small-label">Stock Worth</label><br>
+           </center> 
+           <select class="my-input" id="acquisitionmode">
+             <option value="Cash">Cash</option>
+             <option value="OnCredit">On Creadit</option>
+           </select>
+           <label>Enter amount </label>
+          <input type="text" id="acquisitionprice" placeholder="Acquisition Price" class="my-input" oninput="restrictToNumbers(acquisitionprice)">
+      </div>
+    </div>
 
     <div class="input-holder">
       <div class="card">
@@ -114,7 +124,7 @@
       <div class="card">
       	<center>
       	<label class="small-label">Unit Count</label><br>
-          <input type="text" id="unitcount" placeholder="Unit count" class="my-input">
+          <input type="text" id="unitcount" placeholder="Unit count" class="my-input" oninput="restrictToNumbers(unitcount)">
           </center>
       </div>
    </div>
@@ -123,7 +133,7 @@
             <div class="card">
         <center>
         <label class="small-label">Units to Sale</label><br>
-          <input type="text" id="unitsale" placeholder="Units to sale" class="my-input">
+          <input type="text" id="unitsale" placeholder="Units to sale" class="my-input" oninput="restrictToNumbers(unitsale)">
           </center>
       </div>
        <div class="card">
@@ -183,6 +193,15 @@
   <p id="alertMessage"></p>
   <center>
   <button onclick="hideAlert()">OK</button>
+  </center>
+</div>
+
+
+<div id="alertBoxRefresh">
+  <h2 id="alertTitle1"></h2>
+  <p id="alertMessage1"></p>
+  <center>
+  <button onclick="hideAlertRefresh()">OK</button>
   </center>
 </div>
 

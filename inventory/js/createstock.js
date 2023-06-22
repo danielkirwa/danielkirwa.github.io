@@ -16,48 +16,63 @@ let unitcount = document.getElementById('unitcount');
 let unitsale = document.getElementById('unitsale').value;
 let clearby = document.getElementById('clearby').value;
 var selectunit = document.getElementById("unit");
+let acquisitionprice = document.getElementById('acquisitionprice').value
 var selectedUnitOption = selectunit.value;
+var selctedmode = document.getElementById('acquisitionmode');
+var acquisitionmode = selctedmode.value;
 
 
 
 // validate data
  
- if (stockname == "" || code == "" || description == "" || unitcount == "" || selectedUnitOption == "" || unitsale == "" || clearby == "") {
-  let fillerror,fillerror1,fillerror2,fillerror3,fillerror4,fillerror5,fillerror6,fillerror7;
+ if (stockname == "" || code == "" || description == "" || unitcount == "" || selectedUnitOption == "" || unitsale == "" || clearby == "" || acquisitionmode == "" || acquisitionprice == "") {
+  let fillerror,fillerror1,fillerror2,fillerror3,fillerror4,fillerror5,fillerror6,fillerror7,fillerror8,fillerror9;
    if (stockname == "") {
-      fillerror1 = " Enter stock name";
+      fillerror1 = "<br> Enter stock name";
     }else{
       fillerror1 = "";
     }
     if (code == "") {
-      fillerror2 = " Enter code";
+      fillerror2 = "<br> Enter code";
     }else{
       fillerror2 = "";
     }
     if (description == "") {
-      fillerror3 = " Add description";
+      fillerror3 = "<br> Add description";
     }else{
       fillerror3 = "";
     }
     if (unitcount == "") {
-      fillerror4 = " Enter count";
+      fillerror4 = "<br> Enter count";
     }else{
       fillerror4 = "";
     }
     if (selectedUnitOption == "") {
-      fillerror5 = " Select Units measure";
+      fillerror5 = "<br> Select Units measure";
     }else{
       fillerror5 = "";
     }
     if (unitsale == "") {
-      fillerror6 = " Enter units available for sale";
+      fillerror6 = "<br> Enter units available for sale";
     }else{
       fillerror6 = "";
     }
     if (clearby == "") {
-      fillerror7 = " Enter expected date to clear the stock";
+      fillerror7 = "<br> Enter expected date to clear the stock";
     }else{
       fillerror7 = "";
+    }
+    if (acquisitionmode == "") {
+      fillerror8 = "<br> Select mode of acquisition"
+    }else{
+       fillerror8 = "";
+       
+    }
+    if (acquisitionprice == "") {
+      fillerror9 = "<br> Enter stock worth"
+    }else{
+       fillerror9 = "";
+      
     }
 
   
@@ -65,7 +80,7 @@ var selectedUnitOption = selectunit.value;
 
 
 
-  fillerror = 'Fill in the following :  ' + fillerror1 +  fillerror2 +  fillerror3 +  fillerror4 +  fillerror5 +  fillerror6 +  fillerror7;
+  fillerror = ' <b> Fill in the following : </b>  ' + fillerror1 +  fillerror2 +  fillerror3 +  fillerror4 +  fillerror5 +  fillerror6 +  fillerror7 + fillerror8 + fillerror9;
   myAlert(warning, fillerror)
 
  }else{
@@ -82,6 +97,8 @@ var selectedUnitOption = selectunit.value;
       Unit: selectedUnitOption,
       ClearBy: clearby,
       UnitSale: unitsale,
+      AcquisitionMode: "AllCashed",
+      AcquisitionPrice: acquisitionprice,
       Status: 1
 
     },  (error) => {
@@ -91,12 +108,68 @@ var selectedUnitOption = selectunit.value;
      
   } else {
     // Data saved successfully!
-    myAlert(success, "New Stock added ready to  create product out of stock");
-    // Refresh the page after a delay of 3 seconds
-    setTimeout(function(){
-    location.reload();
-     }, 3000); // 
- 
+       // update worth
+    console.log(acquisitionmode + acquisitionprice);
+    if (acquisitionmode == "Cash") {
+
+         let stockWorth = "StockWorth/Cash";
+         firebase.database().ref(stockWorth).update({
+           TotalCashWorth: firebase.database.ServerValue.increment(parseFloat(acquisitionprice))
+         })
+         .then(() => {
+           // Success
+          myAlertRefresh(success, "Stock added success")
+         })
+         .catch((error) => {
+           myAlert(failed, "Cumulative worth not saved");
+         });
+
+   
+    }else{
+      let stockWorth = "StockWorth/Credit";
+              firebase.database().ref(stockWorth).update({
+
+             TotalCreditWorth: firebase.database.ServerValue.increment(parseFloat(acquisitionprice))       
+   
+            }).then(() => {
+
+              // save credit stock for refrence and clearance later 
+              firebase.database().ref('Mycreditstock/' + code).set({
+
+      StockName: stockname,
+      Unitcount: unitcount,
+      Description: description,
+      Code: code,
+      Createby: email,
+      DateAdded: datetoday,
+      Unit: selectedUnitOption,
+      ClearBy: clearby,
+      UnitSale: unitsale,
+      AcquisitionMode: "Credit",
+      AcquisitionPrice: acquisitionprice,
+      RepaidAmount: 0,
+      Balance: acquisitionprice,
+      Status: 1
+
+    },  (error) => {
+  if (error) {
+    // The write failed...
+     myAlert(failed, "Failed add new Stock");
+     
+  } else {
+
+       myAlertRefresh(success, "Stock added success")
+
+  }
+}
+  );
+   
+        })
+        .catch((error) => {
+           myAlert(failed, "Cummulative worth not saved");
+        });
+
+    }
   }
 } );
 
@@ -156,6 +229,17 @@ var selectedUnitOption = selectunit.value;
       });
 
 
+// only numbers 
+
+ function restrictToNumbers(inputField) {
+    inputField.addEventListener("input", function() {
+      let inputValue = inputField.value;
+      inputValue = inputValue.replace(/\D/g, ""); // Remove non-numeric characters
+      inputField.value = inputValue;
+    });
+  }
+
+
 
 // off your code 
 // alert 
@@ -173,6 +257,24 @@ function myAlert(title,message) {
 function hideAlert() {
   var alertBox = document.getElementById("alertBox");
   alertBox.style.display = "none";
+}
+
+
+
+function myAlertRefresh(title,message) {
+  var alertBox = document.getElementById("alertBoxRefresh");
+  var alertTitle = document.getElementById("alertTitle1");
+  var alertMessage = document.getElementById("alertMessage1");
+  
+  alertTitle.innerHTML = title;
+  alertMessage.innerHTML = message;
+  alertBox.style.display = "block";
+}
+
+function hideAlertRefresh() {
+  var alertBox = document.getElementById("alertBoxRefresh");
+  alertBox.style.display = "none";
+  location.reload();
 }
 
 /// get business name and data 

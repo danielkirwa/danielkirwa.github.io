@@ -385,8 +385,8 @@ let thismonthsales = "Mymonthly/"+ currentMonth+currentYear ;
      myAlert(failed, "No sales found")
   }else{
     profitprev = +childData.TotalSale - +childData.TotalStockAmount;
-    innerpreviousmonthsale.innerHTML = childData.TotalSale;
-    innerpreviousmonthstock.innerHTML = childData.TotalStockAmount;
+    innerpreviousmonthsale.innerHTML = "Sales : " + childData.TotalSale;
+    innerpreviousmonthstock.innerHTML = "Stock : " + childData.TotalStockAmount;
     innerpreviousmonthprofit.innerHTML  = +childData.TotalSale - +childData.TotalStockAmount;
     lbtwomonthprofit.innerHTML = +profitprev + +profitthis;
      console.log(+profitprev + +profitthis);
@@ -397,15 +397,93 @@ let thismonthsales = "Mymonthly/"+ currentMonth+currentYear ;
   
 
 });
-
-  lbtwomonthprofit.innerHTML = +profitprev + +profitthis;
-  console.log(+profitprev + +profitthis);
 }
 getCurrentProfit();
 
 
+// get the whole year profit generated
+function allYearProfit() {
+  let innerthisyearsale = document.getElementById('innerthisyearsale');
+  let innerthisyearstock = document.getElementById('innerthisyearstock');
+  let lbyearprofit = document.getElementById('lbyearprofit');
+  //const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  const currentYear = new Date().getFullYear();
+  const firebaseRef = firebase.database().ref("Mymonthly/"); // Replace with your Firebase reference
 
+  let promises = months.map(month => {
+    const node = `${month}${currentYear}`;
+    return firebaseRef.child(node).once('value').then(snapshot => {
+      const data = snapshot.val();
+      if (data) {
+        const { TotalSale, TotalStockAmount } = data;
+        return {
+          month,
+          totalSale: +TotalSale,
+          totalStock: +TotalStockAmount
+        };
+      }
+      return null;
+    });
+  });
 
+ Promise.all(promises).then(results => {
+  let totalSaleSum = 0;
+  let totalStockSum = 0;
+  let chartData = [];
+
+  results.forEach(result => {
+    if (result) {
+      const { month, totalSale, totalStock } = result;
+      totalSaleSum += totalSale;
+      totalStockSum += totalStock;
+
+      
+      chartData.push({ month: month.slice(0, 3), totalSale, totalStock });
+    }
+  });
+
+  //console.log(`Total Sales for ${currentYear}: ${totalSaleSum}`);
+  //console.log(`Total Stock for ${currentYear}: ${totalStockSum}`);
+      innerthisyearsale.innerHTML = "Sale this year : " + totalSaleSum;
+      innerthisyearstock.innerHTML = "Stoack this year : " + totalStockSum;
+      lbyearprofit.innerHTML = +totalSaleSum - +totalStockSum;
+
+  // Create a bar chart
+  const ctx = document.getElementById('chart').getContext('2d');
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: chartData.map(data => data.month),
+      datasets: [
+        {
+          label: 'Total Sale',
+          data: chartData.map(data => data.totalSale),
+          backgroundColor: 'rgba(75, 192, 192, 0.6)'
+        },
+        {
+          label: 'Total Stock',
+          data: chartData.map(data => data.totalStock),
+          backgroundColor: 'rgba(255, 99, 132, 0.6)'
+        }
+      ]
+    },
+    // Update the options in the Chart.js configuration
+options: {
+  responsive: true,
+  maintainAspectRatio: false,
+  scales: {
+    y: {
+      beginAtZero: true
+    }
+  }
+}
+
+  });
+});
+
+}
+
+allYearProfit();
 
 
 /// get business name and data 

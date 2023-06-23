@@ -225,7 +225,7 @@
     <!-- Profit view-->
      <div class="input-holder">
        <div class="card-margin">
-      <center><label class="my-label" id="">This Year profit</label><br>
+      <center><label class="my-label"  id="lbcurrentyearprofit">This Year profit</label><br>
           </center>
           <hr>
            <div class="card-inner">
@@ -233,14 +233,14 @@
                <center><img src="../assets/saleicon.png"> </center>
             </div>
             <div class="float-right">
-              <label class="my-label-small blue-text">Sale summary and growth/ Mont</label><br>
-              <label class="my-label-small orange-text" id="">Cash</label><br>
-               <label class="my-label-small orange-text" id="">Credit</label>
+              <label class="my-label-small blue-text">Annual profit only current year</label><br>
+              <label class="my-label-small orange-text" id="innerthisyearsale">sales</label><br>
+               <label class="my-label-small orange-text" id="innerthisyearstock">stock</label>
             </div> 
           </div>
           
           <hr>
-          <center><label class="my-label">Profit Tsh. <span id=""></span></label><br>
+          <center><label class="my-label">Profit Tsh. <span id="lbyearprofit"></span></label><br>
           </center>
           <hr>
         </div>
@@ -273,6 +273,16 @@
           </center>
           <hr>
         </div>
+
+        <!-- profit comparison -->
+
+         <div class="card-long">
+        <center>
+          <label class="small-label">Profit sale comparison last 1 year</label><br>
+           </center>
+            <canvas id="chart" width="50%" height="200px"></canvas>
+         
+      </div>
   
 
          </div>

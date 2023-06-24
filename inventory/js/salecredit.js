@@ -30,6 +30,7 @@ var item
 var totalamount;
 var removeditem = 0;
 var grandamount = 0;
+var grandamountbuying = 0;
 var recieptitems = 0
 var producttocodeupdate;
 var availableproductunittoupdate;
@@ -41,20 +42,24 @@ var newavailableproductunittoupdate;
 
 let recieptitemsarray = [];
 let storedArray = [];
+let recieptitemsarraybuying = [];
+let storedArraybuying = [];
 
 
 
 // retain table of the reciept data for refresh and picking up
 onreloadshowitems();
 function onreloadshowitems(argument) {
-	// body...
-	let storeditems = localStorage.getItem('curentreciept');
-	if (storeditems == null) {
+  // body...
+  let storeditems = localStorage.getItem('curentreciept');
+  let storedbuyingprices = localStorage.getItem('curentbuying');
+  if (storeditems == null || storedbuyingprices == null) {
 
-	}else{
+  }else{
 
 // Convert the array string back to an array using JSON.parse()
  storedArray = JSON.parse(storeditems);
+ storedArraybuying = JSON.parse(storedbuyingprices);
 
 // Get the table body element
 let tableBody = document.getElementById('recieptbody');
@@ -77,7 +82,9 @@ storedArray.forEach(function(innerArray) {
 });
  grandamount = storedArray.reduce((a, b) => a + +b[3],0);
  recieptitems = storedArray.reduce((a, b) => a + +b[2],0);
-  //console.log(grandamount);
+ grandamountbuying = storedArraybuying.reduce((a,b) => a + +b[2],0);
+  console.log(grandamount);
+ console.log(grandamountbuying)
   priceholder.innerHTML = grandamount;
   tblpriceholder.innerHTML = grandamount;
   tblgrandpriceholder.innerHTML = grandamount;
@@ -90,18 +97,17 @@ storedArray.forEach(function(innerArray) {
 
 
 
-
 // delete item
 function removeRow(button) {
-	let rowtoremoveformarray;
-	var removecount,remocevode;
-	var row = button.parentNode.parentNode;
-	 removeditem = row.getElementsByTagName("td")[3].textContent;
-	 removecount = row.getElementsByTagName("td")[2].textContent;
-	 removecode = row.getElementsByTagName("td")[1].textContent;
-	 grandamount = grandamount - +removeditem;
-	 priceholder.innerHTML = grandamount;
-	 tblpriceholder.innerHTML = grandamount;
+  let rowtoremoveformarray;
+  var removecount,remocevode;
+  var row = button.parentNode.parentNode;
+   removeditem = row.getElementsByTagName("td")[3].textContent;
+   removecount = row.getElementsByTagName("td")[2].textContent;
+   removecode = row.getElementsByTagName("td")[1].textContent;
+   grandamount = grandamount - +removeditem;
+   priceholder.innerHTML = grandamount;
+   tblpriceholder.innerHTML = grandamount;
      tblgrandpriceholder.innerHTML = grandamount;
      recieptitems = +recieptitems - removecount;
   snolabel.innerHTML = recieptitems;
@@ -112,11 +118,15 @@ function removeRow(button) {
  //console.log(removecode)
 
   recieptitemsarray = storedArray;
+  recieptitemsarraybuying = storedArraybuying;
    recieptitemsarray.splice(rowtoremoveformarray,1);
+   recieptitemsarraybuying.splice(rowtoremoveformarray,1);
    let storedreciept = JSON.stringify(recieptitemsarray);
+   let storedbuying = JSON.stringify(recieptitemsarraybuying);
 localStorage.setItem('curentreciept', storedreciept);
+localStorage.setItem('curentbuying', storedbuying);
 //console.log(recieptitemsarray);
-			//remove row after subtraction
+      //remove row after subtraction
 /// update product count
         firebase.database().ref('Myproduct/' + removecode + '/AvailableUnits').transaction(function(AvailableUnits) {
   if (AvailableUnits === null) {
@@ -126,10 +136,10 @@ localStorage.setItem('curentreciept', storedreciept);
   }
 });
 
-			row.parentNode.removeChild(row);
-			
+      row.parentNode.removeChild(row);
+      
 
-		}
+    }
 
 
 // print reciept
@@ -196,7 +206,8 @@ printer.addEventListener('click', () => {
     let monthlysalenode = "Mymonthlycredit/"+ currentMonth+currentYear ;
         firebase.database().ref(monthlysalenode).update({
 
-       TotalCredit: firebase.database.ServerValue.increment(grandamount)       
+       TotalCredit: firebase.database.ServerValue.increment(grandamount),
+       TotalStockAmount : firebase.database.ServerValue.increment(grandamountbuying)       
    
       }).then(() => {
    

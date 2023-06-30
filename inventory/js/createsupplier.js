@@ -6,7 +6,7 @@ var today = new Date();
 var datetoday = today.toLocaleDateString();
 let usernamedisplay = document.getElementById('usernamedisplay');
 var email;
-// write code here 
+
 // get all value holders
 let firstname = document.getElementById('firstname');
 let othername = document.getElementById('othername');
@@ -18,12 +18,15 @@ let region = document.getElementById('region');
 let district = document.getElementById('district');
 let town = document.getElementById('town');
 let village = document.getElementById('village');
-var selectedgender = document.getElementById("gender");
+let link = document.getElementById('link');
+var selectedtype = document.getElementById("type");
 let NewStatus;
 
 
-let addcustomer = document.getElementById('addcustomer');
-addcustomer.addEventListener("click" , () => {
+// add supplier
+
+let addsupplier = document.getElementById('addsupplier');
+addsupplier.addEventListener("click" , () => {
 let newfirstname = firstname.value
 let newothername = othername.value
 let newidnumber = idnumber.value
@@ -34,48 +37,49 @@ let newregion = region.value
 let newdistrict = district.value
 let newtown = town.value
 let newvillage = village.value
-var newselectedgender = selectedgender.value;
+let newlink = link.value;
+var newselectedtype = selectedtype.value;
 
 // validate
- if (newfirstname == "" || newidnumber == "" || newphone == "" || newregion == "" || newdistrict == "" || newtown == "" || newvillage == "" || newselectedgender == "") {
+ if (newfirstname == "" || newidnumber == "" || newphone == "" || newregion == "" || newdistrict == "" || newtown == "" || newvillage == "" || newselectedtype == "") {
   let fillerror,fillerror1,fillerror2,fillerror3,fillerror4,fillerror5,fillerror6,fillerror7,fillerror8;
    if (newfirstname == "") {
-      fillerror1 = "<br> Firstname";
+      fillerror1 = "<br> Supplier Firstname / organization";
     }else{
       fillerror1 = "";
     }
     if (newidnumber == "") {
-      fillerror2 = "<br> ID Number";
+      fillerror2 = "<br> Supplier ID Number / Code";
     }else{
       fillerror2 = "";
     }
     if (newphone == "") {
-      fillerror3 = "<br> Phone";
+      fillerror3 = "<br> Supplier Phone";
     }else{
       fillerror3 = "";
     }
     if (newregion == "") {
-      fillerror4 = "<br> Region";
+      fillerror4 = "<br> Supplier  Region";
     }else{
       fillerror4 = "";
     }
     if (newdistrict == "") {
-      fillerror5 = "<br> District";
+      fillerror5 = "<br> Supplier District";
     }else{
       fillerror5 = "";
     }
     if (newtown == "") {
-      fillerror6 = "<br> Town";
+      fillerror6 = "<br> Supplier Town";
     }else{
       fillerror6 = "";
     }
      if (newvillage == "") {
-      fillerror7 = "<br> Village / House";
+      fillerror7 = "<br> Supplier Village / House";
     }else{
       fillerror7 = "";
     }
-    if (newselectedgender == "") {
-      fillerror8 = "<br> Gender";
+    if (newselectedtype == "") {
+      fillerror8 = "<br> Supplier type";
     }else{
       fillerror8 = "";
     }
@@ -85,19 +89,20 @@ var newselectedgender = selectedgender.value;
   }else{
     
       // insert data or write
-    firebase.database().ref('Mycustomer/' + newidnumber).set({
+    firebase.database().ref('Mysupplier/' + newidnumber).set({
 
      FirstName: newfirstname,
      OtherName:  newothername,
      IDNumber: newidnumber,
-     CustomerPhone: newphone,
-     CustomerEmail: newemail,
-     CustomerOtherPhone: newotherphone,
-     CustomerRiegion: newregion,
-     CustomerDistrict: newdistrict,
-     CustomerTown: newtown,
-     CustomerVillage: newvillage,
-     CustomerGender: newselectedgender,
+     SupplierPhone: newphone,
+     SupplierEmail: newemail,
+     SupplierOtherPhone: newotherphone,
+     SupplierRiegion: newregion,
+     SupplierDistrict: newdistrict,
+     SupplierTown: newtown,
+     SupplierVillage: newvillage,
+     SupplierType: newselectedtype,
+     SupplierLink: newlink,
      CreatedBy: email,
      DateAdded: datetoday,
      Status: 1
@@ -105,11 +110,11 @@ var newselectedgender = selectedgender.value;
     },  (error) => {
   if (error) {
     // The write failed...
-     myAlert(failed, "Failed to save new customert");
+     myAlert(failed, "Failed to save new supplier");
      
   } else {
     // Data saved successfully!
-    myAlert(success, "New Customer save ");
+    myAlert(success, newfirstname +  " <br> Add a new Supplier  ");
     
     // Refresh the page after a delay of 3 seconds
     setTimeout(function(){
@@ -119,20 +124,15 @@ var newselectedgender = selectedgender.value;
   }
 } );
 
-
   }
-
-
 
 })
 
 
 
-// selected all data 
-
  // Retrieve data from Firebase database
-      var table = document.getElementById("customertable");
-      var ref = firebase.database().ref("Mycustomer");
+      var table = document.getElementById("suppliertable");
+      var ref = firebase.database().ref("Mysupplier");
       ref.on("value", function(snapshot) {
         snapshot.forEach(function(childSnapshot) {
           var childData = childSnapshot.val();
@@ -151,13 +151,14 @@ var newselectedgender = selectedgender.value;
           }
 
           cell1.innerHTML = childData.FirstName;
-          cell2.innerHTML = childData.CustomerEmail;
-          cell3.innerHTML = childData.CustomerPhone;
-          cell4.innerHTML = childData.CustomerDistrict;
-          cell5.innerHTML = childData.CustomerGender;
+          cell2.innerHTML = childData.SupplierEmail;
+          cell3.innerHTML = childData.SupplierPhone;
+          cell4.innerHTML = childData.SupplierDistrict;
+          cell5.innerHTML = childData.SupplierType;
           cell6.innerHTML = NewStatus;
         });
       });
+
 
 
 
@@ -193,10 +194,9 @@ function hideAlert() {
          lbbusinessname.innerHTML = storedBusiness[0];
 
 
-
 auth.onAuthStateChanged(function(user){
       if(user){
-        email = user.email;
+         email = user.email;
         //alert("Active user" + email);
          usernamedisplay.innerHTML = email;
       }else{

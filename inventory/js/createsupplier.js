@@ -1,4 +1,4 @@
-addunits = document.getElementById('addunit');
+
 var success = "&#9989; Success";
 var failed = "&#10060; Failed";
 var warning = "&#10071; Warning";
@@ -27,16 +27,16 @@ let NewStatus;
 
 let addsupplier = document.getElementById('addsupplier');
 addsupplier.addEventListener("click" , () => {
-let newfirstname = firstname.value
-let newothername = othername.value
-let newidnumber = idnumber.value
-let newphone = phone.value
-let newemail = customeremail.value
-let newotherphone = otherphone.value
-let newregion = region.value
-let newdistrict = district.value
-let newtown = town.value
-let newvillage = village.value
+let newfirstname = firstname.value;
+let newothername = othername.value;
+let newidnumber = idnumber.value;
+let newphone = phone.value;
+let newemail = customeremail.value;
+let newotherphone = otherphone.value;
+let newregion = region.value;
+let newdistrict = district.value;
+let newtown = town.value;
+let newvillage = village.value;
 let newlink = link.value;
 var newselectedtype = selectedtype.value;
 

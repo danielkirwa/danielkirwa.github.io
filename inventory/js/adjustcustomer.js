@@ -52,6 +52,7 @@ searchcustomerid.addEventListener('click', () =>{
      town.value = childData.CustomerTown;
      village.value = childData.CustomerVillage;
      selectedgender.value = childData.CustomerGender;
+     idnumber.readOnly = true;
 
   }
 }); 

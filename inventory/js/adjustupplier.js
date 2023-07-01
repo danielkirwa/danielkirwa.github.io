@@ -35,7 +35,7 @@ searchsupplierid.addEventListener('click', () =>{
   }else{
 
    var searchfor = txtsearchsupplierid;
-    let searchnode = "Mycustomer/"+ searchfor;
+    let searchnode = "Mysupplier/"+ searchfor;
     //console.log(searchnode);
   // get the stock 
   var ref = firebase.database().ref(searchnode);
@@ -44,18 +44,20 @@ searchsupplierid.addEventListener('click', () =>{
   if (childData == null) {
      myAlert(failed, "Search ID Number not found");
   }else{
-     myAlert(success, "Customer found Update with care <br> <b style=\"color:crimson;\"> ID Number can not be Updated <br>contact Support to update</b> <br> <i> Click ok to update other customer details</i>");
+     myAlert(success, "Supplier found Update with care <br> <b style=\"color:crimson;\"> ID Number can not be Updated <br>contact Support to update</b> <br> <i> Click ok to update other supllier details</i>");
      firstname.value = childData.FirstName;
      othername.value = childData.OtherName;
      idnumber.value = childData.IDNumber;
-     phone.value = childData.CustomerPhone;
-     customeremail.value = childData.CustomerEmail;
-     otherphone.value = childData.CustomerPhone;
-     region.value = childData.CustomerRiegion;
-     district.value = childData.CustomerDistrict;
-     town.value = childData.CustomerTown;
-     village.value = childData.CustomerVillage;
-     selectedgender.value = childData.CustomerGender;
+     phone.value = childData.SupplierPhone;
+     customeremail.value = childData.SupplierEmail;
+     otherphone.value = childData.SupplierOtherPhone;
+     region.value = childData.SupplierRiegion;
+     district.value = childData.SupplierDistrict;
+     town.value = childData.SupplierTown;
+     village.value = childData.SupplierVillage;
+     link.value = childData.SupplierLink;
+     selectedtype.value = childData.SupplierType;
+     idnumber.readOnly = true;
 
   }
 }); 
@@ -63,11 +65,6 @@ searchsupplierid.addEventListener('click', () =>{
   }
 
 })
-
-
-
-
-
 
 
 
@@ -99,3 +96,13 @@ function hideAlert() {
          lbbusinessname = document.getElementById('lbbusinessname');
          lbbusinessname.innerHTML = storedBusiness[0];
 
+auth.onAuthStateChanged(function(user){
+      if(user){
+         email = user.email;
+        //alert("Active user" + email);
+         usernamedisplay.innerHTML = email;
+      }else{
+        //alert("No Active user");
+        window.location.href='../index.html';
+      }
+    })

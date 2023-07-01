@@ -67,7 +67,107 @@ searchsupplierid.addEventListener('click', () =>{
 })
 
 
+//  adjust / update supplier
 
+let updatesupplier = document.getElementById('updatesupplier');
+updatesupplier.addEventListener("click" , () => {
+let newfirstname = firstname.value;
+let newothername = othername.value;
+let newidnumber = idnumber.value;
+let newphone = phone.value;
+let newemail = customeremail.value;
+let newotherphone = otherphone.value;
+let newregion = region.value;
+let newdistrict = district.value;
+let newtown = town.value;
+let newvillage = village.value;
+let newlink = link.value;
+var newselectedtype = selectedtype.value;
+
+// validate
+ if (newfirstname == "" || newidnumber == "" || newphone == "" || newregion == "" || newdistrict == "" || newtown == "" || newvillage == "" || newselectedtype == "") {
+  let fillerror,fillerror1,fillerror2,fillerror3,fillerror4,fillerror5,fillerror6,fillerror7,fillerror8;
+   if (newfirstname == "") {
+      fillerror1 = "<br> Supplier Firstname / organization";
+    }else{
+      fillerror1 = "";
+    }
+    if (newidnumber == "") {
+      fillerror2 = "<br> Supplier ID Number / Code";
+    }else{
+      fillerror2 = "";
+    }
+    if (newphone == "") {
+      fillerror3 = "<br> Supplier Phone";
+    }else{
+      fillerror3 = "";
+    }
+    if (newregion == "") {
+      fillerror4 = "<br> Supplier  Region";
+    }else{
+      fillerror4 = "";
+    }
+    if (newdistrict == "") {
+      fillerror5 = "<br> Supplier District";
+    }else{
+      fillerror5 = "";
+    }
+    if (newtown == "") {
+      fillerror6 = "<br> Supplier Town";
+    }else{
+      fillerror6 = "";
+    }
+     if (newvillage == "") {
+      fillerror7 = "<br> Supplier Village / House";
+    }else{
+      fillerror7 = "";
+    }
+    if (newselectedtype == "") {
+      fillerror8 = "<br> Supplier type";
+    }else{
+      fillerror8 = "";
+    }
+  
+  fillerror = 'Fill in the following :  ' + fillerror1 +  fillerror2 +  fillerror3 +  fillerror4 +  fillerror5  + fillerror6 + fillerror7 + fillerror8 ;
+  myAlert(warning, fillerror);
+  }else{
+    
+      // insert data or write
+    firebase.database().ref('Mysupplier/' + newidnumber).set({
+
+     FirstName: newfirstname,
+     OtherName:  newothername,
+     SupplierPhone: newphone,
+     SupplierEmail: newemail,
+     SupplierOtherPhone: newotherphone,
+     SupplierRiegion: newregion,
+     SupplierDistrict: newdistrict,
+     SupplierTown: newtown,
+     SupplierVillage: newvillage,
+     SupplierType: newselectedtype,
+     SupplierLink: newlink,
+     CreatedBy: email
+
+    },  (error) => {
+  if (error) {
+    // The write failed...
+     myAlert(failed, "Failed to update new supplier");
+     
+  } else {
+    // Data saved successfully!
+    myAlert(success, newfirstname +  " <br> Supllier details updated  ");
+    
+    // Refresh the page after a delay of 3 seconds
+    setTimeout(function(){
+    location.reload();
+     }, 3000); // 
+ 
+  }
+} );
+
+  }
+
+})
 
 
 

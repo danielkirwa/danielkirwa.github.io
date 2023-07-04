@@ -5,6 +5,7 @@ var warning = "&#10071; Warning";
 var today = new Date();
 var datetoday = today.toLocaleDateString();
 let usernamedisplay = document.getElementById('usernamedisplay');
+let suppliername = document.getElementById('suppliername');
 var email
 // write code here 
 
@@ -239,6 +240,36 @@ var acquisitionmode = selctedmode.value;
     });
   }
 
+
+// // select only active supplier
+
+var ref = firebase.database().ref("Mysupplier");
+suppliername.innerHTML = "";
+var optiondefault = document.createElement("option");
+optiondefault.text = "General Supply";
+optiondefault.value = "General Supply";
+optiondefault.id = "GS001";
+suppliername.add(optiondefault);
+ref.on("value", function(snapshot) {
+  snapshot.forEach(function(childSnapshot) {
+    var childData = childSnapshot.val();
+    var name = childData.FirstName;
+    var id = childData.IDNumber;
+    var currentstatus = childData.Status;
+    
+    //default
+    
+      
+    
+    if (currentstatus >= 1) { // Add condition to check if AvailableUnits > 1
+      var option = document.createElement("option");
+      option.text = name;
+      option.value = name;
+      option.id = id;
+      suppliername.add(option);
+    }
+  });
+});
 
 
 // off your code 

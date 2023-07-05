@@ -7,7 +7,25 @@ var datetoday = today.toLocaleDateString();
 let usernamedisplay = document.getElementById('usernamedisplay');
 let suppliername = document.getElementById('suppliername');
 var email
+var selectedsuppliername;
+var selectedsuppliercode;
 // write code here 
+
+
+
+
+// get all supplier details  
+  selectedsuppliername = suppliername.options[suppliername.selectedIndex].value;
+selectedsuppliercode = suppliername.options[suppliername.selectedIndex].id;
+  suppliername.addEventListener("change", function(){ 
+selectedsuppliername = suppliername.options[suppliername.selectedIndex].value;
+selectedsuppliercode = suppliername.options[suppliername.selectedIndex].id;
+
+ ///console.log(selectedsuppliercode)
+ //console.log(selectedsuppliername)
+
+});
+
 
 addstock.addEventListener("click", () =>{
 let stockname = document.getElementById('stockname').value.toUpperCase();
@@ -21,6 +39,7 @@ let acquisitionprice = document.getElementById('acquisitionprice').value
 var selectedUnitOption = selectunit.value;
 var selctedmode = document.getElementById('acquisitionmode');
 var acquisitionmode = selctedmode.value;
+
 
 
 
@@ -96,6 +115,8 @@ var acquisitionmode = selctedmode.value;
       Createby: email,
       DateAdded: datetoday,
       Unit: selectedUnitOption,
+      SupplierName: selectedsuppliername,
+      SupplierCode: selectedsuppliercode,
       ClearBy: clearby,
       UnitSale: unitsale,
       AcquisitionMode: "AllCashed",
@@ -145,6 +166,8 @@ var acquisitionmode = selctedmode.value;
       DateAdded: datetoday,
       Unit: selectedUnitOption,
       ClearBy: clearby,
+      SupplierName: selectedsuppliername,
+      SupplierCode: selectedsuppliercode,
       UnitSale: unitsale,
       AcquisitionMode: "Credit",
       AcquisitionPrice: acquisitionprice,
@@ -210,6 +233,42 @@ var acquisitionmode = selctedmode.value;
           cell6.innerHTML = newstatus;
         });
       });
+
+
+      // Retrieve data from Firebase database for credit
+      var tablecredit = document.getElementById("stocktablecredit");
+      var ref = firebase.database().ref("Mycreditstock");
+      ref.on("value", function(snapshot) {
+        snapshot.forEach(function(childSnapshot) {
+          var childData = childSnapshot.val();
+          var row = tablecredit.insertRow(-1);
+          var cell1 = row.insertCell(0);
+          var cell2 = row.insertCell(1);
+          var cell3 = row.insertCell(2);
+          var cell4 = row.insertCell(3);
+          var cell5 = row.insertCell(4);
+          var cell6 = row.insertCell(5);
+          var cell7 = row.insertCell(6);
+          var cell8 = row.insertCell(7);
+           
+          if (childData.Status == 1) {
+              cell1.innerHTML = childData.StockName;
+              cell2.innerHTML = childData.UnitSale;
+              cell3.innerHTML = childData.Code;
+              cell4.innerHTML = childData.Unit;
+              cell5.innerHTML = childData.SupplierName;
+              cell6.innerHTML = childData.AcquisitionPrice;
+              cell7.innerHTML = childData.RepaidAmount;
+              cell8.innerHTML = childData.Balance;
+              
+          }else{
+            
+          }
+
+          
+        });
+      });
+
 
 
 

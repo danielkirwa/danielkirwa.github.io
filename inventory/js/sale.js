@@ -435,6 +435,11 @@ printer.addEventListener('click', () => {
 
 var ref = firebase.database().ref("Myproduct");
 itemselected.innerHTML = "";
+var optiondefault = document.createElement("option");
+optiondefault.text = "Select Product Name";
+optiondefault.value = "Select Product Name";
+optiondefault.id = "";
+itemselected.add(optiondefault);
 ref.on("value", function(snapshot) {
   snapshot.forEach(function(childSnapshot) {
     var childData = childSnapshot.val();

@@ -43,8 +43,7 @@
      background-color: #00000000;
   flex-direction: column;
   justify-content: center;
-   border: 1px solid #fff;
-  box-shadow: 0 0 0.5rem 0 rgba(0 ,0,0,0.3);
+  box-shadow: 0 40px 80px #FBE4E0;
   border-top-left-radius: 14px;
   border-top-right-radius: 14px;
 }

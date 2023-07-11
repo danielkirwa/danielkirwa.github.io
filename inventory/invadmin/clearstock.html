@@ -5,7 +5,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Create Stock</title>
+	<title>Clear Supplier</title>
 
 		<link rel="stylesheet" type="text/css" href="../css/index.css">
 	<link rel="stylesheet" type="text/css" href="../css/nav.css">
@@ -45,7 +45,6 @@
     <div class="subnav-content">
       <a href="createstock.html">Add Stock</a>
       <a href="adjuststock.html">Adjust Stock</a>
-      <a href="clearstock.html">Clear Stock on Credit</a>
     </div>
   </div>
    <div class="subnav">
@@ -76,93 +75,91 @@
   </div>
 </div>
 <!-- end of nav bar -->
+
+
+<div class="action-div">
+   <center><h3 class="my-label">Search supplier to clear dept</h3></center>
+
+   <div class="input-holder">
+      <div class="card-long">
+        <center>
+          <label class="small-label">Select supplier bellow</label><br>
+          <select name="" class="my-input" id="Supplierselected" style="width: 90%">
+           <option>Select Product/Item</option>
+         </select>
+          </center>
+      </div>
+     
+   </div>
+
+
+
+</div>
+
+
 <div class="action-div">
 	 <center><h3 class="my-label">Stock management</h3></center>
 
 	 <div class="input-holder">
       <div class="card">
       	<center>
-          <label class="small-label">Stock Name</label><br>
-          <input type="text" id="stockname" placeholder="Enter stock name" class="my-input">
+          <label class="small-label" style="color:#0067a0;">Stock Deatails</label><br>
+          Stock name : &nbsp;<label id="lbstockname">name</label><br>
+          Created by : &nbsp;<label id="lbcreatedby">created by</label><br>
+          Date added : &nbsp;<label id="lbdateadded">Date added</label>
           </center>
       </div>
       <div class="card">
         <center>
-          <label class="small-label">Stock Code</label><br>
-          <input type="text" id="code" placeholder="Enter code eg. S101D" class="my-input">
+          <label class="small-label" style="color:#0067a0;">Stock Values</label><br>
+          Quantity : &nbsp;<label id="lbquantity">Quantity </label><br>
+          Units : &nbsp;<label id="lbunits">Units</label><br>
+          Stock code : &nbsp; <label id="lbstockcode">Code</label>
           </center>
       </div>
    </div>
 
-   <div class="input-holder">
-      <div class="card">
-      	<center>
-          <label class="small-label">Description</label><br>
-           </center>
-          <textarea id="description" rows="4" cols="40" placeholder="Describe stock here..."></textarea>
-         
-      </div>
-       <div class="card">
-        <center>
-          <label class="small-label">Stock Worth</label><br>
-           </center> 
-           <select class="my-input" id="acquisitionmode">
-             <option value="Cash">Cash</option>
-             <option value="OnCredit">On Creadit</option>
-           </select>
-           <label>Enter amount </label>
-          <input type="text" id="acquisitionprice" placeholder="Acquisition Price" class="my-input" oninput="restrictToNumbers(acquisitionprice)">
-      </div>
-    </div>
-
-    <div class="input-holder">
-      <div class="card">
-      	<center>
-          <label class="small-label">Unit Measure </label><br>
-          <select class="my-input" id="unit">
-            <option value="" disabled selected>Choose Unit Measure</option>
-          </select>
-          </center>
-      </div>
-      <div class="card">
-      	<center>
-      	<label class="small-label">Unit Count</label><br>
-          <input type="text" id="unitcount" placeholder="Unit count" class="my-input" oninput="restrictToNumbers(unitcount)">
-          </center>
-      </div>
-   </div>
- 
-    <div class="input-holder">
-            <div class="card">
-        <center>
-        <label class="small-label">Units to Sale</label><br>
-          <input type="text" id="unitsale" placeholder="Units to sale" class="my-input" oninput="restrictToNumbers(unitsale)">
-          </center>
-      </div>
-       <div class="card">
-        <center>
-        <label class="small-label">Clear Date</label><br>
-          <input type="date" id="clearby" class="my-input">
-          </center>
-      </div>
-
-
-   </div>
-    <div class="input-holder">
+     <div class="input-holder">
       <div class="card-long">
         <center>
-        <select class="my-input" id="suppliername" style="width:100%">
-             <option value="General Supply" id="GS001">Select supplier of not there ignore</option>
-           </select>
+          <label class="small-label" style="color:#0067a0;">Description</label>
+        <p id="lbdescription">
+          Description here
+        </p>
          </center>
       </div>
     
    </div>
+
+   <div class="input-holder">
+      <div class="card">
+      	<center>
+          <label class="small-label" style="color:#0067a0;">Done payments</label><br>
+          Cost : &nbsp;<label class="small-label" id="lbamount">Cost</label><br>
+          Paid : &nbsp;<label class="small-label" id="lbpaid">paid</label><br>
+          Balance : &nbsp;<label class="small-label" id="lbbalance">Balance</label><br>
+           </center>
+      </div>
+       <div class="card">
+        <center>
+          <label class="small-label" style="color:#0067a0;">Update payment</label><br>
+          New balance : &nbsp; <label id="lbnewbalance">New balance</label><br>
+           </center> 
+           
+           <label>Enter amount </label>
+          <input type="text" id="txtamounttorepay" placeholder="Enter Amount Paid" class="my-input" oninput="restrictToNumbers(txtamounttorepay)">
+      </div>
+    </div>
+
+  
+ 
+    
+  
    <br><br>
    <div class="input-holder">
       <div class="card">
       	<center>
-          <button id="addstock" class="my-btn">Save New Stock</button>
+          <button id="clearstock" class="my-btn">Update Stock Payment</button>
           </center>
       </div>
     
@@ -174,29 +171,7 @@
 <!-- table -->
 <br><br>
 
-<div class="scroll-table">
-  <div class="table-holder">
-    <div class="table-caption">
-      <label class="my-label">List of Stock  </label>
-    </div>
-  <table id="stocktable">
-    <thead>
-      <th>Stock Name</th>
-      <th>Sale Units </th>
-      <th>Code</th>
-      <th>Measure</th>
-      <th>Clear by</th>
-      <th>Status</th>
-    </thead>
-    <tbody>   
-      
-              
-          </tbody>
-     </table>
 
-
-  </div>
-</div>
 
 <br><br>
 <div class="scroll-table">
@@ -258,7 +233,7 @@
 <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-database.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script>
  <script type="text/javascript" src="../js/config.js"></script>
- <script type="text/javascript" src="../js/createstock.js"></script>
+ <script type="text/javascript" src="../js/clearstock.js"></script>
  
 </body>
 </html>

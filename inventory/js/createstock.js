@@ -7,11 +7,9 @@ var datetoday = today.toLocaleDateString();
 let usernamedisplay = document.getElementById('usernamedisplay');
 let suppliername = document.getElementById('suppliername');
 var email
-var selectedsuppliername;
-var selectedsuppliercode;
+var selectedsuppliername = "General Supply";
+var selectedsuppliercode = "GS001";
 // write code here 
-
-
 
 
 // get all supplier details  
@@ -21,8 +19,8 @@ selectedsuppliercode = suppliername.options[suppliername.selectedIndex].id;
 selectedsuppliername = suppliername.options[suppliername.selectedIndex].value;
 selectedsuppliercode = suppliername.options[suppliername.selectedIndex].id;
 
- ///console.log(selectedsuppliercode)
- //console.log(selectedsuppliername)
+console.log(selectedsuppliercode)
+console.log(selectedsuppliername)
 
 });
 

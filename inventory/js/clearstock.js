@@ -164,11 +164,31 @@ ref.on("value", function(snapshot) {
 // get data to update 
 var idtoupdate;
 var amounttoupdate;
+var newbalance;
 clearstock.addEventListener('click', () => {
    idtoupdate = lbstockcode.innerText;
    amounttoupdate = txtamounttorepay.value;
-   console.log(idtoupdate);
-   console.log(amounttoupdate);
+   if (amounttoupdate == "") {
+    myAlert(warning, "Enter amount to clear");
+   }else{
+   newbalance = totalcost - amounttoupdate;
+   // update payments now
+
+     let searchednode = "Mycreditstock/"+ selectedsuppliercode ;
+        firebase.database().ref(searchednode).update({
+
+       RepaidAmount: firebase.database.ServerValue.increment(+amounttoupdate),
+       Balance: newbalance    
+   
+      }).then(() => {
+       myAlertRefresh(success, "Stock taken on credit updated");
+  })
+  .catch((error) => {
+     myAlert(failed, "Failed to update the payment details");
+  });
+
+
+ }
 })
 
 

@@ -1,0 +1,288 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Adjudt Staff</title>
+<link rel = "icon" href = "assets/logo/juelgaicon.png" type = "image/x-icon">
+		<link rel="stylesheet" type="text/css" href="../css/index.css">
+	<link rel="stylesheet" type="text/css" href="../css/nav.css">
+	<link rel="stylesheet" type="text/css" href="../css/elements.css">
+</head>
+<style type="text/css">
+  
+  .general-banner{
+  width: 80%;
+  margin-left: 10%;
+    display: flex;
+  flex-wrap: wrap;
+    justify-content: center;
+     border: 1px solid #fff;
+  box-shadow: 0 0 0.5rem 0 rgba(0 ,0,0,0.3);
+}
+</style>
+<body>
+<div>
+    <div class="banner">
+    	<div class="vender-logo"><img src="../assets/logo/juelgaicon.png"> </div>
+    	<div class="shop-name"><center><h3 id="lbbusinessname"></h3></center></div>
+    </div>
+</div>
+<!-- nav -->
+<div class="navbar">
+	  <a href="dashboard.html">Dashboard</a>
+  <div class="subnav">
+    <button class="subnavbtn">My Business <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="createbusiness.html">Add Business</a>
+      <a href="adjustbusiness.html">Adjust Business</a>
+      <a href="createcustomer.html">Add Customer</a>
+      <a href="adjustcustomer.html">Adjust Customer</a>
+    </div>
+  </div> 
+  <div class="subnav">
+    <button class="subnavbtn">Product <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+     <a href="createproduct.html">Add Product</a>
+      <a href="createunits.html">Add Units</a>
+      <a href="createcategory.html">Categories</a>
+      <a href="adjustproduct.html">Adjust Product</a>
+    </div>
+  </div> 
+  <div class="subnav">
+    <button class="subnavbtn">Stock <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="createstock">Add Stock</a>
+      <a href="adjuststock.html">Adjust Stock</a>
+      <a href="clearstock.html">Clear Stock on Credit</a>
+    </div>
+  </div>
+   <div class="subnav">
+    <button class="subnavbtn" style=" background:  #0067a0;">Register <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="register.html">Add Staff</a>
+      <a href="adjuststaff.html">Adjust Staff</a>
+      <a href="createsupplier.html">Add Supplier</a>
+      <a href="adjustsupplier.html">Adjust Supplier</a>
+    </div>
+  </div>
+  <div class="subnav">
+    <button class="subnavbtn">Reports <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="businessreport.html">Business Report</a>
+      <a href="salereport.html">Saler Report</a>
+    </div>
+  </div>
+  <a href="#contact">Settings</a>
+  <a href="saledesk.html">Sale Desk</a>
+  <div class="subnav">
+    <button class="subnavbtn"><span id="usernamedisplay"></span><i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+       <a href="profile.html">Profile</a>
+      <a href="adminmanual.html">Manual</a>
+      <a href="#" onclick="logout()">Logout</a>
+    </div>
+  </div>
+</div>
+<!-- end of nav bar -->
+
+
+
+<div class="action-div">
+    <br><br><br><br>
+    <div class="general-banner">
+  
+      <div class="small-card">
+     <input type="text" id="txtsearchstaffid" value="" class="my-input"  placeholder="Enter staff ID">
+      </div>
+      <div class="small-card">
+        <button id="searchstaffid" class="my-btn"> Search Staff</button>
+      </div>
+   
+   </div>
+
+
+ 
+	 <center><h3 class="my-label">Edit staff details to update</h3></center>
+
+	 <div class="input-holder">
+      <div class="card">
+      	<center>
+          <label class="small-label">First Name</label><br>
+          <input type="text" id="firstname" placeholder="Enter First Name" class="my-input">
+          </center>
+      </div>
+      <div class="card">
+      	<center>
+      	<label class="small-label">Other Name</label><br>
+          <input type="text" id="othername" placeholder="Enter Other Name" class="my-input">
+          </center>
+      </div>
+   </div>
+
+   <div class="input-holder">
+      <div class="card">
+      	<center>
+          <label class="small-label">ID Number</label><br>
+          <input type="text" id="idnumber" placeholder="Enter ID Number" class="my-input">
+          </center>
+      </div>
+      <div class="card">
+      	<center>
+      	<label class="small-label">Phone Number</label><br>
+          <input type="text" id="phone" placeholder="+2557xxxxxxx" class="my-input">
+          </center>
+      </div>
+   </div>
+
+    <div class="input-holder">
+      <div class="card">
+      	<center>
+          <label class="small-label">Email </label><br>
+          <input type="text" id="email" placeholder="Enter ID Number" class="my-input">
+          </center>
+      </div>
+      <div class="card">
+      	<center>
+      	<label class="small-label">Other Number</label><br>
+          <input type="text" id="otherphone" placeholder="+2557xxxxxxx" class="my-input">
+          </center>
+      </div>
+   </div>
+ 
+    <div class="input-holder">
+      <div class="card">
+      	<center>
+          <label class="small-label">Role</label><br>
+           <select class="my-input" id="role">
+            <option value="" disabled selected>Choose Role</option>
+           	<option value="Cashier">Cashier</option>
+           	<option value="SalesLead">Sales Lead</option>
+           	<option value="Admin">Admin</option>
+            <option value="Casual">Casual</option>
+           </select>
+          </center>
+      </div>
+      <div class="card">
+      	<center>
+      	<label class="small-label">Gender</label><br>
+          <select class="my-input" id="gender">
+            <option value="" disabled selected>Choose Gender</option>
+           	<option value="Male">Male</option>
+           	<option value="Female">Female</option>
+           </select>
+          </center>
+      </div>
+   </div>
+
+     <div class="input-holder">
+      <div class="card">
+      	<center>
+          <label class="small-label">Work Station</label><br>
+           <select class="my-input" id="station">
+            <option value="" disabled selected>Choose Station</option>
+           	<option value="Main Station">Main Station</option>
+           	<option value="Branch">Branch </option>
+           </select>
+          </center>
+      </div>
+      <div class="card">
+      	<center>
+      		<label class="small-label">Birth Date</label><br>
+      		<input type="date" id="dateofbirth" class="my-input" min="1970-01-01" max="2007-01-31">
+      	</center>
+      </div>
+   </div>
+
+
+   <div class="input-holder">
+      <div class="card">
+      	<center>
+          <button class="my-btn" id="btnupdatestaff">Update Staff</button>
+          </center>
+      </div>
+      <div class="card">
+      <center>
+          <button class="my-btn-del" id="btndeletestaff">Delete Staff</button>
+          </center>
+      	
+      </div>
+   </div>
+
+</div>
+
+
+<!-- table -->
+<br><br>
+
+<div class="scroll-table">
+  <div class="table-holder">
+    <div class="table-caption">
+      <label class="my-label" >Staff Adjustment  </label>
+    </div>
+
+
+
+
+  </div>
+</div>
+
+
+
+<!-- alerts here -->
+
+<div id="alertBox">
+  <h2 id="alertTitle"></h2>
+  <p id="alertMessage"></p>
+  <center>
+  <button onclick="hideAlert()">OK</button>
+  </center>
+</div>
+
+<div id="alertBoxRefresh">
+  <h2 id="alertTitle1"></h2>
+  <p id="alertMessage1"></p>
+  <center>
+  <button onclick="hideAlertRefresh()">OK</button>
+  </center>
+</div>
+
+
+<!-- confrimation -->
+<div id="confirmationModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2 style="color: crimson;">Confirm Deletion</h2>
+    <p>Are you sure you want to delete: 
+       <br>
+      <b> <label id="deleteiteminfor"></label></b>
+      <span><h2 style="color: crimson;">This action can not be undone</h2></span>
+    </p>
+    <div class="button-container">
+      <button id="confirmDelete" class="confrim-button" style="background: crimson;">Delete</button>
+      <button id="cancelDelete" class="confrim-button">Cancel</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+<br><br><br><br>
+<!-- footer starts -->
+<div class="footer">
+	 <h3></h3>
+   Juelga solution &copy;  &nbsp;&nbsp;<a href="https://www.juelgasolutions.co.tz" style="text-decoration: none; color: #ffffff">juelgasolution </a><br>
+   <h3></h3>
+</div>
+
+
+ <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script>
+ <script type="text/javascript" src="../js/config.js"></script>
+ <script type="text/javascript" src="../js/adjuststaff.js"></script>
+  
+</body>
+</html>

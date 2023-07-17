@@ -111,7 +111,7 @@ searchcustomerid.addEventListener("click", () => {
      ref.once('value').then(function(snapshot) {
     var childData = snapshot.val();
     if (childData == null) {
-     myAlertRefresh(success, "Search customer no credited");
+     myAlertRefresh(success, "Search customer not credited");
      currentcredit.innerHTML = "0.00";
          cutomerpaydate.value = "";
   

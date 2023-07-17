@@ -19,47 +19,91 @@ let town = document.getElementById('town');
 let village = document.getElementById('village');
 var selectedgender = document.getElementById("gender");
 let NewStatus;
-
+let deletecustomer = document.getElementById('deletecustomer');
 let searchcustomerid = document.getElementById('searchcustomerid');
 
 // get the customer to up date
-searchcustomerid.addEventListener('click', () =>{
+searchcustomerid.addEventListener('click', () => {
   let txtsearchcustomerid = document.getElementById('txtsearchcustomerid').value;
-  // fields 
-  if (txtsearchcustomerid == "") {
-    myAlert(warning, "Enter Customer IDNumber to search")
-  }else{
 
-   var searchfor = txtsearchcustomerid;
-    let searchnode = "Mycustomer/"+ searchfor;
-    //console.log(searchnode);
-  // get the stock 
-  var ref = firebase.database().ref(searchnode);
-  ref.once('value').then(function(snapshot) {
-  var childData = snapshot.val();
-  if (childData == null) {
-     myAlert(failed, "Search ID Number not found");
-  }else{
-     myAlert(success, "Customer found Update with care <br> <b style=\"color:crimson;\"> ID Number can not be Updated <br>contact Support to update</b> <br> <i> Click ok to update other customer details</i>");
-     firstname.value = childData.FirstName;
-     othername.value = childData.OtherName;
-     idnumber.value = childData.IDNumber;
-     phone.value = childData.CustomerPhone;
-     customeremail.value = childData.CustomerEmail;
-     otherphone.value = childData.CustomerPhone;
-     region.value = childData.CustomerRiegion;
-     district.value = childData.CustomerDistrict;
-     town.value = childData.CustomerTown;
-     village.value = childData.CustomerVillage;
-     selectedgender.value = childData.CustomerGender;
-     idnumber.readOnly = true;
+  if (txtsearchcustomerid === "") {
+    myAlert(warning, "Enter Customer IDNumber to search");
+  } else {
+    let searchByIdNode = "Mycustomer/" + txtsearchcustomerid;
+    let searchByNameNode = "Mycustomer";
+    let searchField = "";
 
+    if (isNaN(txtsearchcustomerid)) {
+      searchField = "FirstName";
+    } else {
+      searchField = "IDNumber";
+    }
+
+    // Firebase query to search by ID
+    var ref = firebase.database().ref(searchByIdNode);
+
+    // Firebase query to search by Name
+    var query = firebase.database().ref(searchByNameNode).orderByChild(searchField).equalTo(txtsearchcustomerid);
+
+    ref.once('value').then(function(snapshot) {
+      var childData = snapshot.val();
+
+      if (childData == null) {
+        // If no results found by ID, search by Name
+        query.once('value').then(function(nameSnapshot) {
+          var nameChildData = nameSnapshot.val();
+
+          if (nameChildData == null) {
+            myAlert(failed, "Search ID Number or Name not found");
+          } else {
+            // Handle the found result by Name
+            var nameChildKeys = Object.keys(nameChildData);
+            var nameChildKey = nameChildKeys[0];
+
+            var customerNode = "Mycustomer/" + nameChildKey;
+            var customerRef = firebase.database().ref(customerNode);
+
+            customerRef.once('value').then(function(customerSnapshot) {
+              var customerData = customerSnapshot.val();
+              if(customerData.Status == 1){
+              updateCustomerDetails(customerData);
+            }else{
+              myAlertRefresh(warning," Customer not found or might have been deleted <br> <b style=\"color:crimson;\"> Try with ID Number <b>");
+            }
+            });
+          }
+        });
+      } else {
+        // Handle the found result by ID
+        if(childData.Status == 1){
+        updateCustomerDetails(childData);
+      }else{
+        myAlertRefresh(warning," Customer not found or might have been deleted");
+      }
+      }
+    });
   }
-}); 
+});
 
-  }
+function updateCustomerDetails(customerData) {
+  myAlert(
+    success,
+    "Customer found Update with care <br> <b style=\"color:crimson;\"> ID Number can not be Updated <br>contact Support to update</b> <br> <i> Click ok to update other customer details</i>"
+  );
 
-})
+  firstname.value = customerData.FirstName;
+  othername.value = customerData.OtherName;
+  idnumber.value = customerData.IDNumber;
+  phone.value = customerData.CustomerPhone;
+  customeremail.value = customerData.CustomerEmail;
+  otherphone.value = customerData.CustomerPhone;
+  region.value = customerData.CustomerRegion;
+  district.value = customerData.CustomerDistrict;
+  town.value = customerData.CustomerTown;
+  village.value = customerData.CustomerVillage;
+  selectedgender.value = customerData.CustomerGender;
+  idnumber.readOnly = true;
+}
 
 
 
@@ -137,7 +181,7 @@ var newselectedgender = selectedgender.value;
      CustomerPhone: newphone,
      CustomerEmail: newemail,
      CustomerOtherPhone: newotherphone,
-     CustomerRiegion: newregion,
+     CustomerRegion: newregion,
      CustomerDistrict: newdistrict,
      CustomerTown: newtown,
      CustomerVillage: newvillage,
@@ -145,10 +189,8 @@ var newselectedgender = selectedgender.value;
      CreatedBy: email,
    
       }).then(() => {
-   myAlert(success, "Customer details successfuly updated");
-   setTimeout(function(){
-    location.reload();
-     }, 3000); // 
+   myAlertRefresh(success, "Customer details successfuly updated");
+   
   })
   .catch((error) => {
      myAlert(failed, "Customer details not updated");
@@ -161,6 +203,34 @@ var newselectedgender = selectedgender.value;
 
 })
 
+
+
+// delete code 
+deletecustomer.addEventListener('click', () => {
+   let newidnumber = idnumber.value;
+  if (newidnumber == "") {
+    let   fillerror = "<br> Customer ID Number / Code missing search first";
+      myAlert(warning, fillerror);
+    }else{
+      firebase.database().ref('Mycustomer/' + newidnumber).update({
+
+     Status: 2,
+
+    },  (error) => {
+  if (error) {
+    // The write failed...
+     myAlert(failed, "Failed to delete customer");
+     
+  } else {
+    // Data saved successfully!
+    myAlertRefresh(success, newidnumber +  " <br> <b style=\"color:crimson;\"> Deleted from the Syatem and archived note that all pending customer transaction will still show till they are claered for complete removal contact Juelga Solutions </b> ");
+    
+   
+ 
+  }
+} );
+    }
+})
 
 
 // off your code 
@@ -180,6 +250,24 @@ function hideAlert() {
   var alertBox = document.getElementById("alertBox");
   alertBox.style.display = "none";
 }
+
+function myAlertRefresh(title,message) {
+  var alertBox = document.getElementById("alertBoxRefresh");
+  var alertTitle = document.getElementById("alertTitle1");
+  var alertMessage = document.getElementById("alertMessage1");
+  
+  alertTitle.innerHTML = title;
+  alertMessage.innerHTML = message;
+  alertBox.style.display = "block";
+}
+
+function hideAlertRefresh() {
+  var alertBox = document.getElementById("alertBoxRefresh");
+  alertBox.style.display = "none";
+  location.reload();
+}
+
+
 
 /// get business name and data 
 

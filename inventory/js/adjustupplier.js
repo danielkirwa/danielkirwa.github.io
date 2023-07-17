@@ -238,7 +238,7 @@ btndeletesupplier.addEventListener('click', () => {
      
   } else {
     // Data saved successfully!
-    myAlertRefresh(success, newidnumber +  " <br> <b style=\"color:crimson;\"> Deleted from the Syatem and archived not all pending supplier transaction will still show till they are claered for complete removal contact Juelga Solutions </b> ");
+    myAlertRefresh(success, newidnumber +  " <br> <b style=\"color:crimson;\"> Deleted from the Syatem and archived note that all pending supplier transaction will still show till they are claered for complete removal contact Juelga Solutions </b> ");
     
    
  

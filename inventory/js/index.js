@@ -156,8 +156,16 @@ findStaffRoleByEmail(targetEmail)
         window.location.href='cashier/saledesk.html';
       }else if (role == "SalesLead") {
         window.location.href='sales/saledesk.html';
+      }else if(role == "Closed"){
+          firebase.auth().signOut().then(function() {
+         // Sign-out successful.
+        window.location.href='index.html';
+         }).catch(function(error) {
+         // An error happened.
+       window.location.href='index.html';
+       });
       }else{
-         window.location.href='dashboard.html';
+        window.location.href='dashboard.html';
       }
 
     } else {

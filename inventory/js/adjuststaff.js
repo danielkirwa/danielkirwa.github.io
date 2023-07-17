@@ -7,10 +7,8 @@ var today = new Date();
 var datetoday = today.toLocaleDateString();
 let btndeletestaff = document.getElementById('btndeletestaff');
 
-searchstaffid.addEventListener('click', () =>{
-  let txtsearchstaffid = document.getElementById('txtsearchstaffid').value;
-  // fields 
-  let firstname = document.getElementById('firstname');
+  
+ let firstname = document.getElementById('firstname');
   let othername = document.getElementById('othername');
   let phone = document.getElementById('phone');
   let otherphone = document.getElementById('otherphone');
@@ -20,40 +18,93 @@ searchstaffid.addEventListener('click', () =>{
   var selectgender = document.getElementById("gender");
   var selectstation = document.getElementById("station");
   var selectrole = document.getElementById("role");
+searchstaffid.addEventListener('click', () => {
+  let txtsearchstaffid = document.getElementById('txtsearchstaffid').value;
 
-  if (txtsearchstaffid == "") {
-    myAlert(warning, "Enter Staff IDNumber to search")
-  }else{
+  // fields 
+ 
 
-   var searchfor = txtsearchstaffid;
-    let searchnode = "Mystaff/"+ searchfor;
-    //console.log(searchnode);
-  // get the stock 
-  var ref = firebase.database().ref(searchnode);
-  ref.once('value').then(function(snapshot) {
-  var childData = snapshot.val();
-  if (childData == null) {
-     myAlert(failed, "Search ID Number not found");
-  }else{
-     myAlert(success, "Staff found Update with care <br> <b style=\"color:crimson;\">Email and ID Number can not be Updated <br>contact Support to update</b> <br> <i> Click ok to update other staff details</i>");
-     firstname.value = childData.FirstName;
-     othername.value = childData.OtherName;
-     phone.value = childData.Phone;
-     otherphone = childData.OtherPhone;
-     idnumber.value = childData.IDNumber;
-     email.value = childData.Email;
-     selectgender.value = childData.Gender;
-     selectstation.value = childData.Station;
-     selectrole.value = childData.Role;
-     doB.value = childData.Dob;
-     idnumber.disabled = true;
+  if (txtsearchstaffid === "") {
+    myAlert(warning, "Enter Staff IDNumber to search");
+  } else {
+    let searchByIdNode = "Mystaff/" + txtsearchstaffid;
+    let searchByNameNode = "Mystaff";
+    let searchField = "";
 
+    if (isNaN(txtsearchstaffid)) {
+      searchField = "FirstName";
+    } else {
+      searchField = "IDNumber";
+    }
+
+    // Firebase query to search by ID
+    var ref = firebase.database().ref(searchByIdNode);
+
+    // Firebase query to search by Name
+    var query = firebase.database().ref(searchByNameNode).orderByChild(searchField).equalTo(txtsearchstaffid);
+
+    ref.once('value').then(function(snapshot) {
+      var childData = snapshot.val();
+
+      if (childData == null) {
+        // If no results found by ID, search by Name
+        query.once('value').then(function(nameSnapshot) {
+          var nameChildData = nameSnapshot.val();
+
+          if (nameChildData == null) {
+            myAlert(failed, "Search ID Number or Name not found");
+          } else {
+            // Handle the found result by Name
+            var nameChildKeys = Object.keys(nameChildData);
+            var nameChildKey = nameChildKeys[0];
+
+            var staffNode = "Mystaff/" + nameChildKey;
+            var staffRef = firebase.database().ref(staffNode);
+
+            staffRef.once('value').then(function(staffSnapshot) {
+              var staffData = staffSnapshot.val();
+               if (staffData.Role == "Closed")  {
+                myAlertRefresh(failed, "Staff missing this staff might have deleted from the system in doubt contact Juelga Solutions");
+               }else{
+              updateStaffDetails(staffData);
+            }
+            });
+          }
+        });
+      } else {
+        // Handle the found result by ID
+        if(childData.Role == "Closed"){
+           myAlertRefresh(failed, "Staff missing this staff might have deleted from the system in doubt contact Juelga Solutions")
+        }else{
+        updateStaffDetails(childData);
+      }
+      }
+    });
   }
-}); 
+});
 
-  }
+function updateStaffDetails(staffData) {
+  myAlert(
+    success,
+    "Staff found Update with care <br> <b style=\"color:crimson;\">Email and ID Number can not be Updated <br>contact Support to update</b> <br> <i> Click ok to update other staff details</i>"
+  );
 
-})
+  firstname.value = staffData.FirstName;
+  othername.value = staffData.OtherName;
+  phone.value = staffData.Phone;
+  otherphone.value = staffData.OtherPhone;
+  idnumber.value = staffData.IDNumber;
+  email.value = staffData.Email;
+  selectgender.value = staffData.Gender;
+  selectstation.value = staffData.Station;
+  selectrole.value = staffData.Role;
+  doB.value = staffData.Dob;
+  idnumber.disabled = true;
+}
+
+
+
+
 
 btnupdatestaff.addEventListener("click", () =>{
 let firstname = document.getElementById('firstname').value.toUpperCase();;
@@ -189,26 +240,23 @@ closeIcon.addEventListener("click", hideConfirmationModal);
 
 // Function to delete the item
 function deleteItem() {
-  // Your deletion logic goes here
-    let idnumber = document.getElementById('idnumber');
-    let deletecode = idnumber.value;
-    console.log(deletecode);
-    var nodeRef = firebase.database().ref("Mystaff/" + deletecode);
-  // Remove the node
-  nodeRef.remove()
+  let idnumber = document.getElementById('idnumber');
+  let updatecode = idnumber.value;
+  console.log(updatecode);
+  var nodeRef = firebase.database().ref("Mystaff/" + updatecode);
+
+  // Update the status to 2
+  nodeRef.update({ Role: "Closed"})
     .then(function() {
-      myAlertRefresh(success, "Deleted")
+      myAlertRefresh(success, "Deleted successfully and account closed");
       hideConfirmationModal();
     })
     .catch(function(error) {
-      myAlertRefresh(failed, "Error deleting node:" + error);
+      myAlertRefresh(failed, "Error deleting and account closing: " + error);
       hideConfirmationModal();
     });
-
-
-  
-
 }
+
 
 
 

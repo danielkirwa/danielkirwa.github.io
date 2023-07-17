@@ -31,37 +31,71 @@ let btndeleteproduct = document.getElementById('btndeleteproduct');
 let deleteiteminfor = document.getElementById('deleteiteminfor');
 
 // write code here 
-searchstock.addEventListener('click', () =>{
+searchstock.addEventListener('click', () => {
   let newsearchcode = searchcode.value;
-   let selling = document.getElementById('selling');
-  if (newsearchcode == "") {
-    myAlert(warning, "Enter code to search")
-  }else{
-  let searchnode = "Myproduct/"+ newsearchcode ;
-  // get the stock 
-  var ref = firebase.database().ref(searchnode);
-  ref.once('value').then(function(snapshot) {
-  var childData = snapshot.val();
-  if (childData == null) {
-     myAlert(failed, "Search code not found")
-  }else{
-    lbproductname.innerHTML = childData.ProductName;
-    lbstockfullname.innerHTML = childData.Category;
-    lbstockcode.innerHTML = childData.StockCodeRef;
-    lbproductcode.innerHTML = childData.Code;
-    stockavailableunits.innerHTML = childData.AvailableUnits;
-    buyingprice.innerHTML = childData.Buying;
-    sellingprice.innerHTML = childData.Selling;
-    lbclearby.innerHTML = childData.ClearBy;
-    selling.value = childData.Selling;
-    deleteiteminfor.innerHTML = childData.ProductName + " <br> " + "Available Units  :" + childData.AvailableUnits
-
-  }
+  let selling = document.getElementById('selling');
   
+  if (newsearchcode === "") {
+    myAlert(warning, "Enter code to search");
+  } else {
+    // Firebase query to search by ID
+    let searchByIdNode = "Myproduct/" + newsearchcode;
+    var ref = firebase.database().ref(searchByIdNode);
+    
+    // Firebase query to search by Name
+    var query = firebase.database().ref("Myproduct").orderByChild("ProductName").equalTo(newsearchcode);
 
+    ref.once('value').then(function(snapshot) {
+      var childData = snapshot.val();
+
+      if (childData == null) {
+        // If no results found by ID, search by Name
+        query.once('value').then(function(nameSnapshot) {
+          var nameChildData = nameSnapshot.val();
+          
+          if (nameChildData == null) {
+            myAlert(failed, "Search code not found");
+          } else {
+            // Handle the found result by Name
+            var nameChildKeys = Object.keys(nameChildData);
+            
+            // Assuming there is only one match for simplicity, you can retrieve the first key
+            var nameChildKey = nameChildKeys[0];
+            
+            // Access the subnode for the individual product
+            var productNode = "Myproduct/" + nameChildKey;
+            
+            // Retrieve the product data
+            var productRef = firebase.database().ref(productNode);
+            
+            productRef.once('value').then(function(productSnapshot) {
+              var productData = productSnapshot.val();
+              
+              updateStockDetails(productData);
+            });
+          }
+        });
+      } else {
+        // Handle the found result by ID
+        updateStockDetails(childData);
+      }
+    });
+  }
 });
+
+function updateStockDetails(childData) {
+  lbproductname.innerHTML = childData.ProductName;
+  lbstockfullname.innerHTML = childData.Category;
+  lbstockcode.innerHTML = childData.StockCodeRef;
+  lbproductcode.innerHTML = childData.Code;
+  stockavailableunits.innerHTML = childData.AvailableUnits;
+  buyingprice.innerHTML = childData.Buying;
+  sellingprice.innerHTML = childData.Selling;
+  lbclearby.innerHTML = childData.ClearBy;
+  selling.value = childData.Selling;
+  deleteiteminfor.innerHTML = childData.ProductName + "<br>Available Units: " + childData.AvailableUnits;
 }
-})
+
 
 
 // insert new product

@@ -26,45 +26,84 @@ let NewStatus;
 
 let searchsupplierid = document.getElementById('searchsupplierid');
 
-// get the customer to up date
-searchsupplierid.addEventListener('click', () =>{
+// get the customer to up date search
+searchsupplierid.addEventListener('click', () => {
   let txtsearchsupplierid = document.getElementById('txtsearchsupplierid').value;
-  // fields 
-  if (txtsearchsupplierid == "") {
-    myAlert(warning, "Enter Supplier IDNumber/Code to search")
-  }else{
 
-   var searchfor = txtsearchsupplierid;
-    let searchnode = "Mysupplier/"+ searchfor;
-    //console.log(searchnode);
-  // get the stock 
-  var ref = firebase.database().ref(searchnode);
-  ref.once('value').then(function(snapshot) {
-  var childData = snapshot.val();
-  if (childData == null) {
-     myAlert(failed, "Search ID Number not found");
-  }else{
-     myAlert(success, "Supplier found Update with care <br> <b style=\"color:crimson;\"> ID Number can not be Updated <br>contact Support to update</b> <br> <i> Click ok to update other supllier details</i>");
-     firstname.value = childData.FirstName;
-     othername.value = childData.OtherName;
-     idnumber.value = childData.IDNumber;
-     phone.value = childData.SupplierPhone;
-     customeremail.value = childData.SupplierEmail;
-     otherphone.value = childData.SupplierOtherPhone;
-     region.value = childData.SupplierRiegion;
-     district.value = childData.SupplierDistrict;
-     town.value = childData.SupplierTown;
-     village.value = childData.SupplierVillage;
-     link.value = childData.SupplierLink;
-     selectedtype.value = childData.SupplierType;
-     idnumber.readOnly = true;
+  if (txtsearchsupplierid === "") {
+    myAlert(warning, "Enter Supplier ID Number/Code to search");
+  } else {
+    let searchnode;
+    let searchBy = "";
 
+    // Determine whether the search query is an ID or Name
+    if (Number(txtsearchsupplierid)) {
+      searchBy = "IDNumber";
+    } else {
+      searchBy = "FirstName";
+    }
+
+    // Firebase query to search by ID
+    let searchByIdNode = "Mysupplier/" + txtsearchsupplierid;
+    var ref = firebase.database().ref(searchByIdNode);
+
+    // Firebase query to search by Name
+    var query = firebase.database().ref("Mysupplier").orderByChild(searchBy).equalTo(txtsearchsupplierid);
+
+    ref.once('value').then(function(snapshot) {
+      var childData = snapshot.val();
+
+      if (childData == null) {
+        // If no results found by ID, search by Name
+        query.once('value').then(function(nameSnapshot) {
+          var nameChildData = nameSnapshot.val();
+
+          if (nameChildData == null) {
+            myAlert(failed, "Search ID Number or Code not found");
+          } else {
+            // Handle the found result by Name
+            var nameChildKeys = Object.keys(nameChildData);
+            var nameChildKey = nameChildKeys[0];
+
+            var supplierNode = "Mysupplier/" + nameChildKey;
+            var supplierRef = firebase.database().ref(supplierNode);
+
+            supplierRef.once('value').then(function(supplierSnapshot) {
+              var supplierData = supplierSnapshot.val();
+
+              updateSupplierDetails(supplierData);
+            });
+          }
+        });
+      } else {
+        // Handle the found result by ID
+        updateSupplierDetails(childData);
+      }
+    });
   }
-}); 
+});
 
-  }
+function updateSupplierDetails(supplierData) {
+  myAlert(
+    success,
+    "Supplier found Update with care <br> <b style=\"color:crimson;\"> ID Number can not be Updated <br>contact Support to update</b> <br> <i> Click ok to update other supplier details</i>"
+  );
 
-})
+  firstname.value = supplierData.FirstName;
+  othername.value = supplierData.OtherName;
+  idnumber.value = supplierData.IDNumber;
+  phone.value = supplierData.SupplierPhone;
+  customeremail.value = supplierData.SupplierEmail;
+  otherphone.value = supplierData.SupplierOtherPhone;
+  region.value = supplierData.SupplierRegion;
+  district.value = supplierData.SupplierDistrict;
+  town.value = supplierData.SupplierTown;
+  village.value = supplierData.SupplierVillage;
+  link.value = supplierData.SupplierLink;
+  selectedtype.value = supplierData.SupplierType;
+  idnumber.readOnly = true;
+}
+
 
 
 //  adjust / update supplier
@@ -140,7 +179,7 @@ var newselectedtype = selectedtype.value;
      SupplierPhone: newphone,
      SupplierEmail: newemail,
      SupplierOtherPhone: newotherphone,
-     SupplierRiegion: newregion,
+     SupplierRegion: newregion,
      SupplierDistrict: newdistrict,
      SupplierTown: newtown,
      SupplierVillage: newvillage,

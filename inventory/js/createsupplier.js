@@ -97,7 +97,7 @@ var newselectedtype = selectedtype.value;
      SupplierPhone: newphone,
      SupplierEmail: newemail,
      SupplierOtherPhone: newotherphone,
-     SupplierRiegion: newregion,
+     SupplierRegion: newregion,
      SupplierDistrict: newdistrict,
      SupplierTown: newtown,
      SupplierVillage: newvillage,

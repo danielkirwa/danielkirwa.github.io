@@ -23,7 +23,7 @@ let NewStatus;
 
 
 // get supplier
-
+let btndeletesupplier = document.getElementById('btndeletesupplier');
 let searchsupplierid = document.getElementById('searchsupplierid');
 
 // get the customer to up date search
@@ -59,7 +59,7 @@ searchsupplierid.addEventListener('click', () => {
           var nameChildData = nameSnapshot.val();
 
           if (nameChildData == null) {
-            myAlert(failed, "Search ID Number or Code not found");
+            myAlert(failed, "Search ID Number or Name not found");
           } else {
             // Handle the found result by Name
             var nameChildKeys = Object.keys(nameChildData);
@@ -70,14 +70,21 @@ searchsupplierid.addEventListener('click', () => {
 
             supplierRef.once('value').then(function(supplierSnapshot) {
               var supplierData = supplierSnapshot.val();
-
+              if(supplierData.Status == 1){
               updateSupplierDetails(supplierData);
+            }else{
+              myAlert(failed, "Supplier not found or might have been deleted");
+            }
             });
           }
         });
       } else {
         // Handle the found result by ID
+        if(childData.Status == 1){
         updateSupplierDetails(childData);
+      }else{
+        myAlert(failed, "Supplier not found or might have been deleted");
+      }
       }
     });
   }
@@ -135,6 +142,7 @@ var newselectedtype = selectedtype.value;
       fillerror2 = "<br> Supplier ID Number / Code";
     }else{
       fillerror2 = "";
+      console.log(newidnumber)
     }
     if (newphone == "") {
       fillerror3 = "<br> Supplier Phone";
@@ -172,7 +180,7 @@ var newselectedtype = selectedtype.value;
   }else{
     
       // insert data or write
-    firebase.database().ref('Mysupplier/' + newidnumber).set({
+    firebase.database().ref('Mysupplier/' + newidnumber).update({
 
      FirstName: newfirstname,
      OtherName:  newothername,
@@ -211,6 +219,39 @@ var newselectedtype = selectedtype.value;
 
 
 
+// delete supplier 
+
+btndeletesupplier.addEventListener('click', () => {
+  let newidnumber = idnumber.value;
+  if (newidnumber == "") {
+    let   fillerror = "<br> Supplier ID Number / Code missing search first";
+      myAlert(warning, fillerror);
+    }else{
+      firebase.database().ref('Mysupplier/' + newidnumber).update({
+
+     Status: 2,
+
+    },  (error) => {
+  if (error) {
+    // The write failed...
+     myAlert(failed, "Failed to update new supplier");
+     
+  } else {
+    // Data saved successfully!
+    myAlertRefresh(success, newidnumber +  " <br> <b style=\"color:crimson;\"> Deleted from the Syatem and archived not all pending supplier transaction will still show till they are claered for complete removal contact Juelga Solutions </b> ");
+    
+   
+ 
+  }
+} );
+    }
+    
+})
+
+
+
+
+
 function myAlert(title,message) {
   var alertBox = document.getElementById("alertBox");
   var alertTitle = document.getElementById("alertTitle");
@@ -225,6 +266,23 @@ function hideAlert() {
   var alertBox = document.getElementById("alertBox");
   alertBox.style.display = "none";
 }
+
+function myAlertRefresh(title,message) {
+  var alertBox = document.getElementById("alertBoxRefresh");
+  var alertTitle = document.getElementById("alertTitle1");
+  var alertMessage = document.getElementById("alertMessage1");
+  
+  alertTitle.innerHTML = title;
+  alertMessage.innerHTML = message;
+  alertBox.style.display = "block";
+}
+
+function hideAlertRefresh() {
+  var alertBox = document.getElementById("alertBoxRefresh");
+  alertBox.style.display = "none";
+  location.reload();
+}
+
 
 /// get business name and data 
 

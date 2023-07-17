@@ -318,7 +318,7 @@ ref.on("value", function(snapshot) {
     
       
     
-    if (currentstatus >= 1) { // Add condition to check if AvailableUnits > 1
+    if (currentstatus == 1) { // Add condition to check if AvailableUnits > 1
       var option = document.createElement("option");
       option.text = name;
       option.value = name;

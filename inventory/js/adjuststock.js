@@ -26,40 +26,72 @@ let txtadjustdate = document.getElementById('txtadjustdate');
 
 let searchstock = document.getElementById('searchstock');
 let searchcode = document.getElementById('searchcode');
-searchstock.addEventListener('click', () =>{
-  let newsearchcode = searchcode.value;
-  
-  if (newsearchcode == "") {
-    myAlert(warning, "Enter code to search")
-  }else{
-  let searchnode = "Mystock/"+ newsearchcode ;
-  // get the stock 
-  var ref = firebase.database().ref(searchnode);
-  ref.once('value').then(function(snapshot) {
-  var childData = snapshot.val();
-  if (childData == null) {
-     myAlert(failed, "Search code not found")
-  }else{
-    lbstockname.innerHTML = childData.StockName;
-    lbstockcode.innerHTML = childData.Code;
-    availableunits.innerHTML = childData.UnitSale;
-    createdby.innerHTML = childData.Createby;
-    lbmeasure.innerHTML = childData.Unit;
-    lbclearby.innerHTML = childData.ClearBy;
-    currentunit = childData.UnitSale;
-    deleteiteminfor.innerHTML = childData.StockName + " <br>" +  "Available Units : " + childData.UnitSale;
-  }
-  
 
+// serach tock to modify 
+searchstock.addEventListener('click', () => {
+  let newsearchcode = searchcode.value;
+
+  if (newsearchcode === "") {
+    myAlert(warning, "Enter code to search");
+  } else {
+    // Firebase query to search by ID
+    let searchByIdNode = "Mystock/" + newsearchcode;
+    var ref = firebase.database().ref(searchByIdNode);
+
+    // Firebase query to search by Name
+    var query = firebase.database().ref("Mystock").orderByChild("StockName").equalTo(newsearchcode);
+
+    ref.once('value').then(function(snapshot) {
+      var childData = snapshot.val();
+
+      if (childData == null) {
+        // If no results found by ID, search by Name
+        query.once('value').then(function(nameSnapshot) {
+          var nameChildData = nameSnapshot.val();
+
+          if (nameChildData == null) {
+            myAlert(failed, "Search code not found");
+          } else {
+            // Handle the found result by Name
+            var nameChildKeys = Object.keys(nameChildData);
+            var nameChildKey = nameChildKeys[0];
+
+            var stockNode = "Mystock/" + nameChildKey;
+            var stockRef = firebase.database().ref(stockNode);
+
+            stockRef.once('value').then(function(stockSnapshot) {
+              var stockData = stockSnapshot.val();
+
+              updateStockDetails(stockData);
+            });
+          }
+        });
+      } else {
+        // Handle the found result by ID
+        updateStockDetails(childData);
+      }
+    });
+  }
 });
+
+function updateStockDetails(stockData) {
+  lbstockname.innerHTML = stockData.StockName;
+  lbstockcode.innerHTML = stockData.Code;
+  availableunits.innerHTML = stockData.UnitSale;
+  createdby.innerHTML = stockData.Createby;
+  lbmeasure.innerHTML = stockData.Unit;
+  lbclearby.innerHTML = stockData.ClearBy;
+  currentunit = stockData.UnitSale;
+  deleteiteminfor.innerHTML = stockData.StockName + "<br>Available Units: " + stockData.UnitSale;
 }
-})
+
 
 // update stock here
 
 btnupdatestock.addEventListener("click" , () =>{
 let newadjustunit = txtadjustunit.value;
 let newadjustdate = txtadjustdate.value;
+let newlbstockcode = lbstockcode.innerText;
 
  if (newadjustunit == "" || newadjustdate == "" ) {
   let fillerror,fillerror1,fillerror2;
@@ -73,11 +105,16 @@ let newadjustdate = txtadjustdate.value;
     }else{
       fillerror2 = "";
     }
-     fillerror = 'Fill in the following :  ' + fillerror1 +  fillerror2;
+    if (newlbstockcode == "") {
+      fillerror3 = " <br> Missing code Search code again";
+    }else{
+      fillerror3 = "";
+    }
+     fillerror = 'Fill in the following :  ' + fillerror1 +  fillerror2 + fillerror3;
       myAlert(warning, fillerror);
 
   }else{
-      let newsearchcode = searchcode.value;
+      let newsearchcode = lbstockcode.innerText;
        
       if (newsearchcode.length > 0) {
       let searchnode = "Mystock/"+ newsearchcode ;
@@ -87,7 +124,7 @@ let newadjustdate = txtadjustdate.value;
        ClearBy: newadjustdate 
    
       }).then(() => {
-   myAlert(success, "Stock details successfuly updated");
+   myAlertRefresh(success, "Stock details successfuly updated");
   })
   .catch((error) => {
      myAlert(failed, "Stock details not updated");

@@ -34,7 +34,7 @@ let cardcurrentmonth = document.getElementById('cardcurrentmonth');
 /*=======================================*/ 
 // get business details for newly logined in 
  // Retrieve data from Firebase database
-var Bname,Baddress,Bphone,Bemail;
+var Bname,Baddress,Bphone,Bemail,Bregion,Btown;
       var ref = firebase.database().ref("Mybusiness");
       ref.on("value", function(snapshot) {
         snapshot.forEach(function(childSnapshot) {
@@ -43,11 +43,13 @@ var Bname,Baddress,Bphone,Bemail;
           Bemail = childData.Email;
           Bphone = childData.Phone;
           Baddress = childData.Address;
+          Bregion = childData.Region;
+          Btown = childData.Town;
             
              console.log(Bname + "Here");
 
           // Create an array to keep business data
-          let myArray = [Bname, Bemail, Bphone, Baddress];
+          let myArray = [Bname, Bemail, Bphone, Baddress,Bregion,Btown];
 
          // Convert the array to a string and store it in local storage
          localStorage.setItem('BusinessDetails', JSON.stringify(myArray));

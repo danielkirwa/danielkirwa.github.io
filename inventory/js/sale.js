@@ -62,7 +62,7 @@ var selectedbuyingprice = 0;
 /*=======================================*/ 
 // get business details for newly logined in 
  // Retrieve data from Firebase database
-var Bname,Baddress,Bphone,Bemail;
+var Bname,Baddress,Bphone,Bemail,Bregion,Btown;
       var ref = firebase.database().ref("Mybusiness");
       ref.on("value", function(snapshot) {
         snapshot.forEach(function(childSnapshot) {
@@ -71,11 +71,13 @@ var Bname,Baddress,Bphone,Bemail;
           Bemail = childData.Email;
           Bphone = childData.Phone;
           Baddress = childData.Address;
+          Bregion = childData.Region;
+          Btown = childData.Town;
             
              console.log(Bname + "Here");
 
           // Create an array to keep business data
-          let myArray = [Bname, Bemail, Bphone, Baddress];
+          let myArray = [Bname, Bemail, Bphone, Baddress,Bregion,Btown];
 
          // Convert the array to a string and store it in local storage
          localStorage.setItem('BusinessDetails', JSON.stringify(myArray));
@@ -522,10 +524,14 @@ function hideAlertRefresh() {
          recieptphone = document.getElementById('recieptphone');
          receiptdate = document.getElementById('receiptdate');
          receiptname = document.getElementById('receiptname');
+         recieptaddress1 = document.getElementById('recieptaddress1');
+         recieptlocation = document.getElementById('recieptlocation');
          lbbusinessname.innerHTML = storedBusiness[0];
          reciepttitle.innerHTML = storedBusiness[0];
          recieptaddress.innerHTML = storedBusiness[1];
          recieptphone.innerHTML = storedBusiness[2];
+         recieptaddress1.innerHTML = storedBusiness[3]
+         recieptlocation.innerHTML = storedBusiness[4] + " , " + storedBusiness[5]
          receiptdate.innerHTML = datetoday;
 
 

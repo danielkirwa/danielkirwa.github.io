@@ -457,10 +457,14 @@ function hideAlertRefresh() {
          recieptphone = document.getElementById('recieptphone');
          receiptdate = document.getElementById('receiptdate');
          receiptname = document.getElementById('receiptname');
+         recieptaddress1 = document.getElementById('recieptaddress1');
+         recieptlocation = document.getElementById('recieptlocation');
          lbbusinessname.innerHTML = storedBusiness[0];
          reciepttitle.innerHTML = storedBusiness[0];
          recieptaddress.innerHTML = storedBusiness[1];
          recieptphone.innerHTML = storedBusiness[2];
+         recieptaddress1.innerHTML = storedBusiness[3]
+         recieptlocation.innerHTML = storedBusiness[4] + " , " + storedBusiness[5]
          receiptdate.innerHTML = datetoday;
 
 

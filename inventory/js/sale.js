@@ -463,6 +463,54 @@ ref.on("value", function(snapshot) {
   });
 });
 
+// discount section 
+let lbbtnpercent = document.getElementById('lbbtnpercent');
+let lbtoppercentview = document.getElementById('lbtoppercentview');
+const discountpercent = document.getElementById('discountpercent');
+var discountgiven = 0;
+let discountamount = document.getElementById('discountamount');
+let newpercent = 0;
+discountpercent.addEventListener('input', function() {
+  if (this.value < 0) {
+    this.value = '';
+  }else{
+    if(grandamount <= 0){
+   this.value = "";
+   myAlert(warning, "No Items on the receipt");
+  }else{
+   newpercent = this.value;
+    discountgiven = (+newpercent / 100 ) * +grandamount;
+    discountamount.value = discountgiven;
+    lbbtnpercent.innerHTML = newpercent;
+    lbtoppercentview.innerHTML = newpercent;
+  }
+  }
+});
+
+
+// number given
+discountamount.addEventListener('input', function() {
+  const numericValue = this.value.replace(/[^0-9]/g, '');
+  this.value = numericValue;
+  discountgiven = this.value;
+  if(grandamount <= 0){
+   this.value = "";
+   myAlert(warning, "No Items on the receipt");
+  }else{
+  newpercent =  (discountgiven / grandamount) * 100;
+  discountpercent.value = newpercent;
+  lbbtnpercent.innerHTML = newpercent;
+  lbtoppercentview.innerHTML = newpercent;
+  console.log(discountgiven);
+  console.log(grandamount);
+  console.log(newpercent);
+}
+
+});
+
+
+
+
 
 
 

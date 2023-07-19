@@ -88,12 +88,12 @@ storedArray.forEach(function(innerArray) {
   console.log(grandamount);
  console.log(grandamountbuying)
   discountgiven = localStorage.getItem('Discount');
-  priceholder.innerHTML = grandamount;
-  tblpriceholder.innerHTML = grandamount;
-  tblgrandpriceholder.innerHTML = grandamount;
+  priceholder.innerHTML = grandamount.toLocaleString();
+  tblpriceholder.innerHTML = grandamount.toLocaleString();
+  tblgrandpriceholder.innerHTML = grandamount.toLocaleString();
   snolabel.innerHTML = recieptitems;
-  discountopholder.innerHTML = discountgiven;
-  tbldiscount.innerHTML = discountgiven;
+  discountopholder.innerHTML = discountgiven.toLocaleString();
+  tbldiscount.innerHTML = discountgiven.toLocaleString();
 }
 
 
@@ -113,7 +113,7 @@ function removeRow(button) {
    grandamount = grandamount - +removeditem;
    priceholder.innerHTML = grandamount;
    tblpriceholder.innerHTML = grandamount;
-     tblgrandpriceholder.innerHTML = grandamount;
+     tblgrandpriceholder.innerHTML = grandamount.toLocaleString();
      recieptitems = +recieptitems - removecount;
   snolabel.innerHTML = recieptitems;
    rowtoremoveformarray = row.rowIndex - 1;

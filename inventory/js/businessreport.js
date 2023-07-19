@@ -56,7 +56,7 @@ async function getAllMonthsSales() {
     totalSales += salesData[i];
   }
   averageSales = totalSales / salesData.length;
-  tbltotalsale.innerHTML = "Sales Total : <br>" + totalSales;
+  tbltotalsale.innerHTML = "Sales Total : <br>" + totalSales.toLocaleString();
 
   console.log("Avarage:", averageSales.toFixed(2)); 
   return salesData;
@@ -128,7 +128,7 @@ async function getAllMonthsCredit() {
     totalcredit += creditData[i];
   }
   averagecredit = totalcredit / creditData.length;
-  tbltotalcredit.innerHTML = "Total Credit : <br>" + totalcredit;
+  tbltotalcredit.innerHTML = "Total Credit : <br>" + totalcredit.toLocaleString();
   console.log("Avarage:", averagecredit.toFixed(2)); 
   return creditData;
 }
@@ -185,7 +185,7 @@ function businessNumbesr() {
 	tbltotalcreditpercent.innerHTML =  creditpercent + " %";
 	tblgrandtotal.innerHTML = "Grand Total : <br>" + newgrandtotal.toLocaleString();
 	tblgrandtotalpercent.innerHTML = +cashpercent + +creditpercent + " %";
-	tbltotalsaleav.innerHTML = "Avarage : <br>" + avnewtotalsale;
+	tbltotalsaleav.innerHTML = "Avarage  : <br>" + avnewtotalsale;
 	tbltotalcreditav.innerHTML = "Avarage : <br>" + avnewtotalcredit;
 }
 
@@ -372,8 +372,8 @@ let thismonthsales = "Mymonthly/"+ currentMonth+currentYear ;
      myAlert(warning, "No Cash sales found this month of : <br>" + currentMonth + " " + currentYear);
   }else{
     profitthis = +childData.TotalSale - +childData.TotalStockAmount;
-    innerthismonthsale.innerHTML = "Sales :" + childData.TotalSale;
-    innerthismonthstock.innerHTML = "Stock :" + childData.TotalStockAmount;
+    innerthismonthsale.innerHTML = "Sales :" + childData.TotalSale.toLocaleString();
+    innerthismonthstock.innerHTML = "Stock :" + childData.TotalStockAmount.toLocaleString();
     innerthismonthprofit.innerHTML  = +childData.TotalSale - +childData.TotalStockAmount;
     // get previous
     let previousmonthsales = "Mymonthly/"+ previousMonthName+currentYear ;
@@ -385,8 +385,8 @@ let thismonthsales = "Mymonthly/"+ currentMonth+currentYear ;
      myAlert(failed, "No sales found")
   }else{
     profitprev = +childData.TotalSale - +childData.TotalStockAmount;
-    innerpreviousmonthsale.innerHTML = "Sales : " + childData.TotalSale;
-    innerpreviousmonthstock.innerHTML = "Stock : " + childData.TotalStockAmount;
+    innerpreviousmonthsale.innerHTML = "Sales : " + childData.TotalSale.toLocaleString().toLocaleString();
+    innerpreviousmonthstock.innerHTML = "Stock : " + childData.TotalStockAmount.toLocaleString().toLocaleString();
     innerpreviousmonthprofit.innerHTML  = +childData.TotalSale - +childData.TotalStockAmount;
     lbtwomonthprofit.innerHTML = +profitprev + +profitthis;
      console.log(+profitprev + +profitthis);
@@ -444,8 +444,8 @@ function allYearProfit() {
 
   //console.log(`Total Sales for ${currentYear}: ${totalSaleSum}`);
   //console.log(`Total Stock for ${currentYear}: ${totalStockSum}`);
-      innerthisyearsale.innerHTML = "Sale this year : " + totalSaleSum;
-      innerthisyearstock.innerHTML = "Stoack this year : " + totalStockSum;
+      innerthisyearsale.innerHTML = "Sale this year : " + totalSaleSum.toLocaleString();
+      innerthisyearstock.innerHTML = "Stoack this year : " + totalStockSum.toLocaleString();
       lbyearprofit.innerHTML = +totalSaleSum - +totalStockSum;
 
   // Create a bar chart

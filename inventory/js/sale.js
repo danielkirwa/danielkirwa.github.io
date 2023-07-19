@@ -264,10 +264,10 @@ storedArray.forEach(function(innerArray) {
  grandamountbuying = storedArraybuying.reduce((a,b) => a + +b[2],0);
   console.log(grandamount);
  console.log(grandamountbuying)
-  priceholder.innerHTML = grandamount;
-  tblpriceholder.innerHTML = grandamount;
-  tblgrandpriceholder.innerHTML = grandamount;
-  snolabel.innerHTML = recieptitems;
+  priceholder.innerHTML = grandamount.toLocaleString();
+  tblpriceholder.innerHTML = grandamount.toLocaleString();
+  tblgrandpriceholder.innerHTML = grandamount.toLocaleString();
+  snolabel.innerHTML = recieptitems.toLocaleString();
 
 
   // if no amount on the receipt clear discount if there
@@ -298,9 +298,9 @@ function removeRow(button) {
 	 removecount = row.getElementsByTagName("td")[2].textContent;
 	 removecode = row.getElementsByTagName("td")[1].textContent;
 	 grandamount = grandamount - +removeditem;
-	 priceholder.innerHTML = grandamount;
-	 tblpriceholder.innerHTML = grandamount;
-     tblgrandpriceholder.innerHTML = grandamount;
+	 priceholder.innerHTML = grandamount.toLocaleString();
+	 tblpriceholder.innerHTML = grandamount.toLocaleString();
+     tblgrandpriceholder.innerHTML = grandamount.toLocaleString();
      recieptitems = +recieptitems - removecount;
   snolabel.innerHTML = recieptitems;
    rowtoremoveformarray = row.rowIndex - 1;
@@ -485,9 +485,9 @@ var discountgiven = 0;
 let discountamount = document.getElementById('discountamount');
 let newpercent = 0;
 discountgiven = localStorage.getItem('Discount');
-discountopholder.innerHTML = discountgiven;
-tbldiscount.innerHTML = discountgiven;
-discountamount.value = discountgiven;
+discountopholder.innerHTML = discountgiven.toLocaleString();
+tbldiscount.innerHTML = discountgiven.toLocaleString();
+discountamount.value = discountgiven.toLocaleString();
 discountpercent.addEventListener('input', function() {
   if (this.value < 0) {
     this.value = '';
@@ -498,11 +498,11 @@ discountpercent.addEventListener('input', function() {
   }else{
    newpercent = this.value;
     discountgiven = (+newpercent / 100 ) * +grandamount;
-    discountamount.value = discountgiven;
+    discountamount.value = discountgiven.toLocaleString();
     lbbtnpercent.innerHTML = newpercent;
     lbtoppercentview.innerHTML = newpercent;
-    discountopholder.innerHTML = discountgiven;
-    tbldiscount.innerHTML = discountgiven;
+    discountopholder.innerHTML = discountgiven.toLocaleString();
+    tbldiscount.innerHTML = discountgiven.toLocaleString();
     // save the discount
     localStorage.setItem('Discount', discountgiven);
   }
@@ -523,8 +523,8 @@ discountamount.addEventListener('input', function() {
   discountpercent.value = newpercent;
   lbbtnpercent.innerHTML = newpercent;
   lbtoppercentview.innerHTML = newpercent;
-   discountopholder.innerHTML = discountgiven;
-   tbldiscount.innerHTML = discountgiven;
+   discountopholder.innerHTML = discountgiven.toLocaleString();
+   tbldiscount.innerHTML = discountgiven.toLocaleString();
    localStorage.setItem('Discount', discountgiven);
 }
 

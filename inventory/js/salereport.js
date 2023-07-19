@@ -202,7 +202,7 @@ function getCashierSales(dividby) {
 
 
           cell1.innerHTML = newemail;
-          cell2.innerHTML = mysales;
+          cell2.innerHTML = mysales.toLocaleString();
           cell3.innerHTML = newpercent + " %";
 
   })

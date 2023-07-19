@@ -9,6 +9,8 @@ const currentMonth = new Date().toLocaleString('default', { month: 'long' });
 const currentYear = new Date().getFullYear();
 
 //start of code
+let discountopholder = document.getElementById('discountopholder');
+let tbldiscount = document.getElementById('tbldiscount');
 let itemnumber  = document.getElementById('itemnumber');
 
 let itemselected = document.getElementById('Itemselected');
@@ -137,7 +139,7 @@ producttocodeupdate = Itemselected.options[Itemselected.selectedIndex].id;
 availableproductunittoupdate = Itemselected.options[Itemselected.selectedIndex].data;
 selectedbuyingprice = Itemselected.options[Itemselected.selectedIndex].dataBuying;
 	newselectitem.innerHTML=  "Item. " +item;
-	newselectprice.innerHTML= "Ksh. " +price;
+	newselectprice.innerHTML= "Tsh. " +price;
 	newselectcode.innerHTML = "Code. " + producttocodeupdate;
 	txtnewselectitem.value =  "" +item;
 	txtnewselectprice.value = "" +price;
@@ -217,7 +219,7 @@ localStorage.setItem('curentbuying', storedbuying);
 
 location.reload();
 
-onreloadshowitems();
+
 }else{
 	alert("Select new item to add ");
 }
@@ -230,10 +232,10 @@ function onreloadshowitems(argument) {
 	// body...
 	let storeditems = localStorage.getItem('curentreciept');
 	let storedbuyingprices = localStorage.getItem('curentbuying');
+  // do discount back zero 
 	if (storeditems == null || storedbuyingprices == null) {
-
+     
 	}else{
-
 // Convert the array string back to an array using JSON.parse()
  storedArray = JSON.parse(storeditems);
  storedArraybuying = JSON.parse(storedbuyingprices);
@@ -266,6 +268,18 @@ storedArray.forEach(function(innerArray) {
   tblpriceholder.innerHTML = grandamount;
   tblgrandpriceholder.innerHTML = grandamount;
   snolabel.innerHTML = recieptitems;
+
+
+  // if no amount on the receipt clear discount if there
+  if (grandamount <= 0) {
+    console.log('less');
+    localStorage.setItem('Discount', 0.00);
+    discountopholder.innerHTML = 0.00;
+   tbldiscount.innerHTML = 0.00;
+  }else{
+    // retain all the data of the discount if were given
+
+  }
 }
 
 
@@ -470,6 +484,10 @@ const discountpercent = document.getElementById('discountpercent');
 var discountgiven = 0;
 let discountamount = document.getElementById('discountamount');
 let newpercent = 0;
+discountgiven = localStorage.getItem('Discount');
+discountopholder.innerHTML = discountgiven;
+tbldiscount.innerHTML = discountgiven;
+discountamount.value = discountgiven;
 discountpercent.addEventListener('input', function() {
   if (this.value < 0) {
     this.value = '';
@@ -483,6 +501,10 @@ discountpercent.addEventListener('input', function() {
     discountamount.value = discountgiven;
     lbbtnpercent.innerHTML = newpercent;
     lbtoppercentview.innerHTML = newpercent;
+    discountopholder.innerHTML = discountgiven;
+    tbldiscount.innerHTML = discountgiven;
+    // save the discount
+    localStorage.setItem('Discount', discountgiven);
   }
   }
 });
@@ -501,9 +523,9 @@ discountamount.addEventListener('input', function() {
   discountpercent.value = newpercent;
   lbbtnpercent.innerHTML = newpercent;
   lbtoppercentview.innerHTML = newpercent;
-  console.log(discountgiven);
-  console.log(grandamount);
-  console.log(newpercent);
+   discountopholder.innerHTML = discountgiven;
+   tbldiscount.innerHTML = discountgiven;
+   localStorage.setItem('Discount', discountgiven);
 }
 
 });

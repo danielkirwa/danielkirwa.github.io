@@ -183,7 +183,7 @@ function businessNumbesr() {
 	// show calculations
 	tbltotalsalepercent.innerHTML = cashpercent +  " %";
 	tbltotalcreditpercent.innerHTML =  creditpercent + " %";
-	tblgrandtotal.innerHTML = "Grand Total : <br>" + newgrandtotal;
+	tblgrandtotal.innerHTML = "Grand Total : <br>" + newgrandtotal.toLocaleString();
 	tblgrandtotalpercent.innerHTML = +cashpercent + +creditpercent + " %";
 	tbltotalsaleav.innerHTML = "Avarage : <br>" + avnewtotalsale;
 	tbltotalcreditav.innerHTML = "Avarage : <br>" + avnewtotalcredit;
@@ -284,9 +284,9 @@ getAllMonthsSales()
 
        totalStockWorth = totalStockCash + totalStockCredit;
       console.log("Total Stock Worth:", totalStockWorth);
-      tbltotalcashstock.innerHTML = totalStockCash;
-      tbltotalcreditstock.innerHTML = totalStockCredit;
-      tblgrandtotalstock.innerHTML = totalStockWorth;
+      tbltotalcashstock.innerHTML = totalStockCash.toLocaleString();
+      tbltotalcreditstock.innerHTML = totalStockCredit.toLocaleString();
+      tblgrandtotalstock.innerHTML = totalStockWorth.toLocaleString();
       tbltotalcachstockpercent.innerHTML = ((totalStockCash/totalStockWorth)*100).toFixed(2) +"%"
       tbltotalcreditstockpercent.innerHTML = ((totalStockCredit/totalStockWorth)*100).toFixed(2) +"%"
       tblgrandtotalstockpercent.innerHTML = (((totalStockCash/totalStockWorth)*100) + ((totalStockCredit/totalStockWorth)*100)).toFixed(2) + "%";

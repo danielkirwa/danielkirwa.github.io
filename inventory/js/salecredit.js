@@ -9,7 +9,8 @@ const currentMonth = new Date().toLocaleString('default', { month: 'long' });
 const currentYear = new Date().getFullYear();
 
 //start of code
-
+let discountopholder = document.getElementById('discountopholder');
+let tbldiscount = document.getElementById('tbldiscount');
 let itemselected = document.getElementById('Itemselected');
 let newselectitem = document.getElementById('newselectitem');
 let newselectprice = document.getElementById('newselectprice');
@@ -32,6 +33,7 @@ var removeditem = 0;
 var grandamount = 0;
 var grandamountbuying = 0;
 var recieptitems = 0
+var discountgiven = 0
 var producttocodeupdate;
 var availableproductunittoupdate;
 var newavailableproductunittoupdate;
@@ -85,10 +87,13 @@ storedArray.forEach(function(innerArray) {
  grandamountbuying = storedArraybuying.reduce((a,b) => a + +b[2],0);
   console.log(grandamount);
  console.log(grandamountbuying)
+  discountgiven = localStorage.getItem('Discount');
   priceholder.innerHTML = grandamount;
   tblpriceholder.innerHTML = grandamount;
   tblgrandpriceholder.innerHTML = grandamount;
   snolabel.innerHTML = recieptitems;
+  discountopholder.innerHTML = discountgiven;
+  tbldiscount.innerHTML = discountgiven;
 }
 
 

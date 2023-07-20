@@ -34,6 +34,7 @@ var removeditem = 0;
 var grandamount = 0;
 var recieptitems = 0
 var grandamountbuying = 0;
+var discountgiven = 0;
 var producttocodeupdate;
 var availableproductunittoupdate;
 var newavailableproductunittoupdate;
@@ -150,6 +151,7 @@ selectedbuyingprice = Itemselected.options[Itemselected.selectedIndex].dataBuyin
 	newavailableproductunittoupdate = availableproductunittoupdate - 1;
 	//console.log(newavailableproductunittoupdate);
 	console.log(selectedbuyingprice);
+  totalamountbusiness = selectedbuyingprice;
 
 });
 
@@ -340,6 +342,7 @@ localStorage.setItem('curentbuying', storedbuying);
 printer.addEventListener('click', () => {
   if (storedArray.length === 0) {
   myAlertRefresh(warning, "Select item and add it to the reciept");
+  console.log(+discountgiven);
 } else {
 
   var divToPrint = document.getElementById("readyreciept").innerHTML;
@@ -370,6 +373,7 @@ printer.addEventListener('click', () => {
 
     myAlertRefresh(success, "Sale completed ");
     localStorage.removeItem("curentreciept");
+    localStorage.setItem('Discount', 0.00);
     //location.reload();
   })
   .catch(function(error) {
@@ -387,8 +391,25 @@ printer.addEventListener('click', () => {
    
   })
   .catch((error) => {
-     myAlert(failed, "Cummulative not sales captured");
+     myAlert(failed, "Cummulative sale not captured");
   });
+
+  // update all discount given 
+
+
+    let monthlydiscountnode = "Mymonthlydiscount/"+ currentMonth+currentYear ;
+        firebase.database().ref(monthlydiscountnode).update({
+
+       TotalDiscount: firebase.database.ServerValue.increment(+discountgiven)       
+   
+      }).then(() => {
+   
+  })
+  .catch((error) => {
+     myAlert(failed, "Cummulative discount not captured");
+  });
+
+
 
   // update cashier sales 
      
@@ -397,7 +418,8 @@ printer.addEventListener('click', () => {
     let cashiersales = "Mycashiersales/"+ email ;
         firebase.database().ref(cashiersales).update({
 
-       CashierTotalSale: firebase.database.ServerValue.increment(grandamount)       
+       CashierTotalSale: firebase.database.ServerValue.increment(grandamount),
+       CashierTotalDiscount: firebase.database.ServerValue.increment(+discountgiven)       
    
       }).then(() => {
        
@@ -406,6 +428,16 @@ printer.addEventListener('click', () => {
      myAlert(failed, "Cummulative not cashier sales captured");
   });
 
+// save all individual cashier sales
+  let cashiersalesreceipt = "Mycashiersalesreceipt/" + email + "/" + timestamp;
+        firebase.database().ref(cashiersalesreceipt).set(storedreciepttodatabase)
+
+        .then(() => {
+       
+  })
+  .catch((error) => {
+     myAlert(failed, "Cummulative not cashier sales captured");
+  });
 
 
    
@@ -481,7 +513,6 @@ ref.on("value", function(snapshot) {
 let lbbtnpercent = document.getElementById('lbbtnpercent');
 let lbtoppercentview = document.getElementById('lbtoppercentview');
 const discountpercent = document.getElementById('discountpercent');
-var discountgiven = 0;
 let discountamount = document.getElementById('discountamount');
 let newpercent = 0;
 discountgiven = localStorage.getItem('Discount');

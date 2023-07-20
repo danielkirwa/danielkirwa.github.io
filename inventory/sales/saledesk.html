@@ -60,7 +60,7 @@
     </div>
       <div class="small-card">
         <center> <label class="my-label">Total Discount</label><br>
-    <label class="my-label">0</label>
+    <label class="my-label" id="discountopholder">0</label>
     </center>
       </div>
        <div class="small-card">
@@ -133,8 +133,10 @@
     <div class="table-caption">
       <hr>
         <center><h3 id="reciepttitle"></h3>
-          <label id="recieptaddress"></label>
-            <label id="recieptphone"></label>
+          <label id="recieptaddress1"></label><br>
+          <label id="recieptaddress"></label><br>
+            <label id="recieptphone"></label><br>
+            <label id="recieptlocation"></label>
         </center>
     <hr>
     </div>
@@ -174,7 +176,7 @@
     <label><span>Sale type : </span> Cash/Deposit</label><br>
         </td>
          <td id="tblpriceholder">0.00</td>
-         <td>0.00</td>
+         <td id="tbldiscount">0.00</td>
          <td id="tblgrandpriceholder">0.00</td>
        </tr>
      </table>
@@ -192,6 +194,30 @@
 </div>
 
 </div>
+<!-- discount section -->
+<hr class="hr-animated">
+
+  <center><h2 class="my-label">Give discount will in be :  <span id="lbtoppercentview"></span> %</h2></center><br>
+ <div class="general-banner">
+    <div class="small-card">
+       <input type="number" id="discountpercent" class="my-input" placeholder="Enter % to give">
+
+
+    </div>
+   
+      <div class="small-card">
+     <input type="text" id="discountamount" class="my-input" placeholder="Enter amount 20000">
+      </div>
+      <div class="small-card">
+        <button class="my-btn">Give Discount of : <span id="lbbtnpercent">0</span> %</button>
+      </div>
+   
+   </div>
+   <br>
+ <hr class="hr-animated">
+
+<br>
+ <!-- end of discount -->
 
  <div class="general-banner">
     <div class="small-card">      
@@ -234,7 +260,7 @@
 <br><br><br><br><br><br>
 <!-- footer starts -->
 <div class="footer">
-	 <h3></h3>
+   <h3></h3>
    Juelga solution &copy;  &nbsp;&nbsp;<a href="https://www.juelgasolutions.co.tz" style="text-decoration: none; color: #ffffff">juelgasolution </a><br>
    <h3></h3>
 </div>

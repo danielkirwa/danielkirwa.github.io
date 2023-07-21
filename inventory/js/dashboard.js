@@ -90,8 +90,8 @@ let thismonthsales = "Mymonthly/"+ currentMonth+currentYear ;
   if (childData == null) {
      myAlert(warning, "No Cash sales found this month of : <br>" + currentMonth + " " + currentYear);
   }else{
-    lbthismonthsale.innerHTML = childData.TotalSale;
-    innerthismonthsale.innerHTML = "Cash = " + childData.TotalSale;
+    lbthismonthsale.innerHTML = childData.TotalSale.toLocaleString();
+    innerthismonthsale.innerHTML = "Cash = " + childData.TotalSale.toLocaleString();
     thismonth = childData.TotalSale;
     // get previous
     let previousmonthsales = "Mymonthly/"+ previousMonthName+currentYear ;
@@ -105,13 +105,13 @@ let thismonthsales = "Mymonthly/"+ currentMonth+currentYear ;
   }else{
     previousmonth = childData.TotalSale
    businessdiv = +thismonth - +previousmonth;
-   cardpreviousmonth.innerHTML = previousMonthName +" Sale = " + previousmonth;
-   cardcurrentmonth.innerHTML =  currentMonth +" Sale = " + thismonth;
+   cardpreviousmonth.innerHTML = previousMonthName +" Sale = " + previousmonth.toLocaleString();
+   cardcurrentmonth.innerHTML =  currentMonth +" Sale = " + thismonth.toLocaleString();
     //console.log(businessdiv);
    if (businessdiv > 0) {
-     lbgrowth.innerHTML = "Up : " + '&#128316;  ' + businessdiv;
+     lbgrowth.innerHTML = "Up : " + '&#128316;  ' + businessdiv.toLocaleString();
    }else{
-    lbgrowth.innerHTML = "Down : " + '&#128681;  ' + businessdiv;
+    lbgrowth.innerHTML = "Down : " + '&#128681;  ' + businessdiv.toLocaleString();
    }
  
   }
@@ -143,8 +143,8 @@ let thismonthcreditsales = "Mymonthlycredit/"+ currentMonth+currentYear ;
      myAlert(warning, "No credit sales found this month of : <br>" + currentMonth + " " + currentYear);
   }else{
     innerthismonthcredit.innerHTML = "Credit = " + childData.TotalCredit;
-    cardcurrentmonthcredit.innerHTML = currentMonth + " Credit = " + childData.TotalCredit;
-    thismonthcredit = childData.TotalCredit;
+    cardcurrentmonthcredit.innerHTML = currentMonth + " Credit = " + childData.TotalCredit.toLocaleString();
+    thismonthcredit = childData.TotalCredit.toLocaleString();
     // get previous
     let previousmonthcreditsales = "Mymonthlycredit/"+ previousMonthName+currentYear ;
   // get the stock 
@@ -154,19 +154,19 @@ let thismonthcreditsales = "Mymonthlycredit/"+ currentMonth+currentYear ;
   if (childData == null) {
      cardpreviousmonthcredit.innerHTML = previousMonthName +" Credit = " + 0;
      //lbgrowth.innerHTML = "Up : " + '&#128316;'   + thismonth - 0;
-     lbgrowthcredit.innerHTML = "Up : " + '&#128681;  ' + thismonthcredit;
+     lbgrowthcredit.innerHTML = "Up : " + '&#128681;  ' + thismonthcredit.toLocaleString();
   }else{
    
-   cardpreviousmonthcredit.innerHTML = previousMonthName +" Credit = " + childData.TotalCredit;
+   cardpreviousmonthcredit.innerHTML = previousMonthName +" Credit = " + childData.TotalCredit.toLocaleString();
    // calculate loan variation 
    previousmonthcredit = childData.TotalCredit;
    businessdivcredit = +thismonthcredit - +previousmonthcredit;
  
    if (businessdivcredit > 0) {
      
-     lbgrowthcredit.innerHTML = "Up : " + '&#128681;  ' + businessdivcredit;
+     lbgrowthcredit.innerHTML = "Up : " + '&#128681;  ' + businessdivcredit.toLocaleString();
    }else{
-    lbgrowthcredit.innerHTML = "Down : " + '&#128316;  ' + businessdivcredit;
+    lbgrowthcredit.innerHTML = "Down : " + '&#128316;  ' + businessdivcredit.toLocaleString();
    }
    
  
@@ -296,7 +296,7 @@ query.once("value")
           if (childData.ClearBy >= 1) {
             state = childData.ClearBy;
           }else{
-            state = childData.ClearBy;
+            state = "Expired => " + "on " + childData.ClearBy;
           }
 
           cell1.innerHTML = childData.ProductName;

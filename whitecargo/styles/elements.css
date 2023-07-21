@@ -205,10 +205,10 @@ section .cards .card {
 }
 
 .services .card img {
-  width: 120px;
-  height: 120px;
+  width: 200px;
+  height: 160px;
   margin-bottom: 20px;
-  border-radius: 100%;
+  border-radius: 25%;
   object-fit: cover;
 }
 
@@ -226,7 +226,8 @@ section .cards .card {
 }
 
 .about .row {
-  padding: 0 10px;
+  width: 70%;
+ 
 }
 
 .contact .row {

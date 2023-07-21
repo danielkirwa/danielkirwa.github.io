@@ -11,6 +11,15 @@
 	<link rel="stylesheet" type="text/css" href="../css/elements.css">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+<style type="text/css">
+  #data-table-container caption{
+    color: #fff;
+    background: #0067a0;
+    font-size: 22px;
+    font-weight: bold;
+
+  }
+</style>
 <body>
 <div>
     <div class="banner">
@@ -131,10 +140,10 @@
     </div>
         <center> 
           <br>
-          <select class="my-input">
+          <select class="my-input" id="allcashiers">
             <option>Select cachier</option>
           </select>
-          <button class="my-btn">Select Receipt</button>
+          <button class="my-btn" id="btnsearchcashier">Select Receipt</button>
            </center>
   
          </div>
@@ -144,20 +153,25 @@
 
          <div class="card-long">
         <center>
-          <label class="small-label">Receipt for all sales</label><br>
+          <label class="small-label">Receipt for all sales of : <span id="auditof"></span></label><br>
            </center>
         
-      <table id="cahierstable">
+      <table id="cashierreceipt">
     <thead>
-      <th style="background: #0067a0;color: #fff;">Date/Time</th>
-      <th style="background: #0067a0;color: #fff;">Items</th>
-      <th style="background: #0067a0;color: #fff;">Sale Type</th>
+      <th style="background: #0067a0;color: #fff;">Product Name</th>
+      <th style="background: #0067a0;color: #fff;">Product Code</th>
+      <th style="background: #0067a0;color: #fff;">Quantity</th>
+      <th style="background: #0067a0;color: #fff;">Price</th>
     </thead>
     <tbody>   
       
               
-          </tbody>
+        </tbody>
      </table>
+
+     <!-- HTML Table -->
+<div id="data-table-container"></div>
+
          
       </div>
 

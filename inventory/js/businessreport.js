@@ -58,7 +58,7 @@ async function getAllMonthsSales() {
   averageSales = totalSales / salesData.length;
   tbltotalsale.innerHTML = "Sales Total : <br>" + totalSales.toLocaleString();
 
-  console.log("Avarage:", averageSales.toFixed(2)); 
+  console.log("Avarage:", averageSales.toFixed(0)); 
   return salesData;
 }
 
@@ -129,7 +129,7 @@ async function getAllMonthsCredit() {
   }
   averagecredit = totalcredit / creditData.length;
   tbltotalcredit.innerHTML = "Total Credit : <br>" + totalcredit.toLocaleString();
-  console.log("Avarage:", averagecredit.toFixed(2)); 
+  console.log("Avarage:", averagecredit.toFixed(0)); 
   return creditData;
 }
 
@@ -172,8 +172,8 @@ function businessNumbesr() {
 
 	let newtotalsale = totalSales;
 	let newtaotalcredit = totalcredit;
-	let avnewtotalsale = averageSales.toFixed(2);
-	let avnewtotalcredit = averagecredit.toFixed(2);
+	let avnewtotalsale = +averageSales;
+	let avnewtotalcredit = +averagecredit;
 	let newgrandtotal = newtaotalcredit + newtotalsale;
 	let cashpercent = (newtotalsale / newgrandtotal) * 100 
 	cashpercent = cashpercent.toFixed(2);
@@ -185,8 +185,14 @@ function businessNumbesr() {
 	tbltotalcreditpercent.innerHTML =  creditpercent + " %";
 	tblgrandtotal.innerHTML = "Grand Total : <br>" + newgrandtotal.toLocaleString();
 	tblgrandtotalpercent.innerHTML = +cashpercent + +creditpercent + " %";
-	tbltotalsaleav.innerHTML = "Avarage  : <br>" + avnewtotalsale;
-	tbltotalcreditav.innerHTML = "Avarage : <br>" + avnewtotalcredit;
+  // prepare for comma and runding off
+  avnewtotalsale = avnewtotalsale.toFixed(0); 
+  avnewtotalsale = +avnewtotalsale + 0;
+  avnewtotalcredit = avnewtotalcredit.toFixed(0);
+  avnewtotalcredit = +avnewtotalcredit + 0;
+	tbltotalsaleav.innerHTML = "Avarage  : <br>" + avnewtotalsale.toLocaleString();
+	tbltotalcreditav.innerHTML = "Avarage : <br>" + avnewtotalcredit.toLocaleString();
+
 }
 
  function linegraph(salesData,creditData) {
@@ -374,7 +380,7 @@ let thismonthsales = "Mymonthly/"+ currentMonth+currentYear ;
     profitthis = +childData.TotalSale - +childData.TotalStockAmount;
     innerthismonthsale.innerHTML = "Sales :" + childData.TotalSale.toLocaleString();
     innerthismonthstock.innerHTML = "Stock :" + childData.TotalStockAmount.toLocaleString();
-    innerthismonthprofit.innerHTML  = +childData.TotalSale - +childData.TotalStockAmount;
+    innerthismonthprofit.innerHTML  = (+childData.TotalSale - +childData.TotalStockAmount).toLocaleString();
     // get previous
     let previousmonthsales = "Mymonthly/"+ previousMonthName+currentYear ;
   // get the stock 
@@ -387,8 +393,8 @@ let thismonthsales = "Mymonthly/"+ currentMonth+currentYear ;
     profitprev = +childData.TotalSale - +childData.TotalStockAmount;
     innerpreviousmonthsale.innerHTML = "Sales : " + childData.TotalSale.toLocaleString().toLocaleString();
     innerpreviousmonthstock.innerHTML = "Stock : " + childData.TotalStockAmount.toLocaleString().toLocaleString();
-    innerpreviousmonthprofit.innerHTML  = +childData.TotalSale - +childData.TotalStockAmount;
-    lbtwomonthprofit.innerHTML = +profitprev + +profitthis;
+    innerpreviousmonthprofit.innerHTML  = (+childData.TotalSale - +childData.TotalStockAmount).toLocaleString();
+    lbtwomonthprofit.innerHTML = (+profitprev + +profitthis).toLocaleString();
      console.log(+profitprev + +profitthis);
   }
   
@@ -446,7 +452,7 @@ function allYearProfit() {
   //console.log(`Total Stock for ${currentYear}: ${totalStockSum}`);
       innerthisyearsale.innerHTML = "Sale this year : " + totalSaleSum.toLocaleString();
       innerthisyearstock.innerHTML = "Stoack this year : " + totalStockSum.toLocaleString();
-      lbyearprofit.innerHTML = +totalSaleSum - +totalStockSum;
+      lbyearprofit.innerHTML = (+totalSaleSum - +totalStockSum).toLocaleString();
 
   // Create a bar chart
   const ctx = document.getElementById('chart').getContext('2d');

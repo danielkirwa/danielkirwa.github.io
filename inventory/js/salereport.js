@@ -1,3 +1,9 @@
+var success = "&#9989; Success";
+var failed = "&#10060; Failed";
+var warning = "&#10071; Warning";
+
+
+
 var cashiersaletotal = 0;
 const currentMonth = new Date().toLocaleString('default', { month: 'long' });
 const currentYear = new Date().getFullYear();
@@ -209,8 +215,120 @@ function getCashierSales(dividby) {
 })
 }
 
+/// get the selers report and receipt
+let allcashiers = document.getElementById('allcashiers');
+let btnsearchcashier = document.getElementById('btnsearchcashier');
+let auditof = document.getElementById('auditof');
+btnsearchcashier.addEventListener('click', () => {
+  let cashiersearchid = allcashiers.value;
+  let newcashiersearchid = cashiersearchid.replace(/[@.]/g, "&");
+// JavaScript code
+// JavaScript code
+const dbRef = firebase.database().ref("Mycashiersalesreceipt");
+
+const dataTableContainer = document.getElementById("data-table-container");
+
+dbRef.child(newcashiersearchid).once("value")
+  .then((snapshot) => {
+    const data = snapshot.val();
+    if (data == null) {
+      myAlert(warning,"Cashier do not have sales yet");
+       auditof.innerHTML = "failed for sales found";
+       dataTableContainer.innerHTML = "<b> No sales for the cashier selected </b>";
+    }else{
+      dataTableContainer.innerHTML = "";
+      auditof.innerHTML = cashiersearchid;
+    }
+
+    // Create an array to hold table elements for sorting
+    const sortedTables = [];
+
+    // Create tables for each timestamp
+    for (const timestamp in data) {
+      const salesDataArray = JSON.parse(data[timestamp]);
+
+      const table = document.createElement("table");
+
+      // Add table caption with the timestamp (formatted as date-time)
+      const date = new Date(parseFloat(timestamp));
+      const formattedDate = date.toLocaleString(); // Format the timestamp to a human-readable date and time
+      const caption = document.createElement("caption");
+      caption.textContent = formattedDate;
+      table.appendChild(caption);
+
+      const tableBody = document.createElement("tbody");
+      table.appendChild(tableBody);
+
+      // Add table header with column names
+      const headerRow = tableBody.insertRow();
+      const headers = ["Product Name", "Product Code", "Quantity", "Price"];
+      headers.forEach(headerText => {
+        const headerCell = document.createElement("th");
+        headerCell.textContent = headerText;
+        headerRow.appendChild(headerCell);
+      });
+
+      // Populate the table with sales data for the current timestamp
+      for (const sale of salesDataArray) {
+        const row = tableBody.insertRow();
+        sale.forEach(saleData => {
+          const cell = row.insertCell();
+          cell.textContent = saleData;
+        });
+      }
+
+      // Add the table to the array for sorting
+      sortedTables.push(table);
+    }
+
+    // Sort the tables in descending order based on timestamp (most recent first)
+    sortedTables.sort((a, b) => {
+      const timestampA = new Date(a.caption.textContent).getTime();
+      const timestampB = new Date(b.caption.textContent).getTime();
+      return timestampB - timestampA;
+    });
+
+    // Append the sorted tables to the dataTableContainer
+    sortedTables.forEach(table => {
+      dataTableContainer.appendChild(table);
+    });
+  })
+  .catch((error) => {
+    console.error(error);
+  });
 
 
+
+
+
+
+
+})
+
+// get cashier
+function getAllCashier() {
+  // body... gets all users 
+    var ref = firebase.database().ref("Mystaff");
+allcashiers.innerHTML = "";
+var optiondefault = document.createElement("option");
+optiondefault.text = "Select user / cashier";
+optiondefault.value = "cashier";
+optiondefault.id = "";
+allcashiers.add(optiondefault);
+ref.on("value", function(snapshot) {
+  snapshot.forEach(function(childSnapshot) {
+    var childData = childSnapshot.val();
+    var cashiername = childData.Email;
+  
+      var option = document.createElement("option");
+      option.text = cashiername;
+      option.value = cashiername;
+      allcashiers.add(option);
+    
+  });
+});
+}
+getAllCashier();
 
 
 

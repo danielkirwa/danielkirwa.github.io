@@ -191,11 +191,13 @@ function getCashierSales(dividby) {
      snapshot.forEach(function(childSnapshot) {
     let childKey = childSnapshot.key;
     let mysales = childSnapshot.child("CashierTotalSale").val();
+    let mydiscount = childSnapshot.child("CashierTotalDiscount").val();
     cashiersaletotal = +cashiersaletotal + +mysales;
          var row = table.insertRow(-1);
           var cell1 = row.insertCell(0);
           var cell2 = row.insertCell(1);
           var cell3 = row.insertCell(2);
+          var cell4 = row.insertCell(3);
           var newpercent;
            newpercent = (mysales/dividby)* 100;
            newpercent = newpercent.toFixed(2);
@@ -206,10 +208,18 @@ function getCashierSales(dividby) {
 
            let newemail = inputString.replace("&", "@").replace("&", ".");
 
+           // check if discount is there 
+           if (mydiscount == null) {
+            mydiscount = 0.00;
+           }else{
+            mydiscount = mydiscount.toLocaleString();
+           }
+
 
           cell1.innerHTML = newemail;
           cell2.innerHTML = mysales.toLocaleString();
-          cell3.innerHTML = newpercent + " %";
+          cell3.innerHTML = mydiscount;
+          cell4.innerHTML = newpercent + " %";
 
   })
 })

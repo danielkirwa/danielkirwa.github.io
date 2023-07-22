@@ -171,6 +171,8 @@
 .hoverme{
  cursor: pointer;
 }
+tbody tr:nth-child(odd){background-color: #f2f2f2;}
+tbody tr:hover{background-color: #ddd; }
 
 .pagination {   
         display: inline-block;   

@@ -212,7 +212,8 @@ printer.addEventListener('click', () => {
         firebase.database().ref(monthlysalenode).update({
 
        TotalCredit: firebase.database.ServerValue.increment(grandamount),
-       TotalStockAmount : firebase.database.ServerValue.increment(grandamountbuying)       
+       TotalStockAmount : firebase.database.ServerValue.increment(grandamountbuying),
+       TotalDiscount: firebase.database.ServerValue.increment(+discountgiven)        
    
       }).then(() => {
    
@@ -229,7 +230,8 @@ printer.addEventListener('click', () => {
     let cashiersales = "Mycashiercreditsales/"+ email ;
         firebase.database().ref(cashiersales).update({
 
-       CashierTotalCreditSale: firebase.database.ServerValue.increment(grandamount)       
+       CashierTotalCreditSale: firebase.database.ServerValue.increment(grandamount),
+       TotalDiscount: firebase.database.ServerValue.increment(+discountgiven)        
    
       }).then(() => {
        

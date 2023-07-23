@@ -385,7 +385,8 @@ printer.addEventListener('click', () => {
         firebase.database().ref(monthlysalenode).update({
 
        TotalSale: firebase.database.ServerValue.increment(grandamount),
-       TotalStockAmount : firebase.database.ServerValue.increment(grandamountbuying)       
+       TotalStockAmount : firebase.database.ServerValue.increment(grandamountbuying),
+       TotalDiscount: firebase.database.ServerValue.increment(+discountgiven)        
    
       }).then(() => {
    
@@ -393,22 +394,6 @@ printer.addEventListener('click', () => {
   .catch((error) => {
      myAlert(failed, "Cummulative sale not captured");
   });
-
-  // update all discount given 
-
-
-    let monthlydiscountnode = "Mymonthlydiscount/"+ currentMonth+currentYear ;
-        firebase.database().ref(monthlydiscountnode).update({
-
-       TotalDiscount: firebase.database.ServerValue.increment(+discountgiven)       
-   
-      }).then(() => {
-   
-  })
-  .catch((error) => {
-     myAlert(failed, "Cummulative discount not captured");
-  });
-
 
 
   // update cashier sales 

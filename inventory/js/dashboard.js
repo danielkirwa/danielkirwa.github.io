@@ -144,7 +144,7 @@ let thismonthcreditsales = "Mymonthlycredit/"+ currentMonth+currentYear ;
   }else{
     innerthismonthcredit.innerHTML = "Credit = " + childData.TotalCredit;
     cardcurrentmonthcredit.innerHTML = currentMonth + " Credit = " + childData.TotalCredit.toLocaleString();
-    thismonthcredit = childData.TotalCredit.toLocaleString();
+    thismonthcredit = childData.TotalCredit;
     // get previous
     let previousmonthcreditsales = "Mymonthlycredit/"+ previousMonthName+currentYear ;
   // get the stock 
@@ -164,9 +164,9 @@ let thismonthcreditsales = "Mymonthlycredit/"+ currentMonth+currentYear ;
  
    if (businessdivcredit > 0) {
      
-     lbgrowthcredit.innerHTML = "Up : " + '&#128681;  ' + businessdivcredit.toLocaleString();
+     lbgrowthcredit.innerHTML = "Up  : " + '&#128681;  ' + businessdivcredit.toLocaleString();
    }else{
-    lbgrowthcredit.innerHTML = "Down : " + '&#128316;  ' + businessdivcredit.toLocaleString();
+    lbgrowthcredit.innerHTML = "Down  : " + '&#128316;  ' + businessdivcredit.toLocaleString();
    }
    
  

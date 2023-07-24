@@ -94,6 +94,8 @@ storedArray.forEach(function(innerArray) {
   snolabel.innerHTML = recieptitems;
   discountopholder.innerHTML = discountgiven.toLocaleString();
   tbldiscount.innerHTML = discountgiven.toLocaleString();
+  tblgrandpriceholder.innerHTML = (grandamount - discountgiven).toLocaleString();
+    priceholder.innerHTML = (grandamount - +discountgiven).toLocaleString();
 }
 
 
@@ -116,6 +118,8 @@ function removeRow(button) {
      tblgrandpriceholder.innerHTML = grandamount.toLocaleString();
      recieptitems = +recieptitems - removecount;
   snolabel.innerHTML = recieptitems;
+  tblgrandpriceholder.innerHTML = (grandamount - discountgiven).toLocaleString();
+    priceholder.innerHTML = (grandamount - +discountgiven).toLocaleString();
    rowtoremoveformarray = row.rowIndex - 1;
 // data to delete
  //console.log(removeditem);
@@ -162,19 +166,33 @@ printer.addEventListener('click', () => {
     element.style.visibility = "none";
   });
   // save sale and print reciept
-   //myAlert(success, "ready to save sale");
-  	 recieptitemsarray = storedArray;
-     // remove all the button create code form the reciept
-     for (let i = 0; i < recieptitemsarray.length; i++) {
-     	for(let j = 0; j < recieptitemsarray[i].length; j++){
-     		if (recieptitemsarray[i][j] === "<button class=\"remove-btn\" onclick=\"removeRow(this)\">X</button>") {
-     			recieptitemsarray[i].splice(j,1);
-     		}
-     	}
-      }
+// remove all the button create code from the receipt
+recieptitemsarray = storedArray;
+// remove all the button create code from the receipt
+for (let i = 0; i < recieptitemsarray.length; i++) {
+  for (let j = 0; j < recieptitemsarray[i].length; j++) {
+    if (recieptitemsarray[i][j] === "<button class=\"remove-btn\" onclick=\"removeRow(this)\">X</button>") {
+      recieptitemsarray[i].splice(j, 1);
+    }
+  }
+}
 
-  	 let storedreciepttodatabase = JSON.stringify(recieptitemsarray);
-     //console.log(storedreciepttodatabase);
+// Calculate totals
+let totalQuantity = 0;
+let totalPrice = 0;
+for (let i = 0; i < recieptitemsarray.length; i++) {
+  totalQuantity += parseInt(recieptitemsarray[i][2]); // Assuming quantity is in the third element of the inner array
+  totalPrice += parseFloat(recieptitemsarray[i][3]); // Assuming total amount is in the fourth element of the inner array
+}
+grandamount = grandamount - discountgiven;
+
+let lastreceiptitem = ["Totals", grandamount, discountgiven, grandamount - discountgiven];
+
+// Convert storedArray to a new array without references
+let storedreciepttodatabase = JSON.parse(JSON.stringify(recieptitemsarray));
+storedreciepttodatabase.push(lastreceiptitem);
+storedreciepttodatabase = JSON.stringify(storedreciepttodatabase); // Convert back to JSON string
+
 
 /*------------------------------------------------------------*/
     /// update product count

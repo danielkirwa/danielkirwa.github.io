@@ -39,7 +39,7 @@ var producttocodeupdate;
 var availableproductunittoupdate;
 var newavailableproductunittoupdate;
 var selectedbuyingprice = 0;
-
+discountgiven = localStorage.getItem('Discount');
 /*function updateValue(e) {
   var price = Itemselected.options[Itemselected.selectedIndex].value;
   count = e.target.value;
@@ -234,6 +234,7 @@ function onreloadshowitems(argument) {
 	// body...
 	let storeditems = localStorage.getItem('curentreciept');
 	let storedbuyingprices = localStorage.getItem('curentbuying');
+  discountgiven = localStorage.getItem('Discount');
   // do discount back zero 
 	if (storeditems == null || storedbuyingprices == null) {
      
@@ -266,9 +267,9 @@ storedArray.forEach(function(innerArray) {
  grandamountbuying = storedArraybuying.reduce((a,b) => a + +b[2],0);
   console.log(grandamount);
  console.log(grandamountbuying)
-  priceholder.innerHTML = grandamount.toLocaleString();
+  priceholder.innerHTML = (grandamount - +discountgiven).toLocaleString();
   tblpriceholder.innerHTML = grandamount.toLocaleString();
-  tblgrandpriceholder.innerHTML = grandamount.toLocaleString();
+  tblgrandpriceholder.innerHTML = (grandamount - +discountgiven).toLocaleString();
   snolabel.innerHTML = recieptitems.toLocaleString();
 
 
@@ -300,9 +301,9 @@ function removeRow(button) {
 	 removecount = row.getElementsByTagName("td")[2].textContent;
 	 removecode = row.getElementsByTagName("td")[1].textContent;
 	 grandamount = grandamount - +removeditem;
-	 priceholder.innerHTML = grandamount.toLocaleString();
+	 priceholder.innerHTML = (grandamount - +discountgiven).toLocaleString();
 	 tblpriceholder.innerHTML = grandamount.toLocaleString();
-     tblgrandpriceholder.innerHTML = grandamount.toLocaleString();
+     tblgrandpriceholder.innerHTML = (grandamount - discountgiven).toLocaleString();
      recieptitems = +recieptitems - removecount;
   snolabel.innerHTML = recieptitems;
    rowtoremoveformarray = row.rowIndex - 1;
@@ -342,7 +343,6 @@ localStorage.setItem('curentbuying', storedbuying);
 printer.addEventListener('click', () => {
   if (storedArray.length === 0) {
   myAlertRefresh(warning, "Select item and add it to the reciept");
-  console.log(+discountgiven);
 } else {
 
   var divToPrint = document.getElementById("readyreciept").innerHTML;
@@ -354,19 +354,37 @@ printer.addEventListener('click', () => {
   });
   // save sale and print reciept
    //myAlert(success, "ready to save sale");
-  	 recieptitemsarray = storedArray;
-     // remove all the button create code form the reciept
-     for (let i = 0; i < recieptitemsarray.length; i++) {
-     	for(let j = 0; j < recieptitemsarray[i].length; j++){
-     		if (recieptitemsarray[i][j] === "<button class=\"remove-btn\" onclick=\"removeRow(this)\">X</button>") {
-     			recieptitemsarray[i].splice(j,1);
-     		}
-     	}
-      }
+  	 //recieptitemsarray = storedArray;
+// remove all the button create code from the receipt
+recieptitemsarray = storedArray;
+// remove all the button create code from the receipt
+for (let i = 0; i < recieptitemsarray.length; i++) {
+  for (let j = 0; j < recieptitemsarray[i].length; j++) {
+    if (recieptitemsarray[i][j] === "<button class=\"remove-btn\" onclick=\"removeRow(this)\">X</button>") {
+      recieptitemsarray[i].splice(j, 1);
+    }
+  }
+}
 
-  	 let storedreciepttodatabase = JSON.stringify(recieptitemsarray);
+// Calculate totals
+let totalQuantity = 0;
+let totalPrice = 0;
+for (let i = 0; i < recieptitemsarray.length; i++) {
+  totalQuantity += parseInt(recieptitemsarray[i][2]); // Assuming quantity is in the third element of the inner array
+  totalPrice += parseFloat(recieptitemsarray[i][3]); // Assuming total amount is in the fourth element of the inner array
+}
+grandamount = grandamount - discountgiven;
+
+let lastreceiptitem = ["Totals", grandamount, discountgiven, grandamount - discountgiven];
+
+// Convert storedArray to a new array without references
+let storedreciepttodatabase = JSON.parse(JSON.stringify(recieptitemsarray));
+storedreciepttodatabase.push(lastreceiptitem);
+storedreciepttodatabase = JSON.stringify(storedreciepttodatabase); // Convert back to JSON string
+
+
      //console.log(storedreciepttodatabase);
-    /// update product count
+    /// update product count and 
         firebase.database().ref('Mysale/' + timestamp).set(storedreciepttodatabase)
   .then(function() {
      // update monthly sales 
@@ -519,12 +537,13 @@ discountpercent.addEventListener('input', function() {
     lbtoppercentview.innerHTML = newpercent;
     discountopholder.innerHTML = discountgiven.toLocaleString();
     tbldiscount.innerHTML = discountgiven.toLocaleString();
+    tblgrandpriceholder.innerHTML = (grandamount - discountgiven).toLocaleString();
+    priceholder.innerHTML = (grandamount - +discountgiven).toLocaleString();
     // save the discount
     localStorage.setItem('Discount', discountgiven);
   }
   }
 });
-
 
 // number given
 discountamount.addEventListener('input', function() {
@@ -541,6 +560,8 @@ discountamount.addEventListener('input', function() {
   lbtoppercentview.innerHTML = newpercent;
    discountopholder.innerHTML = discountgiven.toLocaleString();
    tbldiscount.innerHTML = discountgiven.toLocaleString();
+   tblgrandpriceholder.innerHTML = (grandamount - discountgiven).toLocaleString();
+   priceholder.innerHTML = (grandamount - +discountgiven).toLocaleString();
    localStorage.setItem('Discount', discountgiven);
 }
 

@@ -216,6 +216,7 @@ storedreciepttodatabase = JSON.stringify(storedreciepttodatabase); // Convert ba
 
     myAlertRefresh(success, "Sale completed ");
     localStorage.removeItem("curentreciept");
+    localStorage.setItem('Discount', 0.00);
     //location.reload();
   })
   .catch(function(error) {

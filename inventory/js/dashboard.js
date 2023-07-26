@@ -133,6 +133,7 @@ let thismonthsales = "Mymonthly/"+ currentMonth+currentYear ;
    let innerthismonthcredit = document.getElementById('innerthismonthcredit');
    let cardcurrentmonthcredit = document.getElementById('cardcurrentmonthcredit');
    let cardpreviousmonthcredit = document.getElementById('cardpreviousmonthcredit');
+   let innerthismonthdiscount = document.getElementById('innerthismonthdiscount');
   /*--------------------------------------*/
 let thismonthcreditsales = "Mymonthlycredit/"+ currentMonth+currentYear ;
   // get the stock 
@@ -142,8 +143,9 @@ let thismonthcreditsales = "Mymonthlycredit/"+ currentMonth+currentYear ;
   if (childData == null) {
      myAlert(warning, "No credit sales found this month of : <br>" + currentMonth + " " + currentYear);
   }else{
-    innerthismonthcredit.innerHTML = "Credit = " + childData.TotalCredit;
-    cardcurrentmonthcredit.innerHTML = currentMonth + " Credit = " + childData.TotalCredit.toLocaleString();
+    innerthismonthcredit.innerHTML = "Credit  = " + childData.TotalCredit.toLocaleString();
+    cardcurrentmonthcredit.innerHTML = currentMonth + " Credit  = " + childData.TotalCredit.toLocaleString();
+    innerthismonthdiscount.innerHTML = "Discount credit = " + childData.TotalDiscount.toLocaleString();
     thismonthcredit = childData.TotalCredit;
     // get previous
     let previousmonthcreditsales = "Mymonthlycredit/"+ previousMonthName+currentYear ;
@@ -157,7 +159,7 @@ let thismonthcreditsales = "Mymonthlycredit/"+ currentMonth+currentYear ;
      lbgrowthcredit.innerHTML = "Up : " + '&#128681;  ' + thismonthcredit.toLocaleString();
   }else{
    
-   cardpreviousmonthcredit.innerHTML = previousMonthName +" Credit = " + childData.TotalCredit.toLocaleString();
+   cardpreviousmonthcredit.innerHTML = previousMonthName +" Credit  = " + childData.TotalCredit.toLocaleString();
    // calculate loan variation 
    previousmonthcredit = childData.TotalCredit;
    businessdivcredit = +thismonthcredit - +previousmonthcredit;
@@ -276,6 +278,8 @@ allProducttoDepleted();
 var currentDate = new Date();
 var expirationDate = new Date(currentDate.getTime() + (30 * 24 * 60 * 60 * 1000));
 var expirationDateString = expirationDate.toISOString().split("T")[0];
+var expirationcheck = new Date(currentDate.getTime());
+expirationcheck = expirationcheck.toISOString().split("T")[0];
 
 // Create a query to select child nodes with expiration dates less than 30 days from now
 var query = myProductRef.orderByChild("ClearBy").endAt(expirationDateString);
@@ -293,10 +297,12 @@ query.once("value")
           var cell3 = row.insertCell(2);
           var cell4 = row.insertCell(3);
           var state;
-          if (childData.ClearBy >= 1) {
+          if (childData.ClearBy >  expirationcheck) {
             state = childData.ClearBy;
+            console.log('up' + datetoday);
           }else{
             state = "Expired => " + "on " + childData.ClearBy;
+            console.log("down" + datetoday);
           }
 
           cell1.innerHTML = childData.ProductName;
@@ -408,10 +414,9 @@ findStaffRoleByEmail(targetEmail)
   
       }else{
         //myAlert("No Active user");
+        window.location.href='../index.html';
       }
     })
-
-
 
 
 // hide tabs cashier

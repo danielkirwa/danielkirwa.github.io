@@ -1,0 +1,210 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Accounts</title>
+
+		<link rel="stylesheet" type="text/css" href="../css/index.css">
+	<link rel="stylesheet" type="text/css" href="../css/nav.css">
+	<link rel="stylesheet" type="text/css" href="../css/elements.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<div>
+    <div class="banner">
+    	<div class="vender-logo"><img src="../assets/logo/juelgaicon.png"> </div>
+    	<div class="shop-name"><center><h3 id="lbbusinessname"></h3></center></div>
+    </div>
+</div>
+<!-- nav -->
+<div class="navbar">
+	  <a href="dashboard.html">Dashboard</a>
+  <div class="subnav">
+    <button class="subnavbtn">My Business <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="createbusiness.html">Add Business</a>
+      <a href="adjustbusiness.html">Adjust Business</a>
+      <a href="createcustomer.html">Add Customer</a>
+      <a href="adjustcustomer.html">Adjust Customer</a>
+    </div>
+  </div> 
+  <div class="subnav">
+    <button class="subnavbtn">Product <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="createproduct.html">Add Product</a>
+      <a href="createunits.html">Add Units</a>
+      <a href="createcategory.html">Categories</a>
+      <a href="adjustproduct.html">Adjust Product</a>
+    </div>
+  </div> 
+  <div class="subnav">
+    <button class="subnavbtn">Stock <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="createstock.html">Add Stock</a>
+      <a href="adjuststock.html">Adjust Stock</a>
+      <a href="clearstock.html">Clear Stock on Credit</a>
+
+    </div>
+  </div>
+   <div class="subnav">
+    <button class="subnavbtn" style=" background:  #0067a0;">Register <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="register.html">Add Staff</a>
+      <a href="adjuststaff.html">Adjust Staff</a>
+      <a href="createsupplier.html">Add Supplier</a>
+      <a href="adjustsupplier.html">Adjust Supplier</a>
+    </div>
+  </div>
+  <div class="subnav">
+    <button class="subnavbtn">Reports <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="businessreport.html">Business Report</a>
+      <a href="salereport.html">Saler Report</a>
+    </div>
+  </div>
+  <a href="#contact">Settings</a>
+  <a href="#contact">Sale Desk</a>
+  <div class="subnav">
+    <button class="subnavbtn"><span id="usernamedisplay"></span><i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+       <a href="profile.html">Profile</a>
+      <a href="adminmanual.html">Manual</a>
+      <a href="#" onclick="logout()">Logout</a>
+    </div>
+  </div>
+</div>
+<!-- end of nav bar -->
+
+<!-- search account to add -->
+
+<div class="action-div">
+  <form action="" method="POST" name="" id="submitform">
+   <center><h3 class="my-label">Search Staff</h3></center>
+
+   <div class="input-holder">
+      <div class="card">
+        <center>
+          <label class="small-label">Entet ID/Email</label><br>
+          <input type="text" name="email" placeholder="Enter ID or Email" class="my-input">
+          </center>
+      </div>
+      <div class="card">
+         <center>
+          <br>
+          <input type="submit" name="searchaccount" value="Search now" class="my-btn">
+          </center>
+
+      </div>
+   </div>
+
+
+</form>
+</div>
+
+<br>
+<!-- add account form -->
+<div class="action-div">
+  <form action="" method="POST" name="" id="submitform">
+    
+	 <center><h3 class="my-label">account name &nbsp; account management</h3></center>
+
+	 <div class="input-holder">
+      <div class="card">
+      	<center>
+          <label class="small-label">Holders Name</label><br>
+          <label>Full Name : </label>
+          </center>
+      </div>
+      <div class="card">
+      	<center>
+      	<label class="small-label">Holder email</label><br>
+        <input type="hidden" name="username" value="">
+         <label>Email </label>
+          </center>
+      </div>
+   </div>
+
+   <div class="input-holder">
+      <div class="card">
+      	<center>
+          <label class="small-label">ID/Phone</label><br>
+             
+            
+               <input type="hidden" name="password" value="">
+                 <label>ID </label><br>
+            <label>Phone </label>                                           
+              
+            
+                
+          </center>
+      </div>
+      <div class="card">
+      	<center>
+      	<label class="small-label">Role/Station</label><br>
+        <input type="hidden" name="role" value="">
+         <label>Role </label><br>
+         <label>Station </label>
+          </center>
+      </div>
+   </div>
+
+
+
+           
+
+
+   <div class="input-holder">
+      <div class="card">
+      	<center>
+          <input type="submit" name="addaccount" value="Create Account" class="my-btn">
+          </center>
+      </div>
+      <div class="card">
+      	<center>
+         <label>Default password is ID number </label><br>
+          </center>
+      </div>
+   </div>
+             
+</form>
+</div>
+
+
+<!-- table -->
+<br><br>
+
+<div class="scroll-table">
+  <div class="table-holder">
+    <div class="table-caption">
+      <label class="my-label">List of Accounts/Roles  </label>
+    </div>
+  <table>
+    <thead>
+      <th>Account Name</th>
+      <th>Role </th>
+      <th>Status</th>
+    </thead>
+    <tbody>   
+       
+          </tbody>
+     </table>
+
+
+
+  </div>
+</div>
+
+
+
+<br><br><br><br>
+<!-- footer starts -->
+<div class="footer">
+	 <h3></h3>
+   Juelga solution &copy;  &nbsp;&nbsp;<a href="https://www.juelgasolutions.co.tz" style="text-decoration: none; color: #ffffff">juelgasolution </a><br>
+   <h3></h3>
+</div>
+ 
+</body>
+</html>

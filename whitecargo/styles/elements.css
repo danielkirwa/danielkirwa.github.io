@@ -313,6 +313,57 @@ footer a {
   padding: 0;
 }
 
+
+
+.phone-btn {
+  position: fixed;
+  top: 20px;
+  right: 60px;
+  z-index: 9999;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  font-size: 24px;
+  line-height: 50px;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+}
+
+.phone-btn:hover {
+  background-color: #0062cc;
+  transform: scale(1.1);
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Style for the WhatsApp button */
+.whatsapp-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+  background-color: mediumseagreen;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  font-size: 24px;
+  line-height: 50px;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+}
+
+.whatsapp-btn:hover {
+  background-color:  mediumseagreen;
+  transform: scale(1.1);
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.3);
+}
+
 @media screen and (max-width: 860px) {
   .navbar .all-links {
     position: fixed;

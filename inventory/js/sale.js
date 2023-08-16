@@ -40,6 +40,7 @@ var availableproductunittoupdate;
 var newavailableproductunittoupdate;
 var selectedbuyingprice = 0;
 var fraction = 0.0;
+var price;
 discountgiven = localStorage.getItem('Discount');
 
 
@@ -106,7 +107,7 @@ var Bname,Baddress,Bphone,Bemail,Bregion,Btown;
 // update counter by adding quantity
 
 function updateValue(e) {
-  var price = Itemselected.options[Itemselected.selectedIndex].value;
+  price = Itemselected.options[Itemselected.selectedIndex].value;
   count = e.target.value;
 
   if (count < 1) {
@@ -138,17 +139,42 @@ btnaddfraction.addEventListener('click', () =>{
 
   count = +count + +0.25;
  console.log(count);
+ itemcounter.value = count;
+ totalamount = +count * +price;
+      totalamountbusiness = +count * +selectedbuyingprice;
+      newselectprice.innerHTML = "Ksh. " + totalamount;
+      txtnewselectitem.innerHTML = "" + item;
+      txtnewselectprice.innerHTML = "" + price;
+      console.log(totalamountbusiness);
+ 
+
 } )
 btnsubfraction.addEventListener('click', () =>{
-  if (count == undfined || count == NaN) {
+  if (count === undefined || isNaN(parseFloat(count))) {
     myAlert(warning, "No Item selected");
   }else{
   count = +count - +0.25
+  itemcounter.value = count;
+  totalamount = +count * +price;
+      totalamountbusiness = +count * +selectedbuyingprice;
+      newselectprice.innerHTML = "Ksh. " + totalamount;
+      txtnewselectitem.innerHTML = "" + item;
+      txtnewselectprice.innerHTML = "" + price;
+      console.log(totalamountbusiness);
+  
   if (count < 0.25) {
     count = 0.25;
     myAlert(warning, "Reach minimum fraction");
+    itemcounter.value = count;
+    totalamount = +count * +price;
+      totalamountbusiness = +count * +selectedbuyingprice;
+      newselectprice.innerHTML = "Ksh. " + totalamount;
+      txtnewselectitem.innerHTML = "" + item;
+      txtnewselectprice.innerHTML = "" + price;
+      console.log(totalamountbusiness);
+    
   }
- console.log(count);
+ 
 }
 } )
 

@@ -135,24 +135,21 @@ function updateValue(e) {
  // add or subtract fraction 
 
 btnaddfraction.addEventListener('click', () =>{
- fraction = fraction + 0.25;
- if (fraction > 0.75) {
-  fraction = 0.75;
-  myAlert(warning, "Minimum fraction given");
- }else{
-  count = +count + +fraction;
- }
+
+  count = +count + +0.25;
  console.log(count);
 } )
 btnsubfraction.addEventListener('click', () =>{
- fraction = fraction - 0.25; 
- if (fraction < 0.25) {
-  fraction = 0.25;
-  myAlert(warning, "Maximum fraction given");
- }else{
-  count = +count - +fraction;
- }
+  if (count == undfined || count == NaN) {
+    myAlert(warning, "No Item selected");
+  }else{
+  count = +count - +0.25
+  if (count < 0.25) {
+    count = 0.25;
+    myAlert(warning, "Reach minimum fraction");
+  }
  console.log(count);
+}
 } )
 
 

@@ -371,4 +371,28 @@
     transform: translateX(-100%);
   }
 }
+/* Reset default button styles */
+
+.btn-fraction {
+  margin-top: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ccc;
+    padding: 6px 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    background-color: #f5f5f5;
+}
+.minus:hover {
+  background: crimson;
+  color: white;
+  cursor: pointer;
+}
+.plus:hover {
+  background:  #0067a0;;
+  color: white;
+  cursor: pointer;
+}
+
 

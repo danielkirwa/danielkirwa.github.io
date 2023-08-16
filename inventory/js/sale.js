@@ -39,7 +39,14 @@ var producttocodeupdate;
 var availableproductunittoupdate;
 var newavailableproductunittoupdate;
 var selectedbuyingprice = 0;
+var fraction = 0.0;
 discountgiven = localStorage.getItem('Discount');
+
+
+  // buttons 
+ let btnaddfraction = document.getElementById('btnaddfraction');
+ let btnsubfraction = document.getElementById('btnsubfraction');
+
 /*function updateValue(e) {
   var price = Itemselected.options[Itemselected.selectedIndex].value;
   count = e.target.value;
@@ -96,7 +103,7 @@ var Bname,Baddress,Bphone,Bemail,Bregion,Btown;
       });
 
 
-
+// update counter by adding quantity
 
 function updateValue(e) {
   var price = Itemselected.options[Itemselected.selectedIndex].value;
@@ -124,6 +131,30 @@ function updateValue(e) {
     }
   }
 }
+
+ // add or subtract fraction 
+
+btnaddfraction.addEventListener('click', () =>{
+ fraction = fraction + 0.25;
+ if (fraction > 0.75) {
+  fraction = 0.75;
+  myAlert(warning, "Minimum fraction given");
+ }else{
+  count = +count + +fraction;
+ }
+ console.log(count);
+} )
+btnsubfraction.addEventListener('click', () =>{
+ fraction = fraction - 0.25; 
+ if (fraction < 0.25) {
+  fraction = 0.25;
+  myAlert(warning, "Maximum fraction given");
+ }else{
+  count = +count - +fraction;
+ }
+ console.log(count);
+} )
+
 
 // for local storage 
 
@@ -154,8 +185,6 @@ selectedbuyingprice = Itemselected.options[Itemselected.selectedIndex].dataBuyin
   totalamountbusiness = selectedbuyingprice;
 
 });
-
-
 
 itemcounter.addEventListener("input", updateValue);
 

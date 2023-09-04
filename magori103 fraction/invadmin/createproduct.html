@@ -1,0 +1,308 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Create Product</title>
+
+		<link rel="stylesheet" type="text/css" href="../css/index.css">
+	<link rel="stylesheet" type="text/css" href="../css/nav.css">
+	<link rel="stylesheet" type="text/css" href="../css/elements.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<div>
+    <div class="banner">
+    	<div class="vender-logo"><img src="../assets/logo/juelgaicon.png"> </div>
+    	<div class="shop-name"><center><h3 id="lbbusinessname"></h3></center></div>
+    </div>
+</div>
+<!-- nav -->
+<div class="navbar">
+    <a href="dashboard.html">Dashboard</a>
+  <div class="subnav">
+    <button class="subnavbtn">My Business <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+     <a href="createbusiness.html">Add Business</a>
+      <a href="adjustbusiness.html">Adjust Business</a>
+      <a href="createcustomer.html">Add Customer</a>
+      <a href="adjustcustomer.html">Adjust Customer</a>
+    </div>
+  </div> 
+  <div class="subnav">
+    <button class="subnavbtn" style=" background:  #0067a0;">Product <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="createproduct.html">Add Product</a>
+      <a href="createunits.html">Add Units</a>
+      <a href="createcategory.html">Categories</a>
+      <a href="adjustproduct.html">Adjust Product</a>
+    </div>
+  </div> 
+  <div class="subnav">
+    <button class="subnavbtn">Stock <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="createstock.html">Add Stock</a>
+      <a href="adjuststock.html">Adjust Stock</a>
+      <a href="clearstock.html">Clear Stock on Credit</a>
+    </div>
+  </div>
+   <div class="subnav">
+    <button class="subnavbtn">Register <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="register.html">Add Staff</a>
+      <a href="adjuststaff.html">Adjust Staff</a>
+      <a href="createsupplier.html">Add Supplier</a>
+      <a href="adjustsupplier.html">Adjust Supplier</a>
+    </div>
+  </div>
+  <div class="subnav">
+    <button class="subnavbtn">Reports <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="businessreport.html">Business Report</a>
+      <a href="salereport.html">Saler Report</a>
+    </div>
+  </div>
+  <a href="setting.html">Settings</a>
+  <a href="saledesk.html">Sale Desk</a>
+  <div class="subnav">
+    <button class="subnavbtn"><span id="usernamedisplay"></span><i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+       <a href="profile.html">Profile</a>
+      <a href="adminmanual.html">Manual</a>
+      <a href="#" onclick="logout()">Logout</a>
+    </div>
+  </div>
+</div>
+<!-- end of nav bar -->
+
+<div class="action-div">
+   <center><h3 class="my-label">Search Stock to create products</h3></center>
+
+   <div class="input-holder">
+      <div class="card">
+        <center>
+          <label class="small-label">Entet Code/name</label><br>
+          <input type="text" id="searchcode" placeholder="Enter stock code or Name" class="my-input">
+          </center>
+      </div>
+      <div class="card">
+         <center>
+          <br>
+          <input type="submit" id="searchstock" value="Search now" class="my-btn">
+          </center>
+
+      </div>
+   </div>
+</div>
+
+<!-- create product -->
+<div class="action-div">
+     
+   <center><h3 class="my-label"><span id="lbstockname"></span> &nbsp; product creation</h3></center>
+
+   <div class="input-holder">
+      <div class="card">
+        <center>
+          <label class="small-label">Stock Name</label><br>
+          <label id="lbstockfullname">Full Name </label>
+          </center>
+      </div>
+      <div class="card">
+        <center>
+        <label class="small-label">Stock CODE</label><br>
+        <input type="hidden" name="stockcode" value="">
+         <label id="lbstockcode">CODE</label>
+          </center>
+      </div>
+   </div>
+
+   <div class="input-holder">
+      <div class="card">
+        <center>
+          <label class="small-label">Available Units</label><br>
+               <input type="hidden" name="saleunits" value="">
+                 <label>Available Units : <span id="availableunits"></span></label><br> 
+          </center>
+      </div>
+      <div class="card">
+        <center>
+        <label class="small-label">Created By</label><br>
+        <input type="hidden" value="">
+         <label id="createdby">Author</label><br>
+          </center>
+      </div>
+   </div>
+
+    <div class="input-holder">
+      <div class="card">
+        <center>
+          <label class="small-label">Product name : </label><br>
+         <input type="text" id="productname" value="" class="my-input" placeholder="Enter product name">
+          </center>
+      </div>
+       <div class="card">
+        <center>
+          <label class="small-label">Product code : </label><br>
+         <input type="text" id="productcode" value="" class="my-input"  placeholder="Enter code P-S00-1">
+          </center>
+      </div>
+   </div>
+
+
+
+   <div class="input-holder">
+
+      <div class="card">
+        <center>
+          <label class="small-label">Categorise the Product</label><br>
+           </center>
+         <select class="my-input" id="selectcategory">
+          <option>Select Category</option>
+         </select>
+          
+         
+      </div>
+
+      <div class="card">
+        <center>
+          <label class="small-label">Description</label><br>
+           </center>
+          
+          <textarea id="description" rows="4" cols="40" placeholder="Describe unit here..."></textarea>
+         
+      </div>
+
+
+   </div>
+
+
+   <div class="input-holder">
+      <div class="card">
+        <center>
+          <label class="small-label">Buying Price</label><br>
+         <input type="text" id="buying" value="" class="my-input" placeholder="Enter whole number 2000">
+          </center>
+      </div>
+      <div class="card">
+        <center>
+        <label class="small-label">Selling Price </label><br>
+        <input type="text" id="selling" value="" class="my-input" placeholder="Enter whole number 2000">
+          </center>
+      </div>
+   </div>
+
+   <div class="input-holder">
+      <div class="card">
+        <center>
+          <label class="small-label">Units to sale</label><br>
+         <input type="text" value=""class="my-input" id="txtunittosale">
+          </center>
+      </div>
+         <div class="card">
+        <center>
+          <label class="small-label">Units Still in Stock</label><br>
+         <input type="text" id="unitsinstock" value="" class="my-input" id="txtunitinstock">
+          </center>
+      </div>
+     
+   </div>
+
+
+   <div class="input-holder">
+      <div class="card">
+        <center>
+          <input type="submit" id="addproduct" value="Create Product" class="my-btn">
+          </center>
+      </div>
+      <div class="card">
+        <center>
+         <label>Product must be cleared by : <span id="lbclearby"></span> </label><br>
+          </center>
+      </div>
+   </div>
+            
+</div>
+
+
+
+<!-- table -->
+<br><br>
+
+<div class="scroll-table">
+  <div class="table-holder">
+    <div class="table-caption">
+      <label class="my-label">List of products  </label>
+    </div>
+  <table id="producttable">
+    <thead>
+      <th>Product</th>
+      <th>Category</th>
+      <th>Initial Price </th>
+      <th>Current Price</th>
+      <th>Description</th>
+      <th>Status</th>
+      <th>Units</th>
+    </thead>
+    <tbody>   
+           
+                 
+          </tbody>
+     </table>
+
+
+
+  </div>
+</div>
+
+
+<!-- alerts here -->
+
+<div id="alertBox">
+  <h2 id="alertTitle"></h2>
+  <p id="alertMessage"></p>
+  <center>
+  <button onclick="hideAlert()">OK</button>
+  </center>
+</div>
+
+
+<br><br><br><br>
+<!-- footer starts -->
+<div class="footer">
+	 <h3></h3>
+   Juelga solution &copy;  &nbsp;&nbsp;<a href="https://www.juelgasolutions.co.tz" style="text-decoration: none; color: #ffffff">juelgasolution </a><br>
+   <h3></h3>
+</div>
+
+
+
+   
+
+<script type="text/javascript">
+ 
+  txtunittosale.addEventListener("input", function(){ 
+     let txtunittosale = document.getElementById('txtunittosale');
+  let txtunitinstock = document.getElementById('unitsinstock');
+  let availableunits = document.getElementById('availableunits');
+  const  available = availableunits.textContent;
+  var saleunits = txtunittosale.value;
+  var remainder = 0;
+  remainder = +available - +saleunits
+  txtunitinstock.value = remainder; 
+ 
+
+ 
+
+});
+
+</script>
+
+ <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script>
+ <script type="text/javascript" src="../js/config.js"></script>
+ <script type="text/javascript" src="../js/createproduct.js"></script>
+
+</body>
+</html>

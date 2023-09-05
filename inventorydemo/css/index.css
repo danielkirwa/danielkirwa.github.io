@@ -1,0 +1,99 @@
+.orange-text{
+color: #ff6a13;
+}
+.white-text{
+color: #ffffff;
+}
+.blue-text{
+color: #0067a0;
+}
+
+.banner{
+	display: flex;
+	border-bottom: 2px solid #0067a0;
+	background: #f1f1f1;
+}
+.shop-name{
+	width: 100%;
+	color: #0067a0;
+}
+
+.dash-holder{
+  background: #f1f1f1;
+}
+.login-form{
+	width: 70%;
+	margin-left: 15%;
+	background: #ffffff;
+	min-width: 350px;
+
+}
+.my-input{
+	padding: 6px 8px;
+	width: 300px;
+}
+.login-btn{
+	padding: 6px 8px;
+	background:#0067a0;
+	outline: none;
+	width: 300px;
+	border: none;
+	 font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+
+}
+.login-btn:hover{
+	cursor: pointer;
+    color: #ff6a13;
+
+}
+.login-btn-trans{
+	padding: 6px 8px;
+	background:#00000000;
+	outline: none;
+	width: 300px;
+	border: none;
+	 font-size: 16px;
+    font-weight: bold;
+    color: #0067a0;
+
+}
+.login-btn-trans:hover{
+	cursor: pointer;
+    color: #ff6a13;
+
+}
+
+
+
+.my-label{
+    font-size: 22px;
+    font-weight: bold;
+    color: #0067a0;
+}
+.my-label-small{
+    font-size: 15px;
+    font-weight: bold;
+}
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: #0067a0;
+   color: white;
+   text-align: center;
+}
+
+
+
+@media (max-width: 800px) {
+ .login-form{
+	width: 100%;
+	margin-left: 0%;
+	background: #ffffff;
+	min-width: 300px;
+
+}
+}

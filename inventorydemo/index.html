@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Login now</title>
+	<link rel = "icon" href = "assets/logo/juelgaicon.png" type = "image/x-icon">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<link rel="stylesheet" type="text/css" href="css/elements.css">
+	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<div>
+    <div class="banner">
+    	<div class="vender-logo"><img src="assets/logo/juelgaicon.png"> </div>
+    	<div class="shop-name"><center><h3 id="lbbusinessname"></h3></center></div>
+    </div>
+</div>
+
+<!-- login  -->
+<div class="dash-holder">
+	 <div class="login-form">
+	 	<center><h3>Log now</h3></center>
+        <div>
+        <center>
+             <label class="my-label">Username</label><br><br>
+        	<input type="" id="username" placeholder="Enter Username" class="my-input"><br><br>
+        	<label class="my-label">Password</label><br><br>
+        	<input type="password" id="userpassword" placeholder="***********" class="my-input"><br><br>
+        	<button class="login-btn" id="logintoaccount">Login Now</button><br><br>
+        	<button class="login-btn-trans" id="forgotpassword">Forgot password</button> <br><br><label class="">1, admin@admin.com/ admin123</label> <br>
+          <label class="">2, lead@lead.com/ lead123</label><br>
+          <label class="">3, cashier@cashier.com/ cashier123</label><br>
+          <label id="systemstatus" class="my-label"></label><br><br>
+        	</center>
+        	
+        </div>
+	 </div>
+
+</div>
+
+
+
+
+<!-- alerts here -->
+
+<div id="alertBox">
+  <h2 id="alertTitle"></h2>
+  <p id="alertMessage"></p>
+  <center>
+  <button onclick="hideAlert()">OK</button>
+  </center>
+</div>
+
+
+
+
+<!-- end of login -->
+<div class="footer">
+	 <h3></h3>
+   Juelga solution &copy;  &nbsp;&nbsp;<a href="https://www.juelgasolutions.co.tz" style="text-decoration: none; color: #ffffff">juelgasolution </a><br>
+   <h3></h3>
+</div>
+
+
+  <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script>
+ <script type="text/javascript" src="js/timedconfig.js"></script>
+ <script type="text/javascript" src="js/index.js"></script>
+</body>
+</html>

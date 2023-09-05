@@ -1,0 +1,225 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Create Business</title>
+
+		<link rel="stylesheet" type="text/css" href="../css/index.css">
+	<link rel="stylesheet" type="text/css" href="../css/nav.css">
+	<link rel="stylesheet" type="text/css" href="../css/elements.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<div>
+    <div class="banner">
+    	<div class="vender-logo"><img src="../assets/logo/juelgaicon.png"> </div>
+    	<div class="shop-name"><center><h3 id="lbbusinessname"></h3></center></div>
+    </div>
+</div>
+<!-- nav -->
+<div class="navbar">
+	  <a href="dashboard.html">Dashboard</a>
+  <div class="subnav">
+    <button class="subnavbtn" style=" background:  #0067a0;">My Business <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="#company">Add Business</a>
+      <a href="createbusiness.html">Add Business</a>
+      <a href="adjustbusiness.html">Adjust Business</a>
+      <a href="createcustomer.html">Add Customer</a>
+      <a href="adjustcustomer.html">Adjust Customer</a>
+    </div>
+  </div> 
+  <div class="subnav">
+    <button class="subnavbtn">Product <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="createproduct.html">Add Product</a>
+      <a href="createunits.html">Add Units</a>
+      <a href="createcategory.html">Categories</a>
+      <a href="adjustproduct.html">Adjust Product</a>
+    </div>
+  </div> 
+  <div class="subnav">
+    <button class="subnavbtn">Stock <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="createstock.html">Add Stock</a>
+      <a href="adjuststock.html">Adjust Stock</a>
+      <a href="clearstock.html">Clear Stock on Credit</a>
+    </div>
+  </div>
+   <div class="subnav">
+    <button class="subnavbtn">Register <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="register.html">Add Staff</a>
+      <a href="adjuststaff.html">Adjust Staff</a>
+      <a href="createsupplier.html">Add Supplier</a>
+      <a href="adjustsupplier.html">Adjust Supplier</a>
+    </div>
+  </div>
+  <div class="subnav">
+    <button class="subnavbtn">Reports <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="businessreport.html">Business Report</a>
+      <a href="salereport.html">Saler Report</a>
+    </div>
+  </div>
+  <a href="#contact">Settings</a>
+  <a href="saledesk.html">Sale Desk</a>
+  <div class="subnav">
+    <button class="subnavbtn"><span id="usernamedisplay"></span><i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+       <a href="profile.html">Profile</a>
+      <a href="adminmanual.html">Manual</a>
+      <a href="#" onclick="logout()">Logout</a>
+    </div>
+  </div>
+</div>
+<!-- end of nav bar -->
+<div class="action-div">
+ 
+	 <center><h3 class="my-label">Create  Business</h3></center>
+
+	 <div class="input-holder">
+      <div class="card">
+      	<center>
+          <label class="small-label">Business Name</label><br>
+          <input type="text" id="businessname" placeholder="Enter Name" class="my-input">
+          </center>
+      </div>
+      <div class="card">
+        <center>
+          <label class="small-label">Business Address </label><br>
+          <input type="text" id="address" placeholder="Enter Business Address" class="my-input">
+          </center>
+      </div>
+   </div>
+
+   <div class="input-holder">
+      <div class="card">
+      	<center>
+          <label class="small-label">Phone Number</label><br>
+          <input type="text" id="phone" placeholder="+2557xxxxxxx" class="my-input">
+          </center>
+      </div>
+      <div class="card">
+      	<center>
+      	<label class="small-label">Other Phone Number</label><br>
+          <input type="text" id="otherphone" placeholder="+2557xxxxxxx" class="my-input">
+          </center>
+      </div>
+   </div>
+
+    <div class="input-holder">
+      <div class="card">
+      	<center>
+          <label class="small-label">Email </label><br>
+          <input type="text" id="email" placeholder="Enter email" class="my-input">
+          </center>
+      </div>
+      <div class="card">
+      	<center>
+      	<label class="small-label">Other Email</label><br>
+          <input type="text" id="otheremail" placeholder="Enter other email" class="my-input">
+          </center>
+      </div>
+   </div>
+
+
+     <div class="input-holder">
+      <div class="card">
+        <center>
+          <label class="small-label">Location (Region) </label><br>
+          <input type="text" id="region" placeholder="Enter Business Region" class="my-input">
+          </center>
+      </div>
+      <div class="card">
+        <center>
+        <label class="small-label">Location (Town)</label><br>
+          <input type="text" id="town" placeholder="Enter Business Town" class="my-input">
+          </center>
+      </div>
+   </div>
+ 
+   
+
+     <div class="input-holder">
+      <div class="card">
+      	<center>
+          <label class="small-label">Business Slogan</label><br>
+          </center>
+          <textarea id="slogan" rows="4" cols="40" placeholder="Business slogan here ..."></textarea>
+      </div>
+   </div>
+
+
+   <div class="input-holder">
+      <div class="card">
+      	<center>
+          <button id="addbusiness" class="my-btn" disabled>Save my Business</button>
+          </center>
+      </div>
+      <div class="card">
+      
+      	
+      </div>
+   </div>
+
+</div>
+
+
+<!-- table -->
+<br><br>
+
+<div class="scroll-table">
+  <div class="table-holder">
+    <div class="table-caption">
+      <label class="my-label">Available Business  </label>
+    </div>
+  <table id="busniesstable">
+    <thead>
+      <th>Business name</th>
+      <th>Email </th>
+      <th>Phone</th>
+      <th>Adress</th>
+      
+    </thead>
+    <tbody>      
+               
+          </tbody>
+     </table>
+
+
+
+
+  </div>
+</div>
+
+
+<!-- alerts here -->
+
+<div id="alertBox">
+  <h2 id="alertTitle"></h2>
+  <p id="alertMessage"></p>
+  <center>
+  <button onclick="hideAlert()">OK</button>
+  </center>
+</div>
+
+
+
+<br><br><br><br>
+<!-- footer starts -->
+<div class="footer">
+	 <h3></h3>
+   Juelga solution &copy;  &nbsp;&nbsp;<a href="https://www.juelgasolutions.co.tz" style="text-decoration: none; color: #ffffff">juelgasolution </a><br>
+   <h3></h3>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script>
+ <script type="text/javascript" src="../js/config.js"></script>
+ <script type="text/javascript" src="../js/createbusiness.js"></script>
+</body>
+</html>

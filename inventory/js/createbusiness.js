@@ -158,6 +158,13 @@ function resetForm(){
 
          // Retrieve the array from local storage and parse it back into an array
         let storedBusiness = JSON.parse(localStorage.getItem('BusinessDetails'));
+         if (storedBusiness.length === 0) {
+           myAlert(failed, "No bussiness kindly add one to start transaction");
+         } else {
+          myAlert(success,  storedBusiness[0] + " Business is there you can not create or add another bussiness for now");
+          addbusiness.disabled = true;
+          addbusiness.innerHTML = "Can not add another Bussiness"
+         }
 
           // Access a specific index of the array
          lbbusinessname = document.getElementById('lbbusinessname');

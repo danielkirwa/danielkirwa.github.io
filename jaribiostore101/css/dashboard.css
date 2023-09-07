@@ -1,0 +1,105 @@
+.dashboard{
+  background: #f1f1f1;
+  width: 90%;
+  margin-left: 5%;
+   box-sizing: border-box;
+}
+.general-banner{
+  width: 80%;
+  margin-left: 10%;
+    display: flex;
+  flex-wrap: wrap;
+    justify-content: center;
+}
+.dashboard-card-holder{
+  display: flex;
+  background: #ffffff;
+  flex-wrap: wrap;
+    justify-content: center;
+
+}
+.dashboard-message{
+  display: flex;
+  background: #ffffff;
+  flex-wrap: wrap;
+    justify-content: center;
+
+}
+.card{
+  flex: 1 1 310px; /*  Stretching: */
+    flex: 0 1 310px; /*  No stretching: */
+    margin: 5px;
+    background: blue;
+     background-color: #fff;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 40px 80px #FBE4E0;
+  border-radius: 14px;
+}
+.small-card{
+   flex: 1 1 250px; /*  Stretching: */
+    flex: 0 1 250px; /*  No stretching: */
+    margin: 5px;
+    background: blue;
+     background-color: #00000000;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 40px 80px #FBE4E0;
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
+}
+
+.small-scroll-table{
+  overflow: hidden;
+  overflow-x: scroll;
+}
+.small-table-holder{
+   background: #fff;
+   min-width: 400px;
+  border: 1px solid #fff;
+  box-shadow: 0 0 0.5rem 0 rgba(0 ,0,0,0.3);
+  padding: 8px;
+ margin-top: 20px;
+ margin-bottom: 20px;
+
+}
+.small-table-caption{
+  display: flex;
+ justify-content: center;
+  width: 100%;
+  border-bottom: 2px solid grey;
+  padding-bottom: 8px;
+}
+.small-table-holder table{
+  width: 100%;
+ }
+ .small-table-holder thead{
+  color: #fff;
+  font-size: 21px;
+  text-align: center;
+  background-color: #333;
+
+ }
+ .small-table-holder th{
+  padding: 12px 8px;
+
+ }
+  .small-table-holder td{
+    text-align: center;
+    font-size: 18px;
+    padding: 8px 6px;
+  }
+  .small-table-holder tbody tr:nth-child(odd){background-color: #f2f2f2;}
+  .small-table-holder tbody tr:hover{background-color: #ddd; }
+.hoverme{
+ cursor: pointer;
+}
+
+.card-inner{
+  display: flex;
+}
+.float-right{
+  width: 100%;
+  text-align: right;
+  padding-right: 24px;
+}

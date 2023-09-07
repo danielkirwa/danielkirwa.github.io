@@ -1,0 +1,262 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>System Manual</title>
+	<link rel="stylesheet" type="text/css" href="../css/index.css">
+	<link rel="stylesheet" type="text/css" href="../css/nav.css">
+  <link rel="stylesheet" type="text/css" href="../css/dashboard.css">
+   <link rel="stylesheet" type="text/css" href="../css/elements.css">
+	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<style type="text/css">
+  
+  .card-inner-long{
+  display: flex;
+  width: 100%;
+  min-width: 700px;
+}
+.float-right{
+  width: 100%;
+  text-align: right;
+  padding-right: 24px;
+}
+ .enlarged-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+  
+  .enlarged-image img {
+    max-width: 80%;
+    max-height: 80%;
+  }
+</style>
+<body>
+	<div>
+    <div class="banner">
+    	<div class="vender-logo"><img src="../assets/logo/juelgaicon.png"> </div>
+    	<div class="shop-name"><center>
+         
+        <h3 id="lbbusinessname"></h3>
+        
+      </center></div>
+    </div>
+</div>
+<!-- nav -->
+<div class="navbar">
+	  
+  <div class="subnav">
+    <button class="subnavbtn">Product <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="createproduct.html">Add Product</a>
+      <a href="createunits.html">Add Units</a>
+      <a href="createcategory.html">Categories</a>
+      <a href="adjustproduct.html">Adjust Product</a>
+    </div>
+  </div> 
+  <div class="subnav">
+    <button class="subnavbtn">Stock <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="createstock.html">Add Stock</a>
+      <a href="adjuststock.html">Adjust Stock</a>
+    </div>
+  </div>
+  
+  <a href="saledesk.html">Sale Desk</a>
+  <div class="subnav">
+    <button class="subnavbtn"><span id="usernamedisplay"></span><i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+       <a href="profile.html">Profile</a>
+      <a href="adminmanual.html">Manual</a>
+      <a href="#" onclick="logout()">Logout</a>
+    </div>
+  </div>
+</div>
+<!-- end nav -->
+
+<!-- start of dashboard -->
+<br><br>
+<div class="dashboard"><b>Welcome to admin system manual</b>
+   
+   <!-- start of sale dashboard -->
+
+<div class="scroll-table">
+  <!-- ==================================================== -->
+   <div class="table-holder" id="readyreciept">
+     <div class="general-banner">
+    <div class="card-inner-long">
+            <div style="background: #ffffff; padding: 2px;">
+          <center><img src="../assets/manual/manrole.png" width="200px" onclick="enlargeImage(this)"> </center>
+            </div>
+            <div style="padding: 8px;">
+              <p>
+                The inventory system is protect with 3 levels of account Rola Based Access
+                <ul>
+                  <li><b>Admin</b> (Have full access the whole system to modify all posisble data)</li>
+                  <li><b>Sales Lead</b> (Have access to the Stock , Product and Sales desk able to adjust and update)</li>
+                  <li><b>Cashier</b> (Have Access to Sales desk both cash / credit sale)</li>
+                  <li><b>Cashual</b> (Have no access to system can not login)</li>
+                </ul>
+               Only for admin =>> Customer , Business, Analysis Dashboard and Reports
+               <b>All new creations in the system are recorded and once you login system tracks you till you log outM</b>
+              </p>
+            </div> 
+          </div>
+   </div>
+   <hr>
+     <center><label class="my-label">Authentication page / Login Page</label></center>
+    <hr>
+    <!-- end other data -->
+   
+</div>
+
+<!-- ========================================================== -->
+
+  <div class="table-holder" id="readyreciept">
+     <div class="general-banner">
+    <div class="card-inner-long">
+            <div style="background: #0067a0; padding: 2px;">
+          <center><img src="../assets/manual/manlogin.png" width="400px" onclick="enlargeImage(this)"> </center>
+            </div>
+            <div style="padding: 8px;">
+              <p>
+                On this page only user whom are allowed to use the system and have account credentials are able to fill the form details
+                <ul>
+                  <li>Username (in this case user email registered in the system)</li>
+                  <li>Password (in this case ID number of newly created account should be changed)</li>
+                </ul>
+                With correct password and username will be able to access the system accoding to privilege given by Admin.
+              </p>
+            </div> 
+          </div>
+   </div>
+   <hr>
+     <center><label class="my-label">Authentication page / Login Page</label></center>
+    <hr>
+    <!-- end other data -->
+   
+</div>
+
+<!-- ================================================= -->
+
+ <div class="table-holder">
+     <div class="general-banner">
+    <div class="card-inner-long">
+            <div style="background: #0067a0; padding: 2px;">
+      <center><img src="../assets/manual/manregister.png" width="400px" onclick="enlargeImage(this)"> </center>
+            </div>
+            <div style="padding: 8px;">
+              <p>
+                Only Admins are able to create and add new staff to the system and this following are to fill must (ID Number , Name , Email ,Phone, Role ). Ensure you fill all the details correctly 
+                <b>Note : incase of incorrect details this can be corrected on Adjust Staff Tab</b>
+                By creating new staff will be able to login immediately to the system and <i>also once you create new Staff you will be loged in in His or Her. With this you can check the privilege since all the access will be shown </i>
+              </p>
+            </div> 
+          </div>
+   </div>
+   <hr>
+     <center><label class="my-label">Register / Account creation page</label></center>
+    <hr>
+    <!-- end other data -->
+   
+</div>
+ <!-- ====================================================== -->
+ <div class="table-holder">
+     <div class="general-banner">
+    <div class="card-inner-long">
+            <div style="background: #0067a0; padding: 2px;">
+      <center><img src="../assets/manual/manstock.png" width="400px" onclick="enlargeImage(this)"> </center>
+            </div>
+            <div style="padding: 8px;">
+              <p>
+                This is the firsr item to add to the system: Stock is entered and deduction will be done creation of product. 
+                 <ul>
+                  <li>CODE /ID  (This is unique to each stock and should never be reused)</li>
+                  <li>Measure (Metrics used to measure the stock eg Kgs, L )</li>
+                  <li>Unit count (Metrics of the stock in  eg 1 dozen, 100 kgs)</li>
+                  <li>Unit to sale  (items to be on the shelf eg 12 for 1 dozen or 100 for 100 kgs if you will sale only minimum of 1 kg)</li>
+                </ul>
+                <b>Note : Clear date if both for expire and for non expiry Items it is used to indicate how long can it be in stock </b></i>
+              </p>
+            </div> 
+          </div>
+   </div>
+   <hr>
+     <center><label class="my-label">Stock creation</label></center>
+    <hr>
+    <!-- end other data -->
+   
+</div>
+
+<!-- ========================================================== -->
+ <div class="table-holder">
+     <div class="general-banner">
+    <div class="card-inner-long">
+            <div style="background: #0067a0; padding: 2px;">
+      <center><img src="../assets/manual/manproduct.png" width="400px" onclick="enlargeImage(this)"> </center>
+            </div>
+            <div style="padding: 8px;">
+              <p>
+                Only product can be created form stock you must search stock first and create product out of it use CODE/ ID
+                 <ul>
+                  <li>CODE /ID  (This is unique to each stock and should never be reused or be same as for stock to avoid confusion)</li>
+                  <li>Selling/ Buying  (Must be filled for sales desk oparations)</li>
+                  <li>Unit to sale (Metrics from stock to the shelf)</li>
+                  <li>Unit in stock   (Never change this number it is automaticaly calculated the reminder)</li>
+                </ul>
+                <b>Note : Expiry and clear date are automaticaly picked from the stock indication </i>
+              </p>
+            </div> 
+          </div>
+   </div>
+   <hr>
+     <center><label class="my-label">Product creation</label></center>
+    <hr>
+    <!-- end other data -->
+   
+</div>
+
+
+</div>
+</div>
+<!-- end of dashboard -->
+
+
+<!-- alerts here -->
+
+<div id="alertBox">
+  <h2 id="alertTitle"></h2>
+  <p id="alertMessage"></p>
+  <center>
+  <button onclick="hideAlert()">OK</button>
+  </center>
+</div>
+
+<br><br><br><br><br><br>
+<!-- footer starts -->
+<div class="footer">
+	 <h3></h3>
+   Juelga solution &copy;  &nbsp;&nbsp;<a href="https://www.juelgasolutions.co.tz" style="text-decoration: none; color: #ffffff">juelgasolution </a><br>
+   <h3></h3>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script>
+ <script type="text/javascript" src="../js/config.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+ <script type="text/javascript" src="../js/adminmanual.js"></script>
+
+
+</body>
+</html>

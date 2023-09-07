@@ -1,0 +1,297 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Sale Credit</title>
+	<link rel="stylesheet" type="text/css" href="../css/index.css">
+	<link rel="stylesheet" type="text/css" href="../css/nav.css">
+  <link rel="stylesheet" type="text/css" href="../css/dashboard.css">
+  <link rel="stylesheet" type="text/css" href="../css/elements.css">
+	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+	<div>
+    <div class="banner">
+    	<div class="vender-logo"><img src="../assets/logo/juelgaicon.png"> </div>
+    	<div class="shop-name"><center><h3 id="lbbusinessname"></h3></center></div>
+    </div>
+</div>
+<!-- nav -->
+<div class="navbar">
+	  <a href="dashboard.html" class="nocashier nosalelead">Dashboard</a>
+  <div class="subnav nocashier nosalelead">
+    <button class="subnavbtn">My Business <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="createbusiness.html">Add Business</a>
+      <a href="adjustbusiness.html">Adjust Business</a>
+      <a href="createcustomer.html">Add Customer</a>
+      <a href="adjustcustomer.html">Adjust Customer</a>
+    </div>
+  </div> 
+  <div class="subnav nocashier">
+    <button class="subnavbtn">Product <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="createproduct.html">Add Product</a>
+      <a href="createunits.html">Add Units</a>
+      <a href="createcategory.html">Categories</a>
+      <a href="adjustproduct.html">Adjust Product</a>
+    </div>
+  </div> 
+  <div class="subnav nocashier">
+    <button class="subnavbtn">Stock <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="createstock.html">Add Stock</a>
+      <a href="adjuststock.html">Adjust Stock</a>
+      <a href="clearstock.html">Clear Stock on Credit</a>
+    </div>
+  </div>
+   <div class="subnav nocashier nosalelead">
+    <button class="subnavbtn">Register <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="register.html">Add Staff</a>
+      <a href="adjuststaff.html">Adjust Staff</a>
+    </div>
+  </div>
+  <div class="subnav nocashier nosalelead">
+    <button class="subnavbtn">Reports <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="businessreport.html">Business Report</a>
+      <a href="salereport.html">Saler Report</a>
+    </div>
+  </div>
+  <a href="setting.html" class="nocashier nosalelead">Settings</a>
+  <a href="saledesk.html" style=" background:  #0067a0;">Sale Desk</a>
+  <div class="subnav">
+    <button class="subnavbtn"><span id="usernamedisplay"></span><i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+       <a href="profile.html">Profile</a>
+      <a href="adminmanual.html" class="nocashier">Manual</a>
+      <a href="#" onclick="logout()">Logout</a>
+    </div>
+  </div>
+</div>
+<!-- end nav -->
+
+<!-- start of dashboard -->
+<br><br>
+<div class="dashboard">Welcome to credit sale desk
+   <div class="general-banner">
+    <div class="small-card">
+    <center> <label class="my-label">Total Items</label><br>
+    <label class="my-label" id="snolabel">0</label>
+    </center>
+    </div>
+      <div class="small-card">
+        <center> <label class="my-label">Total Discount</label><br>
+    <label class="my-label" id="discountopholder">0</label>
+    </center>
+      </div>
+       <div class="small-card">
+         
+           <center> <label class="my-label">Total Amount</label><br>
+    <label class="my-label" id="priceholder">0</label>
+    </center>
+       </div>
+    
+   </div>
+
+
+   <!-- end of dashboard -->
+<!-- start of select item -->
+
+ 
+ <div class="general-banner">
+  
+      <div class="small-card">
+     <input type="text" id="customersearchid" value="" class="my-input"  placeholder="Enter customer ID">
+      </div>
+      <div class="small-card">
+        <button id="searchcustomerid" class="my-btn"> Search Customer</button>
+      </div>
+   
+   </div>
+   <div class="general-banner">
+
+    <div class="small-card">
+      <span><b>Name : </b></span><label id="newcustomername">No customer found</label><br>
+      <span><b>Status : </b></span><label id="newcustomerstatus">Status</label><br>
+       <span><b>Email : </b></span><label id="newcustomeremail">Email</label><br>
+       <span><b>Phone : </b></span><label id="newcustomerphone">Primary Phone</label><br>
+      <!-- add hidden inputs to hold values  -->
+    </div>
+
+    <div class="small-card">
+    <span><b>Other Phone :</b></span><label id="newcustomerotherphone">Secondary Phone</label><br>
+      <span><b>Region : </b></span><label id="newcustomerregion">Region</label><br>
+      <span><b>Town : </b></span><label id="newcustomertown">Town</label><br>
+      <span><b>Village : </b></span><label id="newcustomervillage">Village</label><br>
+      <span><b>ID Number : </b></span><label id="newcustomeridnumber"></label><br>
+      <!-- add hidden inputs to hold values  -->
+    </div>
+        </div>
+
+         <div class="general-banner">
+           <div class="small-card" >
+        <input type="date" name="" id="cutomerpaydate" class="my-input" onchange="validatecreditDate()">
+      </div>
+
+        </div>
+
+        <div class="general-banner">
+           <div class="small-card" >
+        <button id="creditcustomer" class="my-btn"> Credit Customer</button>
+      </div>
+
+        </div>
+
+        
+
+<!-- end of select item -->
+ 
+   
+</div>
+
+
+
+<!-- start of sale dashboard -->
+
+<div class="scroll-table">
+  <div class="table-holder" id="readyreciept">
+    <div class="table-caption">
+      <hr>
+        <center><h3 id="reciepttitle"></h3>
+           <label id="recieptaddress1"></label><br>
+          <label id="recieptaddress"></label><br>
+            <label id="recieptphone"></label><br>
+            <label id="recieptphone"></label><br>
+            <label id="recieptlocation"></label>
+        </center>
+    <hr>
+    </div>
+  <table id="reciepttable">
+    <thead>
+      <th>Item </th>
+      <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+      <th>Count</th>
+      <th>Amount</th>
+      <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+    </thead>
+    <tbody id="recieptbody">       
+                 
+      </tbody>
+     </table>
+    <!-- totals and all other data -->
+    <hr>
+    <br>
+    <hr>
+     <div class="general-banner">
+   
+      <div class="small-card">
+        <center> <label class="my-label">Totals</label><br>
+    </center>
+
+     <table style="min-width: 800px;">
+       <thead>
+        <th>Payment information</th>
+         <th>Total</th>
+         <th>Discount</th>
+         <th>Grand Total</th>
+       </thead>
+       <tr>
+        <td>
+          <label>Served by :  <span id="receiptname"></span></label><br>
+    <label>Date : <span id="receiptdate"></span></label><br>
+    <label><span>Sale type : </span> Credited Customer</label><br>
+        </td>
+         <td id="">--</td>
+         <td>--</td>
+         <td id="">--</td>
+       </tr>
+
+       <!-- customer details -->
+
+        <tr>
+        <td>
+          <label>Customer :  <span id="recieptcustomername"></span></label><br>
+          <label>Email :  <span id="recieptcustomeremail"></span></label><br>
+          <label>Phone :  <span id="recieptcustomerphone"></span></label><br>
+          <label><span>Sale type : </span> Credit </label><br>
+          <label>Clear date : <span id="receiptcleardate"></span></label><br>
+          <label>Location :  <span id="recieptcustomerlocation"></span></label><br>
+          <label>Address :  <span id="recieptcustomeraddress"></span></label><br>
+        </td>
+         <td id="tblpriceholder">0.00</td>
+         <td id="tbldiscount">0.00</td>
+         <td id="tblgrandpriceholder">0.00</td>
+       </tr>
+     </table>
+
+     </div>
+
+  
+   </div>
+
+   <hr>
+    <br>
+    <hr>
+    <!-- end other data -->
+   
+</div>
+
+</div>
+
+ <div class="general-banner">
+    <div class="small-card">      
+     <center> <button class="my-btn" id="makecashsale"> <<< Make Cash Sale</button> </center>
+    </div>
+   
+      <div class="small-card">
+     <center> <button class="my-btn" id="printer">Make Credit Sale</button> </center>
+      </div>
+ 
+   </div>
+
+<!-- end of sale das -->
+
+
+<!-- alerts here -->
+
+<div id="alertBox">
+  <h2 id="alertTitle"></h2>
+  <p id="alertMessage"></p>
+  <center>
+  <button onclick="hideAlert()">OK</button>
+  </center>
+</div>
+
+<!-- alert with refresh -->
+
+<div id="alertBoxRefresh">
+  <h2 id="alertTitle1"></h2>
+  <p id="alertMessage1"></p>
+  <center>
+  <button onclick="hideAlertRefresh()">OK</button>
+  </center>
+</div>
+
+
+
+
+<br><br><br><br><br><br>
+<!-- footer starts -->
+<div class="footer">
+	 <h3></h3>
+   Juelga solution &copy;  &nbsp;&nbsp;<a href="https://www.juelgasolutions.co.tz" style="text-decoration: none; color: #ffffff">juelgasolution </a><br>
+   <h3></h3>
+</div>
+<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script>
+ <script type="text/javascript" src="../js/config.js"></script>
+<script type="text/javascript" src="../js/salecredit.js"></script>
+
+
+</body>
+</html>

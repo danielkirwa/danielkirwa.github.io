@@ -37,10 +37,10 @@
     </div>
   </div> 
   <div class="subnav">
-    <button class="subnavbtn">Product <i class="fa fa-caret-down"></i></button>
+    <button class="subnavbtn">Create <i class="fa fa-caret-down"></i></button>
     <div class="subnav-content">
-      <a href="createunits.html">Add Units/Measure</a>
-      <a href="createcategory.html">Create Names</a>
+      <a href="createunits.html">Units/Measure</a>
+      <a href="createcategory.html">Names</a>
     </div>
   </div> 
   <div class="subnav">
@@ -67,7 +67,6 @@
     </div>
   </div>
   <a href="setting.html">Settings</a>
-  <a href="saledesk.html">Sale Desk</a>
   <div class="subnav">
     <button class="subnavbtn"><span id="usernamedisplay"></span><i class="fa fa-caret-down"></i></button>
     <div class="subnav-content">
@@ -91,119 +90,98 @@
          
          <div class="general-banner">
     <div class="card-margin">
-      <center><label class="my-label" id="lbcurrentmonth">This Month sale</label><br>
-          </center>
-          <hr>
            <div class="card-inner">
             <div>
-               <center><img src="../assets/saleicon.png"> </center>
+               <center><img src="../assets/delivery.png"> </center>
             </div>
             <div class="float-right">
-              <label class="my-label-small blue-text">Sales desk summary this month</label><br>
+              <label class="my-label-small blue-text">Pending delivery</label><br>
               <label class="my-label-small orange-text" id="innerthismonthsale">Cash</label><br>
                <label class="my-label-small orange-text" id="innerthismonthcredit">Credit</label><br>
                <label class="my-label-small orange-text" id="innerthismonthdiscount">Discount</label>
             </div> 
           </div>
           
-          <hr>
-          <center><label class="my-label">Tsh. <span id="lbthismonthsale"></span></label><br>
-          </center>
-          <hr>
         </div>
 
       <div class="card-margin">
-        <center><label class="my-label"><span id="lbprevios"></span> Vs <span id="lbcurent"></span></label><br>
-          </center>
-          <hr>
           <div class="card-inner">
             <div>
                <center><img src="../assets/growthicon.png"> </center>
             </div>
             <div class="float-right">
-              <label class="my-label-small blue-text">Sales summary and comparison</label><br>
+              <label class="my-label-small blue-text">Items Stock</label><br>
               <label class="my-label-small orange-text" id="cardpreviousmonth">Previous</label><br>
               <label class="my-label-small orange-text" id="cardcurrentmonth">Current</label><br>
 
             </div> 
           </div>
-            
-           <hr>
-          <center><label class="my-label"><span id="lbgrowth"></span></label><br>
-          </center>
-          <hr>
+        
 
       </div>
 
 
       <div class="card-margin">
-        <center>
-          <label class="my-label"><span id="lbloanprevios"></span> / <span id="lbloancurent"></span></label><br>
-          </center>
-          <hr>
            
            <div class="card-inner">
             <div>
-               <center><img src="../assets/loanicon.png"> </center>
+               <center><img src="../assets/damaged.png"> </center>
             </div>
             <div class="float-right">
-              <label class="my-label-small blue-text">Loan summary and comparison</label><br>
+              <label class="my-label-small blue-text">Damages</label><br>
               <label class="my-label-small orange-text" id="cardpreviousmonthcredit">Previous</label><br>
               <label class="my-label-small orange-text" id="cardcurrentmonthcredit">Current</label>
             </div> 
           </div>
-            <hr>
-          <center><label class="my-label" id="lbgrowthcredit"></label><br>
-          </center>
-            <hr>
+           
 
       </div>
 
         <div class="card-margin">
-        <center><label class="my-label">Our Customers</label><br>
-          </center>
-          <hr>
-           
+            <div class="card-inner">
+            <div>
+               <center><img src="../assets/failed.png"> </center>
+            </div>
+            <div class="float-right">
+              <label class="my-label-small blue-text">Failed Delivery</label><br>
+              <label class="my-label-small orange-text" id="lbcustomersonloan">On loan</label><br>
+               
+            </div> 
+          </div>
+          
+      </div>
+
+       <div class="card-margin">
             <div class="card-inner">
             <div>
                <center><img src="../assets/customericon.png"> </center>
             </div>
             <div class="float-right">
-              <label class="my-label-small blue-text">Customers to your business</label><br>
+              <label class="my-label-small blue-text">Suppliers</label><br>
               <label class="my-label-small orange-text" id="lbcustomersonloan">On loan</label><br>
                
             </div> 
           </div>
-            <hr>
-          <center><span class="my-label">Active : </span><label class="my-label" id="customercounter">0</label><br>
-          </center>
-            <hr>
+          
+      </div>
+
+       <div class="card-margin">
+            <div class="card-inner">
+            <div>
+               <center><img src="../assets/user.png"> </center>
+            </div>
+            <div class="float-right">
+              <label class="my-label-small blue-text">Users</label><br>
+              <label class="my-label-small orange-text" id="lbcustomersonloan">On loan</label><br>
+               
+            </div> 
+          </div>
+          
       </div>
     
    </div>
 <!-- Customers on credit -->
-      <div class="card-long">
-        <center>
-          <label class="small-label">Over due Credit</label><br>
-           </center>
-            
-              <table id="overduetable">
-     <thead>
-         <th style="background: #0067a0;color: #fff;">ID Number</th>
-         <th style="background: #0067a0;color: #fff;">Name / Description</th>
-         <th style="background: #0067a0;color: #fff;">Amount Pending</th>
-         <th style="background: #0067a0;color: #fff;">Due Date</th>
-       </thead>
-    <tbody>   
-      
-              
-          </tbody>
-     </table>
-         
-      </div>
      
-
-
          <!-- table -->
       <div class="card-long">
         <center>

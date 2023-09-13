@@ -25,8 +25,8 @@
   border-top-right-radius: 14px;
 }
 .card-margin{
-    flex: 1 1 350px; /*  Stretching: */
-    flex: 0 1 350px; /*  No stretching: */
+    flex: 1 1 250px; /*  Stretching: */
+    flex: 0 1 250px; /*  No stretching: */
     margin: 5px;
     background: blue;
      background-color: #00000000;

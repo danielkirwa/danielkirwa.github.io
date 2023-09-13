@@ -5,16 +5,15 @@
   // Your web app's Firebase configuration
   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
   const firebaseConfig = {
-  apiKey: "AIzaSyBUhOlk_7bA2gcGbcE7UnTMF8J_lNwZbqc",
-  authDomain: "magorihardware.firebaseapp.com",
-  databaseURL: "https://magorihardware-default-rtdb.firebaseio.com",
-  projectId: "magorihardware",
-  storageBucket: "magorihardware.appspot.com",
-  messagingSenderId: "750164123395",
-  appId: "1:750164123395:web:483a0a52a15cb6c8219336",
-  measurementId: "G-72SG4403H0"
+  apiKey: "AIzaSyBMzFuGI6ICfc5a30yabf5pjA1rB3mkvr4",
+  authDomain: "juelga-stock-management.firebaseapp.com",
+  databaseURL: "https://juelga-stock-management-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "juelga-stock-management",
+  storageBucket: "juelga-stock-management.appspot.com",
+  messagingSenderId: "870530675592",
+  appId: "1:870530675592:web:6601e37d5e77eda103c03d",
+  measurementId: "G-C3YJHKDM91"
 };
-
 
 
   // Initialize Firebase
@@ -40,7 +39,7 @@ let forgotpasswordbtn = document.getElementById('forgotpassword');
 
 function startTimer() {
   // Set the target date
-  var targetDate = new Date("2023-9-30"); // Replace with your specified date
+  var targetDate = new Date("2023-10-25"); // Replace with your specified date
 
   // Update the countdown label every second
   var timer = setInterval(function() {

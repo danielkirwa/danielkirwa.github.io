@@ -22,30 +22,19 @@
 <div class="navbar">
 	  <a href="dashboard.html">Dashboard</a>
   <div class="subnav">
-    <button class="subnavbtn" style=" background:  #0067a0;">My Business <i class="fa fa-caret-down"></i></button>
+    <button class="subnavbtn" style=" background:  #0067a0;">My Stores <i class="fa fa-caret-down"></i></button>
     <div class="subnav-content">
-      <a href="#company">Add Business</a>
-      <a href="createbusiness.html">Add Business</a>
-      <a href="adjustbusiness.html">Adjust Business</a>
+      <a href="createbusiness.html">Add Store</a>
+      <a href="adjustbusiness.html">Adjust Store</a>
       <a href="createcustomer.html">Add Customer</a>
       <a href="adjustcustomer.html">Adjust Customer</a>
     </div>
-  </div> 
-  <div class="subnav">
-    <button class="subnavbtn">Product <i class="fa fa-caret-down"></i></button>
-    <div class="subnav-content">
-      <a href="createproduct.html">Add Product</a>
-      <a href="createunits.html">Add Units</a>
-      <a href="createcategory.html">Categories</a>
-      <a href="adjustproduct.html">Adjust Product</a>
-    </div>
-  </div> 
+  </div>  
   <div class="subnav">
     <button class="subnavbtn">Stock <i class="fa fa-caret-down"></i></button>
     <div class="subnav-content">
       <a href="createstock.html">Add Stock</a>
       <a href="adjuststock.html">Adjust Stock</a>
-      <a href="clearstock.html">Clear Stock on Credit</a>
     </div>
   </div>
    <div class="subnav">
@@ -91,6 +80,20 @@
         <center>
           <label class="small-label">Business Address </label><br>
           <input type="text" id="address" placeholder="Enter Business Address" class="my-input">
+          </center>
+      </div>
+   </div>
+    <div class="input-holder">
+      <div class="card">
+        <center>
+          <label class="small-label">Store Name</label><br>
+          <input type="text" id="storename" placeholder="Enter Store Name" class="my-input">
+          </center>
+      </div>
+      <div class="card">
+        <center>
+          <label class="small-label">Store Address </label><br>
+          <input type="text" id="storeaddress" placeholder="Enter Store Address" class="my-input">
           </center>
       </div>
    </div>
@@ -140,28 +143,30 @@
           </center>
       </div>
    </div>
- 
-   
-
-     <div class="input-holder">
+   <div class="input-holder">
       <div class="card">
-      	<center>
-          <label class="small-label">Business Slogan</label><br>
+        <center>
+          <label class="small-label">Store Code </label><br>
+          <input type="text" id="storecode" placeholder="Enter Store code like : SM" class="my-input">
           </center>
-          <textarea id="slogan" rows="4" cols="40" placeholder="Business slogan here ..."></textarea>
+      </div>
+      <div class="card">
+       <center>
+        <label class="small-label">Select Opening Status</label><br>
+          <select class="my-input" id="openingstatus">
+            <option value="" disabled selected>Select Opening Status</option>
+            <option value="Active">Active</option>
+            <option value="Not Actove">Not Active</option>
+           </select>
+          </center>
       </div>
    </div>
-
 
    <div class="input-holder">
       <div class="card">
       	<center>
-          <button id="addbusiness" class="my-btn">Save my Business</button>
+          <button id="addbusiness" class="my-btn">Save my Store</button>
           </center>
-      </div>
-      <div class="card">
-      
-      	
       </div>
    </div>
 
@@ -174,14 +179,15 @@
 <div class="scroll-table">
   <div class="table-holder">
     <div class="table-caption">
-      <label class="my-label">Available Business  </label>
+      <label class="my-label">Available Store  </label>
     </div>
   <table id="busniesstable">
     <thead>
-      <th>Business name</th>
-      <th>Email </th>
-      <th>Phone</th>
+      <th>Store Name</th>
+      <th>Store Code </th>
+      <th>Town</th>
       <th>Adress</th>
+      <th>Status</th>
       
     </thead>
     <tbody>      

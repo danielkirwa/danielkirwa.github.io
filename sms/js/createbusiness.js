@@ -5,7 +5,7 @@ var warning = "&#10071; Warning";
 var today = new Date();
 var datetoday = today.toLocaleDateString();
 let usernamedisplay = document.getElementById('usernamedisplay');
-
+var email;
 
 
 addbusiness.addEventListener("click", () =>{
@@ -14,69 +14,101 @@ let address = document.getElementById('address').value;
 let phone = document.getElementById('phone').value;
 let otherphone = document.getElementById('otherphone').value;
 let otheremail = document.getElementById('otheremail').value;
-let email = document.getElementById('email').value;
+let primaryemail = document.getElementById('email').value;
 let region = document.getElementById('region').value.toUpperCase();
 var town = document.getElementById("town").value.toUpperCase();
-var slogan = document.getElementById("slogan").value;
+let storename = document.getElementById('storename').value.toUpperCase();
+let storeaddress = document.getElementById('storeaddress').value.toUpperCase();
+let storecode = document.getElementById('storecode').value;
+var openingstatus = document.getElementById("openingstatus");
+var selectedOpeningStatus = openingstatus.value;
 
 
 // validate data
  
- if (businessname == "" || phone == "" || email == "" || address == "" || region == "" || town == "") {
- 	let fillerror,fillerror1,fillerror2,fillerror3,fillerror4,fillerror5,fillerror6,fillerror7,fillerror8;
+ if (businessname == "" || phone == "" || primaryemail == "" || address == "" || region == "" || town == "" || storename == "" || storecode == "" || storeaddress == "" || selectedOpeningStatus == "") {
+ 	let fillerror,fillerror1,fillerror2,fillerror3,fillerror4,fillerror5,fillerror6,fillerror7,fillerror8,fillerror9,fillerror10,fillerror11, fillerror12;
  	 if (businessname == "") {
-      fillerror1 = " Business name";
+      fillerror1 = "<br> Business name";
     }else{
     	fillerror1 = "";
     }
     if (phone == "") {
-      fillerror2 = ", Phone";
+      fillerror2 = "<br> Phone";
     }else{
     	fillerror2 = "";
     }
-    if (email == "") {
-      fillerror4 = ", Email";
+    if (primaryemail == "") {
+      fillerror4 = "<br> Email";
     }else{
     	fillerror4 = "";
     }
     if (address == "") {
-      fillerror5 = ", Add address";
+      fillerror5 = "<br>  Add address";
     }else{
     	fillerror5 = "";
     }
     if (region == "") {
-      fillerror6 = ", Region";
+      fillerror6 = "<br>  Region";
     }else{
     	fillerror6 = "";
     }
      if (town == "") {
-      fillerror7 = ", Town";
+      fillerror7 = "<br>  Town";
     }else{
       fillerror7 = "";
     }
+    if (storename == "") {
+      fillerror9 = "<br>  Store Name";
+    }else{
+      fillerror9 = "";
+    }
+    if (storecode == "") {
+      fillerror10 = "<br>  Store Code";
+    }else{
+      fillerror10 = "";
+    }
+    if (storeaddress == "") {
+      fillerror11 = "<br>  Store Address";
+    }else{
+      fillerror11 = "";
+    }
+    if (selectedOpeningStatus == "") {
+      fillerror12 = "<br>  Store Opening Status";
+    }else{
+      fillerror12 = "";
+    }
+    
     
 
 
 
 
-  fillerror = 'Fill in the following :  ' + fillerror1 +  fillerror2 +  fillerror4 +  fillerror5  + fillerror6 + fillerror7;
+  fillerror = 'Fill in the following :  ' + fillerror1 +  fillerror2 +  fillerror4 +  fillerror5  + fillerror6 + fillerror7 + fillerror9 + fillerror10 + fillerror11 + fillerror12;
  	myAlert(warning, fillerror)
 
  }else{
  	
   // insert data or write
-    firebase.database().ref('Mybusiness/' + businessname).set({
+    firebase.database().ref('Mybusiness/' + storename).set({
 
       BusinessName: businessname,
       Address: address,
       OtheEmail: otheremail,
       Phone: phone,
       OtherPhone: otherphone,
-      Email: email,
+      Email: primaryemail,
       Region: region,
       Town: town,
-      Slogan: slogan,
-      DateAdded: datetoday
+      DateAdded: datetoday,
+      StoreName: storename,
+      StoreCode: storecode,
+      StoreAddress: storeaddress,
+      OpeningStatus: selectedOpeningStatus,
+      CreatedBy: email
+
+
+
 
     },  (error) => {
   if (error) {
@@ -85,7 +117,7 @@ var slogan = document.getElementById("slogan").value;
      
   } else {
     // Data saved successfully!
-    myAlert(success, "Congratulation you gave unlocked the Inventory application");
+    myAlert(success, "Congratulation you have active stores");
    
  
   }
@@ -144,10 +176,12 @@ function resetForm(){
           var cell2 = row.insertCell(1);
           var cell3 = row.insertCell(2);
           var cell4 = row.insertCell(3);
-          cell1.innerHTML = childData.BusinessName;
-          cell2.innerHTML = childData.Email;
-          cell3.innerHTML = childData.Phone;
-          cell4.innerHTML = childData.Address;
+          var cell5 = row.insertCell(4);
+          cell1.innerHTML = childData.StoreName;
+          cell2.innerHTML = childData.StoreCode;
+          cell3.innerHTML = childData.Town;
+          cell4.innerHTML = childData.StoreAddress;
+          cell5.innerHTML = childData.OpeningStatus;
         });
       });
 
@@ -159,11 +193,10 @@ function resetForm(){
          // Retrieve the array from local storage and parse it back into an array
         let storedBusiness = JSON.parse(localStorage.getItem('BusinessDetails'));
          if (storedBusiness.length === 0) {
-           myAlert(failed, "No bussiness kindly add one to start transaction");
+           // no store or business available
          } else {
-          myAlert(success,  storedBusiness[0] + " Business is there you can not create or add another bussiness for now");
-          addbusiness.disabled = true;
-          addbusiness.innerHTML = "Can not add another Bussiness"
+          
+         // store or business available
          }
 
           // Access a specific index of the array
@@ -174,7 +207,7 @@ function resetForm(){
 
 auth.onAuthStateChanged(function(user){
       if(user){
-        var email = user.email;
+        email = user.email;
         //alert("Active user" + email);
          usernamedisplay.innerHTML = email;
       }else{

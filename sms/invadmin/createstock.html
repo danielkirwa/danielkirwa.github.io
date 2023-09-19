@@ -25,19 +25,10 @@
   <div class="subnav">
     <button class="subnavbtn">My Business <i class="fa fa-caret-down"></i></button>
     <div class="subnav-content">
-      <a href="createbusiness.html">Add Business</a>
-      <a href="adjustbusiness.html">Adjust Business</a>
+      <a href="createbusiness.html">Add Store</a>
+      <a href="adjustbusiness.html">Adjust Store</a>
       <a href="createcustomer.html">Add Customer</a>
       <a href="adjustcustomer.html">Adjust Customer</a>
-    </div>
-  </div> 
-  <div class="subnav">
-    <button class="subnavbtn">Product <i class="fa fa-caret-down"></i></button>
-    <div class="subnav-content">
-      <a href="createproduct.html">Add Product</a>
-      <a href="createunits.html">Add Units</a>
-      <a href="createcategory.html">Categories</a>
-      <a href="adjustproduct.html">Adjust Product</a>
     </div>
   </div> 
   <div class="subnav">
@@ -45,7 +36,6 @@
     <div class="subnav-content">
       <a href="createstock.html">Add Stock</a>
       <a href="adjuststock.html">Adjust Stock</a>
-      <a href="clearstock.html">Clear Stock on Credit</a>
     </div>
   </div>
    <div class="subnav">
@@ -65,7 +55,6 @@
     </div>
   </div>
   <a href="setting.html">Settings</a>
-  <a href="saledesk.html">Sale Desk</a>
   <div class="subnav">
     <button class="subnavbtn"><span id="usernamedisplay"></span><i class="fa fa-caret-down"></i></button>
     <div class="subnav-content">
@@ -99,19 +88,20 @@
       	<center>
           <label class="small-label">Description</label><br>
            </center>
-          <textarea id="description" rows="4" cols="40" placeholder="Describe stock here..."></textarea>
+          <textarea id="description" rows="5" cols="40" placeholder="Describe stock here..."></textarea>
          
       </div>
        <div class="card">
         <center>
-          <label class="small-label">Stock Worth</label><br>
+          <label class="small-label">Store details</label><br>
            </center> 
-           <select class="my-input" id="acquisitionmode">
-             <option value="Cash">Cash</option>
-             <option value="OnCredit">On Creadit</option>
+           <select class="my-input" id="storename">
+             <option value="" id="">Select Store </option>
            </select>
-           <label>Enter amount </label>
-          <input type="text" id="acquisitionprice" placeholder="Acquisition Price" class="my-input" oninput="restrictToNumbers(acquisitionprice)">
+           <label id="viewselectedstore">Store code </label><br>
+           <label id="viewselectedstorelocation">Store location </label><br>
+           <label> Store manager</label>
+          
       </div>
     </div>
 
@@ -135,7 +125,7 @@
     <div class="input-holder">
             <div class="card">
         <center>
-        <label class="small-label">Units to Sale</label><br>
+        <label class="small-label">Units to Distribute</label><br>
           <input type="text" id="unitsale" placeholder="Units to sale" class="my-input" oninput="restrictToNumbers(unitsale)">
           </center>
       </div>

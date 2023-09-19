@@ -6,7 +6,7 @@ var today = new Date();
 var datetoday = today.toLocaleDateString();
 let usernamedisplay = document.getElementById('usernamedisplay');
 var email;
-
+let primaryemail = document.getElementById('email');
 
 addbusiness.addEventListener("click", () =>{
 let businessname = document.getElementById('businessname').value.toUpperCase();
@@ -14,7 +14,7 @@ let address = document.getElementById('address').value;
 let phone = document.getElementById('phone').value;
 let otherphone = document.getElementById('otherphone').value;
 let otheremail = document.getElementById('otheremail').value;
-let primaryemail = document.getElementById('email').value;
+primaryemail = document.getElementById('email').value;
 let region = document.getElementById('region').value.toUpperCase();
 var town = document.getElementById("town").value.toUpperCase();
 let storename = document.getElementById('storename').value.toUpperCase();
@@ -22,7 +22,7 @@ let storeaddress = document.getElementById('storeaddress').value.toUpperCase();
 let storecode = document.getElementById('storecode').value;
 var openingstatus = document.getElementById("openingstatus");
 var selectedOpeningStatus = openingstatus.value;
-
+console.log(primaryemail);
 
 // validate data
  
@@ -117,7 +117,7 @@ var selectedOpeningStatus = openingstatus.value;
      
   } else {
     // Data saved successfully!
-    myAlert(success, "Congratulation you have active stores");
+    myAlertRefresh(success, "Congratulation you have active stores");
    
  
   }
@@ -150,6 +150,22 @@ function myAlert(title,message) {
 function hideAlert() {
   var alertBox = document.getElementById("alertBox");
   alertBox.style.display = "none";
+}
+
+function myAlertRefresh(title,message) {
+  var alertBox = document.getElementById("alertBoxRefresh");
+  var alertTitle = document.getElementById("alertTitle1");
+  var alertMessage = document.getElementById("alertMessage1");
+  
+  alertTitle.innerHTML = title;
+  alertMessage.innerHTML = message;
+  alertBox.style.display = "block";
+}
+
+function hideAlertRefresh() {
+  var alertBox = document.getElementById("alertBoxRefresh");
+  alertBox.style.display = "none";
+  location.reload();
 }
 
 
@@ -196,7 +212,15 @@ function resetForm(){
            // no store or business available
          } else {
           
-         // store or business available
+         businessname.value = storedBusiness[0];
+         businessname.disabled = true;
+         address.value = storedBusiness[3];
+         address.disabled = true;
+         phone.value = storedBusiness[2];
+         phone.disabled = true;
+         primaryemail.value = storedBusiness[1];
+         primaryemail.disabled = true;
+
          }
 
           // Access a specific index of the array

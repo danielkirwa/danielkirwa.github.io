@@ -6,9 +6,14 @@ var today = new Date();
 var datetoday = today.toLocaleDateString();
 let usernamedisplay = document.getElementById('usernamedisplay');
 let suppliername = document.getElementById('suppliername');
+let storename = document.getElementById('storename');
 var email
 var selectedsuppliername = "General Supply";
 var selectedsuppliercode = "GS001";
+var selectedstorename = "";
+var selectedstorecode = "";
+let viewselectedstore = document.getElementById('viewselectedstore');
+let viewselectedstorelocation = document.getElementById('viewselectedstorelocation');
 // write code here 
 
 
@@ -22,6 +27,18 @@ selectedsuppliercode = suppliername.options[suppliername.selectedIndex].id;
 console.log(selectedsuppliercode)
 console.log(selectedsuppliername)
 
+});
+
+
+  // get all store details  
+  selectedstorename = storename.options[storename.selectedIndex].value;
+selectedstorecode = storename.options[storename.selectedIndex].id;
+  storename.addEventListener("change", function(){ 
+selectedstorename = storename.options[storename.selectedIndex].value;
+selectedstorecode = storename.options[storename.selectedIndex].id;
+
+viewselectedstore.innerHTML = selectedstorename;
+viewselectedstorelocation.innerHTML = selectedstorecode;
 });
 
 
@@ -324,6 +341,39 @@ ref.on("value", function(snapshot) {
       option.value = name;
       option.id = id;
       suppliername.add(option);
+    }
+  });
+});
+
+
+
+
+// // select only active store
+
+var ref = firebase.database().ref("Mybusiness");
+storename.innerHTML = "";
+var optiondefaultstore = document.createElement("option");
+optiondefaultstore.text = "Select Store here";
+optiondefaultstore.value = "";
+optiondefaultstore.id = "";
+storename.add(optiondefaultstore);
+ref.on("value", function(snapshot) {
+  snapshot.forEach(function(childSnapshot) {
+    var childData = childSnapshot.val();
+    var name = childData.StoreName;
+    var id = childData.StoreCode;
+    var currentstatus = childData.OpeningStatus;
+    
+    //default
+    
+      
+    
+    if (currentstatus == "Active") { // Add condition to check if AvailableUnits > 1
+      var option = document.createElement("option");
+      option.text = name;
+      option.value = name;
+      option.id = id;
+      storename.add(option);
     }
   });
 });

@@ -13,6 +13,7 @@ let discountopholder = document.getElementById('discountopholder');
 let tbldiscount = document.getElementById('tbldiscount');
 let itemnumber  = document.getElementById('itemnumber');
 
+let newselectcount = document.getElementById('newselectcount');
 let itemselected = document.getElementById('Itemselected');
 let newselectitem = document.getElementById('newselectitem');
 let newselectprice = document.getElementById('newselectprice');
@@ -112,6 +113,7 @@ function updateValue(e) {
 
   if (count < 1) {
     itemcounter.value = 1;
+    newselectcount.innerHTML = "Count :" + count;
     newavailableproductunittoupdate = availableproductunittoupdate - count;
   } else {
     newavailableproductunittoupdate = availableproductunittoupdate - count;
@@ -120,15 +122,11 @@ function updateValue(e) {
     	newavailableproductunittoupdate = newavailableproductunittoupdate;
       myAlert(warning, "All items have been sold. No more items available for sale. <br> <b> Click add to reciept to sale selected item </b>");
       itemcounter.disabled = true;
+      newselectcount.innerHTML = "Count :" + count;
 
     } else {
-      totalamount = +count * +price;
-      totalamountbusiness = +count * +selectedbuyingprice;
-      newselectprice.innerHTML = "Ksh. " + totalamount;
-      txtnewselectitem.innerHTML = "" + item;
-      txtnewselectprice.innerHTML = "" + price;
-     // console.log(newavailableproductunittoupdate);
-      console.log(totalamountbusiness);
+      newselectcount.innerHTML = "Count :" + count;
+
     }
   }
 }
@@ -140,12 +138,7 @@ btnaddfraction.addEventListener('click', () =>{
   count = +count + +0.25;
  console.log(count);
  itemcounter.value = count;
- totalamount = +count * +price;
-      totalamountbusiness = +count * +selectedbuyingprice;
-      newselectprice.innerHTML = "Ksh. " + totalamount;
-      txtnewselectitem.innerHTML = "" + item;
-      txtnewselectprice.innerHTML = "" + price;
-      console.log(totalamountbusiness);
+newselectcount.innerHTML = "Count :" + count;
  
 
 } )
@@ -155,23 +148,13 @@ btnsubfraction.addEventListener('click', () =>{
   }else{
   count = +count - +0.25
   itemcounter.value = count;
-  totalamount = +count * +price;
-      totalamountbusiness = +count * +selectedbuyingprice;
-      newselectprice.innerHTML = "Ksh. " + totalamount;
-      txtnewselectitem.innerHTML = "" + item;
-      txtnewselectprice.innerHTML = "" + price;
-      console.log(totalamountbusiness);
+  newselectcount.innerHTML = "Count :" + count;
   
   if (count < 0.25) {
     count = 0.25;
     myAlert(warning, "Reach minimum fraction");
     itemcounter.value = count;
-    totalamount = +count * +price;
-      totalamountbusiness = +count * +selectedbuyingprice;
-      newselectprice.innerHTML = "Ksh. " + totalamount;
-      txtnewselectitem.innerHTML = "" + item;
-      txtnewselectprice.innerHTML = "" + price;
-      console.log(totalamountbusiness);
+    newselectcount.innerHTML = "Count :" + count;
     
   }
  
@@ -194,7 +177,7 @@ producttocodeupdate = Itemselected.options[Itemselected.selectedIndex].id;
 availableproductunittoupdate = Itemselected.options[Itemselected.selectedIndex].data;
 selectedbuyingprice = Itemselected.options[Itemselected.selectedIndex].dataBuying;
 	newselectitem.innerHTML=  "Item. " +item;
-	newselectprice.innerHTML= "Tsh. " +price;
+	newselectprice.innerHTML= "Store. " +price;
 	newselectcode.innerHTML = "Code. " + producttocodeupdate;
 	txtnewselectitem.value =  "" +item;
 	txtnewselectprice.value = "" +price;

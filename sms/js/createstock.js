@@ -14,6 +14,7 @@ var selectedstorename = "";
 var selectedstorecode = "";
 let viewselectedstore = document.getElementById('viewselectedstore');
 let viewselectedstorelocation = document.getElementById('viewselectedstorelocation');
+let code;
 // write code here 
 
 
@@ -34,33 +35,41 @@ console.log(selectedsuppliername)
   selectedstorename = storename.options[storename.selectedIndex].value;
 selectedstorecode = storename.options[storename.selectedIndex].id;
   storename.addEventListener("change", function(){ 
+     newvaluecode = document.getElementById('code');
+  code = document.getElementById('code').value.toUpperCase();
+   console.log(code);
+
 selectedstorename = storename.options[storename.selectedIndex].value;
 selectedstorecode = storename.options[storename.selectedIndex].id;
+  code = code + "-" + selectedstorecode;
+
+   
 
 viewselectedstore.innerHTML = selectedstorename;
 viewselectedstorelocation.innerHTML = selectedstorecode;
+console.log(code);
+newvaluecode.value = code;
 });
 
 
 addstock.addEventListener("click", () =>{
 let stockname = document.getElementById('stockname').value.toUpperCase();
-let code = document.getElementById('code').value.toUpperCase();
+code = document.getElementById('code').value.toUpperCase();
 let description = document.getElementById('description').value;
 let unitcount = document.getElementById('unitcount');
 let unitsale = document.getElementById('unitsale').value;
 let clearby = document.getElementById('clearby').value;
 var selectunit = document.getElementById("unit");
-let acquisitionprice = document.getElementById('acquisitionprice').value
 var selectedUnitOption = selectunit.value;
-var selctedmode = document.getElementById('acquisitionmode');
-var acquisitionmode = selctedmode.value;
+var selctedstorename = document.getElementById('storename');
+var storename = selctedstorename.value;
 
 
 
 
 // validate data
  
- if (stockname == "" || code == "" || description == "" || unitcount == "" || selectedUnitOption == "" || unitsale == "" || clearby == "" || acquisitionmode == "" || acquisitionprice == "") {
+ if (stockname == "" || code == "" || description == "" || unitcount == "" || selectedUnitOption == "" || unitsale == "" || clearby == "" || storename == "") {
   let fillerror,fillerror1,fillerror2,fillerror3,fillerror4,fillerror5,fillerror6,fillerror7,fillerror8,fillerror9;
    if (stockname == "") {
       fillerror1 = "<br> Enter stock name";
@@ -97,25 +106,21 @@ var acquisitionmode = selctedmode.value;
     }else{
       fillerror7 = "";
     }
-    if (acquisitionmode == "") {
-      fillerror8 = "<br> Select mode of acquisition"
+    if (storename == "") {
+      fillerror8 = "<br> Select Store Name"
     }else{
        fillerror8 = "";
-       
+       console.log(selectedstorename);
+       console.log(selectedstorecode);
     }
-    if (acquisitionprice == "") {
-      fillerror9 = "<br> Enter stock worth"
-    }else{
-       fillerror9 = "";
-      
-    }
+    
 
   
 
 
 
 
-  fillerror = ' <b> Fill in the following : </b>  ' + fillerror1 +  fillerror2 +  fillerror3 +  fillerror4 +  fillerror5 +  fillerror6 +  fillerror7 + fillerror8 + fillerror9;
+  fillerror = ' <b> Fill in the following : </b>  ' + fillerror1 +  fillerror2 +  fillerror3 +  fillerror4 +  fillerror5 +  fillerror6 +  fillerror7 + fillerror8;
   myAlert(warning, fillerror)
 
  }else{
@@ -134,8 +139,8 @@ var acquisitionmode = selctedmode.value;
       SupplierCode: selectedsuppliercode,
       ClearBy: clearby,
       UnitSale: unitsale,
-      AcquisitionMode: "AllCashed",
-      AcquisitionPrice: acquisitionprice,
+      StoreName: selectedstorename,
+      StoreCode: selectedstorecode,
       Status: 1
 
     },  (error) => {
@@ -145,70 +150,7 @@ var acquisitionmode = selctedmode.value;
      
   } else {
     // Data saved successfully!
-       // update worth
-    console.log(acquisitionmode + acquisitionprice);
-    if (acquisitionmode == "Cash") {
-
-         let stockWorth = "StockWorth/Cash";
-         firebase.database().ref(stockWorth).update({
-           TotalCashWorth: firebase.database.ServerValue.increment(parseFloat(acquisitionprice))
-         })
-         .then(() => {
-           // Success
-          myAlertRefresh(success, "Stock added success")
-         })
-         .catch((error) => {
-           myAlert(failed, "Cumulative worth not saved");
-         });
-
-   
-    }else{
-      let stockWorth = "StockWorth/Credit";
-              firebase.database().ref(stockWorth).update({
-
-             TotalCreditWorth: firebase.database.ServerValue.increment(parseFloat(acquisitionprice))       
-   
-            }).then(() => {
-
-              // save credit stock for refrence and clearance later 
-              firebase.database().ref('Mycreditstock/' + code).set({
-
-      StockName: stockname,
-      Unitcount: unitcount,
-      Description: description,
-      Code: code,
-      Createby: email,
-      DateAdded: datetoday,
-      Unit: selectedUnitOption,
-      ClearBy: clearby,
-      SupplierName: selectedsuppliername,
-      SupplierCode: selectedsuppliercode,
-      UnitSale: unitsale,
-      AcquisitionMode: "Credit",
-      AcquisitionPrice: acquisitionprice,
-      RepaidAmount: 0,
-      Balance: acquisitionprice,
-      Status: 1
-
-    },  (error) => {
-  if (error) {
-    // The write failed...
-     myAlert(failed, "Failed add new Stock");
-     
-  } else {
-
-       myAlertRefresh(success, "Stock added success")
-
-  }
-}
-  );
-   
-        })
-        .catch((error) => {
-           myAlert(failed, "Cummulative worth not saved");
-        });
-
-    }
+     myAlertRefresh(success, "Stock added success")
   }
 } );
 

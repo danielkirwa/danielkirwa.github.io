@@ -16,6 +16,7 @@ let createdby = document.getElementById('createdby');
 let lbclearby = document.getElementById('lbclearby');
 let lbmeasure = document.getElementById('lbmeasure');
 let deleteiteminfor = document.getElementById('deleteiteminfor');
+let whichstoreisin = document.getElementById('whichstoreisin');
 
 // button to add action
 let btnupdatestock = document.getElementById('btnupdatestock');
@@ -81,6 +82,7 @@ function updateStockDetails(stockData) {
   createdby.innerHTML = stockData.Createby;
   lbmeasure.innerHTML = stockData.Unit;
   lbclearby.innerHTML = stockData.ClearBy;
+  whichstoreisin.innerHTML = stockData.StoreName;
   currentunit = stockData.UnitSale;
   deleteiteminfor.innerHTML = stockData.StockName + "<br>Available Units: " + stockData.UnitSale;
 }

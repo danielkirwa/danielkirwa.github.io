@@ -29,8 +29,8 @@ let tblpriceholder = document.getElementById('tblpriceholder');
 let tblgrandpriceholder = document.getElementById('tblgrandpriceholder');
 var count;
 var item 
-var totalamount;
-var totalamountbusiness;
+var customercheck = "R [] , M []";
+var customercheckbusiness;
 var removeditem = 0;
 var grandamount = 0;
 var recieptitems = 0
@@ -49,27 +49,7 @@ discountgiven = localStorage.getItem('Discount');
  let btnaddfraction = document.getElementById('btnaddfraction');
  let btnsubfraction = document.getElementById('btnsubfraction');
 
-/*function updateValue(e) {
-  var price = Itemselected.options[Itemselected.selectedIndex].value;
-  count = e.target.value;
 
-  if (count < 1) {
-    itemcounter.value = 1;
-    newavailableproductunittoupdate = availableproductunittoupdate - count;
-    //console.log(newavailableproductunittoupdate);
-  } else {
-    newavailableproductunittoupdate = availableproductunittoupdate - count;
-    if (newavailableproductunittoupdate < 1) {
-      myAlert(warning, "All items have been sold. No more items available for sale.");
-    } else {
-      totalamount = +count * +price;
-      newselectprice.innerHTML = "Ksh. " + totalamount;
-      txtnewselectitem.innerHTML = "" + item;
-      txtnewselectprice.innerHTML = "" + price;
-      console.log(newavailableproductunittoupdate);
-    }
-  }
-}*/
 
 /*=======================================*/ 
 // get business details for newly logined in 
@@ -172,84 +152,57 @@ let storedArraybuying = [];
 
 itemselected.addEventListener("change", function(){ 
 item = Itemselected.options[Itemselected.selectedIndex].text;
-var price = Itemselected.options[Itemselected.selectedIndex].value;
+var thestore = Itemselected.options[Itemselected.selectedIndex].value;
 producttocodeupdate = Itemselected.options[Itemselected.selectedIndex].id;
 availableproductunittoupdate = Itemselected.options[Itemselected.selectedIndex].data;
-selectedbuyingprice = Itemselected.options[Itemselected.selectedIndex].dataBuying;
 	newselectitem.innerHTML=  "Item. " +item;
-	newselectprice.innerHTML= "Store. " +price;
+	newselectprice.innerHTML= "Store. " +thestore;
 	newselectcode.innerHTML = "Code. " + producttocodeupdate;
 	txtnewselectitem.value =  "" +item;
-	txtnewselectprice.value = "" +price;
+	txtnewselectprice.value = "" +thestore;
 	txtnewselectedcode.value = "" + producttocodeupdate;
 	//itemcounter.value = 1;
 	count = 1;
-	totalamount = price;
 	newavailableproductunittoupdate = availableproductunittoupdate - 1;
 	//console.log(newavailableproductunittoupdate);
-	console.log(selectedbuyingprice);
-  totalamountbusiness = selectedbuyingprice;
+  newselectcount.innerHTML = "Count :" + count;
+
 
 });
 
 itemcounter.addEventListener("input", updateValue);
 
-/*function updateValue(e) {
-	var price = Itemselected.options[Itemselected.selectedIndex].value;
-	 count = e.target.value;
-	if (count < 1) {
-     itemcounter.value = 1;
-     newavailableproductunittoupdate = availableproductunittoupdate - count;
-     //console.log(newavailableproductunittoupdate);
-	}else{
-		newavailableproductunittoupdate = availableproductunittoupdate - count
-		if (newavailableproductunittoupdate < 1) {
-         myAlert(warning, "All item select No more item to sale");
-		}else{
-    totalamount = +count * +price;
-	newselectprice.innerHTML= "Ksh. " +totalamount;
-	txtnewselectitem.innerHTML =  "" +item;
-	txtnewselectprice.innerHTML = "" +price;
-	console.log(newavailableproductunittoupdate);
-      }
-	}
-	
-}*/
-  
-
 
 
 btnaddtorecipt.addEventListener('click', () =>{
-	if (totalamount >= 1) {
+	if (count >= 0.25) {
 	itemcounter.value = 1;
 	newselectitem.innerHTML=  "Item. ";
-	newselectprice.innerHTML= "Ksh. ";
+	newselectprice.innerHTML= "Store. ";
 	newselectcode.innerHTML = "Code. ";
+  newselectcount.innerHTML = "Count. ";
 var item = Itemselected.options[Itemselected.selectedIndex].text;
-var price = Itemselected.options[Itemselected.selectedIndex].value;
+var thestore = Itemselected.options[Itemselected.selectedIndex].value;
 var code = Itemselected.options[Itemselected.selectedIndex].id;
 let remover = '<button class="remove-btn" onclick="removeRow(this)">X</button>';
  recieptitemsarray = storedArray;
- recieptitemsarraybuying = storedArraybuying;
+
  //console.log(recieptitemsarray);
    // push to an array
- let newitemtoreciept = [item,code, count, totalamount,remover];
- let newbuyingprice = [item,code,totalamountbusiness];
+ let newitemtoreciept = [item,code, count, customercheck,remover];
+
  recieptitemsarray.push(newitemtoreciept);
- recieptitemsarraybuying.push(newbuyingprice);
 let storedreciept = JSON.stringify(recieptitemsarray);
-let storedbuying = JSON.stringify(recieptitemsarraybuying);
 localStorage.setItem('curentreciept', storedreciept);
-localStorage.setItem('curentbuying', storedbuying);
 // update stock
 
 /// update 
-        firebase.database().ref('Myproduct/' + code + '/AvailableUnits').transaction(function(AvailableUnits) {
-  if (AvailableUnits === null) {
+        firebase.database().ref('Mystock/' + code + '/UnitSale').transaction(function(UnitSale) {
+  if (UnitSale === null) {
     return 0; // If the value doesn't exist, set it to 1
    // location.reload();
   } else {
-    return AvailableUnits - count; // Increment the value by 1
+    return UnitSale - count; // Increment the value by 1
     //location.reload();
   }
 });
@@ -297,27 +250,9 @@ storedArray.forEach(function(innerArray) {
  
   tableBody.appendChild(row);
 });
- grandamount = storedArray.reduce((a, b) => a + +b[3],0);
  recieptitems = storedArray.reduce((a, b) => a + +b[2],0);
- grandamountbuying = storedArraybuying.reduce((a,b) => a + +b[2],0);
-  console.log(grandamount);
- console.log(grandamountbuying)
-  priceholder.innerHTML = (grandamount - +discountgiven).toLocaleString();
-  tblpriceholder.innerHTML = grandamount.toLocaleString();
-  tblgrandpriceholder.innerHTML = (grandamount - +discountgiven).toLocaleString();
+
   snolabel.innerHTML = recieptitems.toLocaleString();
-
-
-  // if no amount on the receipt clear discount if there
-  if (grandamount <= 0) {
-    console.log('less');
-    localStorage.setItem('Discount', 0.00);
-    discountopholder.innerHTML = 0.00;
-   tbldiscount.innerHTML = 0.00;
-  }else{
-    // retain all the data of the discount if were given
-
-  }
 }
 
 
@@ -335,10 +270,6 @@ function removeRow(button) {
 	 removeditem = row.getElementsByTagName("td")[3].textContent;
 	 removecount = row.getElementsByTagName("td")[2].textContent;
 	 removecode = row.getElementsByTagName("td")[1].textContent;
-	 grandamount = grandamount - +removeditem;
-	 priceholder.innerHTML = (grandamount - +discountgiven).toLocaleString();
-	 tblpriceholder.innerHTML = grandamount.toLocaleString();
-     tblgrandpriceholder.innerHTML = (grandamount - discountgiven).toLocaleString();
      recieptitems = +recieptitems - removecount;
   snolabel.innerHTML = recieptitems;
    rowtoremoveformarray = row.rowIndex - 1;
@@ -348,21 +279,17 @@ function removeRow(button) {
  //console.log(removecode)
 
   recieptitemsarray = storedArray;
-  recieptitemsarraybuying = storedArraybuying;
    recieptitemsarray.splice(rowtoremoveformarray,1);
-   recieptitemsarraybuying.splice(rowtoremoveformarray,1);
    let storedreciept = JSON.stringify(recieptitemsarray);
-   let storedbuying = JSON.stringify(recieptitemsarraybuying);
 localStorage.setItem('curentreciept', storedreciept);
-localStorage.setItem('curentbuying', storedbuying);
 //console.log(recieptitemsarray);
 			//remove row after subtraction
 /// update product count
-        firebase.database().ref('Myproduct/' + removecode + '/AvailableUnits').transaction(function(AvailableUnits) {
-  if (AvailableUnits === null) {
+        firebase.database().ref('Mystock/' + removecode + '/UnitSale').transaction(function(UnitSale) {
+  if (UnitSale === null) {
     return 0; // If the value doesn't exist, set it to 1
   } else {
-    return +AvailableUnits + +removecount; // Increment the value by 1
+    return +UnitSale + +removecount; // Increment the value by 1
   }
 });
 

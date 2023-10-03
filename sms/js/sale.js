@@ -540,7 +540,7 @@ discountamount.addEventListener('input', function() {
 
 let printercredit = document.getElementById('printercredit');
 printercredit.addEventListener("click", () =>{
-	window.location.href='saledeskcredit.html';
+	window.location.href='selectdelivery.html';
 })
 
 

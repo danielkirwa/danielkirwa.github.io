@@ -85,17 +85,17 @@ storedArray.forEach(function(innerArray) {
  grandamount = storedArray.reduce((a, b) => a + +b[3],0);
  recieptitems = storedArray.reduce((a, b) => a + +b[2],0);
  grandamountbuying = storedArraybuying.reduce((a,b) => a + +b[2],0);
-  console.log(grandamount);
- console.log(grandamountbuying)
+  //console.log(grandamount);
+ //console.log(grandamountbuying)
   discountgiven = localStorage.getItem('Discount');
-  priceholder.innerHTML = grandamount.toLocaleString();
-  tblpriceholder.innerHTML = grandamount.toLocaleString();
-  tblgrandpriceholder.innerHTML = grandamount.toLocaleString();
+  priceholder.innerHTML = "______________";
+  tblpriceholder.innerHTML = "______________";
+  tblgrandpriceholder.innerHTML = "______________";
   snolabel.innerHTML = recieptitems;
-  discountopholder.innerHTML = discountgiven.toLocaleString();
-  tbldiscount.innerHTML = discountgiven.toLocaleString();
-  tblgrandpriceholder.innerHTML = (grandamount - discountgiven).toLocaleString();
-    priceholder.innerHTML = (grandamount - +discountgiven).toLocaleString();
+  discountopholder.innerHTML = "______________";
+  tbldiscount.innerHTML = "______________";
+  tblgrandpriceholder.innerHTML = "______________";
+    priceholder.innerHTML = "______________";
 }
 
 

@@ -420,7 +420,7 @@ creditcustomer.addEventListener("click" , () => {
 
       // Set the minimum date to tomorrow
       var minDate = new Date();
-      minDate.setDate(currentDate.getDate() + 1);
+      minDate.setDate(currentDate.getDate() + -1);
 
       if (inputDate < minDate || inputDate > maxDate) {
         myAlert(failed, "Please select a date within one month from the current date and not earlier than tomorrow.");
@@ -428,11 +428,21 @@ creditcustomer.addEventListener("click" , () => {
       }
     }
 
+let makecashsale = document.getElementById('makecashsale');
+ // load delivery agent 
+    let recieptdelivery = document.getElementById('recieptdelivery');
+    recieptdelivery.innerHTML = localStorage.getItem('deliveryagent');
+    if (localStorage.getItem('deliveryagent',) === "null") {
+      myAlert(failed, "Please select delivery agent");
+      printer.style.display = "none";
+      makecashsale.innerHTML = "<< Select delivery agent"
+    }
+
 
 // end off your code 
 // alert 
 
-let makecashsale = document.getElementById('makecashsale');
+
 makecashsale.addEventListener("click" , () => {
   window.location.href='createdelivery.html';
 })

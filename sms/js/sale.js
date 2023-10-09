@@ -477,62 +477,46 @@ ref.on("value", function(snapshot) {
 // discount section 
 let lbbtnpercent = document.getElementById('lbbtnpercent');
 let lbtoppercentview = document.getElementById('lbtoppercentview');
-const discountpercent = document.getElementById('discountpercent');
+const allcashiers = document.getElementById('allcashiers');
 let discountamount = document.getElementById('discountamount');
 let newpercent = 0;
 discountgiven = localStorage.getItem('Discount');
-//discountopholder.innerHTML = discountgiven.toLocaleString();
-//tbldiscount.innerHTML = discountgiven.toLocaleString();
-//discountamount.value = discountgiven.toLocaleString();
-discountpercent.addEventListener('input', function() {
-  if (this.value < 0) {
-    this.value = '';
-  }else{
-    if(grandamount <= 0){
-   this.value = "";
-   myAlert(warning, "No Items on the receipt");
-  }else{
-   newpercent = this.value;
-    discountgiven = (+newpercent / 100 ) * +grandamount;
-    discountamount.value = discountgiven.toLocaleString();
-    lbbtnpercent.innerHTML = newpercent;
-    lbtoppercentview.innerHTML = newpercent;
-    discountopholder.innerHTML = discountgiven.toLocaleString();
-    tbldiscount.innerHTML = discountgiven.toLocaleString();
-    tblgrandpriceholder.innerHTML = (grandamount - discountgiven).toLocaleString();
-    priceholder.innerHTML = (grandamount - +discountgiven).toLocaleString();
-    // save the discount
-    localStorage.setItem('Discount', discountgiven);
-  }
-  }
-});
+let recieptdelivery = document.getElementById('recieptdelivery');
 
 // number given
-discountamount.addEventListener('input', function() {
-  const numericValue = this.value.replace(/[^0-9]/g, '');
-  this.value = numericValue;
-  discountgiven = this.value;
-  if(grandamount <= 0){
-   this.value = "";
-   myAlert(warning, "No Items on the receipt");
-  }else{
-  newpercent =  (discountgiven / grandamount) * 100;
-  discountpercent.value = newpercent;
-  lbbtnpercent.innerHTML = newpercent;
-  lbtoppercentview.innerHTML = newpercent;
-   discountopholder.innerHTML = discountgiven.toLocaleString();
-   tbldiscount.innerHTML = discountgiven.toLocaleString();
-   tblgrandpriceholder.innerHTML = (grandamount - discountgiven).toLocaleString();
-   priceholder.innerHTML = (grandamount - +discountgiven).toLocaleString();
-   localStorage.setItem('Discount', discountgiven);
-}
 
+
+// get cashier
+function getAllCashier() {
+  // body... gets all users 
+    var ref = firebase.database().ref("Mystaff");
+allcashiers.innerHTML = "";
+var optiondefault = document.createElement("option");
+optiondefault.text = "Select user / cashier";
+optiondefault.value = "null";
+optiondefault.id = "";
+allcashiers.add(optiondefault);
+ref.on("value", function(snapshot) {
+  snapshot.forEach(function(childSnapshot) {
+    var childData = childSnapshot.val();
+    var cashiername = childData.Email;
+  
+      var option = document.createElement("option");
+      option.text = cashiername;
+      option.value = cashiername;
+      allcashiers.add(option);
+    
+  });
 });
+}
+getAllCashier();
 
-
-
-
-
+allcashiers.addEventListener('click', () => {
+  let cashiersearchid = allcashiers.value;
+   recieptdelivery.innerHTML = cashiersearchid;
+   localStorage.setItem('deliveryagent', cashiersearchid)
+})
+recieptdelivery.innerHTML = localStorage.getItem('deliveryagent');
 
 
 // end off your code 

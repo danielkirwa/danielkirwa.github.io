@@ -1,8 +1,7 @@
 .navbar {
   overflow: hidden;
-  background-color: #333; 
+  background-color: #333;
 }
-
 
 .navbar a {
   float: left;
@@ -30,26 +29,30 @@
 }
 
 .navbar a:hover, .subnav:hover .subnavbtn {
-  background-color:  #ff6a13;
+  background-color: #0067a0;;
 }
+
 .subnav-content {
   display: none;
   position: absolute;
-  left: 0;
-  background-color:  #ff6a13;
-  width: 100%;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
 }
 
 .subnav-content a {
-  float: left;
-  color: white;
+  float: none;
+  color: black;
+  padding: 12px 16px;
   text-decoration: none;
+  display: block;
+  text-align: left;
+  font-weight: bold;
 }
 
 .subnav-content a:hover {
-  background-color:  #0067a0;
-  color: black;
+  background-color: #0067a0;;
 }
 
 .subnav:hover .subnav-content {

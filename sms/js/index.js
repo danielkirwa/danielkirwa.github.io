@@ -151,11 +151,11 @@ findStaffRoleByEmail(targetEmail)
        // open pages accodingly
        console.log(role);
       if (role == "Admin") {
-        window.location.href='invadmin/dashboard.html';
+        window.location.href='invadmin/navigation.html';
       } else if (role == "Cashier") {
-        window.location.href='cashier/saledesk.html';
+        window.location.href='cashier/navigation.html';
       }else if (role == "SalesLead") {
-        window.location.href='sales/saledesk.html';
+        window.location.href='sales/navigation.html';
       }else if(role == "Closed"){
           firebase.auth().signOut().then(function() {
          // Sign-out successful.
@@ -165,7 +165,7 @@ findStaffRoleByEmail(targetEmail)
        window.location.href='index.html';
        });
       }else{
-        window.location.href='dashboard.html';
+        window.location.href='navigation.html';
       }
 
     } else {

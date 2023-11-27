@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Sale Credit</title>
+	<title>Delivery Customer</title>
 	<link rel="stylesheet" type="text/css" href="../css/index.css">
 	<link rel="stylesheet" type="text/css" href="../css/nav.css">
   <link rel="stylesheet" type="text/css" href="../css/dashboard.css">
@@ -20,14 +20,14 @@
 </div>
 <!-- nav -->
 <div class="navbar">
-	   
-  <div class="subnav nocashier">
-    <button class="subnavbtn">Product <i class="fa fa-caret-down"></i></button>
+	  <a href="dashboard.html" class="nocashier nosalelead">Dashboard</a>
+  <div class="subnav nocashier nosalelead">
+    <button class="subnavbtn">My Store <i class="fa fa-caret-down"></i></button>
     <div class="subnav-content">
-      <a href="createproduct.html">Add Product</a>
-      <a href="createunits.html">Add Units</a>
-      <a href="createcategory.html">Categories</a>
-      <a href="adjustproduct.html">Adjust Product</a>
+      <a href="createbusiness.html">Add Store</a>
+      <a href="adjustbusiness.html">Adjust Store</a>
+      <a href="createcustomer.html">Add Customer</a>
+      <a href="adjustcustomer.html">Adjust Customer</a>
     </div>
   </div> 
   <div class="subnav nocashier">
@@ -37,7 +37,21 @@
       <a href="adjuststock.html">Adjust Stock</a>
     </div>
   </div>
-  <a href="saledesk.html" style=" background:  #0067a0;">Sale Desk</a>
+   <div class="subnav nocashier nosalelead">
+    <button class="subnavbtn">Register <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="register.html">Add Staff</a>
+      <a href="adjuststaff.html">Adjust Staff</a>
+    </div>
+  </div>
+  <div class="subnav nocashier nosalelead">
+    <button class="subnavbtn">Reports <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="businessreport.html">Business Report</a>
+      <a href="salereport.html">Saler Report</a>
+    </div>
+  </div>
+  <a href="saledesk.html" style=" background:  #0067a0;">Create Delivery</a>
   <div class="subnav">
     <button class="subnavbtn"><span id="usernamedisplay"></span><i class="fa fa-caret-down"></i></button>
     <div class="subnav-content">
@@ -51,8 +65,8 @@
 
 <!-- start of dashboard -->
 <br><br>
-<div class="dashboard">Welcome to credit sale desk
-   <div class="general-banner">
+<div class="dashboard">Welcome to delivery customer
+   <div class="general-banner" style="display: none;">
     <div class="small-card">
     <center> <label class="my-label">Total Items</label><br>
     <label class="my-label" id="snolabel">0</label>
@@ -106,6 +120,29 @@
       <!-- add hidden inputs to hold values  -->
     </div>
         </div>
+        <!-- new customer starts -->
+          <div class="general-banner">
+
+    <div class="small-card">
+      <input type="text" id="newsecondsearchid" class="my-input" placeholder="Customer ID Number"><br><br>
+      <input type="text" id="newsecondsearchname" class="my-input" placeholder="Customer Name"><br><br>
+      <input type="text" id="newsecondsearchemail" class="my-input" placeholder="Customer Email"><br><br>
+       <input type="text" id="newsecondsearchphone" class="my-input" placeholder="Customer Phone"><br><br>
+       
+      <!-- add hidden inputs to hold values  -->
+    </div>
+
+    <div class="small-card">
+      <input type="text" id="newsecondsearchregion" class="my-input" placeholder="Customer Region"><br><br>
+      <input type="text" id="newsecondsearchtown" class="my-input" placeholder="Customer Town"><br><br>
+      <input type="text" id="newsecondsearchaddress" class="my-input" placeholder="Customer Full address"><br><br>
+      <button id="secondsearch" class="my-btn">Second Search</button>
+      <!-- add hidden inputs to hold values  -->
+    </div>
+        </div>
+
+
+        <!-- new customer ends -->
 
          <div class="general-banner">
            <div class="small-card" >
@@ -116,7 +153,7 @@
 
         <div class="general-banner">
            <div class="small-card" >
-        <button id="creditcustomer" class="my-btn"> Credit Customer</button>
+        <button id="creditcustomer" class="my-btn"> Add Customer</button>
       </div>
 
         </div>
@@ -150,7 +187,7 @@
       <th>Item </th>
       <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
       <th>Count</th>
-      <th>Amount</th>
+      <th>Status</th>
       <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
     </thead>
     <tbody id="recieptbody">       
@@ -164,25 +201,26 @@
      <div class="general-banner">
    
       <div class="small-card">
-        <center> <label class="my-label">Totals</label><br>
+        <center> <label class="my-label">Details</label><br>
     </center>
 
      <table style="min-width: 800px;">
        <thead>
-        <th>Payment information</th>
-         <th>Total</th>
-         <th>Discount</th>
-         <th>Grand Total</th>
+        <th>Delivery information</th>
+         <th>Office</th>
+         <th>Agent</th>
+         <th>Customer</th>
        </thead>
        <tr>
         <td>
           <label>Served by :  <span id="receiptname"></span></label><br>
     <label>Date : <span id="receiptdate"></span></label><br>
-    <label><span>Sale type : </span> Credited Customer</label><br>
+    <label><span>Type : </span> Delivery</label><br>
+    <label>Delivery by : <span id="recieptdelivery"> null</span></label><br>
         </td>
-         <td id="">--</td>
-         <td>--</td>
-         <td id="">--</td>
+         <td id="">_____________</td>
+         <td>____________</td>
+         <td id="">____________</td>
        </tr>
 
        <!-- customer details -->
@@ -192,14 +230,14 @@
           <label>Customer :  <span id="recieptcustomername"></span></label><br>
           <label>Email :  <span id="recieptcustomeremail"></span></label><br>
           <label>Phone :  <span id="recieptcustomerphone"></span></label><br>
-          <label><span>Sale type : </span> Credit </label><br>
-          <label>Clear date : <span id="receiptcleardate"></span></label><br>
+          <label><span>Sale type : </span> Delivery </label><br>
+          <label>Delivery date : <span id="receiptcleardate"></span></label><br>
           <label>Location :  <span id="recieptcustomerlocation"></span></label><br>
           <label>Address :  <span id="recieptcustomeraddress"></span></label><br>
         </td>
-         <td id="tblpriceholder">0.00</td>
-         <td id="tbldiscount">0.00</td>
-         <td id="tblgrandpriceholder">0.00</td>
+         <td id="tblpriceholder">___________</td>
+         <td id="tbldiscount">__________</td>
+         <td id="tblgrandpriceholder">___________</td>
        </tr>
      </table>
 
@@ -219,11 +257,11 @@
 
  <div class="general-banner">
     <div class="small-card">      
-     <center> <button class="my-btn" id="makecashsale"> <<< Make Cash Sale</button> </center>
+     <center> <button class="my-btn" id="makecashsale"> <<< Back to Store</button> </center>
     </div>
    
       <div class="small-card">
-     <center> <button class="my-btn" id="printer">Make Credit Sale</button> </center>
+     <center> <button class="my-btn" id="printer">Create Delivery</button> </center>
       </div>
  
    </div>
@@ -257,7 +295,7 @@
 <br><br><br><br><br><br>
 <!-- footer starts -->
 <div class="footer">
-   <h3></h3>
+	 <h3></h3>
    Juelga solution &copy;  &nbsp;&nbsp;<a href="https://www.juelgasolutions.co.tz" style="text-decoration: none; color: #ffffff">juelgasolution </a><br>
    <h3></h3>
 </div>
@@ -265,7 +303,7 @@
 <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-database.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script>
  <script type="text/javascript" src="../js/config.js"></script>
-<script type="text/javascript" src="../js/salecredit.js"></script>
+<script type="text/javascript" src="../js/selectdelivery.js"></script>
 
 
 </body>

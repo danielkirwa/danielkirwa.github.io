@@ -186,31 +186,41 @@ for (let i = 0; i < recieptitemsarray.length; i++) {
 }
 grandamount = grandamount - discountgiven;
 
-let lastreceiptitem = ["Totals", grandamount, discountgiven, grandamount - discountgiven];
+let lastreceiptitem = ["Totals", 0, 0, 0];
 
 // Convert storedArray to a new array without references
 let storedreciepttodatabase = JSON.parse(JSON.stringify(recieptitemsarray));
-storedreciepttodatabase.push(lastreceiptitem);
+//storedreciepttodatabase.push(lastreceiptitem);
 storedreciepttodatabase = JSON.stringify(storedreciepttodatabase); // Convert back to JSON string
 
 
+
 /*------------------------------------------------------------*/
-    /// update product count
-        firebase.database().ref('Mycreditsale/' + timestamp).set(storedreciepttodatabase)
-  .then(function() {
+    /// update agent deliveries 
+  deliverby = localStorage.getItem('deliveryagent').replace(/[@.]/g, "&");
+        firebase.database().ref('Mystoresale/' + deliverby + "/" + timestamp).set({
+          Reciept:storedreciepttodatabase,
+          Status: 0,
+          CreatedBy: email})
+  /*.then(function() {
      // update monthly sales 
 
     myAlertRefresh(success, "Sale completed ");
     localStorage.removeItem("curentreciept");
     //location.reload();
-  })
+  })*/
   .catch(function(error) {
      myAlert(failed, "Sale not completed ");
   });
 
 /*------------------------------------------------------------*/
   // customer reciept 
-      firebase.database().ref('Mycustomerreceipt/'+ newcustomeridnumber.innerText + "/" + timestamp).set(storedreciepttodatabase)
+  var databasePath = 'Mycustomerreceipt/' + newcustomeridnumber.innerText + "/" + timestamp;
+      firebase.database().ref(databasePath).set(
+        {
+          Reciept:storedreciepttodatabase,
+          Status: 0,
+          Incharge: localStorage.getItem('deliveryagent')})
   .then(function() {
      // update monthly sales 
 
@@ -224,22 +234,7 @@ storedreciepttodatabase = JSON.stringify(storedreciepttodatabase); // Convert ba
   });
 
 
-/*------------------------------------------------------------*/
-   // update monthly sales 
-
-    let monthlysalenode = "Mymonthlycredit/"+ currentMonth+currentYear ;
-        firebase.database().ref(monthlysalenode).update({
-
-       TotalCredit: firebase.database.ServerValue.increment(grandamount),
-       TotalStockAmount : firebase.database.ServerValue.increment(grandamountbuying),
-       TotalDiscount: firebase.database.ServerValue.increment(+discountgiven)        
-   
-      }).then(() => {
-   
-  })
-  .catch((error) => {
-     myAlert(failed, "Cummulative not sales captured");
-  });
+  
 
 /*------------------------------------------------------------*/
   // update cashier sales 
@@ -259,19 +254,6 @@ storedreciepttodatabase = JSON.stringify(storedreciepttodatabase); // Convert ba
      myAlert(failed, "Cummulative cashier credit sales not captured");
   });
 
-  /*------------------------------------------------------------*/
-  let customercredit = "Mycustomercredit/"+ newcustomeridnumber.innerText ;
-        firebase.database().ref(customercredit).update({
-
-       CustomerTotalCredit: firebase.database.ServerValue.increment(grandamount),
-       CreditDueDate: cutomerpaydate.value      
-   
-      }).then(() => {
-       
-  })
-  .catch((error) => {
-     myAlert(failed, "Cummulative customer credit not captured");
-  });
   /*------------------------------------------------------------*/
 
 
@@ -382,6 +364,39 @@ searchcustomerid.addEventListener("click", () => {
 });
 }
 
+})
+
+// second search 
+let secondsearch =document.getElementById('secondsearch');
+secondsearch.addEventListener("click" , () =>{
+  let newsecondsearchname = document.getElementById('newsecondsearchname').value;
+  let newsecondsearchid = document.getElementById('newsecondsearchid').value;
+  let newsecondsearchemail = document.getElementById('newsecondsearchemail').value;
+  let newsecondsearchphone = document.getElementById('newsecondsearchphone').value;
+  let newsecondsearchregion = document.getElementById('newsecondsearchregion').value;
+  let newsecondsearchtown = document.getElementById('newsecondsearchtown').value;
+  let newsecondsearchaddress = document.getElementById('newsecondsearchaddress').value;
+  if (newsecondsearchid == "") {
+    myAlert(failed,"Enter Id number");
+
+  }else{
+    newcustomername.innerHTML = newsecondsearchname;
+    newcustomerstatus.innerHTML = "Active";
+    newcustomeremail.innerHTML = newsecondsearchemail;
+    newcustomerphone.innerHTML = newsecondsearchphone;
+    newcustomerotherphone.innerHTML = newsecondsearchphone;
+    newcustomerregion.innerHTML = newsecondsearchregion;
+    newcustomertown.innerHTML = newsecondsearchtown;
+    newcustomervillage.innerHTML = newsecondsearchaddress
+    newcustomeridnumber.innerHTML = newsecondsearchid;
+    // show on reciept 
+
+    recieptcustomername.innerHTML = newsecondsearchname;
+    recieptcustomeremail.innerHTML = newsecondsearchemail;
+    recieptcustomerphone.innerHTML = newsecondsearchphone;
+    recieptcustomerlocation.innerHTML = newsecondsearchregion + " , " + newsecondsearchtown;
+    recieptcustomeraddress.innerHTML = newsecondsearchaddress;
+  }
 })
 
 

@@ -79,7 +79,7 @@ btnsearchcashier.addEventListener('click', () => {
 
         displayHtml += `
           <p>Timestamp: ${dateTime.toLocaleString()}</p>
-          <p>Status: ${data[timestamp].Status}</p>
+          <p>Status: Pending</p>
           <p>Created by: ${data[timestamp].CreatedBy}</p>
           
           <table border="1">

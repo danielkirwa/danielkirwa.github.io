@@ -1,0 +1,202 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Create Business</title>
+
+		<link rel="stylesheet" type="text/css" href="../css/index.css">
+	<link rel="stylesheet" type="text/css" href="../css/nav.css">
+	<link rel="stylesheet" type="text/css" href="../css/elements.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<div>
+    <div class="banner">
+    	<div class="vender-logo"><img src="../assets/logo/juelgaicon.png"> </div>
+    	<div class="shop-name"><center><h3 id="lbbusinessname"></h3></center></div>
+    </div>
+</div>
+<!-- nav -->
+<div class="navbar">
+	  <a href="navigation.html"  style=" background:  #ff6a13; font-weight: bold;"> << Back</a>
+   <center>
+     <label style="color:white; font-weight: bold; font-size: 22px;">Add Store</label>
+   </center>
+</div>
+<!-- end of nav bar -->
+<div class="action-div">
+ 
+	 <center><h3 class="my-label">Create  Business</h3></center>
+
+	 <div class="input-holder">
+      <div class="card">
+      	<center>
+          <label class="small-label">Business Name</label><br>
+          <input type="text" id="businessname" placeholder="Enter Name" class="my-input">
+          </center>
+      </div>
+      <div class="card">
+        <center>
+          <label class="small-label">Business Address </label><br>
+          <input type="text" id="address" placeholder="Enter Business Address" class="my-input">
+          </center>
+      </div>
+   </div>
+    <div class="input-holder">
+      <div class="card">
+        <center>
+          <label class="small-label">Store Name</label><br>
+          <input type="text" id="storename" placeholder="Enter Store Name" class="my-input">
+          </center>
+      </div>
+      <div class="card">
+        <center>
+          <label class="small-label">Store Address </label><br>
+          <input type="text" id="storeaddress" placeholder="Enter Store Address" class="my-input">
+          </center>
+      </div>
+   </div>
+
+   <div class="input-holder">
+      <div class="card">
+      	<center>
+          <label class="small-label">Phone Number</label><br>
+          <input type="text" id="phone" placeholder="+2557xxxxxxx" class="my-input">
+          </center>
+      </div>
+      <div class="card">
+      	<center>
+      	<label class="small-label">Other Phone Number</label><br>
+          <input type="text" id="otherphone" placeholder="+2557xxxxxxx" class="my-input">
+          </center>
+      </div>
+   </div>
+
+    <div class="input-holder">
+      <div class="card">
+      	<center>
+          <label class="small-label">Email </label><br>
+          <input type="text" id="email" placeholder="Enter email" class="my-input">
+          </center>
+      </div>
+      <div class="card">
+      	<center>
+      	<label class="small-label">Other Email</label><br>
+          <input type="text" id="otheremail" placeholder="Enter other email" class="my-input">
+          </center>
+      </div>
+   </div>
+
+
+     <div class="input-holder">
+      <div class="card">
+        <center>
+          <label class="small-label">Location (Region) </label><br>
+          <input type="text" id="region" placeholder="Enter Business Region" class="my-input">
+          </center>
+      </div>
+      <div class="card">
+        <center>
+        <label class="small-label">Location (Town)</label><br>
+          <input type="text" id="town" placeholder="Enter Business Town" class="my-input">
+          </center>
+      </div>
+   </div>
+   <div class="input-holder">
+      <div class="card">
+        <center>
+          <label class="small-label">Store Code </label><br>
+          <input type="text" id="storecode" placeholder="Enter Store code like : SM" class="my-input">
+          </center>
+      </div>
+      <div class="card">
+       <center>
+        <label class="small-label">Select Opening Status</label><br>
+          <select class="my-input" id="openingstatus">
+            <option value="" disabled selected>Select Opening Status</option>
+            <option value="Active">Active</option>
+            <option value="Not Actove">Not Active</option>
+           </select>
+          </center>
+      </div>
+   </div>
+
+   <div class="input-holder">
+      <div class="card">
+      	<center>
+          <button id="addbusiness" class="my-btn">Save my Store</button>
+          </center>
+      </div>
+   </div>
+
+</div>
+
+
+<!-- table -->
+<br><br>
+
+<div class="scroll-table">
+  <div class="table-holder">
+    <div class="table-caption">
+      <label class="my-label">Available Store  </label>
+    </div>
+  <table id="busniesstable">
+    <thead>
+      <th>Store Name</th>
+      <th>Store Code </th>
+      <th>Town</th>
+      <th>Adress</th>
+      <th>Status</th>
+      
+    </thead>
+    <tbody>      
+               
+          </tbody>
+     </table>
+
+
+
+
+  </div>
+</div>
+
+
+<!-- alerts here -->
+
+<div id="alertBox">
+  <h2 id="alertTitle"></h2>
+  <p id="alertMessage"></p>
+  <center>
+  <button onclick="hideAlert()">OK</button>
+  </center>
+</div>
+
+<!-- alert with refresh -->
+
+<div id="alertBoxRefresh">
+  <h2 id="alertTitle1"></h2>
+  <p id="alertMessage1"></p>
+  <center>
+  <button onclick="hideAlertRefresh()">OK</button>
+  </center>
+</div>
+
+
+
+<br><br><br><br>
+<!-- footer starts -->
+<div class="footer">
+	 <h3></h3>
+   Juelga solution &copy;  &nbsp;&nbsp;<a href="https://www.juelgasolutions.co.tz" style="text-decoration: none; color: #ffffff">juelgasolution </a><br>
+   <h3></h3>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script>
+ <script type="text/javascript" src="../js/config.js"></script>
+ <script type="text/javascript" src="../js/createbusiness.js"></script>
+</body>
+</html>

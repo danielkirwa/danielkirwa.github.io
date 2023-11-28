@@ -1,0 +1,216 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Create Stock</title>
+
+		<link rel="stylesheet" type="text/css" href="../css/index.css">
+	<link rel="stylesheet" type="text/css" href="../css/nav.css">
+	<link rel="stylesheet" type="text/css" href="../css/elements.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<div>
+    <div class="banner">
+    	<div class="vender-logo"><img src="../assets/logo/juelgaicon.png"> </div>
+    	<div class="shop-name"><center><h3 id="lbbusinessname"></h3></center></div>
+    </div>
+</div>
+<!-- nav -->
+<div class="navbar">
+     <a href="navigation.html"  style=" background:  #ff6a13; font-weight: bold;"> << Back</a>
+   <center>
+     <label style="color:white; font-weight: bold; font-size: 22px;">Create Stock</label>
+   </center>
+</div>
+<!-- end of nav bar -->
+<div class="action-div">
+	 <center><h3 class="my-label">Stock management</h3></center>
+
+	 <div class="input-holder">
+      <div class="card">
+      	<center>
+          <label class="small-label">Stock Name</label><br>
+          <input type="text" id="stockname" placeholder="Enter stock name" class="my-input">
+          </center>
+      </div>
+      <div class="card">
+        <center>
+          <label class="small-label">Stock Code</label><br>
+          <input type="text" id="code" placeholder="Enter code eg. S101D" class="my-input">
+          </center>
+      </div>
+   </div>
+
+   <div class="input-holder">
+      <div class="card">
+      	<center>
+          <label class="small-label">Description</label><br>
+           </center>
+          <textarea id="description" rows="5" cols="40" placeholder="Describe stock here..."></textarea>
+         
+      </div>
+       <div class="card">
+        <center>
+          <label class="small-label">Store details</label><br>
+           </center> 
+           <select class="my-input" id="storename">
+             <option value="" id="">Select Store </option>
+           </select>
+           <label id="viewselectedstore">Store code </label><br>
+           <label id="viewselectedstorelocation">Store location </label><br>
+           <label> Store manager</label>
+          
+      </div>
+    </div>
+
+    <div class="input-holder">
+      <div class="card">
+      	<center>
+          <label class="small-label">Unit Measure </label><br>
+          <select class="my-input" id="unit">
+            <option value="" disabled selected>Choose Unit Measure</option>
+          </select>
+          </center>
+      </div>
+      <div class="card">
+      	<center>
+      	<label class="small-label">Unit Count</label><br>
+          <input type="text" id="unitcount" placeholder="Unit count" class="my-input" oninput="restrictToNumbers(unitcount)">
+          </center>
+      </div>
+   </div>
+ 
+    <div class="input-holder">
+            <div class="card">
+        <center>
+        <label class="small-label">Units to Distribute</label><br>
+          <input type="text" id="unitsale" placeholder="Units to sale" class="my-input" oninput="restrictToNumbers(unitsale)">
+          </center>
+      </div>
+       <div class="card">
+        <center>
+        <label class="small-label">Clear Date</label><br>
+          <input type="date" id="clearby" class="my-input">
+          </center>
+      </div>
+
+
+   </div>
+    <div class="input-holder">
+      <div class="card-long">
+        <center>
+        <select class="my-input" id="suppliername" style="width:100%">
+             <option value="General Supply" id="GS001">Select supplier of not there ignore</option>
+           </select>
+         </center>
+      </div>
+    
+   </div>
+   <br><br>
+   <div class="input-holder">
+      <div class="card">
+      	<center>
+          <button id="addstock" class="my-btn">Save New Stock</button>
+          </center>
+      </div>
+    
+   </div>
+
+</div>
+
+
+<!-- table -->
+<br><br>
+
+<div class="scroll-table">
+  <div class="table-holder">
+    <div class="table-caption">
+      <label class="my-label">List of Stock  </label>
+    </div>
+  <table id="stocktable">
+    <thead>
+      <th>Stock Name</th>
+      <th>Sale Units </th>
+      <th>Code</th>
+      <th>Measure</th>
+      <th>Clear by</th>
+      <th>Status</th>
+    </thead>
+    <tbody>   
+      
+              
+          </tbody>
+     </table>
+
+
+  </div>
+</div>
+
+<br><br>
+<!-- <div class="scroll-table">
+  <div class="table-holder">
+    <div class="table-caption">
+      <label class="my-label">List of Stock on credit  </label>
+    </div>
+  <table id="stocktablecredit">
+    <thead>
+      <th>Stock Name</th>
+      <th>Sale Units </th>
+      <th>Code</th>
+      <th>Measure</th>
+      <th>Supplier</th>
+      <th>Aquisition price</th>
+      <th>Paid</th>
+      <th>Balance</th>
+    </thead>
+    <tbody>   
+      
+              
+          </tbody>
+     </table>
+
+
+  </div>
+</div> -->
+
+
+<!-- alerts here -->
+
+<div id="alertBox">
+  <h2 id="alertTitle"></h2>
+  <p id="alertMessage"></p>
+  <center>
+  <button onclick="hideAlert()">OK</button>
+  </center>
+</div>
+
+
+<div id="alertBoxRefresh">
+  <h2 id="alertTitle1"></h2>
+  <p id="alertMessage1"></p>
+  <center>
+  <button onclick="hideAlertRefresh()">OK</button>
+  </center>
+</div>
+
+
+<br><br><br><br>
+<!-- footer starts -->
+<div class="footer">
+	 <h3></h3>
+   Juelga solution &copy;  &nbsp;&nbsp;<a href="https://www.juelgasolutions.co.tz" style="text-decoration: none; color: #ffffff">juelgasolution </a><br>
+   <h3></h3>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script>
+ <script type="text/javascript" src="../js/config.js"></script>
+ <script type="text/javascript" src="../js/createstock.js"></script>
+ 
+</body>
+</html>

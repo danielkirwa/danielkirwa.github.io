@@ -26,12 +26,6 @@ let tblpriceholder = document.getElementById('tblpriceholder');
 let tblgrandpriceholder = document.getElementById('tblgrandpriceholder');
 let newcustomeridnumber = document.getElementById('newcustomeridnumber');
  let cutomerpaydate = document.getElementById('cutomerpaydate');
-  let newagentdestination = document.getElementById('newagentdestination');
- let newagentname = document.getElementById('newagentname');
- let newagentnumber = document.getElementById('newagentnumber');
-  let receiptagentname = document.getElementById('receiptagentname');
- let recieptagentnumber = document.getElementById('recieptagentnumber');
- let recieptagentlocation = document.getElementById('recieptagentlocation');
 var count;
 var item 
 var totalamount;
@@ -207,12 +201,6 @@ storedreciepttodatabase = JSON.stringify(storedreciepttodatabase); // Convert ba
         firebase.database().ref('Mystoresale/' + deliverby + "/" + timestamp).set({
           Reciept:storedreciepttodatabase,
           Status: 0,
-          CustomerName: recieptcustomername.innerText,
-          CustomerPhone: recieptcustomerphone.innerText,
-          Location: recieptcustomeraddress.innerText,
-          AgentName: receiptagentname.innerHTML,
-          AgentNumber: recieptagentnumber.innerHTML,
-          AgentLocation: recieptagentlocation.innerHTML,
           CreatedBy: email})
   /*.then(function() {
      // update monthly sales 
@@ -232,12 +220,6 @@ storedreciepttodatabase = JSON.stringify(storedreciepttodatabase); // Convert ba
         {
           Reciept:storedreciepttodatabase,
           Status: 0,
-          CustomerName: recieptcustomername.innerText,
-          CustomerPhone: recieptcustomerphone.innerText,
-          Location: recieptcustomeraddress.innerText,
-          AgentName: receiptagentname.innerHTML,
-          AgentNumber: recieptagentnumber.innerHTML,
-          AgentLocation: recieptagentlocation.innerHTML,
           Incharge: localStorage.getItem('deliveryagent')})
   .then(function() {
      // update monthly sales 
@@ -471,120 +453,6 @@ let makecashsale = document.getElementById('makecashsale');
       makecashsale.innerHTML = "<< Select delivery agent"
     }
 
-
-
-
-// agent search code start here
- // get all agent 
- const allagent = document.getElementById('allagent');
-
-function getAllAgents() {
-    // Clear existing options and data attributes
-    allagent.innerHTML = "";
-    allagent.removeAttribute("data-id");
-    allagent.removeAttribute("data-location");
-
-    // Add a default option
-    var optiondefault = document.createElement("option");
-    optiondefault.text = "Select staff/Store staff";
-    optiondefault.value = "null";
-    allagent.add(optiondefault);
-
-    // Fetch data from Firebase
-    var ref = firebase.database().ref("Myagent");
-
-    ref.on("value", function(snapshot) {
-        snapshot.forEach(function(childSnapshot) {
-            var childData = childSnapshot.val();
-            var cashiername = childData.AgentName;
-            var agentphone = childData.AgentPhone;
-            var agentlocation = childData.AgentTown;
-            console.log(agentlocation);
-
-            // Create option element
-            var option = document.createElement("option");
-            option.text = cashiername;
-            option.value = cashiername;
-
-            // Set data attributes on each option
-            option.setAttribute("data-id", agentphone);
-            option.setAttribute("data-location", agentlocation);
-
-            // Add option to the select element
-            allagent.add(option);
-        });
-    });
-}
-
-
-
-getAllAgents();
-
-// Define agents in a global scope or in a scope accessible by both functions
-let agents = [];
-
-// Assume this function fetches agent data and populates the <select> element
-function populateAgents() {
-    // ... Your existing code to fetch and populate agents
-
-    // After fetching agents, dynamically build the actions mapping
-    actions = {};
-    agents.forEach(agent => {
-        actions[agent.value] = {
-            label: `Use ${agent.value} destination`,
-            phoneLabel: 'Agent Phone',
-            locationLabel: 'Agent Location'
-        };
-    });
-}
-
-let btnsearchagent = document.getElementById('btnsearchagent');
-
-btnsearchagent.addEventListener('click', () => {
-    let allagent = document.getElementById('allagent');
-    let selectedOption = allagent.options[allagent.selectedIndex];
-    let agentsearchid = selectedOption.value;
-    let agentphone = selectedOption.getAttribute("data-id");
-    let agentlocation = selectedOption.getAttribute("data-location");
-
-    // Log the selected option details for debugging
-    //console.log('Selected Option:', selectedOption);
-    console.log('agentsearchid:', agentsearchid);
-    console.log('agentphone:', agentphone);
-    console.log('agentlocation:', agentlocation);
-    newagentdestination.innerHTML = agentlocation;
-    newagentname.innerHTML = agentsearchid;
-    newagentnumber.innerHTML = agentphone;
-    receiptagentname.innerHTML = agentsearchid;
-    recieptagentnumber.innerHTML = agentphone;
-    recieptagentlocation.innerHTML = agentlocation;
-
-    // Check if the selected option value has a corresponding action
-    if (actions.hasOwnProperty(agentsearchid)) {
-        const action = actions[agentsearchid];
-        console.log(action.label);
-
-        if (action.phoneLabel) {
-            console.log(action.phoneLabel + ':', agentphone);
-        }
-
-        if (action.locationLabel) {
-            console.log(action.locationLabel + ':', agentlocation);
-        }
-    } else {
-       // console.log('Handle other cases if needed');
-    }
-});
-
-// Call the function to populate agents when needed
-populateAgents();
-
-
-
-
-
-
-    // agent search code ends here
 
 // end off your code 
 // alert 

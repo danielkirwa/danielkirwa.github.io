@@ -81,12 +81,6 @@ btnsearchcashier.addEventListener('click', () => {
           <p>Timestamp: ${dateTime.toLocaleString()}</p>
           <p>Status: Pending</p>
           <p>Created by: ${data[timestamp].CreatedBy}</p>
-          <p>Customer Name : ${data[timestamp].CustomerName}</p>
-          <p>Customer Phone : ${data[timestamp].CustomerPhone}</p>
-          <p>Location : ${data[timestamp].Location}</p>
-          <p>Agent Name : ${data[timestamp].AgentName}</p>
-          <p>Agent Phone : ${data[timestamp].AgentNumber}</p>
-          <p>Agent Location : ${data[timestamp].AgentLocation}</p>
           
           <table border="1">
             <tr>

@@ -354,6 +354,44 @@ storedArray.forEach(function(innerArray) {
 
 }
 
+// delete item from reciept and update database
+
+// delete item
+function removeRow(button) {
+  let rowtoremoveformarray;
+  var removecount,remocevode;
+  var row = button.parentNode.parentNode;
+   removeditem = row.getElementsByTagName("td")[3].textContent;
+   removecount = row.getElementsByTagName("td")[2].textContent;
+   removecode = row.getElementsByTagName("td")[1].textContent;
+     recieptitems = +recieptitems - removecount;
+  snolabel.innerHTML = recieptitems;
+   rowtoremoveformarray = row.rowIndex - 1;
+// data to delete
+ //console.log(removeditem);
+ //console.log(removecount);
+ //console.log(removecode)
+
+  recieptitemsarray = storedArray;
+   recieptitemsarray.splice(rowtoremoveformarray,1);
+   let storedreciept = JSON.stringify(recieptitemsarray);
+localStorage.setItem('curentreciept', storedreciept);
+//console.log(recieptitemsarray);
+      //remove row after subtraction
+/// update product count
+        firebase.database().ref('Mystock/' + removecode + '/UnitSale').transaction(function(UnitSale) {
+  if (UnitSale === null) {
+    return 0; // If the value doesn't exist, set it to 1
+  } else {
+    return +UnitSale + +removecount; // Increment the value by 1
+  }
+});
+
+      row.parentNode.removeChild(row);
+      
+
+    }
+
 // end of new code
 
 

@@ -492,7 +492,7 @@ function getAllCashier() {
     var ref = firebase.database().ref("Mystaff");
 allcashiers.innerHTML = "";
 var optiondefault = document.createElement("option");
-optiondefault.text = "Select delivery agent";
+optiondefault.text = "Select staff/Store staff";
 optiondefault.value = "null";
 optiondefault.id = "";
 allcashiers.add(optiondefault);

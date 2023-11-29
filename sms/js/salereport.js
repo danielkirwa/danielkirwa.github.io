@@ -32,18 +32,18 @@ ref.on("value", function(snapshot) {
 getAllCashier();
 var desiredStatus = 0;
 var databasePath = 'Mystoresale/';
-console.log("Database Path:", databasePath);
+//console.log("Database Path:", databasePath);
 
 firebase.database().ref(databasePath).once('value')
   .then(function(snapshot) {
-    console.log("Snapshot:", snapshot.val());
+    //console.log("Snapshot:", snapshot.val());
 
     // Get the data
     var data = snapshot.val();
-    console.log("Data:", data);
+    //console.log("Data:", data);
 
     var filteredData = filterDataByStatus(data, desiredStatus);
-    console.log("Filtered Data:", filteredData);
+    //console.log("Filtered Data:", filteredData);
 
     // Display the data
     displayData(filteredData);

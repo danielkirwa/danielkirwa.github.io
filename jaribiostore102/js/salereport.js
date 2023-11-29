@@ -134,6 +134,24 @@ function displayData(data) {
   document.getElementById('data-table-container').innerHTML = displayHtml;
 }
 
+function updateStatus(timestamp) {
+   let cashiersearchid = allcashiers.value;
+  let newcashiersearchid = cashiersearchid.replace(/[@.]/g, "&");
+  var agentId = newcashiersearchid;
+  // Construct the database path based on your structure
+  var databasePath = 'Mystoresale/' + agentId + '/' + timestamp;
+
+  // Update the status to 1
+  firebase.database().ref(databasePath).update({ Status: 1 })
+    .then(function() {
+      myAlertRefresh(success,"Cleared ");
+      // You may want to refresh the data display or perform other actions
+    })
+    .catch(function(error) {
+      console.error("Error updating status:", error);
+      myAlert(warning, "Failed to clear");
+    });
+}
 
 // alert 
 
@@ -150,6 +168,21 @@ function myAlert(title,message) {
 function hideAlert() {
   var alertBox = document.getElementById("alertBox");
   alertBox.style.display = "none";
+}
+function myAlertRefresh(title,message) {
+  var alertBox = document.getElementById("alertBoxRefresh");
+  var alertTitle = document.getElementById("alertTitle1");
+  var alertMessage = document.getElementById("alertMessage1");
+  
+  alertTitle.innerHTML = title;
+  alertMessage.innerHTML = message;
+  alertBox.style.display = "block";
+}
+
+function hideAlertRefresh() {
+  var alertBox = document.getElementById("alertBoxRefresh");
+  alertBox.style.display = "none";
+  location.reload();
 }
 
 /// get business name and data 

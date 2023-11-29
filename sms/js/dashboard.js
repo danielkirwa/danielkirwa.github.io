@@ -64,263 +64,156 @@ var Bname,Baddress,Bphone,Bemail,Bregion,Btown;
         });
       });
 
+// count all deliveries not done
+function countStatusZeroTimestamps() {
+  const path = '/Mystoresale'; // Adjust the path as per your database structure
+  const reference = firebase.database().ref(path);
 
+  reference.once('value')
+    .then(snapshot => {
+      // Prepare the table HTML
+      let tableHTML = '<table border="1"><tr><th>Store Staff</th><th>Number of Pending Deliveries</th></tr>';
 
+      snapshot.forEach(agentSnapshot => {
+        const agentKey = agentSnapshot.key;
+        let statusZeroCount = 0;
 
-
-
-
-//displays 
-lbprevios.innerHTML = previousMonthName + " / " + currentYear;
-lbcurent.innerHTML = currentMonth + " / "  + currentYear;
-lbloanprevios.innerHTML = previousMonthName + " / " + currentYear;
-lbloancurent.innerHTML = currentMonth + " / "  + currentYear;
-lbcurrentmonth.innerHTML = currentMonth + " / "  + currentYear;
-
-// current month sales
- function getCurrentsales() {
-  let innerthismonthsale = document.getElementById('innerthismonthsale');
-
-  /*--------------------------------------*/
-let thismonthsales = "Mymonthly/"+ currentMonth+currentYear ;
-  // get the stock 
-  var ref = firebase.database().ref(thismonthsales);
-  ref.once('value').then(function(snapshot) {
-  var childData = snapshot.val();
-  if (childData == null) {
-     myAlert(warning, "No Cash sales found this month of : <br>" + currentMonth + " " + currentYear);
-  }else{
-    lbthismonthsale.innerHTML = childData.TotalSale.toLocaleString();
-    innerthismonthsale.innerHTML = "Cash = " + childData.TotalSale.toLocaleString();
-    thismonth = childData.TotalSale;
-    // get previous
-    let previousmonthsales = "Mymonthly/"+ previousMonthName+currentYear ;
-  // get the stock 
-  var ref = firebase.database().ref(previousmonthsales);
-  ref.once('value').then(function(snapshot) {
-  var childData = snapshot.val();
-  if (childData == null) {
-     myAlert(failed, "No sales found")
-     lbgrowth.innerHTML = "Up : " + '&#128316;'   + thismonth - 0;
-  }else{
-    previousmonth = childData.TotalSale
-   businessdiv = +thismonth - +previousmonth;
-   cardpreviousmonth.innerHTML = previousMonthName +" Sale = " + previousmonth.toLocaleString();
-   cardcurrentmonth.innerHTML =  currentMonth +" Sale = " + thismonth.toLocaleString();
-    //console.log(businessdiv);
-   if (businessdiv > 0) {
-     lbgrowth.innerHTML = "Up : " + '&#128316;  ' + businessdiv.toLocaleString();
-   }else{
-    lbgrowth.innerHTML = "Down : " + '&#128681;  ' + businessdiv.toLocaleString();
-   }
- 
-  }
-  
-
-
-});
-  }
-  
-
-});
-}
- getCurrentsales();
-
-
-  // get credit sales
-
-    function getCurrentcreditsales() {
-   let innerthismonthcredit = document.getElementById('innerthismonthcredit');
-   let cardcurrentmonthcredit = document.getElementById('cardcurrentmonthcredit');
-   let cardpreviousmonthcredit = document.getElementById('cardpreviousmonthcredit');
-   let innerthismonthdiscount = document.getElementById('innerthismonthdiscount');
-  /*--------------------------------------*/
-let thismonthcreditsales = "Mymonthlycredit/"+ currentMonth+currentYear ;
-  // get the stock 
-  var ref = firebase.database().ref(thismonthcreditsales);
-  ref.once('value').then(function(snapshot) {
-  var childData = snapshot.val();
-  if (childData == null) {
-     myAlert(warning, "No credit sales found this month of : <br>" + currentMonth + " " + currentYear);
-  }else{
-    innerthismonthcredit.innerHTML = "Credit  = " + childData.TotalCredit.toLocaleString();
-    cardcurrentmonthcredit.innerHTML = currentMonth + " Credit  = " + childData.TotalCredit.toLocaleString();
-    innerthismonthdiscount.innerHTML = "Discount credit = " + childData.TotalDiscount.toLocaleString();
-    thismonthcredit = childData.TotalCredit;
-    // get previous
-    let previousmonthcreditsales = "Mymonthlycredit/"+ previousMonthName+currentYear ;
-  // get the stock 
-  var ref = firebase.database().ref(previousmonthcreditsales);
-  ref.once('value').then(function(snapshot) {
-  var childData = snapshot.val();
-  if (childData == null) {
-     cardpreviousmonthcredit.innerHTML = previousMonthName +" Credit = " + 0;
-     //lbgrowth.innerHTML = "Up : " + '&#128316;'   + thismonth - 0;
-     lbgrowthcredit.innerHTML = "Up : " + '&#128681;  ' + thismonthcredit.toLocaleString();
-  }else{
-   
-   cardpreviousmonthcredit.innerHTML = previousMonthName +" Credit  = " + childData.TotalCredit.toLocaleString();
-   // calculate loan variation 
-   previousmonthcredit = childData.TotalCredit;
-   businessdivcredit = +thismonthcredit - +previousmonthcredit;
- 
-   if (businessdivcredit > 0) {
-     
-     lbgrowthcredit.innerHTML = "Up  : " + '&#128681;  ' + businessdivcredit.toLocaleString();
-   }else{
-    lbgrowthcredit.innerHTML = "Down  : " + '&#128316;  ' + businessdivcredit.toLocaleString();
-   }
-   
- 
-  }
-  
-
-
-});
-  }
-  
-
-});
-}
-
-getCurrentcreditsales();
-
-
-  function getAllCustomers() {
-    // body...
-
-    let customercounter = document.getElementById('customercounter');
-    let lbcustomersonloan = document.getElementById('lbcustomersonloan');
-    // Get a reference to the "Mycustomer" node
-var myCustomerRef = firebase.database().ref("Mycustomer");
-// Retrieve the data once
-myCustomerRef.once("value")
-  .then(function(snapshot) {
-    // Get the child count
-    var childCount = snapshot.numChildren();
-     customercounter.innerHTML = childCount;
-  })
-  .catch(function(error) {
-    myAlert(failed, "Can not get the customers in your business")
-  });
-  /*------------------------*/
-var myCustomerloanRef = firebase.database().ref("Mycustomercredit");
-  // get on loan
-   var onloancount = 0;
-// Retrieve the child nodes and check their values
-myCustomerloanRef.once('value', function(snapshot) {
-  snapshot.forEach(function(childSnapshot) {
-    var childData = childSnapshot.val();
-    // Check if the value of CustomerTotalCredit is greater than 1
-    if (childData.CustomerTotalCredit > 1) {
-      onloancount++;
-    }
-  });
-  
-  lbcustomersonloan.innerHTML = "On loan : " + onloancount;
-});
-
-  }
-getAllCustomers();
-
-
-// get all products having less units in stock
-function allProducttoDepleted() {
-  // body...
-   var table = document.getElementById("outofstocktable");
-  var myProductRef = firebase.database().ref("Myproduct");
-
-// Create a query to select child nodes with quantity less than 20
-var query = myProductRef.orderByChild("AvailableUnits").endAt(20);
-
-// Retrieve the filtered data
-query.once("value")
-  .then(function(snapshot) {
-    snapshot.forEach(function(childSnapshot) {
-      // Access the child node data
-      var childData = childSnapshot.val();
-       var row = table.insertRow(-1);
-          var cell1 = row.insertCell(0);
-          var cell2 = row.insertCell(1);
-          var cell3 = row.insertCell(2);
-          var cell4 = row.insertCell(3);
-          var state;
-          if (childData.AvailableUnits >= 1) {
-            state = childData.AvailableUnits;
-          }else{
-            state = "Out of stock";
+        agentSnapshot.forEach(timestampSnapshot => {
+          const status = timestampSnapshot.child('Status').val();
+          if (status === 0) {
+            statusZeroCount++;
           }
+        });
 
-          cell1.innerHTML = childData.ProductName;
-          cell2.innerHTML = childData.Code;
-          cell3.innerHTML = childData.StockCodeRef;
-          cell4.innerHTML = state;
+        // Add a row for each agent
+        tableHTML += `<tr><td>${agentKey}</td><td>${statusZeroCount}</td></tr>`;
+      });
 
+      // Close the table tag
+      tableHTML += '</table>';
 
-
-
+      // Display the table in the specified container
+      document.getElementById('statusTableContainer').innerHTML = tableHTML;
+    })
+    .catch(error => {
+      console.error("Error fetching data:", error);
     });
-  })
-  .catch(function(error) {
-    console.error("Error retrieving data:", error);
-  });
-
 }
-allProducttoDepleted();
 
-// get all products  that are almost expiring 
- function allProducttoExpiry() {
-   // body...
-   var table = document.getElementById("expirytable");
-    
-    var myProductRef = firebase.database().ref("Myproduct");
-// Calculate the date for 30 days from now
-var currentDate = new Date();
-var expirationDate = new Date(currentDate.getTime() + (30 * 24 * 60 * 60 * 1000));
-var expirationDateString = expirationDate.toISOString().split("T")[0];
-var expirationcheck = new Date(currentDate.getTime());
-expirationcheck = expirationcheck.toISOString().split("T")[0];
+// Example usage
+countStatusZeroTimestamps();
 
-// Create a query to select child nodes with expiration dates less than 30 days from now
-var query = myProductRef.orderByChild("ClearBy").endAt(expirationDateString);
+// all complete deliveries per staff
+function countStatusCompleteTimestamps() {
+  const path = 'Mystoresale'; // Adjust the path as per your database structure
+  const reference = firebase.database().ref(path);
 
-// Retrieve the filtered data
-query.once("value")
-  .then(function(snapshot) {
-    snapshot.forEach(function(childSnapshot) {
-      // Access the child node data
-      var childData = childSnapshot.val();
-       
-       var row = table.insertRow(-1);
-          var cell1 = row.insertCell(0);
-          var cell2 = row.insertCell(1);
-          var cell3 = row.insertCell(2);
-          var cell4 = row.insertCell(3);
-          var state;
-          if (childData.ClearBy >  expirationcheck) {
-            state = childData.ClearBy;
-            console.log('up' + datetoday);
-          }else{
-            state = "Expired => " + "on " + childData.ClearBy;
-            console.log("down" + datetoday);
+  reference.once('value')
+    .then(snapshot => {
+      // Prepare the table HTML
+      let tableHTML = '<table border="1"><tr><th>Store Staff</th><th>Number of Complete Deliveries</th></tr>';
+
+      snapshot.forEach(agentSnapshot => {
+        const agentKey = agentSnapshot.key;
+        let statusOneCount = 0;
+
+        agentSnapshot.forEach(timestampSnapshot => {
+          const status = timestampSnapshot.child('Status').val();
+          if (status === 1) {
+            statusOneCount++;
           }
+        });
 
-          cell1.innerHTML = childData.ProductName;
-          cell2.innerHTML = childData.Code;
-          cell3.innerHTML = childData.StockCodeRef;
-          cell4.innerHTML = state;
-      
+        // Add a row for each agent
+        tableHTML += `<tr><td>${agentKey}</td><td>${statusOneCount}</td></tr>`;
+      });
 
+      // Close the table tag
+      tableHTML += '</table>';
 
+      // Display the table in the specified container
+      document.getElementById('statusTableContainerforComplete').innerHTML = tableHTML;
+    })
+    .catch(error => {
+      console.error("Error fetching data:", error);
     });
-  })
-  .catch(function(error) {
-    console.error("Error retrieving data:", error);
-  });
+}
 
+// Example usage
+countStatusCompleteTimestamps()
+// count customers in the system
 
- }
- allProducttoExpiry()
+function countStatusCustomers() {
+  const path = 'Mycustomer'; // Adjust the path as per your database structure
+  const reference = firebase.database().ref(path);
+
+  let statusZeroCount = 0;
+  let statusOneCount = 0;
+
+  reference.once('value')
+    .then(snapshot => {
+      snapshot.forEach(customerSnapshot => {
+        const status = customerSnapshot.child('Status').val();
+        if (status === 0) {
+          statusZeroCount++;
+        } else if (status === 1) {
+          statusOneCount++;
+        }
+      });
+
+      // Display the count results
+      const countResultsHTML = `
+        <p>Active : ${statusOneCount}</p>
+        <p>Not Active : ${statusZeroCount}</p>
+        
+      `;
+
+      document.getElementById('totaluserdisplay').innerHTML = countResultsHTML;
+    })
+    .catch(error => {
+      console.error("Error fetching data:", error);
+    });
+}
+
+// Example usage
+countStatusCustomers();
+
+// count suppliers in the system
+
+function countStatusSupplier() {
+  const path = 'Mysupplier'; // Adjust the path as per your database structure
+  const reference = firebase.database().ref(path);
+
+  let statusZeroCount = 0;
+  let statusOneCount = 0;
+
+  reference.once('value')
+    .then(snapshot => {
+      snapshot.forEach(supplierSnapshot => {
+        const status = supplierSnapshot.child('Status').val();
+        if (status === 0) {
+          statusZeroCount++;
+        } else if (status === 1) {
+          statusOneCount++;
+        }
+      });
+
+      // Display the count results
+      const countResultsHTML = `
+        <p>Active : ${statusOneCount}</p>
+        <p>Not Active : ${statusZeroCount}</p>
+        
+      `;
+
+      document.getElementById('totalsupplierdisplay').innerHTML = countResultsHTML;
+    })
+    .catch(error => {
+      console.error("Error fetching data:", error);
+    });
+}
+
+// Example usage
+countStatusSupplier();
 
 
 // end of the code

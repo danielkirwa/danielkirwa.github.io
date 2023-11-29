@@ -230,7 +230,48 @@ availableproductunittoupdate = Itemselected.options[Itemselected.selectedIndex].
 
 itemcounter.addEventListener("input", updateValue);
 
+// add items to reciept
+btnaddtorecipt.addEventListener('click', () =>{
+  if (count >= 0.25) {
+  itemcounter.value = 1;
+  newselectitem.innerHTML=  "Item. ";
+  newselectprice.innerHTML= "Store. ";
+  newselectcode.innerHTML = "Code. ";
+  newselectcount.innerHTML = "Count. ";
+var item = Itemselected.options[Itemselected.selectedIndex].text;
+var thestore = Itemselected.options[Itemselected.selectedIndex].value;
+var code = Itemselected.options[Itemselected.selectedIndex].id;
+let remover = '<button class="remove-btn" onclick="removeRow(this)">X</button>';
+ recieptitemsarray = storedArray;
 
+ //console.log(recieptitemsarray);
+   // push to an array
+ let newitemtoreciept = [item,code, count, customercheck,remover];
+
+ recieptitemsarray.push(newitemtoreciept);
+let storedreciept = JSON.stringify(recieptitemsarray);
+localStorage.setItem('curentreciept', storedreciept);
+// update stock
+
+/// update 
+        firebase.database().ref('Mystock/' + code + '/UnitSale').transaction(function(UnitSale) {
+  if (UnitSale === null) {
+    return 0; // If the value doesn't exist, set it to 1
+   // location.reload();
+  } else {
+    return UnitSale - count; // Increment the value by 1
+    //location.reload();
+  }
+});
+
+location.reload();
+
+
+}else{
+  alert("Select new item to add ");
+}
+  
+})
 
 
 
@@ -272,6 +313,46 @@ function hideAlertRefresh() {
   location.reload();
 }
 
+onreloadshowitems();
+function onreloadshowitems(argument) {
+  // body...
+  let storeditems = localStorage.getItem('curentreciept');
+  let storedbuyingprices = localStorage.getItem('curentbuying');
+  discountgiven = localStorage.getItem('Discount');
+  // do discount back zero 
+  if (storeditems == null || storedbuyingprices == null) {
+     
+  }else{
+// Convert the array string back to an array using JSON.parse()
+ storedArray = JSON.parse(storeditems);
+ storedArraybuying = JSON.parse(storedbuyingprices);
+
+// Get the table body element
+let tableBody = document.getElementById('recieptbody');
+
+// Clear any existing rows in the table
+tableBody.innerHTML = '';
+
+// Iterate over the array and create table rows
+storedArray.forEach(function(innerArray) {
+  let row = document.createElement('tr');
+  
+  innerArray.forEach(function(element) {
+    let cell = document.createElement('td');
+    cell.innerHTML = element;
+    row.appendChild(cell);
+
+  });
+ 
+  tableBody.appendChild(row);
+});
+ recieptitems = storedArray.reduce((a, b) => a + +b[2],0);
+
+  snolabel.innerHTML = recieptitems.toLocaleString();
+}
+
+
+}
 
 // end of new code
 

@@ -87,6 +87,202 @@ var Bname,Baddress,Bphone,Bemail,Bregion,Btown;
 
 // update counter by adding quantity
 
+// new coding done here
+
+// get cashier
+function getAllCashier() {
+  // body... gets all users 
+    var ref = firebase.database().ref("Mystaff");
+allcashiers.innerHTML = "";
+var optiondefault = document.createElement("option");
+optiondefault.text = "Select staff/Store staff";
+optiondefault.value = "null";
+optiondefault.id = "";
+allcashiers.add(optiondefault);
+ref.on("value", function(snapshot) {
+  snapshot.forEach(function(childSnapshot) {
+    var childData = childSnapshot.val();
+    var cashiername = childData.Email;
+  
+      var option = document.createElement("option");
+      option.text = cashiername;
+      option.value = cashiername;
+      allcashiers.add(option);
+    
+  });
+});
+}
+getAllCashier();
+// get all item more than 1
+var ref = firebase.database().ref("Mystock");
+itemselected.innerHTML = "";
+var optiondefault = document.createElement("option");
+optiondefault.text = "Select Item Name";
+optiondefault.value = "Select Item Name";
+optiondefault.id = "";
+itemselected.add(optiondefault);
+ref.on("value", function(snapshot) {
+  snapshot.forEach(function(childSnapshot) {
+    var childData = childSnapshot.val();
+    var product = childData.StockName;
+    var storename = childData.StoreName;
+    var code = childData.Code;
+    var available = childData.UnitSale;
+    var storecode = childData.StoreCode;
+    
+    if (available >= 1) { // Add condition to check if AvailableUnits > 1
+      var option = document.createElement("option");
+      option.text = product;
+      option.value = storename;
+      option.id = code;
+      option.data = available;
+      option.dataBuying = storecode;
+      itemselected.add(option);
+    }
+  });
+});
+
+// load deatils of selected item
+
+
+function updateValue(e) {
+  price = Itemselected.options[Itemselected.selectedIndex].value;
+  count = e.target.value;
+
+  if (count < 1) {
+    itemcounter.value = 1;
+    newselectcount.innerHTML = "Count :" + count;
+    newavailableproductunittoupdate = availableproductunittoupdate - count;
+  } else {
+    newavailableproductunittoupdate = availableproductunittoupdate - count;
+    //console.log(newavailableproductunittoupdate);
+    if (newavailableproductunittoupdate == 0) {
+      newavailableproductunittoupdate = newavailableproductunittoupdate;
+      myAlert(warning, "All items have been sold. No more items available for sale. <br> <b> Click add to reciept to sale selected item </b>");
+      itemcounter.disabled = true;
+      newselectcount.innerHTML = "Count :" + count;
+
+    } else {
+      newselectcount.innerHTML = "Count :" + count;
+
+    }
+  }
+}
+
+ // add or subtract fraction 
+
+btnaddfraction.addEventListener('click', () =>{
+
+  count = +count + +0.25;
+ console.log(count);
+ itemcounter.value = count;
+newselectcount.innerHTML = "Count :" + count;
+ 
+
+} )
+btnsubfraction.addEventListener('click', () =>{
+  if (count === undefined || isNaN(parseFloat(count))) {
+    myAlert(warning, "No Item selected");
+  }else{
+  count = +count - +0.25
+  itemcounter.value = count;
+  newselectcount.innerHTML = "Count :" + count;
+  
+  if (count < 0.25) {
+    count = 0.25;
+    myAlert(warning, "Reach minimum fraction");
+    itemcounter.value = count;
+    newselectcount.innerHTML = "Count :" + count;
+    
+  }
+ 
+}
+} )
+
+
+// for local storage 
+
+
+let recieptitemsarray = [];
+let storedArray = [];
+let recieptitemsarraybuying = [];
+let storedArraybuying = [];
+
+itemselected.addEventListener("change", function(){ 
+item = Itemselected.options[Itemselected.selectedIndex].text;
+var thestore = Itemselected.options[Itemselected.selectedIndex].value;
+producttocodeupdate = Itemselected.options[Itemselected.selectedIndex].id;
+availableproductunittoupdate = Itemselected.options[Itemselected.selectedIndex].data;
+  newselectitem.innerHTML=  "Item. " +item;
+  newselectprice.innerHTML= "Store. " +thestore;
+  newselectcode.innerHTML = "Code. " + producttocodeupdate;
+  txtnewselectitem.value =  "" +item;
+  txtnewselectprice.value = "" +thestore;
+  txtnewselectedcode.value = "" + producttocodeupdate;
+  //itemcounter.value = 1;
+  count = 1;
+  newavailableproductunittoupdate = availableproductunittoupdate - 1;
+  //console.log(newavailableproductunittoupdate);
+  newselectcount.innerHTML = "Count :" + count;
+
+
+});
+
+itemcounter.addEventListener("input", updateValue);
+
+
+
+
+
+
+
+
+
+// alert 
+
+function myAlert(title,message) {
+  var alertBox = document.getElementById("alertBox");
+  var alertTitle = document.getElementById("alertTitle");
+  var alertMessage = document.getElementById("alertMessage");
+  
+  alertTitle.innerHTML = title;
+  alertMessage.innerHTML = message;
+  alertBox.style.display = "block";
+}
+
+function hideAlert() {
+  var alertBox = document.getElementById("alertBox");
+  alertBox.style.display = "none";
+}
+// alert refresh 
+
+function myAlertRefresh(title,message) {
+  var alertBox = document.getElementById("alertBoxRefresh");
+  var alertTitle = document.getElementById("alertTitle1");
+  var alertMessage = document.getElementById("alertMessage1");
+  
+  alertTitle.innerHTML = title;
+  alertMessage.innerHTML = message;
+  alertBox.style.display = "block";
+}
+
+function hideAlertRefresh() {
+  var alertBox = document.getElementById("alertBoxRefresh");
+  alertBox.style.display = "none";
+  location.reload();
+}
+
+
+// end of new code
+
+
+
+
+
+
+
+
+/*
 function updateValue(e) {
   price = Itemselected.options[Itemselected.selectedIndex].value;
   count = e.target.value;
@@ -445,7 +641,7 @@ storedreciepttodatabase = JSON.stringify(storedreciepttodatabase); // Convert ba
 
 /*=====================================*/
 // select only items that more than one
-
+/*
 var ref = firebase.database().ref("Mystock");
 itemselected.innerHTML = "";
 var optiondefault = document.createElement("option");
@@ -658,6 +854,6 @@ findStaffRoleByEmail(targetEmail)
         window.location.href='../index.html';
       }
     })
-
+*/
 
 

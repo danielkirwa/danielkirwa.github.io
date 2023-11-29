@@ -223,6 +223,7 @@ function onreloadshowitems(argument) {
 	let storeditems = localStorage.getItem('curentreciept');
 	let storedbuyingprices = localStorage.getItem('curentbuying');
   discountgiven = localStorage.getItem('Discount');
+  //console.log(storedbuyingprices);
   // do discount back zero 
 	if (storeditems == null || storedbuyingprices == null) {
      
@@ -230,7 +231,7 @@ function onreloadshowitems(argument) {
 // Convert the array string back to an array using JSON.parse()
  storedArray = JSON.parse(storeditems);
  storedArraybuying = JSON.parse(storedbuyingprices);
-
+console.log(storedArraybuying);
 // Get the table body element
 let tableBody = document.getElementById('recieptbody');
 

@@ -392,6 +392,21 @@ localStorage.setItem('curentreciept', storedreciept);
 
     }
 
+// select storeman and load it to locastorage
+
+allcashiers.addEventListener('click', () => {
+  let cashiersearchid = allcashiers.value;
+   recieptdelivery.innerHTML = cashiersearchid;
+   localStorage.setItem('deliveryagent', cashiersearchid)
+})
+recieptdelivery.innerHTML = localStorage.getItem('deliveryagent');
+
+// open delivery check point  for tag customer and agent
+let printercredit = document.getElementById('printercredit');
+printercredit.addEventListener("click", () =>{
+  window.location.href='selectdelivery.html';
+})
+
 // end of new code
 
 

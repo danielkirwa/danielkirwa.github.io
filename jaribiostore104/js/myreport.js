@@ -112,9 +112,8 @@ btnsearchcashier.addEventListener('click', () => {
           </table>
           
           <!-- Button to update status -->
-          <br>
           <button onclick="updateStatus('${timestamp}')" class="my-btn">Clear Delivery</button>
-          <button onclick="updateStatusfailed('${timestamp}')" class="my-btn-del">Return to Store</button>
+
           <hr>
         `;
       } else {

@@ -1,0 +1,178 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Navigation</title>
+	<link rel="stylesheet" type="text/css" href="../css/index.css">
+	<link rel="stylesheet" type="text/css" href="../css/nav.css">
+  <link rel="stylesheet" type="text/css" href="../css/dashboard.css">
+   <link rel="stylesheet" type="text/css" href="../css/elements.css">
+	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head> 
+<style type="text/css">
+</style>
+<body>
+	<div>
+    <div class="banner">
+    	<div class="vender-logo"><img src="../assets/logo/juelgaicon.png"> </div>
+    	<div class="shop-name"><center>
+         
+        <h3 id="lbbusinessname"></h3>
+      
+      </center></div>
+    </div>
+</div>
+<!-- nav -->
+<div class="navbar">
+	 <a href="../sales/navigation.html"  style=" background:  #ff6a13;">Dashboard</a>
+  <div class="subnav">
+    <button class="subnavbtn">My Stores <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="createcustomer.html">Add Customer</a><br>
+      <a href="adjustcustomer.html">Adjust Customer</a>
+    </div>
+  </div> 
+  <div class="subnav">
+    <button class="subnavbtn">Create <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="createunits.html">Units/Measure</a>
+      <a href="createcategory.html">Names</a>
+    </div>
+  </div> 
+  <div class="subnav">
+    <button class="subnavbtn">Stock <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="createstock.html">Add Stock</a>
+      <a href="adjuststock.html">Adjust Stock</a>
+    </div>
+  </div>
+   <div class="subnav">
+    <button class="subnavbtn">Register <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="createsupplier.html">Add Supplier</a>
+      <a href="adjustsupplier.html">Adjust Supplier</a>
+    </div>
+  </div>
+  <div class="subnav">
+    <button class="subnavbtn">Reports <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <!-- <a href="businessreport.html">Business Report</a> -->
+      <a href="salereport.html">Delivery Report</a>
+    </div>
+  </div>
+  <a href="createdelivery.html">Create Delivery</a>
+  <div class="subnav">
+    <button class="subnavbtn"><span id="usernamedisplay"></span><i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="myreport.html">My Report</a>
+      <!-- <a href="adminmanual.html">Manual</a> -->
+      <a href="#" onclick="logout()">Logout</a>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!-- end of dashboard -->
+
+ 
+<!-- alerts here -->
+
+<div id="alertBox">
+  <h2 id="alertTitle"></h2>
+  <p id="alertMessage"></p>
+  <center>
+  <button onclick="hideAlert()">OK</button>
+  </center>
+</div>
+
+
+
+
+<br><br><br><br><br><br>
+<!-- footer starts -->
+<div class="footer">
+	 <h3></h3>
+   Juelga solution &copy;  &nbsp;&nbsp;<a href="https://www.juelgasolutions.co.tz" style="text-decoration: none; color: #ffffff">juelgasolution </a><br>
+   <h3></h3>
+</div>
+
+
+<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script>
+ <script type="text/javascript" src="../js/config.js"></script>
+ <script type="text/javascript">
+ 	 auth.onAuthStateChanged(function(user){
+      if(user){
+        var email = user.email;
+        //check the role and open page
+         
+      const database = firebase.database();
+
+// Function to find a staff member's role by email
+function findStaffRoleByEmail(email) {
+  const staffRef = database.ref('Mystaff');
+
+  return staffRef.once('value')
+    .then((snapshot) => {
+      let role = null;
+      snapshot.forEach((childSnapshot) => {
+        const staffMember = childSnapshot.val();
+        if (staffMember.Email === email) {
+          role = staffMember.Role;
+          return true; // Break the loop if the email is found
+        }
+      });
+      return role;
+    })
+    .catch((error) => {
+      //console.error('Error finding staff member role:', error);
+      myAlert(failed, "You have not been given access to the the system kindly contact admin");
+      throw error;
+    });
+}
+
+// Example usage:
+const targetEmail = email; // The email to search for
+
+findStaffRoleByEmail(targetEmail)
+  .then((role) => {
+    if (role) {
+       // open pages accodingly
+      console.log(role);
+      if (role == "Admin") {
+       // window.location.href='dashboard.html';
+        usernamedisplay.innerHTML = email;
+      }
+      if (role == "Cashier") {
+
+       window.location.href='../cashier/saledesk.html';
+      }
+      if (role == "SalesLead") {
+        window.location.href='../sales/saledesk.html';
+      }
+
+    } else {
+      //console.log('Staff member not found with email:', targetEmail);
+      myAlert(failed, "You have not been given access to the the system kindly contact admin");
+      // Handle the case when the staff member is not found
+    }
+  })
+  .catch((error) => {
+    // Handle the error
+  });
+  
+  
+      }else{
+        //myAlert("No Active user");
+        window.location.href='../index.html';
+      }
+    })
+ </script>
+</body>
+</html>

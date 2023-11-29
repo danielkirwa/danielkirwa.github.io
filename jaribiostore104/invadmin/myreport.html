@@ -1,0 +1,154 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>My Report</title>
+
+		<link rel="stylesheet" type="text/css" href="../css/index.css">
+	<link rel="stylesheet" type="text/css" href="../css/nav.css">
+	<link rel="stylesheet" type="text/css" href="../css/elements.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<style type="text/css">
+  #data-table-container caption{
+    color: #fff;
+    background: #0067a0;
+    font-size: 22px;
+    font-weight: bold;
+
+  }
+</style>
+<body>
+<div>
+    <div class="banner">
+    	<div class="vender-logo"><img src="../assets/logo/juelgaicon.png"> </div>
+    	<div class="shop-name"><center><h3 id="lbbusinessname"></h3></center></div>
+    </div>
+</div>
+<!-- nav -->
+<div class="navbar">
+     <a href="navigation.html"  style=" background:  #ff6a13; font-weight: bold;"> << Back</a>
+   <center>
+     <label style="color:white; font-weight: bold; font-size: 22px;">Your Report</label>
+   </center>
+  
+</div>
+<!-- end of nav bar -->
+
+<!-- Report begins -->
+<br><br>
+
+<div class="scroll-table">
+  <div class="table-holder">
+    <div class="table-caption">
+      <label class="my-label">Sale report </label>
+    </div>
+     <!-- start of report analysis -->
+     <div class="input-holder">
+     
+
+     
+
+
+      <!-- receipt for all cashier -->
+      <div class="input-holder">
+
+        <div class="table-caption">
+      <label class="my-label"></label>
+    </div>
+    <div class="table-caption">
+      <label class="my-label">Select cashier receipt</label>
+    </div>
+        <center> 
+          <br>
+          <select class="my-input" id="allcashiers">
+            <option>Select cachier</option>
+          </select>
+          <button class="my-btn" id="btnsearchcashier">Select Receipt</button>
+           </center>
+  
+         </div>
+          
+
+         <!-- table showing receipt -->
+
+         <div class="card-long">
+        <center>
+          <label class="small-label">Receipt for deliveries of : <span id="auditof"></span></label><br>
+           </center>
+        
+      <table id="cashierreceipt">
+    <thead>
+      <th style="background: #0067a0;color: #fff;">Product Name</th>
+      <th style="background: #0067a0;color: #fff;">Product Code</th>
+      <th style="background: #0067a0;color: #fff;">Quantity</th>
+      <th style="background: #0067a0;color: #fff;">Details</th>
+    </thead>
+    <tbody>   
+      
+              
+        </tbody>
+     </table>
+
+     <!-- HTML Table -->
+<div id="data-table-container"></div>
+
+         
+      </div>
+
+     
+
+      <!-- end of cashier -->
+
+       
+
+
+         </div>
+ <!-- end of report analysis -->
+
+  </div>
+</div>
+
+
+<!-- alerts here -->
+
+<div id="alertBox">
+  <h2 id="alertTitle"></h2>
+  <p id="alertMessage"></p>
+  <center>
+  <button onclick="hideAlert()">OK</button>
+  </center>
+</div>
+<!-- with refresh -->
+<div id="alertBoxRefresh">
+  <h2 id="alertTitle1"></h2>
+  <p id="alertMessage1"></p>
+  <center>
+  <button onclick="hideAlertRefresh()">OK</button>
+  </center>
+</div>
+
+
+<br><br><br><br>
+<!-- footer starts -->
+<div class="footer">
+	 <h3></h3>
+   Juelga solution &copy;  &nbsp;&nbsp;<a href="https://www.juelgasolutions.co.tz" style="text-decoration: none; color: #ffffff">juelgasolution </a><br>
+   <h3></h3>
+</div>
+
+
+
+  
+
+ <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script>
+ <script type="text/javascript" src="../js/config.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+ <script type="text/javascript" src="../js/myreport.js"></script>
+
+</body>
+</html>

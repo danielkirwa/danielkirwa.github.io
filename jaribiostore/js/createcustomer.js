@@ -37,7 +37,7 @@ let newvillage = village.value
 var newselectedgender = selectedgender.value;
 
 // validate
- if (newfirstname == "" || newidnumber == "" || newphone == "" || newregion == "" || newdistrict == "" || newtown == "" || newvillage == "" || newselectedgender == "") {
+ if (newfirstname == "" || newidnumber == "" || newphone == "" || newvillage == "" || newselectedgender == "") {
   let fillerror,fillerror1,fillerror2,fillerror3,fillerror4,fillerror5,fillerror6,fillerror7,fillerror8;
    if (newfirstname == "") {
       fillerror1 = "<br> Firstname";
@@ -54,21 +54,8 @@ var newselectedgender = selectedgender.value;
     }else{
       fillerror3 = "";
     }
-    if (newregion == "") {
-      fillerror4 = "<br> Region";
-    }else{
-      fillerror4 = "";
-    }
-    if (newdistrict == "") {
-      fillerror5 = "<br> District";
-    }else{
-      fillerror5 = "";
-    }
-    if (newtown == "") {
-      fillerror6 = "<br> Town";
-    }else{
-      fillerror6 = "";
-    }
+   
+    
      if (newvillage == "") {
       fillerror7 = "<br> Village / House";
     }else{
@@ -80,7 +67,7 @@ var newselectedgender = selectedgender.value;
       fillerror8 = "";
     }
   
-  fillerror = 'Fill in the following :  ' + fillerror1 +  fillerror2 +  fillerror3 +  fillerror4 +  fillerror5  + fillerror6 + fillerror7 + fillerror8 ;
+  fillerror = 'Fill in the following :  ' + fillerror1 +  fillerror2 +  fillerror3 + fillerror7 + fillerror8 ;
   myAlert(warning, fillerror);
   }else{
     
@@ -153,7 +140,7 @@ var newselectedgender = selectedgender.value;
           cell1.innerHTML = childData.FirstName;
           cell2.innerHTML = childData.CustomerEmail;
           cell3.innerHTML = childData.CustomerPhone;
-          cell4.innerHTML = childData.CustomerDistrict;
+          cell4.innerHTML = childData.CustomerVillage;
           cell5.innerHTML = childData.CustomerGender;
           cell6.innerHTML = NewStatus;
         });

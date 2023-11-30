@@ -35,13 +35,13 @@ let newemail = customeremail.value;
 let newotherphone = otherphone.value;
 let newregion = region.value;
 let newdistrict = district.value;
-let newtown = town.value;
+let newtown = null;
 let newvillage = village.value;
-let newlink = link.value;
+let newlink = null;
 var newselectedtype = selectedtype.value;
 
 // validate
- if (newfirstname == "" || newidnumber == "" || newphone == "" || newregion == "" || newdistrict == "" || newtown == "" || newvillage == "" || newselectedtype == "") {
+ if (newfirstname == "" || newidnumber == "" || newphone == "" || newvillage == "" || newselectedtype == "") {
   let fillerror,fillerror1,fillerror2,fillerror3,fillerror4,fillerror5,fillerror6,fillerror7,fillerror8;
    if (newfirstname == "") {
       fillerror1 = "<br> Supplier Firstname / organization";
@@ -58,21 +58,7 @@ var newselectedtype = selectedtype.value;
     }else{
       fillerror3 = "";
     }
-    if (newregion == "") {
-      fillerror4 = "<br> Supplier  Region";
-    }else{
-      fillerror4 = "";
-    }
-    if (newdistrict == "") {
-      fillerror5 = "<br> Supplier District";
-    }else{
-      fillerror5 = "";
-    }
-    if (newtown == "") {
-      fillerror6 = "<br> Supplier Town";
-    }else{
-      fillerror6 = "";
-    }
+
      if (newvillage == "") {
       fillerror7 = "<br> Supplier Village / House";
     }else{
@@ -84,7 +70,7 @@ var newselectedtype = selectedtype.value;
       fillerror8 = "";
     }
   
-  fillerror = 'Fill in the following :  ' + fillerror1 +  fillerror2 +  fillerror3 +  fillerror4 +  fillerror5  + fillerror6 + fillerror7 + fillerror8 ;
+  fillerror = 'Fill in the following :  ' + fillerror1 +  fillerror2 +  fillerror3 +  fillerror7 + fillerror8 ;
   myAlert(warning, fillerror);
   }else{
     
@@ -153,7 +139,7 @@ var newselectedtype = selectedtype.value;
           cell1.innerHTML = childData.FirstName;
           cell2.innerHTML = childData.SupplierEmail;
           cell3.innerHTML = childData.SupplierPhone;
-          cell4.innerHTML = childData.SupplierDistrict;
+          cell4.innerHTML = childData.SupplierVillage;
           cell5.innerHTML = childData.SupplierType;
           cell6.innerHTML = NewStatus;
         });
@@ -198,7 +184,7 @@ auth.onAuthStateChanged(function(user){
       if(user){
          email = user.email;
         //alert("Active user" + email);
-         usernamedisplay.innerHTML = email;
+         //usernamedisplay.innerHTML = email;
       }else{
         //alert("No Active user");
         window.location.href='../index.html';

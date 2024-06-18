@@ -1,0 +1,99 @@
+
+/*table styling*/
+#locationadress table{
+	
+	border-radius: 12px 12px 0px 0px;
+	text-align: center;
+	overflow: hidden;
+	border-spacing: 0;
+	width: 100%;
+}
+#locationadress table th{
+	background: dodgerblue;
+	color: crimson;
+}
+#locationadress table th,td{
+	padding: 2% 3%;
+}
+#locationadress table tr:nth-child(odd){
+	background: #e7feff;
+}
+#locationadress table tr:nth-child(even){
+	background: white;
+}
+
+
+#locationholder{
+width: 100%;
+background: white;
+display: flex;
+}
+#locationmap{
+	width: 50%;
+	background: white;
+	padding: .5%;
+}
+#locationadress{
+	width: 50%;
+	background: white;
+	padding: .5%;
+}
+#abouttextholder{
+	width: 100%;
+}
+#vision{
+
+    background: white;
+	padding: 1%;
+	font-size: 18px;
+	box-shadow: 0 0 10px dodgerblue;
+}
+#mission{
+	background: white;
+	padding: 1%;
+	font-size: 18px;
+	box-shadow: 0 0 10px dodgerblue;
+}
+#motto{
+	
+	background: white;
+	padding: 1%;
+	font-size: 18px;
+	box-shadow: 0 0 10px dodgerblue;
+}
+#vision label{
+	font-size: 24px;
+	color: crimson;
+
+}
+#mission label{
+	font-size: 24px;
+	color: crimson;
+
+}
+#motto label{
+	font-size: 24px;
+	color: crimson;
+
+}
+
+
+/*On small screens */
+@media(max-width: 800px){
+	#locationholder{
+width: 100%;
+background: white;
+display: block;
+}
+#locationmap{
+	width: 98%;
+	background: white;
+	padding: .5%;
+}
+#locationadress{
+	width: 98%;
+	background: white;
+	padding: .5%;
+}
+
+}

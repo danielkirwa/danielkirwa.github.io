@@ -1,0 +1,56 @@
+#loginscard{
+	display: flex;
+	width: 100%
+}
+#cardimage{
+	width: 40%;
+	background: white;
+	padding: .5%;
+}
+#cardloignlinks{
+	width: 60%;
+	background: white;
+	padding: .5%;
+}
+#loginslink{
+	width: 90%;
+	background: #ff7575;
+	padding: 2%;
+	font-weight: bold;
+	color: black;
+	border-radius: 10%;
+
+}
+#loginslink:hover{
+	width: 90%;
+	background: dodgerblue;
+	padding: 2%;
+	font-weight: bold;
+	color: black;
+
+}
+
+@media(max-width: 800px){
+
+#loginscard{
+	display: block;
+	width: 100%
+}
+#cardimage{
+	width: 98%;
+	background: white;
+	padding: .5%;
+}
+#cardloignlinks{
+	width: 98%;
+	background: white;
+	padding: .5%;
+}
+#loginslink{
+	width: 90%;
+	background: #ff7575;
+	padding: 2%;
+	font-weight: bold;
+
+}
+}

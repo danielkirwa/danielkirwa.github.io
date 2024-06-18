@@ -1,0 +1,236 @@
+
+p{
+font-size: 18px;
+}
+/*on larger screens main content display*/
+#content{
+	background: #f1f1f1;
+	width: 80%;
+	margin-left: 10%;
+	padding: 5px;
+}
+
+/* on larger screens the navbar*/
+#logoholder{
+	transition: all .5s;
+	background: #f1f1f1;
+}
+.slidebar{
+	background: dodgerblue;
+	padding: 20px;
+	transition: all .5s ease;
+	top: 0px;
+
+	
+}
+.slidebar a{
+	line-height: 25px;
+	font-size: 18px;
+	color: white;
+	padding: 10px;
+	box-sizing: border-box;
+	transition: all 1s ease;
+	border-top-right-radius: 5px;
+	border-top-left-radius: 5px;
+}
+.slidebar a:hover{
+	border-bottom:3px solid white;
+	background: crimson;
+	border-bottom-color: white;
+
+}
+#checkmenubar, #check{
+	display: none;
+}
+.active{
+	background: crimson;
+}
+section{
+	background: #FFF;
+	transition: all .5s;
+	padding: 10px;
+	display: block;
+	
+}
+/*footer */
+#footer{
+	background: crimson;
+}
+.active{
+	background: crimson;
+}
+#footerbanner{
+	background: dodgerblue;
+	display: flex;
+	
+}
+#footerbanner a{
+	color: white;
+	
+}
+#footercontacts{
+	background: dodgerblue;
+	padding: 20px;
+	color: white;
+	width: 30%;
+	border-left:1px solid white;
+}
+#footerlinks{
+	background: dodgerblue;
+	padding: 20px;
+	color: white;
+	width: 30%;
+	border-left:1px solid white;
+}
+#footerservice{
+	background: dodgerblue;
+	padding: 20px;
+	color: white;
+	width: 30%;
+}
+/*change menubar on small screen*/
+@media (max-width: 800px){
+	#content{
+	background: dodgerblue;
+	width: 100%;
+	margin-left: 0%;
+	padding: 5px;
+}
+.slidebar{
+	background: dodgerblue;
+	height: 100%;
+	width: 40%;
+	position: fixed;
+	left: -50%;
+	transition: all .5s ease;
+	z-index: 100;
+}
+.slidebar header{
+	color: blue;
+	background: #4CAF50;
+	text-align: center;
+	font-size: 24px;
+	padding-top: 20px;
+	padding-bottom: 10px;
+	background: #fff;
+
+}
+
+.slidebar a{
+	
+	display: block;
+	width: 100%;
+	line-height: 45px;
+	font-size: 15px;
+	color: white;
+	padding: 0;
+	transition: all 1s ease;
+	padding-left: 5px;
+	box-sizing: border-box;
+	border-top: 1px solid rgba(255,255,255,.1);
+	border-bottom:1px solid white;
+
+}
+.slidebar a:hover{
+	background: crimson;
+	border-bottom:3px solid white;
+
+}
+#checkmenubar{
+	display: block;
+}
+#check{
+	display: none;
+}
+#checkmenubar #btn, #checkmenubar #cancel{
+	position: absolute;
+	cursor: pointer;
+}
+#checkmenubar #cancel{
+	left: -24%;
+	top :0px;
+	transition: all .5s ease;
+	z-index: 1000;
+	position: fixed;
+	height: 30px;
+}
+#checkmenubar #btn{
+	left: 3%;
+	top :20px;
+	
+	transition: all .5s ease;
+}
+
+
+
+#check:checked ~ .slidebar{
+	left:0%; 
+}
+#check:checked ~ #checkmenubar #btn{
+	left:3%;   
+	opacity: 0;
+	pointer-events: none;
+}
+#check:checked ~ #checkmenubar #cancel{
+	left: 40%;
+	top: 0%;
+}
+#check:checked ~ section{
+	margin-left: 20%;
+}
+#check:checked ~ #logoholder{
+	margin-left: 38%;
+}
+section{
+	background: #FFF;
+	transition: all .5s;
+	padding: 10px;
+	display: block;
+	
+}
+
+
+.active{
+	background: crimson;
+}
+/*footer on small screens */
+#footerbanner{
+	background: dodgerblue;
+	display: block;
+	
+}
+#footerbanner a{
+	color: white;
+	
+}
+#footercontacts{
+	background: dodgerblue;
+	padding: 2%;
+	color: white;
+	width: 90%;
+	border-bottom:none;
+	border-left:none;
+}
+#footerlinks{
+	background: dodgerblue;
+	padding: 2%;
+	color: white;
+	width: 90%;
+	border-bottom:1px solid white;
+	border-left:none;
+}
+#footerservice{
+	background: dodgerblue;
+	padding: 2%;
+	color: white;
+	width: 90%;
+	border-bottom:1px solid white;
+	border-left:none;
+}
+#footer{
+	width: 100%;
+}
+
+}
+
+

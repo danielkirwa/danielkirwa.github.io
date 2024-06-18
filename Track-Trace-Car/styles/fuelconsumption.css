@@ -1,0 +1,90 @@
+#sub-content{
+	width: 100%;
+	page-break-inside: 1%;
+	display: flex;
+}
+#imageholder{
+	width: 30%;
+	padding: 3px;
+}
+#textholder{
+	width: 70%;
+	padding: 3px;
+}
+#inforcardholder{
+	width: 100%;
+	page-break-inside: 1%;
+	display: flex;
+}
+#inforcardtext{
+	width: 60%;
+	padding: 3px;
+}
+#inforfeedbackcard{
+	width: 40%;
+	padding: 3px;
+}
+
+#submitmessage{
+  background: dodgerblue;
+  width: 90%;
+  padding: 5px;
+  border-radius: 7px;
+  font-size: 16px;
+}
+#submitmessage:hover{
+  color: crimson;
+}
+#txtname{
+  width: 90%;
+  height: 25px;
+  border-radius: 5px;
+}
+#txtphone{
+  width: 90%;
+  height: 25px;
+  border-radius: 5px;
+}
+#txtmessagebox{
+  width: 90%;
+  height: 100px;
+  border-radius: 5px;
+}
+#cmbsubject{
+  width: 90%;
+  height: 25px;
+  border-radius: 5px;
+}
+/* on small screens*/
+@media (max-width: 800px){
+
+#sub-content{
+	width: 98%;
+	page-break-inside: 1%;
+	display: block;
+	background: #f1f1f1;
+}
+#imageholder{
+	width: 98%;
+	padding: 3px;
+}
+#textholder{
+	width: 98%;
+	padding: 3px;
+}
+#inforcardholder{
+	width: 98%;
+	page-break-inside: 1%;
+	display: block;
+	background: #f1f1f1;
+}
+#inforcardtext{
+	width: 98%;
+	padding: 3px;
+}
+#inforfeedbackcard{
+	width: 98%;
+	padding: 3px;
+}
+
+}

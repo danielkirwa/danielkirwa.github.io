@@ -428,11 +428,19 @@ footer a {
   footer a {
     height: 0;
   }
+   .navbar .logo img {
+    width: 70%;
+    height: auto;
+  }
 }
 
 @media screen and (max-width: 560px) {
   section .cards .card {
     width: 100%;
     margin-bottom: 30px;
+  }
+   .navbar .logo img {
+    width: 70%;
+    height: auto;
   }
 }

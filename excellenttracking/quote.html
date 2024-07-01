@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - www.codingnepalweb.com -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quote Generation</title>
+    <link rel="stylesheet" href="styles/elements.css">
+    <link rel="stylesheet" type="text/css" href="styles/quote.css">
+    <link rel = "icon" href = "assets/logo/logo.png" type = "image/x-icon">
+    <!-- Fontawesome Link for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+  </head>
+ 
+  <body>
+    <header>
+      <nav class="navbar">
+        <h2 class="logo"><a href="index.html"><img src="assets/logo/logo.png" ></a></h2>
+        <input type="checkbox" id="menu-toggler">
+        <label for="menu-toggler" id="hamburger-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="24px" height="24px">
+            <path d="M0 0h24v24H0z" fill="none"/>
+            <path d="M3 18h18v-2H3v2zm0-5h18V11H3v2zm0-7v2h18V6H3z"/>
+          </svg>
+        </label>
+        <ul class="all-links">
+          <li><a href="index.html" style="  color: #1f64c7;">Home</a></li>
+          <li><a href="service.html" style="  color: #1f64c7;">Services</a></li>
+          <li><a href="#contact" style="  color: #1f64c7;">Contact Us</a></li>
+          <li><a href="about.html" style="  color: #1f64c7;">About Us</a></li>
+          
+        </ul>
+      </nav>
+    </header>
+
+    <section class="about" id="about">
+      <br><br><br><br>
+      <h2>Generate Quote</h2>
+      <div class="row company-info">
+       <center> <h3>Automated</h3></center>
+          <div class="myform">
+        <div class="form-group">
+            <!-- Name Input -->
+            <label for="name">Enter name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+
+        <div class="form-group">
+            <!-- Product Selection Dropdown -->
+            <label for="product">Select product:</label>
+            <select id="product" name="product" onchange="updateProductFeatures()" required>
+        <option value="">Select product here</option>
+        <option value="Vehicle Tracking Solution features">Vehicle Tracking Solution features</option>
+        <option value="Fuel Monitoring Solution features">Fuel Monitoring Solution features</option>
+        <option value="Car Alarms Features">Car Alarms Features</option>
+    </select>
+        </div>
+        <div class="form-group">
+            <!-- Product Cost Input -->
+            <label for="cost">Product count:</label>
+            <input type="number" id="count" name="count" value="1" required>
+        </div>
+
+        <div class="form-group">
+            <label for="end-date">Enter end date:</label>
+            <input type="date" id="end-date" name="end-date" required>
+        </div>
+
+        <div class="form-group">
+            <!-- Product Cost Input -->
+            <label for="cost">Enter product cost:</label>
+            <input type="number" id="cost" name="cost" required>
+        </div>
+
+        <div class="form-group">
+            <!-- VAT Input -->
+            <label for="vat">Enter VAT:</label>
+            <input type="number" id="vat" name="vat" value="16" required>
+        </div>
+
+        <div class="form-group">
+            <!-- Name Input -->
+            <label for="name">Enter Serial Number</label>
+            <input type="text" id="serial" name="serial" required placeholder="YY/MM/Count eg. 24/7/001 ">
+        </div>
+        <button class="btngenerate" id="btngenerate">Generate New Quote</button>
+    </div>
+      </div>
+
+     
+    </section>
+<br><br>
+   <div class="quote" id="quoteprint">
+      <div style="width:100%;">
+        <img src="assets/letterhead.png" width="100%">
+      </div>
+      <hr>
+      <br>
+      <label style="float: right; margin-right: 40px;"><span id="printDate">Date</span>&nbsp;&nbsp; Quotation</label>
+      <br>
+
+      <div class="quotedetails">
+         <table border="0">
+        <tr>
+            <td> <label style="font-size:15px;">Customer name :</label> <label id="lbcustomername" style="font-size:15px;">__________________________________</label></td>
+            <td> <label style="font-size:15px;">Valid till :</label> <label id="lbvaliddate" style="font-size:15px;">____________________________________</label></td>
+        </tr>
+        <tr>
+            <td><label style="font-size:15px;">Product :</label> <label id="lbproductname" style="font-size:15px;">____________________________________</label></td>
+            <td> <label style="font-size:15px;">Serial number :</label> <label id="lbserialnumber" style="font-size:15px;">_________________________________</label></td>
+        </tr>
+    </table>
+      </div>
+    <hr>
+    <br>
+    <table>
+        <thead>
+            <tr>
+                <th>Count</th>
+                <th>Product</th>
+                <th>Rate</th>
+                <th>Quatity</th>
+                <th>Totals</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td><label id="productName">Product name here</label>
+                    <ul class="list" id="productFeatures" style="font-size:13px;">
+                        <!-- Features will be dynamically added here -->
+                    </ul>
+                </td>
+                <td><label id="productPrice"></label></td>
+                <td><label id="productCount"></label></td>
+                <td><label id="productTotalPrice"></label></td>
+            </tr>
+              <tr>
+                <td colspan="3" style="text-align: right;">VAT</td>
+                <td><label id="lbvat"></label></td>
+            </tr>
+            <tr>
+                <td colspan="3" style="text-align: right;">Amount</td>
+                <td><label id="lblessvat"></label></td>
+            </tr>
+            <tr>
+                <td colspan="3" style="text-align: right;">Totals</td>
+                <td><label id="lbgradetotal"></label></td>
+            </tr>
+
+        </tbody>
+    </table>
+
+    <p>
+      Annual fee applicable
+     <br>
+      Terms and  conditions apply
+    </p>
+       <div style="width:100%;">
+        <img src="assets/letterhead2.png" width="100%">
+      </div>
+   </div>
+
+    <section class="about" id="about">
+      <br>
+      <h2>Generated Quote ready to print</h2>
+         <button class="btnprint" onclick="printQuote()">Print Now</button>
+     
+    </section>
+
+<br><br>
+
+
+  <div id="myAlert" class="alert">
+        <div class="alert-content">
+            <span class="close" onclick="closeAlert()">&times;</span>
+            <h3 class="alert-title" id="alertTitle"></h3>
+            <p id="alertMessage"></p>
+        </div>
+    </div>
+
+    <footer>
+      <div>
+        <span>Copyright © 2023 All Rights Reserved</span>
+        <span class="link">
+            <a href="index.html">Home</a>
+            <a href="#contact">Contact</a>
+        </span>
+      </div>
+    </footer>
+
+
+     <script type="text/javascript" src="js/quote.js"></script>
+
+      <script>
+        function printQuote() {
+            var printContents = document.getElementById('quoteprint').innerHTML;
+            var originalContents = document.body.innerHTML;
+            document.body.innerHTML = printContents;
+            window.print();
+            document.body.innerHTML = originalContents;
+        }
+
+        // Set current date for the label
+        var currentDate = new Date();
+        document.getElementById('printDate').textContent = currentDate.toDateString();
+    </script>
+  </body>
+</html>

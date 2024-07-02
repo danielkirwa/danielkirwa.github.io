@@ -73,8 +73,8 @@ newserial = serial.value;
                  productCount.innerHTML = newcount;
                  productPrice.innerHTML = newcost
                  productTotalPrice.innerHTML = newcost * newcount;
-                 lbvat.innerHTML = ((newcost * newcount) * (newvat/100)).toFixed(2);
-                 lblessvat.innerHTML = ((newcost * newcount) - ((newcost * newcount) * (newvat/100))).toFixed(2);
+                 lbvat.innerHTML = ((newcost * newcount) * (0.1379)).toFixed(2);
+                 lblessvat.innerHTML = ((newcost * newcount) - ((newcost * newcount) * (0.1379))).toFixed(2);
                  lbgradetotal.innerHTML = newcost * newcount;
             }
 

@@ -97,7 +97,7 @@ function updateProductFeatures() {
 
             // Add features based on selected product
             switch (selectedProduct) {
-                case 'Vehicle Tracking Solution features':
+                case 'Vehicle Tracking Solution':
                     addFeatures([
                         'Show Realtime status of the vehicle (engine off/on) moving in real-time.',
                         'Historical playback on vehicle movements',
@@ -111,7 +111,7 @@ function updateProductFeatures() {
                         'Access via web or mobile app'
                     ]);
                     break;
-                case 'Fuel Monitoring Solution features':
+                case 'Fuel Monitoring':
                     addFeatures([
                         'Realtime Location of the vehicles on google maps',
                         'Current status of the vehicles',
@@ -128,7 +128,7 @@ function updateProductFeatures() {
                         'Regular service and device maintenance'
                     ]);
                     break;
-                case 'Car Alarms Features':
+                case 'Car Alarms':
                     addFeatures([
                         'Doors closing and opening – accessibility',
                         'Antitheft alert',

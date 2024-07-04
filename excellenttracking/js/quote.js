@@ -71,11 +71,11 @@ newserial = serial.value;
                  lbproductname.innerText = newselectElement;
                  lbserialnumber.innerText = newserial;
                  productCount.innerHTML = newcount;
-                 productPrice.innerHTML = newcost
-                 productTotalPrice.innerHTML = newcost * newcount;
+                 productPrice.innerHTML = (newcost) + ".00";
+                 productTotalPrice.innerHTML = (newcost * newcount) + ".00";
                  lbvat.innerHTML = ((newcost * newcount) * (0.1379)).toFixed(2);
                  lblessvat.innerHTML = ((newcost * newcount) - ((newcost * newcount) * (0.1379))).toFixed(2);
-                 lbgradetotal.innerHTML = newcost * newcount;
+                 lbgradetotal.innerHTML = (newcost * newcount) + ".00";
             }
 
 
@@ -111,18 +111,16 @@ function updateProductFeatures() {
                         'Access via web or mobile app'
                     ]);
                     break;
-                case 'Fuel Monitoring':
+                case 'Fuel Monitoring Solution':
                     addFeatures([
                         'Realtime Location of the vehicles on google maps',
                         'Current status of the vehicles',
-                        'Driver assignation enabled',
                         'Mileage reports',
                         'Fuel consumption report',
                         'Fuel wastage alerts and reports',
                         'Fuel theft alerts and reports',
                         'Geo fencing capabilities on multiple areas',
                         'Historical playback on vehicle movements',
-                        'Driver behavior report and alerts',
                         'Service and maintenance reminders',
                         'Access via web or mobile app',
                         'Regular service and device maintenance'

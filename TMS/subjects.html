@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Subjects</title>
+</head>
+<body>
+	 <nav class="side-menu">
+    <ul>
+      <li><a href="teachers.html">Teachers</a></li>
+      <li><a href="dashboard.html">Subjects</a></li>
+      <li><a href="classes.html">Classes</a></li>
+      <li><a href="timetable.html">Timetable</a></li>
+    </ul>
+  </nav>
+<div class="subject-management">
+  <h2>Subject Management</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Code</th>
+        <th>Initial</th>
+        <th>Grade</th>
+        <th>Type</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="subject-table">
+      <!-- Subject rows will go here -->
+    </tbody>
+  </table>
+  <form id="add-subject-form">
+    <input type="text" id="subject-name" placeholder="Subject Name" required />
+    <input type="text" id="subject-code" placeholder="Subject Code" required />
+    <input type="text" id="subject-initial" placeholder="Subject Initial" required />
+    <input type="text" id="subject-grade" placeholder="Grade" required />
+    <select id="subject-type">
+      <option value="mandatory">Mandatory</option>
+      <option value="optional">Optional</option>
+    </select>
+    <button type="submit">Add Subject</button>
+  </form>
+</div>
+
+</body>
+</html>

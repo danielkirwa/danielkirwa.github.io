@@ -1,0 +1,94 @@
+ .inputform{
+    width: 100%;
+       display: flex;
+       flex-wrap: wrap;
+       justify-content: ;
+ }
+ .form-group {
+        margin-bottom: 20px;
+        flex: 1 1 510px; /*  Stretching: */
+       flex: 0 1 510px; /*  No stretching: */
+
+    }
+    .form-group-long {
+        min-width: 600px;
+        float: left;
+        padding: 16px;
+        background-color: #f1f1f1;
+        margin-bottom: 20px;
+
+    }
+
+
+    label {
+        display: inline-block;
+        width: 150px;
+        font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    select {
+        width: calc(100% - 170px);
+        padding: 8px;
+        font-size: 16px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+    }
+
+    input[type="radio"],
+    input[type="checkbox"] {
+        margin-right: 10px;
+    }
+    .mybutton {
+    padding: 10px 40px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.mybutton:hover{
+    background-color: #0056b3;
+}
+ .mybuttonred {
+    padding: 10px 40px;
+    font-size: 16px;
+    background-color: #DC143C;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.mybuttonred:hover{
+    background-color: #ad102f;
+}
+ .mybuttongreen {
+    padding: 10px 40px;
+    font-size: 16px;
+    background-color: #198754;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.mybuttongreen:hover{
+    background-color: #115c39;
+}
+
+    @media screen and (max-width: 600px) {
+        label {
+            width: 100%;
+            display: block;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        select {
+            width: 100%;
+        }
+    }

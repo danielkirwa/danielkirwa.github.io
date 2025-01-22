@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<!-- Coding by CodingNepal | www.codingnepalweb.com -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title> Add Class </title>
+    <link rel="stylesheet" href="../css1/dashboard.css">
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" type="text/css" href="../css1/form.css">
+     <link rel="stylesheet" type="text/css" href="../css1/table.css">
+   </head>
+<body style="background: #E3F2FD;">
+  <div class="sidebar">
+    <div class="logo-details">
+      <i class=''></i>
+      <span class="logo_name">Timetable</span>
+    </div>
+      <ul class="nav-links">
+        <li>
+          <a href="../dashboard.html">
+            <i class='bx bx-box'></i>
+            <span class="links_name">Dashboard</span>
+          </a>
+        </li>
+        <li>
+        <a href="#">
+            <i class='bx bx-grid-alt' ></i>
+            <span class="links_name">Add Teacher</span>
+          </a>
+        </li>
+        <li>
+          <a href="form.html">
+            <i class='bx bx-box' ></i>
+            <span class="links_name">Forms</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="active">
+            <i class='bx bx-list-ul' ></i>
+            <span class="links_name">Add Class</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class='bx bx-pie-chart-alt-2' ></i>
+            <span class="links_name">Master table</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class='bx bx-coin-stack' ></i>
+            <span class="links_name">Teacher table</span>
+          </a>
+        </li>
+         <li>
+          <a href="#">
+            <i class='bx bx-coin-stack' ></i>
+            <span class="links_name">Add subject</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class='bx bx-book-alt' ></i>
+            <span class="links_name">Remedial</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class='bx bx-user' ></i>
+            <span class="links_name">Users</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class='bx bx-message' ></i>
+            <span class="links_name">Notification</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class='bx bx-cog' ></i>
+            <span class="links_name">Setting</span>
+          </a>
+        </li>
+        <li class="log_out">
+          <a href="index.html">
+            <i class='bx bx-log-out'></i>
+            <span class="links_name">Log out</span>
+          </a>
+        </li>
+     
+      </ul>
+  </div>
+  <section class="home-section">
+    <nav>
+      <div class="sidebar-button">
+        <i class='bx bx-menu sidebarBtn'></i>
+        <span class="dashboard">Add classes</span>
+      </div>
+      <div class="profile-details">
+        <img src="images/profile.jpg" alt="">
+        <span class="admin_name">username</span>
+        <i class='bx bx-chevron-down' ></i>
+      </div>
+    </nav>
+
+    <div class="home-content">
+      <div class="sales-boxes">
+        <div class="recent-sales box">
+          <div class="title">Form to add classes</div>
+          <div class="sales-details">
+            
+            <form class="inputform">
+        <div class="form-group">
+            <label for="name">Class Title</label>
+            <input type="text" id=""  placeholder="Enter name">
+        </div>
+        <div class="form-group">
+            <label for="dob">Class initial</label>
+            <input type="text" id=""  placeholder="Other name">
+        </div>
+      
+         <div class="form-group-long">
+            <label>Classes streams</label>
+            <input type="checkbox" id="F1" name="hobbies[]" value="F1">
+            <label for="reading">East</label>
+            <input type="checkbox" id="F2" name="hobbies[]" value="F2">
+            <label for="traveling">West</label>
+            <input type="checkbox" id="F3" name="hobbies[]" value="F3">
+            <label for="sports">South</label>
+            <input type="checkbox" id="F4" name="hobbies[]" value="F4">
+            <label for="sports">North</label>
+        </div>
+        
+        <br>
+        <div class="form-group-long">
+            <button type="submit" class="mybuttongreen">Submit</button>
+            <button type="submit" class="mybutton">Reset</button>
+            <button type="submit" class="mybutton">Update</button>
+            <button type="submit" class="mybuttonred">Delete</button>
+        </div>
+    </form>
+      
+          </div>
+        </div>
+       
+      </div>
+
+<!-- new -->
+<br><br>
+
+
+<!-- end of breading -->
+    <br><br>
+      <div class="sales-boxes">
+        <div class="recent-sales box">
+          <div class="title">table here</div>
+          <div class="sales-details">
+             
+          <table>
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Name</th>
+                <th>Subjects</th>
+                <th>Classes</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>John Doe</td>
+                <td>30</td>
+                <td>john@example.com</td>
+                <td><button class="action-button">Modify</button></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Jane Smith</td>
+                <td>25</td>
+                <td>jane@example.com</td>
+                <td><button class="action-button">Modify</button></td>
+            </tr>
+            <!-- Add more rows as needed -->
+        </tbody>
+    </table>
+
+          </div>
+          <div class="button">
+            <a href="#">See More</a>
+          </div>
+        </div>
+           
+      </div>
+    </div>
+  </section>
+<script type="text/javascript" src="js/calculate.js"></script>
+  <script>
+   let sidebar = document.querySelector(".sidebar");
+let sidebarBtn = document.querySelector(".sidebarBtn");
+sidebarBtn.onclick = function() {
+  sidebar.classList.toggle("active");
+  if(sidebar.classList.contains("active")){
+  sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
+}else
+  sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+}
+ </script>
+
+</body>
+</html>

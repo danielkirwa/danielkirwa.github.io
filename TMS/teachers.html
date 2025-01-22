@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Teachers</title>
+</head>
+ <style>
+    .container {
+      width: 80%;
+      margin: 50px auto;
+    }
+    form {
+      margin-bottom: 20px;
+    }
+    input, button {
+      margin-bottom: 10px;
+      padding: 10px;
+      width: 90%;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    table, th, td {
+      border: 1px solid #000;
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+  </style>
+<body>
+<div class="teacher-management">
+	 <nav class="side-menu">
+    <ul>
+      <li><a href="dashboard.html">Teachers</a></li>
+      <li><a href="subjects.html">Subjects</a></li>
+      <li><a href="classes.html">Classes</a></li>
+      <li><a href="timetable.html">Timetable</a></li>
+    </ul>
+  </nav>
+  <h2>Teacher Management</h2>
+   <form id="teacher-form">
+          <input type="hidden" id="edit-id"> <!-- Hidden input for teacher ID -->
+    <input type="text" id="teacher-name" placeholder="Teacher Name" required />
+    <input type="email" id="teacher-email" placeholder="Email" required />
+    <input type="text" id="teacher-subjects" placeholder="Subjects (comma separated)" required />
+    <input type="text" id="teacher-grades" placeholder="Grades (comma separated)" required />
+    <button type="submit" id="btnaddteacher">Add Teacher</button>
+</form>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Subjects</th>
+        <th>Grades</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="teacher-table">
+      <!-- Teacher rows will go here -->
+    </tbody>
+  </table>
+
+</div>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+<script  src="js/config.js"></script>
+<script  src="js/teachers.js"></script>
+</body>
+</html>

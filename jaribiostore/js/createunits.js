@@ -50,31 +50,82 @@ let unitcode = document.getElementById('unitcode').value.toUpperCase();
  }else{
  	
   // insert data or write
-    firebase.database().ref('Myunits/' + unitcode).set({
+      const teacherRef = ref(db, 'teachers/');
 
-      Unit: units,
-      Abbreviation: abbreviation,
-      Description: description,
-      Code: unitcode,
-      Createby: email,
-      DateAdded: datetoday,
-      Status: 1
+    // Add teacher to Realtime Database
+    document.getElementById('teacher-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
 
-    },  (error) => {
-  if (error) {
-    // The write failed...
-     myAlert(failed, "Failed add new unit");
-     
-  } else {
-    // Data saved successfully!
-    myAlert(success, "New unit added ");
-    // Refresh the page after a delay of 3 seconds
-    setTimeout(function(){
-    location.reload();
-     }, 3000); // 
- 
-  }
-} );
+      const name = document.getElementById('teacher-name').value.trim();
+      const email = document.getElementById('teacher-email').value.trim();
+      const subjects = document.getElementById('teacher-subjects').value.trim();
+      const grades = document.getElementById('teacher-grades').value.trim();
+      const feedbackElement = document.getElementById('form-feedback');
+
+      if (!name || !email || !subjects || !grades) {
+        feedbackElement.style.color = 'red';
+        feedbackElement.textContent = 'Please fill all the fields';
+        return;
+      }
+
+      const newTeacherRef = push(teacherRef);
+
+      try {
+        await set(newTeacherRef, {
+          name: name,
+          email: email,
+          subjects: subjects.split(',').map(s => s.trim()),
+          grades: grades.split(',').map(g => g.trim())
+        });
+
+        feedbackElement.style.color = 'green';
+        feedbackElement.textContent = 'Teacher added successfully!';
+        
+        document.getElementById('teacher-form').reset();
+
+        // Refresh teacher list
+        loadTeachers();
+      } catch (error) {
+        feedbackElement.style.color = 'red';
+        feedbackElement.textContent = 'Error adding teacher: ' + error.message;
+      }
+    });
+
+    // Load teachers from Realtime Database and display in table
+    async function loadTeachers() {
+      const teacherList = document.getElementById('teacher-list');
+      teacherList.innerHTML = ''; // Clear the list before loading
+
+      const snapshot = await get(child(ref(db), 'teachers/'));
+      if (snapshot.exists()) {
+        const teachers = snapshot.val();
+        for (const key in teachers) {
+          const teacher = teachers[key];
+          const row = document.createElement('tr');
+
+          row.innerHTML = `
+            <td>${teacher.name}</td>
+            <td>${teacher.email}</td>
+            <td>${teacher.subjects.join(', ')}</td>
+            <td>${teacher.grades.join(', ')}</td>
+            <td>
+              <button onclick="deleteTeacher('${key}')">Delete</button>
+            </td>
+          `;
+
+          teacherList.appendChild(row);
+        }
+      }
+    }
+
+    // Delete teacher from Realtime Database
+    window.deleteTeacher = async function(id) {
+      await remove(ref(db, 'teachers/' + id));
+      loadTeachers(); // Refresh the list
+    }
+
+    // Load teachers on page load
+    window.onload = loadTeachers;
 
  }
 
@@ -94,8 +145,6 @@ let unitcode = document.getElementById('unitcode').value.toUpperCase();
           var cell2 = row.insertCell(1);
           var cell3 = row.insertCell(2);
           var cell4 = row.insertCell(3);
-          var cell5 = row.insertCell(4);
-          var newstatus;
           if (childData.Status == 1) {
           	newstatus = "Active";
           }else{

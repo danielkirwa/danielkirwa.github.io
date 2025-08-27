@@ -39,7 +39,7 @@ let forgotpasswordbtn = document.getElementById('forgotpassword');
 
 function startTimer() {
   // Set the target date
-  var targetDate = new Date("2024-7-1"); // Replace with your specified date
+  var targetDate = new Date("2026-7-1"); // Replace with your specified date
 
   // Update the countdown label every second
   var timer = setInterval(function() {

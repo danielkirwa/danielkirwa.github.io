@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Services | GlobalBridge</title>
+  <link rel="stylesheet" href="css/services.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+  <section class="services-page">
+    <h2>Our Services</h2>
+    <div class="services-grid">
+      <div class="service-card fade-in">
+        <h3>Recruitment</h3>
+        <p>Connecting top talent with global employers.</p>
+        <div class="card-actions">
+          <button class="view-btn">View More</button>
+          <button class="inquire-btn" onclick="openForm('Recruitment')">Inquire</button>
+        </div>
+      </div>
+
+      <div class="service-card fade-in">
+        <h3>Visa Assistance</h3>
+        <p>Expert help with travel and work visas.</p>
+        <div class="card-actions">
+          <button class="view-btn">View More</button>
+          <button class="inquire-btn" onclick="openForm('Visa Assistance')">Inquire</button>
+        </div>
+      </div>
+
+      <div class="service-card fade-in">
+        <h3>Passport Application</h3>
+        <p>Guidance through Ghana’s passport process.</p>
+        <div class="card-actions">
+          <button class="view-btn">View More</button>
+          <button class="inquire-btn" onclick="openForm('Passport Application')">Inquire</button>
+        </div>
+      </div>
+
+      <div class="service-card fade-in">
+        <h3>Insurance</h3>
+        <p>Coverage options for travel, work, and life abroad.</p>
+        <div class="card-actions">
+          <button class="view-btn">View More</button>
+          <button class="inquire-btn" onclick="openForm('Insurance')">Inquire</button>
+        </div>
+      </div>
+
+      <div class="service-card fade-in">
+        <h3>Cultural Exchange</h3>
+        <p>Programs that build global understanding and experience.</p>
+        <div class="card-actions">
+          <button class="view-btn">View More</button>
+          <button class="inquire-btn" onclick="openForm('Cultural Exchange')">Inquire</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Popup Form -->
+  <div id="popup-form" class="popup hidden">
+    <div class="popup-content glass-card">
+      <span class="close-btn" onclick="closeForm()">&times;</span>
+      <h3 id="form-title">Inquire</h3>
+      <form>
+        <input type="text" placeholder="Your Name*" required />
+        <input type="email" placeholder="Your Email*" required />
+        <textarea placeholder="Your Message*" required></textarea>
+        <button type="submit">Send Inquiry</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/services.js"></script>
+</body>
+</html>

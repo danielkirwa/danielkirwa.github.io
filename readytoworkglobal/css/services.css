@@ -1,6 +1,12 @@
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to right, #f0f4f8, #e0eafc);
+  color: #333;
+}
+
 .services-page {
   padding: 4rem 2rem;
-  text-align: center;
   background: linear-gradient(to right, #f0f4f8, #e0eafc);
 }
 
@@ -10,50 +16,6 @@
   margin-bottom: 2rem;
 }
 
-.services-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
-}
-
-.service-card {
-  background: rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(10px);
-  border-radius: 16px;
-  padding: 2rem;
-  width: 300px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-  opacity: 0;
-  transform: translateY(30px);
-}
-
-.service-card.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.card-actions {
-  margin-top: 1rem;
-  display: flex;
-  justify-content: space-between;
-}
-
-.view-btn,
-.inquire-btn {
-  background-color: dodgerblue;
-  color: white;
-  border: none;
-  padding: 0.6rem 1rem;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 0.9rem;
-}
-
-.inquire-btn {
-  background-color: #4CAF50;
-}
 
 /* Popup Form */
 .popup {
@@ -115,3 +77,167 @@
   font-size: 1.5rem;
   cursor: pointer;
 }
+
+
+
+
+.service-card {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  margin: 2rem auto;
+  max-width: 90%;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.service-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.service-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 2rem;
+}
+
+.service-details {
+  flex: 1;
+  padding-right: 2rem;
+}
+
+.service-details h3 {
+  font-size: 1.8rem;
+  color: dodgerblue;
+  margin-bottom: 1rem;
+}
+
+.service-details p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.card-actions {
+  margin-top: 1rem;
+}
+
+.view-btn,
+.inquire-btn {
+  background-color: dodgerblue;
+  color: white;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-right: 0.5rem;
+}
+
+.inquire-btn {
+  background-color: #4CAF50;
+}
+
+.service-image {
+  flex: 1;
+  text-align: center;
+}
+
+.service-image img {
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.customborder {
+  position: relative;
+  font-size: 1.8rem;
+  color: dodgerblue;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1.5rem;
+  border-left: 8px solid dodgerblue;
+  border-radius: 20px;
+}
+
+.customborder::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 6px;
+  width: 100%;
+  background: linear-gradient(to right, dodgerblue, #4CAF50);
+  border-radius: 4px;
+}
+.howwedo{
+  color: #4CAF50;
+  font-weight: bold;
+}
+
+.service-image {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.service-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+}
+
+.v-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom right,
+    rgba(30, 144, 255, 0.6) 0%,
+    rgba(76, 175, 80, 0.6) 100%
+  );
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  pointer-events: none;
+  border-radius: 12px;
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+  .service-content {
+    flex-direction: column;
+  }
+
+  .service-details {
+    padding-right: 0;
+    order: 2;
+  }
+
+  .service-image {
+    order: 1;
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .service-content {
+    flex-direction: column;
+  }
+
+  .service-details {
+    order: 2;
+    padding-right: 0;
+  }
+
+  .service-image {
+    order: 1;
+    margin-bottom: 1rem;
+  }
+}
+
+
+

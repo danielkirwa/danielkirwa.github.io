@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Job Seekers</title>
+  <link rel="stylesheet" href="css/jobseekers.css"/>
+</head>
+<body>
+  <section class="hero">
+    <div class="overlay" style="background-image: url('assets/bg5.jpg');"></div>
+    <h1>Find Your Next Opportunity</h1>
+    <p>Explore open roles and apply with ease. Your future starts here.</p>
+    <button class="cta-btn">Browse Jobs</button>
+  </section>
+
+
+  <section class="job-intent-form">
+  <div class="overlay-pattern"></div>
+  <h2 class="section-title">Didn't Find What You're Looking For?</h2>
+  <p class="section-subtitle">Drop your details and we’ll reach out when a matching opportunity opens up.</p>
+
+  <form class="intent-form" enctype="multipart/form-data">
+    <input type="text" placeholder="Full Name" required />
+    <input type="email" placeholder="Email Address" required />
+    <input type="tel" placeholder="Phone Number" required />
+    <input type="text" placeholder="Location (City, Country)" required />
+
+    <select required>
+      <option value="" disabled selected>Select Area of Specialization</option>
+      <option value="Web Development">Web Development</option>
+      <option value="Android Development">Android Development</option>
+      <option value="Curriculum Design">Curriculum Design</option>
+      <option value="Graphics & UI">Graphics & UI</option>
+      <option value="Business Strategy">Business Strategy</option>
+    </select>
+
+    <select required>
+      <option value="" disabled selected>Target Employer</option>
+      <option value="Local">Local</option>
+      <option value="International">International</option>
+      <option value="Both">Both</option>
+    </select>
+
+    <textarea placeholder="Tell us more about your goals or experience..." required></textarea>
+
+    <label class="file-upload">
+      Upload CV (PDF only)
+      <input type="file" accept=".pdf" required />
+    </label>
+
+    <button type="submit" class="submit-btn">Submit Details</button>
+  </form>
+</section>
+
+  <section class="job-listings">
+    <h2>Available Positions</h2>
+    <div class="job-grid">
+      <div class="job-card" data-delay="0">
+        <img src="web-dev.png" alt="Web Developer" />
+        <h3>Web Developer</h3>
+        <p>Design and build responsive websites for global clients.</p>
+        <button class="apply-btn" onclick="openForm()">Apply Now</button>
+      </div>
+      <div class="job-card" data-delay="0.3">
+        <img src="android.png" alt="Android Instructor" />
+        <h3>Android Instructor</h3>
+        <p>Teach coding to young learners using Java and Kotlin.</p>
+        <button class="apply-btn" onclick="openForm()">Apply Now</button>
+      </div>
+    </div>
+    <div class="job-grid">
+      <div class="job-card" data-delay="0">
+        <img src="web-dev.png" alt="Web Developer" />
+        <h3>Web Developer</h3>
+        <p>Design and build responsive websites for global clients.</p>
+        <button class="apply-btn" onclick="openForm()">Apply Now</button>
+      </div>
+      <div class="job-card" data-delay="0.3">
+        <img src="android.png" alt="Android Instructor" />
+        <h3>Android Instructor</h3>
+        <p>Teach coding to young learners using Java and Kotlin.</p>
+        <button class="apply-btn" onclick="openForm()">Apply Now</button>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="process-timeline">
+  <div class="overlay-texture"></div>
+  <h2 class="section-title">How We Empower Job Seekers</h2>
+  <div class="timeline-container">
+    <div class="timeline-step" data-delay="0">
+      <span class="step-number">1</span>
+      <h3>Apply for Best Match</h3>
+      <p>Start by applying to roles that align with your skills and goals.</p>
+    </div>
+    <div class="timeline-step" data-delay="0.2">
+      <span class="step-number">2</span>
+      <h3>No Match? Submit Your Details</h3>
+      <p>Can’t find a fit? Drop your profile for future opportunities.</p>
+    </div>
+    <div class="timeline-step" data-delay="0.4">
+      <span class="step-number">3</span>
+      <h3>Internal Team Sorts Profiles</h3>
+      <p>Our experts review and categorize your submission.</p>
+    </div>
+    <div class="timeline-step" data-delay="0.6">
+      <span class="step-number">4</span>
+      <h3>We Match You with Employers</h3>
+      <p>We connect you with vetted local or international employers.</p>
+    </div>
+    <div class="timeline-step" data-delay="0.8">
+      <span class="step-number">5</span>
+      <h3>Assessment</h3>
+      <p>Complete a short evaluation to showcase your strengths.</p>
+    </div>
+    <div class="timeline-step" data-delay="1">
+      <span class="step-number">6</span>
+      <h3>Training</h3>
+      <p>Join our onboarding and skill-boosting sessions.</p>
+    </div>
+    <div class="timeline-step" data-delay="1.2">
+      <span class="step-number">7</span>
+      <h3>Launching</h3>
+      <p>Begin your new role with confidence and clarity.</p>
+    </div>
+    <div class="timeline-step" data-delay="1.4">
+      <span class="step-number">8</span>
+      <h3>Reconciliation</h3>
+      <p>We follow up to ensure satisfaction and growth.</p>
+    </div>
+  </div>
+</section>
+
+
+
+  
+
+  <div class="popup-form" id="popupForm">
+    <div class="form-content">
+      <span class="close-btn" onclick="closeForm()">×</span>
+      <h2>Apply for This Job</h2>
+      <form>
+        <input type="text" placeholder="Full Name" required />
+        <input type="email" placeholder="Email Address" required />
+        <textarea placeholder="Why are you a good fit?" required></textarea>
+        <button type="submit">Submit Application</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/jobseekers.js"></script>
+</body>
+</html>

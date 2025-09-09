@@ -1,53 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Number Guessing Game</title>
-<style>
- 
- 
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Css class</title>
 </head>
+<style>
+  /* this is internal css */
+  body{
+    background: #f1f1f1;
+  }
+  h1{
+    color: teal;
+  }
+  .myinline{
+    color:blue;
+  }
+  .myexternal{
+    color: brown;
+  }
+  .myinternal{
+    color: orange;
+    text-decoration: underline;
+  }
+  button{
+    background: brown;
+    font-size: 24px;
+    padding: 12px;
+    color: white;
+    border-width: 8px;
+    border-color: yellow;
+    border-radius: 25px;
+  }
+
+</style>
 <body>
 
-<div class="game-box">
-  <h2>Guess the Number!</h2>
-  <p>I'm thinking of a number between 1 and 6</p>
-  <input type="number" id="guessInput" min="1" max="6">
-  <br>
-  <button onclick="checkGuess()">Check</button>
-  <p id="result"></p>
-</div>
-
-<script>
-  let secretNumber = Math.floor(Math.random() * 6) + 1;
-
-  function checkGuess() {
-    let guess = document.getElementById('guessInput').value;
-    let result = document.getElementById('result');
-
-    if (guess === "") {
-      result.textContent = "Please enter a number!";
-      result.style.color = "orange";
-      return;
-    }
-
-    guess = Number(guess);
-
-    if (guess === secretNumber) {
-      result.textContent = `✅ Correct! The number was ${secretNumber}. (New number generated)`;
-      result.style.color = "green";
-    } else {
-      result.textContent = `❌ Wrong! You guessed ${guess}, but the number was ${secretNumber}. (Try new number)`;
-      result.style.color = "red";
-    }
-
-    // reset game with a new number
-    secretNumber = Math.floor(Math.random() * 6) + 1;
-    document.getElementById('guessInput').value = "";
-  }
-</script>
-
+ 
+ <h1>Welcome to css</h1>
+ <h3 class="myexternal">This is external css</h3>
+  <h3 class="myinternal">This is internal css</h3>
+   <h3 class="myinline">This is inline css</h3>
+   <button>This button please click</button>
+    <button>This button please click</button>
 </body>
 </html>

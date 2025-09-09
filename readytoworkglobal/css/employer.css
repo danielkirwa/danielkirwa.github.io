@@ -1,0 +1,158 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #0f2027;
+  color: #fff;
+}
+
+.employer-hero {
+  position: relative;
+  padding: 120px 20px;
+  text-align: center;
+  background: linear-gradient(to right, #203a43, #2c5364);
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-image: url('hero-texture.svg');
+  background-size: cover;
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+.employer-hero h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.employer-hero p {
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.employer-form-section {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.employer-form-section h2 {
+  font-size: 2rem;
+  margin-bottom: 40px;
+}
+
+.employer-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  max-width: 800px;
+  margin: 0 auto;
+  animation: fadeInUp 1s ease-out;
+}
+
+.employer-form input {
+  padding: 15px;
+  border-radius: 10px;
+  border: none;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  backdrop-filter: blur(8px);
+}
+
+.file-upload {
+  grid-column: span 2;
+  text-align: left;
+  font-weight: bold;
+}
+
+.file-upload input {
+  margin-top: 10px;
+}
+
+.submit-btn {
+  grid-column: span 2;
+  padding: 15px 30px;
+  background-color: #00c6ff;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #0072ff;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.employer-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  max-width: 900px;
+  margin: 0 auto;
+  animation: fadeInUp 1s ease-out;
+}
+
+.employer-form input,
+.employer-form select {
+  padding: 15px;
+  border-radius: 10px;
+  border: none;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  backdrop-filter: blur(8px);
+}
+
+.file-upload,
+.submit-btn {
+  grid-column: span 2;
+}
+
+@media screen and (max-width: 768px) {
+  .employer-form {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 0 10px;
+  }
+
+  .file-upload,
+  .submit-btn {
+    grid-column: span 1;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .employer-form {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 0 10px;
+  }
+
+  .submit-btn,
+  .file-upload {
+    grid-column: span 1;
+  }
+
+  .employer-hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .employer-hero p {
+    font-size: 1rem;
+  }
+}
+

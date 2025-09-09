@@ -46,3 +46,10 @@ function toggleStepVisibility() {
 
 window.addEventListener('scroll', toggleStepVisibility);
 window.addEventListener('load', toggleStepVisibility);
+
+
+// nav 
+function toggleMenu() {
+  const nav = document.getElementById('navLinks');
+  nav.classList.toggle('active');
+}

@@ -1,195 +1,87 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Our Services | GlobalBridge</title>
-  <link rel="stylesheet" href="css/services.css" />
-    <link rel="stylesheet" type="text/css" href="css/nav.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Services</title>
+    <link rel="stylesheet" type="text/css" href="css/services.css">
 </head>
 <body>
-  <header class="glass-header">
-    <img src="assets/logo2.png">
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="services.html">Services</a>
-      <a href="employers.hmtl">Employers</a>
-      <a href="jobs.html">Job Seekers</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
-  <section class="services-page">
-    <h2>Our Scope of Service</h2>
-    <div class="services-grid">
-      <div class="service-card fade-in">
-  <div class="service-content">
-    <div class="service-details">
-      <h3 class="customborder">Recruitment</h3>
-      <p class="howwedo">How we help clients:</p>
-      <div class="v-overlay-circle"></div>
-      <p>International Talent Acquisition:
 
-Access a diverse pool of global talent with our international recruitment capabilities, tailored to your specific industry and geographical preferences.</p>
-      <div class="card-actions">
-        <button class="view-btn">View More</button>
-        <button class="inquire-btn" onclick="openForm('Visa Assistance')">Inquire</button>
-      </div>
-    </div>
-    <div class="service-image">
-      <img src="assets/recruit.jpeg" alt="Visa Assistance" />
-      <div class="v-overlay-circle"></div>
-
-    </div>
-  </div>
-</div>
-
-<div class="service-card fade-in">
-  <div class="service-content">
-    <div class="service-details">
-      <h3 class="customborder">Visa Assistance</h3>
-      <p> &#9989;Expert help with travel and work visas. </p>
-      <p> &#9989;Expert help with travel and work visas. </p>
-      <p> &#9989;Expert help with travel and work visas. </p>
-       <p> &#9989;We guide you through every step of the application process, ensuring accuracy, speed, and peace of mind.</p>
-      <div class="card-actions">
-        <button class="view-btn">View More</button>
-        <button class="inquire-btn" onclick="openForm('Visa Assistance')">Inquire</button>
-      </div>
-    </div>
-    <div class="service-image">
-      <img src="visa.jpg" alt="Visa Assistance" />
-    </div>
-  </div>
-</div>
-
-<div class="service-card fade-in">
-  <div class="service-content">
-    <div class="service-details">
-      <h3 class="customborder">Passport Application</h3>
-     <p> &#9989;Guidance through Ghana’s passport process.</p>
-     <p> &#9989;Guidance through Ghana’s passport process.</p>
-     <p> &#9989;Guidance through Ghana’s passport process.</p>
-     <p> &#9989;Guidance through Ghana’s passport process.</p>
-     <p> &#9989;Guidance through Ghana’s passport process.</p>
-     <div class="v-overlay-diagonal"></div>
-      <div class="card-actions">
-        <button class="view-btn">View More</button>
-        <button class="inquire-btn" onclick="openForm('Visa Assistance')">Inquire</button>
-      </div>
-    </div>
-    <div class="service-image">
-      <img src="assets/passport.jpg" alt="Visa Assistance" />
-    </div>
-  </div>
-</div>
-
-<div class="service-card fade-in">
-  <div class="service-content">
-    <div class="service-details">
-      <h3 class="customborder">Insurance</h3>
-      <p> &#9989;Coverage options for travel, work, and life abroad.</p>
-      <p> &#9989;Coverage options for travel, work, and life abroad.</p>
-      <p> &#9989;Coverage options for travel, work, and life abroad.</p>
-      <div class="v-overlay-diamond"></div>
-      <div class="card-actions">
-        <button class="view-btn">View More</button>
-        <button class="inquire-btn" onclick="openForm('Visa Assistance')">Inquire</button>
-      </div>
-    </div>
-    <div class="service-image">
-      <img src="assets/insurance.jpg" alt="Visa Assistance" />
-    </div>
-  </div>
-</div>
-
-<div class="service-card fade-in">
-  <div class="service-content">
-    <div class="service-details">
-      <h3 class="customborder">Cultural Exchange</h3>
-      <p class="howwedo">How we help clients:</p>
-      <p> &#9989; Programs that build global understanding and experience.</p>
-       <p>&#9989; Programs that build global understanding and experience.</p>
-       <p> &#9989; Programs that build global understanding and experience.</p>
-       <p>&#9989; Programs that build global understanding and experience.</p>
-       <div class="v-overlay"></div>
-      <div class="card-actions">
-        <button class="view-btn">View More</button>
-        <button class="inquire-btn" onclick="openForm('Visa Assistance')">Inquire</button>
-      </div>
-    </div>
-    <div class="service-image">
-      <img src="assets/cultural.jpg" alt="Visa Assistance" />
-    </div>
-  </div>
-</div>
-
-<div class="service-card fade-in">
-  <div class="service-content">
-    <div class="service-details">
-      <h3 class="customborder">Insurance</h3>
-      <p>Coverage options for travel, work, and life abroad. We help you choose the right plan for peace of mind wherever you go.</p>
-      <div class="card-actions">
-        <button class="view-btn">View More</button>
-        <button class="inquire-btn" onclick="openForm('Insurance')">Inquire</button>
-      </div>
-    </div>
-    
-    <div class="service-image v-style">
-      <img src="assets/cultural.jpg" alt="Insurance Service" />
-      <div class="v-overlay "></div>
-    </div>
-  </div>
-</div>
-
-    </div>
+  <section class="hero">
+    <div class="overlay" style="background-image: url('assets/bg5.jpg');"></div>
+    <h1>Premium Services, Tailored for You</h1>
+    <p>From development to deployment, we deliver excellence at every step.</p>
+    <button class="cta-btn">Connect for service</button>
   </section>
 
-  <!-- Popup Form -->
-  <div id="popup-form" class="popup hidden">
-    <div class="popup-content glass-card">
-      <span class="close-btn" onclick="closeForm()">&times;</span>
-      <h3 id="form-title">Inquire</h3>
-      <form>
-        <input type="text" placeholder="Your Name*" required />
-        <input type="email" placeholder="Your Email*" required />
-        <textarea placeholder="Your Message*" required></textarea>
-        <button type="submit">Send Inquiry</button>
-      </form>
-    </div>
+
+<section class="services-section">
+  <h2 class="section-title">Our Services</h2>
+
+ 
+<div class="service-card">
+  <div class="card-left">
+    <h3 class="service-title animate">Web Development</h3>
+    <ul class="service-steps">
+      <li class="animate">Requirement Gathering</li>
+      <li class="animate">Wireframing & Prototyping</li>
+      <li class="animate">Development & Testing</li>
+      <li class="animate">Deployment & Support</li>
+    </ul>
+    <p class="duration animate">⏱ Duration: 4–6 weeks</p>
+    <p class="requirements animate">📋 Requirements: Brand assets, domain, hosting</p>
+    <button class="cta-btn animate">Start Your Project</button>
   </div>
 
+  <div class="card-right animate">
+    <img src="assets/cultural.jpg" alt="Web Development" />
+  </div>
+</div>
 
-   <section class="contact">
-      <h2>Contact Us</h2>
-      <p>Reach out to us for any inquiries or feedback.</p>
-      <div class="row">
-        <div class="col information">
-          <div class="contact-details">
-            <p><i class="fas fa-map-marker-alt"></i> 123  Avenue, 101</p>
-            <p><i class="fas fa-envelope"></i> info@info.com</p>
-            <p><i class="fas fa-phone"></i> 072345678</p>
-            <p><i class="fas fa-clock"></i> Monday - Friday: 9:00 AM - 5:00 PM</p>
-            <p><i class="fas fa-clock"></i> Saturday: 10:00 AM - 3:00 PM</p>
-            <p><i class="fas fa-clock"></i> Sunday: Closed</p>
-            <p><i class="fas fa-globe"></i> www.com</p>
-          </div>          
-        </div>
-        <div class="col form">
-          <form>
-            <input type="text" placeholder="Name*" required>
-            <input type="email" placeholder="Email*" required>
-            <textarea placeholder="Message*" required></textarea>
-            <button id="submit" type="submit">Send Message</button>
-          </form>
-        </div>
-      </div>
-    </section>
+  
+<div class="service-card">
+	 <div class="card-right animate">
+    <img src="assets/cultural.jpg" alt="Web Development" />
+  </div>
+  <div class="card-left">
+    <h3 class="service-title animate">Web Development</h3>
+    <ul class="service-steps">
+      <li class="animate">Requirement Gathering</li>
+      <li class="animate">Wireframing & Prototyping</li>
+      <li class="animate">Development & Testing</li>
+      <li class="animate">Deployment & Support</li>
+    </ul>
+    <p class="duration animate">⏱ Duration: 4–6 weeks</p>
+    <p class="requirements animate">📋 Requirements: Brand assets, domain, hosting</p>
+    <button class="cta-btn animate">Start Your Project</button>
+  </div>
+</div>
 
-  <footer class="glass-footer">
-    <p>&copy; 2025 GlobalBridge Solutions. All rights reserved.</p>
-  </footer>
 
-  <script src="js/services.js"></script>
+
+
+<div class="service-card">
+  <div class="card-left">
+    <h3 class="service-title animate">Web Development</h3>
+    <ul class="service-steps">
+      <li class="animate">Requirement Gathering</li>
+      <li class="animate">Wireframing & Prototyping</li>
+      <li class="animate">Development & Testing</li>
+      <li class="animate">Deployment & Support</li>
+    </ul>
+    <p class="duration animate">⏱ Duration: 4–6 weeks</p>
+    <p class="requirements animate">📋 Requirements: Brand assets, domain, hosting</p>
+    <button class="cta-btn animate">Start Your Project</button>
+  </div>
+
+  <div class="card-right animate">
+    <img src="assets/cultural.jpg" alt="Web Development" />
+  </div>
+</div>
+</section>
+
+
+<script src="js/services.js"></script>
 </body>
 </html>

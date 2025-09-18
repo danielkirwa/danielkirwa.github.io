@@ -46,3 +46,9 @@ const countObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.5 });
 
 counters.forEach(counter => countObserver.observe(counter));
+
+//nav 
+function toggleMenu() {
+  const nav = document.getElementById('navLinks');
+  nav.classList.toggle('active');
+}

@@ -135,3 +135,9 @@ function toggleJobVisibility() {
 
 window.addEventListener('scroll', toggleJobVisibility);
 window.addEventListener('load', toggleJobVisibility);
+
+//nav 
+function toggleMenu() {
+  const nav = document.getElementById('navLinks');
+  nav.classList.toggle('active');
+}

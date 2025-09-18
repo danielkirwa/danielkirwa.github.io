@@ -5,8 +5,26 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Services</title>
     <link rel="stylesheet" type="text/css" href="css/services.css">
+    <link rel="stylesheet" type="text/css" href="css/nav.css">
 </head>
 <body>
+
+  <header class="navbar">
+  <div class="logo">YourAgency</div>
+  <nav class="nav-links" id="navLinks">
+    <a href="index.html">Home</a>
+    <a href="#">Services</a>
+    <a href="employer.html">Employers</a>
+    <a href="jobseekers.html">Job Seekers</a>
+    <a href="#">Contact</a>
+    <a href="aboutus.html">About Us</a>
+  </nav>
+  <div class="burger" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</header>
 
   <section class="hero">
     <div class="overlay" style="background-image: url('assets/bg5.jpg');"></div>
@@ -22,12 +40,15 @@
  
 <div class="service-card">
   <div class="card-left">
-    <h3 class="service-title animate">Web Development</h3>
-    <ul class="service-steps">
-      <li class="animate">Requirement Gathering</li>
-      <li class="animate">Wireframing & Prototyping</li>
-      <li class="animate">Development & Testing</li>
-      <li class="animate">Deployment & Support</li>
+    <h3 class="service-title animate">International and Local Recruitment</h3>
+    <p>
+      We are committed to helping graduates and professionals step into fulfilling careers that align with their skills and passions. Our recruitment process ensures that:
+    </p>
+    <ul class="service-steps" type="none">
+      <li class="animate">✅  Candidate database</li>
+      <li class="animate">✅  Screening and Assessment</li>
+      <li class="animate">✅  Pre-interview Screening</li>
+      <li class="animate">✅  Global reach</li>
     </ul>
     <p class="duration animate">⏱ Duration: 4–6 weeks</p>
     <p class="requirements animate">📋 Requirements: Brand assets, domain, hosting</p>
@@ -81,6 +102,12 @@
 </div>
 </section>
 
+<script>
+  function toggleMenu() {
+  const nav = document.getElementById('navLinks');
+  nav.classList.toggle('active');
+}
+</script>
 
 <script src="js/services.js"></script>
 </body>

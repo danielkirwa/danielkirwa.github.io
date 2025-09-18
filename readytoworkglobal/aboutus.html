@@ -5,15 +5,33 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>About us</title>
 	<link rel="stylesheet" type="text/css" href="css/aboutus.css">
+  <link rel="stylesheet" type="text/css" href="css/nav.css">
 </head>
 <body>
-<section class="about-hero">
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <h1>About Us</h1>
-    <p>Empowering talent, transforming businesses — across borders and beyond expectations.</p>
+  <header class="navbar">
+  <div class="logo">YourAgency</div>
+  <nav class="nav-links" id="navLinks">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="employer.html">Employers</a>
+    <a href="jobseekers.html">Job Seekers</a>
+    <a href="#">Contact</a>
+    <a href="#">About Us</a>
+  </nav>
+  <div class="burger" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
   </div>
-</section>
+</header>
+
+
+  <section class="hero">
+    <div class="overlay" style="background-image: url('assets/bg5.jpg');"></div>
+    <h1>Find Your Next Opportunity</h1>
+    <p>Explore open roles and apply with ease. Your future starts here.</p>
+    <button class="cta-btn">Browse Jobs</button>
+  </section>
 
 
 <section class="mission-vision">

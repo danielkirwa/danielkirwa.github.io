@@ -1,0 +1,137 @@
+/* Base styles */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #0f2027;
+  color: #fff;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  padding: 100px 20px;
+  text-align: center;
+  background: linear-gradient(to right, #203a43, #2c5364);
+}
+
+.hero .overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-size: cover;
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+.cta-btn-hero {
+  background-color: #00c6ff;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+/* Service Detail Section */
+.service-detail {
+  padding: 100px 20px;
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  color: #fff;
+}
+
+.section-block {
+  margin-bottom: 60px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.steps-list,
+.requirements-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.steps-list li,
+.requirements-list li,
+.section-block p,
+.cta-btn {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  will-change: transform, opacity;
+}
+
+/* Animation classes */
+.animate {
+  opacity: 1;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  will-change: transform, opacity;
+}
+
+.slide-left {
+  opacity: 1;
+  transform: translateX(0);
+  animation: slideLeft 0.6s ease forwards;
+}
+
+.slide-right {
+  opacity: 1;
+  transform: translateX(0);
+  animation: slideRight 0.6s ease forwards;
+}
+
+.slide-up {
+  opacity: 1;
+  transform: translateY(0);
+  animation: slideUp 0.6s ease forwards;
+}
+/* Slide directions */
+.visible.slide-left {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.visible.slide-right {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.visible.slide-up {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+
+@keyframes slideLeft {
+  from { opacity: 0; transform: translateX(-50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideRight {
+  from { opacity: 0; transform: translateX(50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* CTA Button */
+.cta-btn {
+  padding: 15px 30px;
+  background-color: #00c6ff;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cta-btn:hover {
+  background-color: #0072ff;
+}

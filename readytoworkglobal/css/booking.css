@@ -1,0 +1,77 @@
+/* Base styles */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #0f2027;
+  color: #fff;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  padding: 100px 20px;
+  text-align: center;
+  background: linear-gradient(to right, #203a43, #2c5364);
+}
+
+.hero .overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-size: cover;
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+.consultation-form {
+  max-width: 600px;
+  margin: 80px auto;
+  padding: 40px;
+  background: #203a43;
+  border-radius: 12px;
+  color: #fff;
+}
+
+.consultation-form h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2rem;
+}
+
+.consultation-form label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.consultation-form input,
+.consultation-form select,
+.consultation-form textarea {
+  width: 100%;
+  padding: 12px;
+  margin-top: 5px;
+  border: none;
+  border-radius: 6px;
+  background: #2c5364;
+  color: #fff;
+}
+
+.consultation-form textarea {
+  resize: vertical;
+}
+
+.cta-btn {
+  width: 100%;
+  margin-top: 25px;
+  padding: 15px 30px;
+  background-color: #00c6ff;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cta-btn:hover {
+  background-color: #0072ff;
+}

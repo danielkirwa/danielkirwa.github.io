@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>bookings</title>
+	<link rel="stylesheet" type="text/css" href="css/booking.css">
+</head>
+<body>
+
+  <section class="hero">
+    <div class="overlay" style="background-image: url('assets/bg5.jpg');"></div>
+    <h1>📅 Book a Consultation</h1>
+    <p>
+  <b> <i><h2>  Ready To Work Global Consult Limited </h2></i></b>
+    </p>
+</section>
+<section class="consultation-form">
+  <h2>📅 Book now (fill in accurately)</h2>
+  <form action="#" method="post">
+    
+    <!-- Personal Info -->
+    <label for="fullName">Full Name *</label>
+    <input type="text" id="fullName" name="fullName" required>
+
+    <label for="email">Email Address *</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="phone">Phone Number *</label>
+    <input type="tel" id="phone" name="phone" required>
+
+    <!-- Meeting Details -->
+    <label for="meetingType">Consultation Type *</label>
+    <select id="meetingType" name="meetingType" required>
+      <option value="">-- Select --</option>
+      <option value="career">Career Guidance</option>
+      <option value="visa">Visa Application Support</option>
+      <option value="job">Job Placement Inquiry</option>
+      <option value="business">Business Collaboration</option>
+      <option value="other">Other</option>
+    </select>
+
+    <label for="preferredDate">Preferred Date *</label>
+    <input type="date" id="preferredDate" name="preferredDate" required>
+
+    <label for="preferredTime">Preferred Time *</label>
+    <input type="time" id="preferredTime" name="preferredTime" required>
+
+    <!-- Additional Info -->
+    <label for="location">Meeting Location *</label>
+    <select id="location" name="location" required>
+      <option value="">-- Select --</option>
+      <option value="virtual">Virtual (Zoom/Google Meet)</option>
+      <option value="office">In-Person (Office)</option>
+      <option value="phone">Phone Call</option>
+    </select>
+
+    <label for="notes">Additional Notes / Questions</label>
+    <textarea id="notes" name="notes" rows="4" placeholder="Share any specific concerns or goals..."></textarea>
+
+    <!-- Submit -->
+    <button type="submit" class="cta-btn">Book Consultation</button>
+  </form>
+</section>
+</body>
+</html>

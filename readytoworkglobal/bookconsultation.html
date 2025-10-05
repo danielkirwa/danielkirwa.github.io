@@ -5,8 +5,28 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>bookings</title>
 	<link rel="stylesheet" type="text/css" href="css/booking.css">
+  <link rel="stylesheet" type="text/css" href="css/nav.css">
+  <link rel="stylesheet" type="text/css" href="css/mainfooter.css">
 </head>
 <body>
+  <header class="navbar">
+  <div class="logo">YourAgency</div>
+  <nav class="nav-links" id="navLinks">
+    <a href="index.html">Home</a>
+    <a href="service.html">Services</a>
+    <a href="employer.html">Employers</a>
+    <a href="jobseekers.html">Job Seekers</a>
+    <a href="#">Contact</a>
+    <a href="aboutus.html">About Us</a>
+  </nav>
+  <div class="burger" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</header>
+
+
 
   <section class="hero">
     <div class="overlay" style="background-image: url('assets/bg5.jpg');"></div>
@@ -62,5 +82,67 @@
     <button type="submit" class="cta-btn">Book Consultation</button>
   </form>
 </section>
+
+
+<footer class="site-footer">
+  <div class="footer-content">
+
+    <!-- Company Info -->
+    <div class="footer-column">
+      <h3>Ready To Work Global</h3>
+      <p>Empowering careers across borders. We connect talent to opportunity through mentorship, recruitment, and global partnerships.</p>
+      <p><strong>Hours:</strong><br>
+        Mon–Fri: 8:00 AM – 6:00 PM<br>
+        Sat: 9:00 AM – 2:00 PM<br>
+        Sun & Holidays: Closed
+      </p>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-column">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="/services">Our Services</a></li>
+        <li><a href="/faq">FAQs</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/book-consultation">Book Consultation</a></li>
+      </ul>
+    </div>
+
+    <!-- Social Media -->
+    <div class="footer-column">
+      <h4>Follow Us</h4>
+      <div class="social-icons">
+        <a href="https://facebook.com" target="_blank">🌐 Facebook</a><br>
+        <a href="https://twitter.com" target="_blank">🐦 Twitter</a><br>
+        <a href="https://instagram.com" target="_blank">📸 Instagram</a><br>
+        <a href="https://linkedin.com" target="_blank">💼 LinkedIn</a>
+      </div>
+      <h4 style="margin-top:20px;">Newsletter</h4>
+      <form class="newsletter-form">
+        <input type="email" placeholder="Your email" required>
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+
+    <!-- Social Feed Placeholder -->
+    <div class="footer-column">
+      <h4>Latest Updates</h4>
+      <div class="social-feed">
+        <p>📢 “New visa slots open for Canada 🇨🇦 — book your consultation today!”</p>
+        <p>🎓 “Congrats to our October cohort placed in Dubai tech firms!”</p>
+        <p>🌍 “Global hiring week starts Monday — stay tuned!”</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom Bar -->
+  <div class="footer-bottom">
+    <p>© 2025 Ready To Work Global Consult Limited. All rights reserved.</p>
+    <a href="#top" class="scroll-top">⬆ Back to top</a>
+  </div>
+</footer>
 </body>
 </html>

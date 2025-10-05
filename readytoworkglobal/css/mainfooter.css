@@ -1,0 +1,77 @@
+.site-footer {
+  background: #0f2027;
+  color: #fff;
+  padding: 60px 20px 30px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 40px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.footer-column h3, .footer-column h4 {
+  margin-bottom: 15px;
+  color: #00c6ff;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-column ul li {
+  margin-bottom: 10px;
+}
+
+.footer-column a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-column a:hover {
+  color: #00c6ff;
+}
+
+.newsletter-form input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: none;
+  border-radius: 6px;
+  background: #203a43;
+  color: #fff;
+}
+
+.newsletter-form button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #00c6ff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.newsletter-form button:hover {
+  background-color: #0072ff;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 20px;
+  font-size: 0.9rem;
+}
+
+.scroll-top {
+  display: inline-block;
+  margin-top: 10px;
+  color: #00c6ff;
+  text-decoration: none;
+}

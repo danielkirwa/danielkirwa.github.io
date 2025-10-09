@@ -8,11 +8,10 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 30px;
   background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
   color: #fff;
   position: fixed;
-  width: 98%;
+  width: 100%;
   top: 0;
   z-index: 1000;
 }
@@ -20,6 +19,20 @@ body {
 .logo {
   font-size: 1.5rem;
   font-weight: bold;
+}
+.logo {
+  width: 200px; /* or 100% or any fixed size */
+  height: 100px; /* adjust as needed */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* or 'cover' if you want it cropped */
 }
 
 .nav-links {

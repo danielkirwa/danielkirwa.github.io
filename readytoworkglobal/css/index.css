@@ -95,6 +95,20 @@ body {
   padding: 2%;
   background: #f5f5f5;
 }
+/* Optional: further tweak for very small screens */
+@media (max-width: 480px) {
+  .about-us {
+    display: block;
+    padding: 20px;
+  }
+}
+@media (max-width: 720px) {
+  .about-us {
+    display: block;
+    padding: 20px;
+  }
+}
+
 
 
 
@@ -171,18 +185,18 @@ body {
 
 .points-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
 }
 
 .point {
   background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border-radius: 15px;
-  padding: 20px;
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 30px;
   font-size: 1.1rem;
   opacity: 0;
-  transform: translateY(30px);
+  transform: translateY(40px);
   transition: all 0.6s ease-out;
 }
 
@@ -285,20 +299,21 @@ body {
 
 .job-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 40px;
 }
 
 .job-card {
   background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
   border-radius: 20px;
   padding: 30px;
-  text-align: center;
+  font-size: 1.1rem;
   opacity: 0;
   transform: translateY(40px);
   transition: all 0.6s ease-out;
 }
+
 
 .job-card.visible {
   opacity: 1;
@@ -331,6 +346,7 @@ body {
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  margin-top: 8px;
 }
 
 .apply-btn:hover {

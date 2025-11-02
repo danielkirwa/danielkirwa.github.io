@@ -171,8 +171,8 @@ body {
 .why-choose-us {
   position: relative;
   padding: 100px 20px;
-  background: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364);
-  color: #fff;
+  background: linear-gradient(to bottom right, #ffffff, #f1f1f1, #ffffff);
+  color: dodgerblue;
   overflow: hidden;
 }
 
@@ -190,7 +190,7 @@ body {
 }
 
 .point {
-  background: rgba(255, 255, 255, 0.1);
+  background: dodgerblue;
   backdrop-filter: blur(12px);
   border-radius: 20px;
   padding: 30px;
@@ -198,6 +198,7 @@ body {
   opacity: 0;
   transform: translateY(40px);
   transition: all 0.6s ease-out;
+  color: white;
 }
 
 .point.visible {

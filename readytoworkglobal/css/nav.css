@@ -8,8 +8,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-  color: #fff;
+  background: linear-gradient(to right, #f1f1f1 , #f1f1f1);
+  color: dodgerblue;
   position: fixed;
   width: 100%;
   top: 0;
@@ -42,7 +42,7 @@ body {
 }
 
 .nav-links a {
-  color: #fff;
+  color: dodgerblue;
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s ease;

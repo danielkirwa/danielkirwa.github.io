@@ -1,7 +1,7 @@
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(to right, #f0f4f8, #e0eafc);
+  background: linear-gradient(to right, #FFE6EA, #FFC0CB);
   color: #333;
 }
 .hero {
@@ -93,7 +93,7 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 2%;
-  background: #f5f5f5;
+  background: #f1f1f1;
 }
 /* Optional: further tweak for very small screens */
 @media (max-width: 480px) {
@@ -223,8 +223,8 @@ body {
 .testimonials {
   position: relative;
   padding: 100px 20px;
-  background: linear-gradient(to right, #1e3c72, #2a5298);
-  color: #fff;
+  background: linear-gradient(to right, #ffffff, #f1f1f1);
+  color: #000000;
   overflow: hidden;
 }
 
@@ -242,7 +242,7 @@ body {
 }
 
 .testimonial-card {
-  background: rgba(255, 255, 255, 0.1);
+  background: magenta;
   backdrop-filter: blur(12px);
   border-radius: 20px;
   padding: 30px;
@@ -285,8 +285,8 @@ body {
 .available-jobs {
   position: relative;
   padding: 100px 20px;
-  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-  color: #fff;
+  background: linear-gradient(to right, #ffffff,#ffffff);
+  color: black;
   overflow: hidden;
 }
 
@@ -304,7 +304,7 @@ body {
 }
 
 .job-card {
-  background: rgba(255, 255, 255, 0.1);
+  background: #F89880;
   backdrop-filter: blur(12px);
   border-radius: 20px;
   padding: 30px;

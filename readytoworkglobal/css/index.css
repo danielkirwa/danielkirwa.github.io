@@ -9,6 +9,7 @@ body {
   padding: 100px 20px;
   text-align: center;
   background: linear-gradient(to right, #203a43, #2c5364);
+  color: #fff;
 }
 
 .hero .overlay {

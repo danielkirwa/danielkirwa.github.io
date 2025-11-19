@@ -2,8 +2,8 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: #0f2027;
-  color: #fff;
+  background: f1f1f1;
+  color: #000;
 }
 
 /* Hero Section */
@@ -12,6 +12,7 @@ body {
   padding: 100px 20px;
   text-align: center;
   background: linear-gradient(to right, #203a43, #2c5364);
+  color: #fff;
 }
 
 .hero .overlay {
@@ -27,9 +28,13 @@ body {
   max-width: 600px;
   margin: 80px auto;
   padding: 40px;
-  background: #203a43;
+  background: linear-gradient(
+    to bottom right,
+    rgba(30, 144, 255, 0.6) 0%,
+    rgba(76, 175, 80, 0.6) 100%
+  );
   border-radius: 12px;
-  color: #fff;
+  color: #000;
 }
 
 .consultation-form h2 {

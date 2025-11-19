@@ -1,8 +1,8 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: #0f2027;
-  color: #fff;
+  background: #f1f1f1;
+  color: #000000;
 }
 
 
@@ -11,6 +11,7 @@ body {
   padding: 100px 20px;
   text-align: center;
   background: linear-gradient(to right, #203a43, #2c5364);
+  color: #fff;
 }
 
 .hero .overlay {
@@ -46,7 +47,11 @@ body {
 }
 
 .job-card {
-  background: rgba(255, 255, 255, 0.1);
+  background: linear-gradient(
+    to bottom right,
+    rgba(30, 144, 255, 0.6) 0%,
+    rgba(76, 175, 80, 0.6) 100%
+  );
   backdrop-filter: blur(10px);
   border-radius: 20px;
   padding: 30px;
@@ -106,8 +111,8 @@ body {
 .job-intent-form {
   position: relative;
   padding: 100px 20px;
-  background: linear-gradient(to right, #1e3c72, #2a5298);
-  color: #fff;
+  background: linear-gradient(to right, #ffffff, #f1f1f1);
+  color: #000000;
   text-align: center;
   overflow: hidden;
 }
@@ -147,7 +152,11 @@ body {
   border-radius: 10px;
   border: none;
   font-size: 1rem;
-  background: rgba(255, 255, 255, 0.1);
+  background: linear-gradient(
+    to bottom right,
+    rgba(30, 144, 255, 0.6) 0%,
+    rgba(76, 175, 80, 0.6) 100%
+  );
   color: #fff;
   backdrop-filter: blur(8px);
 }
@@ -156,7 +165,11 @@ body {
   border-radius: 10px;
   border: none;
   font-size: 1rem;
-  background:  #2a5298;
+  background: linear-gradient(
+    to bottom right,
+    rgba(30, 144, 255, 0.6) 0%,
+    rgba(76, 175, 80, 0.6) 100%
+  );
   color: black;
   backdrop-filter: blur(8px);
 }
@@ -252,8 +265,8 @@ body {
 .process-timeline {
   position: relative;
   padding: 100px 20px;
-  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-  color: #fff;
+  background: linear-gradient(to bottom right, #ffffff, #f1f1f1, #ffffff);
+  color: #000000;
   overflow: hidden;
   text-align: center;
 }
@@ -280,7 +293,7 @@ body {
 }
 
 .timeline-step {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(76, 175, 80, 0.6);
   backdrop-filter: blur(10px);
   border-radius: 20px;
   padding: 30px;

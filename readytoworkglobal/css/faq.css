@@ -3,7 +3,7 @@ body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
   background: #0f2027;
-  color: #fff;
+  color: #000;
 }
 
 /* Hero Section */
@@ -12,6 +12,7 @@ body {
   padding: 100px 20px;
   text-align: center;
   background: linear-gradient(to right, #203a43, #2c5364);
+  color: #fff;
 }
 
 .hero .overlay {

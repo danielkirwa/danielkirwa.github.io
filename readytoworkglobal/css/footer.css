@@ -1,8 +1,8 @@
 .contact-section {
   position: relative;
   padding: 100px 20px;
-  background: linear-gradient(to right, #1e3c72, #2a5298);
-  color: #fff;
+  background: linear-gradient(to right, dodgerblue, #197dde);
+  color: #000;
   overflow: hidden;
   text-align: center;
 }

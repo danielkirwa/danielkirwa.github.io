@@ -1,15 +1,17 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: #0f2027;
-  color: #fff;
+  background: #f1f1f1;
+  color: #000;
 }
 
 .employer-hero {
   position: relative;
   padding: 120px 20px;
   text-align: center;
+  color: #fff;
   background: linear-gradient(to right, #203a43, #2c5364);
+  color: #fff;
 }
 
 .hero-overlay {
@@ -112,8 +114,12 @@ body {
   border-radius: 10px;
   border: none;
   font-size: 1rem;
-  background: rgba(255, 255, 255, 0.1);
-  color: #fff;
+  background: linear-gradient(
+    to bottom right,
+    rgba(30, 144, 255, 0.6) 0%,
+    rgba(76, 175, 80, 0.6) 100%
+  );
+  color: #000000;
   backdrop-filter: blur(8px);
 }
 

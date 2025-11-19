@@ -1,8 +1,8 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: #0f2027;
-  color: #fff;
+  background: linear-gradient(to right, #ffffff, #f1f1f1);
+  color: #000;
 }
 h2 {
   font-size: 2.5rem;
@@ -15,6 +15,7 @@ h2 {
   padding: 100px 20px;
   text-align: center;
   background: linear-gradient(to right, #203a43, #2c5364);
+  color: #fff;
 }
 
 .hero .overlay {
@@ -55,7 +56,7 @@ h2 {
 }
 
 .mv-card {
-  background: rgba(255,255,255,0.1);
+  background: dodgerblue;
   backdrop-filter: blur(10px);
   border-radius: 20px;
   padding: 30px;
@@ -63,7 +64,7 @@ h2 {
   animation: fadeInUp 0.8s ease-out;
 }
 .mv-card-long {
-  background: rgba(255,255,255,0.1);
+  background: #197dde;
   backdrop-filter: blur(10px);
   border-radius: 20px;
   padding: 30px;
@@ -84,7 +85,7 @@ h2 {
 }
 
 .stat-card {
-  background: rgba(255,255,255,0.1);
+  background: #197dde;
   backdrop-filter: blur(10px);
   border-radius: 20px;
   padding: 30px;
@@ -109,7 +110,11 @@ h2 {
 }
 
 .team-card {
-  background: rgba(255,255,255,0.1);
+  background: linear-gradient(
+    to bottom right,
+    rgba(30, 144, 255, 0.6) 0%,
+    rgba(76, 175, 80, 0.6) 100%
+  );
   backdrop-filter: blur(10px);
   border-radius: 20px;
   padding: 20px;
@@ -156,7 +161,7 @@ h2 {
 }
 
 .testimonial-card {
-  background: rgba(255,255,255,0.1);
+  background: dodgerblue;
   backdrop-filter: blur(10px);
   border-radius: 20px;
   padding: 30px;

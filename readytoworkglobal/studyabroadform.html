@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Job Seekers</title>
+  <link rel="stylesheet" href="css/jobseekers.css"/>
+  <link rel="stylesheet" type="text/css" href="css/nav.css">
+  <link rel="stylesheet" type="text/css" href="css/mainfooter.css">
+</head>
+<body>
+<header class="navbar">
+  <div class="logo">
+    <a href="index.html">
+<img src="assets/logo2.png">
+</a>
+  </div>
+  <nav class="nav-links" id="navLinks">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="employer.html">Employers</a>
+    <a href="jobseekers.html">Job Seekers</a>
+    <a href="#">Contact</a>
+    <a href="aboutus.html">About Us</a>
+  </nav>
+  <div class="burger" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</header>
+
+
+
+  <section class="hero">
+    <div class="overlay" style="background-image: url('assets/bg5.jpg');"></div>
+    <h1>🎓 STUDY ABROAD APPLICATION</h1>
+    
+    <p>
+      At <b> <i>Ready To Work Global Consult Limited</i></b>, we specialize in 
+        <b> <i>international admissions</i></b>  for students<br> who aspire to pursue higher education opportunities abroad. 
+    </p>
+    <button class="cta-btn"><a href="studyabroadprocess.html">Study abroad</a></button>
+  </section>
+
+
+  <section class="job-intent-form" id="jobform">
+  <div class="overlay-pattern"></div>
+  <h2 class="section-title">We make the journey simple</h2>
+  <p class="section-subtitle">Drop your details according to the mentioned format.</p>
+
+  <form class="intent-form" enctype="multipart/form-data">
+    <input type="text" placeholder="First Name" required />
+    <input type="text" placeholder="Other Name" required />
+    <input type="email" placeholder="Email Address" required />
+    <input type="tel" placeholder="Phone Number" required />
+    <input type="text" placeholder="Location (Country)" required />
+    <input type="text" placeholder="Location (City)" required />
+
+    <select required>
+      <option value="" disabled selected>Select highest Education</option>
+      <option value="Web Development">Senior High School (SHS)</option>
+      <option value="Android Development">Higher National Diploma (HND) </option>
+      <option value="Curriculum Design">Bachelor's Degreen</option>
+      <option value="Graphics & UI">Master's Degree</option>
+      <option value="Business Strategy">Ph.D./DPhil</option>
+    </select>
+
+    <select required>
+      <option value="" disabled selected>Employment Status</option>
+      <option value="Local">Employed</option>
+      <option value="International">Unemployed</option>
+      <option value="Both">Student</option>
+    </select>
+
+    <textarea placeholder="Tell us more about your goals or experience..." required></textarea>
+
+    <label class="file-upload">
+      Upload CV (PDF only combined)
+      <input type="file" accept=".pdf" required />
+    </label>
+
+    <button type="submit" class="submit-btn">Submit My Application</button>
+  </form>
+</section>
+
+ 
+
+  <footer class="site-footer">
+  <div class="footer-content">
+
+    <!-- Company Info -->
+    <div class="footer-column">
+      <h3>Ready To Work Global</h3>
+      <p>Empowering careers across borders. We connect talent to opportunity through mentorship, recruitment, and global partnerships.</p>
+      <p><strong>Hours:</strong><br>
+        Mon–Fri: 8:00 AM – 6:00 PM<br>
+        Sat: 9:00 AM – 2:00 PM<br>
+        Sun & Holidays: Closed
+      </p>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-column">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="/services">Our Services</a></li>
+        <li><a href="/faq">FAQs</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/book-consultation">Book Consultation</a></li>
+      </ul>
+    </div>
+
+    <!-- Social Media -->
+    <div class="footer-column">
+      <h4>Follow Us</h4>
+      <div class="social-icons">
+        <a href="https://facebook.com" target="_blank">🌐 Facebook</a><br>
+        <a href="https://twitter.com" target="_blank">🐦 Twitter</a><br>
+        <a href="https://instagram.com" target="_blank">📸 Instagram</a><br>
+        <a href="https://linkedin.com" target="_blank">💼 LinkedIn</a>
+      </div>
+      <h4 style="margin-top:20px;">Newsletter</h4>
+      <form class="newsletter-form">
+        <input type="email" placeholder="Your email" required>
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+
+    <!-- Social Feed Placeholder -->
+    <div class="footer-column">
+      <h4>Latest Updates</h4>
+      <div class="social-feed">
+        <p>📢 “New visa slots open for Canada 🇨🇦 — book your consultation today!”</p>
+        <p>🎓 “Congrats to our October cohort placed in Dubai tech firms!”</p>
+        <p>🌍 “Global hiring week starts Monday — stay tuned!”</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom Bar -->
+  <div class="footer-bottom">
+    <p>© 2025 Ready To Work Global Consult Limited. All rights reserved.</p>
+    <a href="#top" class="scroll-top">⬆ Back to top</a>
+  </div>
+</footer>
+
+  <script src="js/jobseekers.js"></script>
+</body>
+</html>

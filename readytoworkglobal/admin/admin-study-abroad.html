@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Study Abroad Details</title>
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/studyabroad.css">
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <h2>Applications</h2>
+    <ul>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="admin-study-abroad.html">Study Abroad</a></li>
+      <li><a href="job-application.html">Job Application</a></li>
+      <li><a href="training.html">Training</a></li>
+      <li><a href="visa.html">Visa</a></li>
+      <li><a href="culture.html">Culture</a></li>
+    </ul>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main">
+    <!-- Hamburger button -->
+    <button class="hamburger" onclick="toggleSidebar()">☰</button>
+    <h1>Study Abroad Applications</h1>
+
+    <!-- Summary Cards -->
+    <div class="card-container">
+      <a href="admin-study-abroad.html" class="card">
+        <h3>Submitted</h3>
+        <p>12 </p>
+      </a>
+      <a href="#" class="card">
+        <h3>Active</h3>
+        <p>12 </p>
+      </a>
+      <a href="#" class="card">
+        <h3>Pending</h3>
+        <p>12</p>
+      </a>
+      <a href="#" class="card">
+        <h3>Approved</h3>
+        <p> 12</p>
+      </a>
+      <a href="#" class="card">
+        <h3>Nature</h3>
+        <p> 12</p>
+      </a>
+      <a href="#" class="card">
+        <h3>Achieved</h3>
+        <p> 12</p>
+      </a>
+    </div>
+
+    <!-- Table -->
+    <h2>Submitted Details</h2>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Education Level</th>
+          <th>Date</th>
+          <th>Country</th>
+          <th>Age</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Jane Doe</td>
+          <td>jane@example.com</td>
+          <td>Bachelor</td>
+          <td>2025-11-20</td>
+          <td>Canada</td>
+          <td>24</td>
+          <td>
+            <button class="btn btn-g">Open</button>
+            <button class="btn btn-b">Request</button>
+            <button class="btn btn-r">Achieve</button>
+          </td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>John Smith</td>
+          <td>john@example.com</td>
+          <td>Masters</td>
+          <td>2025-11-19</td>
+          <td>UK</td>
+          <td>27</td>
+          <td>
+            <button class="btn btn-g">Open</button>
+            <button class="btn btn-b">Request</button>
+            <button class="btn btn-r">Achieve</button>
+          </td>
+        </tr>
+        <!-- Add more rows as needed -->
+      </tbody>
+    </table>
+  </div>
+
+  <script src="js/studyabroad.js"></script>
+</body>
+</html>

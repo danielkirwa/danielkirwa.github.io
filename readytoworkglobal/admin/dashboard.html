@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>General Dashboard</title>
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <h2>Applications</h2>
+    <ul>
+      <li><a href="dashboard.html">Back Dashboard</a></li>
+      <li><a href="admin-study-abroad.html">Study Abroad</a></li>
+      <li><a href="admin-job-application.html">Job Application</a></li>
+      <li><a href="admin-training.html">Training</a></li>
+      <li><a href="admin-visa.html">Visa</a></li>
+      <li><a href="admin-culture.html">Culture</a></li>
+    </ul>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main">
+    <!-- Hamburger button -->
+    <button class="hamburger" onclick="toggleSidebar()">☰</button>
+    <h1>General Dashboard</h1>
+    <div class="card-container">
+      <a href="admin-study-abroad.html" class="card">
+        <h2>Study Abroad</h2>
+        <ul>
+          <li>Submitted: 12</li>
+          <li>Active: 8</li>
+          <li>Pending: 5</li>
+          <li>Approved: 3</li>
+        </ul>
+      </a>
+      <a href="admin-job-application.html" class="card">
+        <h2>Job Application</h2>
+        <ul>
+          <li>Submitted: 20</li>
+          <li>Active: 15</li>
+          <li>Pending: 10</li>
+          <li>Approved: 5</li>
+        </ul>
+      </a>
+      <a href="admin-training.html" class="card">
+        <h2>Training</h2>
+        <ul>
+          <li>Submitted: 10</li>
+          <li>Active: 6</li>
+          <li>Pending: 3</li>
+          <li>Approved: 2</li>
+        </ul>
+      </a>
+      <a href="admin-visa.html" class="card">
+        <h2>Visa</h2>
+        <ul>
+          <li>Submitted: 18</li>
+          <li>Active: 12</li>
+          <li>Pending: 7</li>
+          <li>Approved: 4</li>
+        </ul>
+      </a>
+      <a href="admin-culture.html" class="card">
+        <h2>Culture</h2>
+        <ul>
+          <li>Submitted: 8</li>
+          <li>Active: 5</li>
+          <li>Pending: 2</li>
+          <li>Approved: 1</li>
+        </ul>
+      </a>
+    </div>
+  </div>
+
+  <script src="js/dashbaord.js"></script>
+</body>
+</html>

@@ -157,7 +157,7 @@ body {
     rgba(30, 144, 255, 0.6) 0%,
     rgba(76, 175, 80, 0.6) 100%
   );
-  color: #fff;
+  color: #000;
   backdrop-filter: blur(8px);
 }
 .intent-form select{

@@ -60,8 +60,7 @@ body {
 
 .steps-list li,
 .requirements-list li,
-.section-block p,
-.cta-btn {
+.section-block p {
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.6s ease, transform 0.6s ease;

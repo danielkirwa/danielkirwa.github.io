@@ -1,0 +1,44 @@
+/* Table styling */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.data-table th, .data-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+.data-table th {
+  background: #2c3e50;
+  color: #fff;
+}
+.data-table tr:hover {
+  background: #f1f1f1;
+}
+
+/* Action buttons */
+.btn {
+  padding: 6px 12px;
+  margin: 2px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #fff;
+  font-size: 0.9em;
+  transition: background 0.3s;
+}
+.btn:hover {
+  background: #2c3e50;
+}
+.btn-g{
+  background: #27ae60;
+}
+.btn-r{
+  background:crimson;
+}
+.btn-b{
+  background: dodgerblue;
+}

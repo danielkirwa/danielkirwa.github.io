@@ -9,8 +9,12 @@ body {
 /* Sidebar */
 .sidebar {
   width: 250px;
-  background: #2c3e50;
-  color: #fff;
+  background: linear-gradient(
+    to bottom right,
+    rgba(76, 175, 80) 0%,
+    rgba(30, 144, 255) 100%
+  );
+  color: #000;
   padding: 20px 0;
   transition: transform 0.3s ease;
 }
@@ -26,12 +30,23 @@ body {
   padding: 15px 20px;
 }
 .sidebar ul li a {
-  color: #fff;
+  color: #000;
   text-decoration: none;
   display: block;
 }
 .sidebar ul li:hover {
   background: #34495e;
+}
+.sidebar ul li a:hover {
+  color: #fff;
+}
+.title-banner{
+  padding: 8px;
+  background: linear-gradient(
+    to bottom right,
+    rgba(30, 144, 255, 0.6) 0%,
+    rgba(76, 175, 80, 0.6) 100%
+  );
 }
 
 /* Main content */

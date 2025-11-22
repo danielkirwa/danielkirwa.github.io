@@ -1,9 +1,19 @@
 
+// Create a reference
+const storageRef = firebase.storage().ref("test/hello.txt");
+
+// Upload a simple blob
 const file = new Blob(["Hello world"], { type: "text/plain" });
-const storageRef = storage.ref("test/hello.txt");
+
 storageRef.put(file)
-  .then(() => console.log("Storage upload successful"))
-  .catch(err => console.error(err));
+  .then(snapshot => {
+    console.log("Uploaded file:", snapshot.metadata.fullPath);
+    return snapshot.ref.getDownloadURL();
+  })
+  .then(url => {
+    console.log("File available at:", url);
+  })
+  .catch(err => console.error("Upload failed:", err));
 
 document.getElementById("intentForm").addEventListener("submit", async (e) => {
   e.preventDefault();

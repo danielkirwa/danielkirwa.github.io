@@ -44,40 +44,39 @@
   </section>
 
 
-  <section class="job-intent-form" id="jobform">
-  <div class="overlay-pattern"></div>
+ <section class="job-intent-form" id="jobform">
   <h2 class="section-title">We make the journey simple</h2>
   <p class="section-subtitle">Drop your details according to the mentioned format.</p>
 
-  <form class="intent-form" enctype="multipart/form-data">
-    <input type="text" placeholder="First Name" required />
-    <input type="text" placeholder="Other Name" required />
-    <input type="email" placeholder="Email Address" required />
-    <input type="tel" placeholder="Phone Number" required />
-    <input type="text" placeholder="Location (Country)" required />
-    <input type="text" placeholder="Location (City)" required />
+  <form class="intent-form" id="intentForm" enctype="multipart/form-data">
+    <input type="text" id="firstName" placeholder="First Name" required />
+    <input type="text" id="otherName" placeholder="Other Name" required />
+    <input type="email" id="email" placeholder="Email Address" required />
+    <input type="tel" id="phone" placeholder="Phone Number" required />
+    <input type="text" id="country" placeholder="Location (Country)" required />
+    <input type="text" id="city" placeholder="Location (City)" required />
 
-    <select required>
+    <select id="education" required>
       <option value="" disabled selected>Select highest Education</option>
-      <option value="Web Development">Senior High School (SHS)</option>
-      <option value="Android Development">Higher National Diploma (HND) </option>
-      <option value="Curriculum Design">Bachelor's Degreen</option>
-      <option value="Graphics & UI">Master's Degree</option>
-      <option value="Business Strategy">Ph.D./DPhil</option>
+      <option value="SHS">Senior High School (SHS)</option>
+      <option value="HND">Higher National Diploma (HND)</option>
+      <option value="Bachelor">Bachelor's Degree</option>
+      <option value="Masters">Master's Degree</option>
+      <option value="PhD">Ph.D./DPhil</option>
     </select>
 
-    <select required>
+    <select id="employment" required>
       <option value="" disabled selected>Employment Status</option>
-      <option value="Local">Employed</option>
-      <option value="International">Unemployed</option>
-      <option value="Both">Student</option>
+      <option value="Employed">Employed</option>
+      <option value="Unemployed">Unemployed</option>
+      <option value="Student">Student</option>
     </select>
 
-    <textarea placeholder="Tell us more about your goals or experience..." required></textarea>
+    <textarea id="goals" placeholder="Tell us more about your goals or experience..." required></textarea>
 
     <label class="file-upload">
       Upload CV (PDF only combined)
-      <input type="file" accept=".pdf" required />
+      <input type="file" id="cvFile" accept=".pdf" required />
     </label>
 
     <button type="submit" class="submit-btn">Submit My Application</button>
@@ -146,7 +145,16 @@
     <a href="#top" class="scroll-top">⬆ Back to top</a>
   </div>
 </footer>
+<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-storage.js"></script>
 
+
+
+<script src="js/config.js"></script>
   <script src="js/jobseekers.js"></script>
+  <script src="js/studyform.js"></script>
 </body>
 </html>

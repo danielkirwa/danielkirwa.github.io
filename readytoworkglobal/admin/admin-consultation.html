@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Study Abroad Details</title>
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/consultation.css">
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <h2>Applications</h2>
+    <ul>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="admin-study-abroad.html">Study Abroad</a></li>
+      <li><a href="job-application.html">Job Application</a></li>
+      <li><a href="training.html">Training</a></li>
+      <li><a href="visa.html">Visa</a></li>
+      <li><a href="culture.html">Culture</a></li>
+    </ul>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main">
+    <!-- Hamburger button -->
+    <button class="hamburger" onclick="toggleSidebar()">☰</button>
+    <h1 class="title-banner">Study Abroad Applications</h1>
+
+    <!-- Summary Cards -->
+    <div class="dashboard-cards">
+  <div class="card">
+    <h3>Total Bookings</h3>
+    <p id="totalBookings">120</p>
+  </div>
+  <div class="card">
+    <h3>Upcoming Today</h3>
+    <p id="todayBookings">5</p>
+    <p>Office : <span id="officeBookings"></span> || Online : <span id="onlineBookings"></span> || Phone : <span id="phoneBookings"></span></p>
+  </div>
+  <div class="card">
+    <h3>Pending Approvals</h3>
+    <p id="pendingBookings">12</p>
+  </div>
+</div>
+
+<div class="dashboard-cards">
+  <div class="card">
+    <h3>Bookings (Last 30 Days)</h3>
+    <p id="bookingsLast30">0</p>
+  </div>
+  <div class="card">
+    <h3>Bookings (Next 30 Days)</h3>
+    <p id="bookingsNext30">0</p>
+  </div>
+  <div class="card">
+    <h3>Reschedules (Last 30 Days)</h3>
+    <p id="reschedulesLast30">0</p>
+  </div>
+  <div class="card">
+    <h3>Reschedules (Next 30 Days)</h3>
+    <p id="reschedulesNext30">0</p>
+  </div>
+  <div class="card">
+    <h3>Cancellations (Last 30 Days)</h3>
+    <p id="cancellationsLast30">0</p>
+  </div>
+  <div class="card">
+    <h3>Cancellations (Next 30 Days)</h3>
+    <p id="cancellationsNext30">0</p>
+  </div>
+</div>
+
+    <!-- Table -->
+  <h2>Active Bookings</h2>
+<table class="dashboard-table">
+  <thead>
+    <tr>
+      <th>Client</th><th>Email</th><th>Phone</th><th>Type</th>
+      <th>Date</th><th>Time</th><th>Location</th><th>Status</th><th>Actions</th>
+    </tr>
+  </thead>
+  <tbody id="activeTableBody"></tbody>
+</table>
+
+<h2>Rescheduled Bookings</h2>
+<table class="dashboard-table">
+  <thead>
+    <tr>
+      <th>Client</th><th>Email</th><th>Phone</th><th>Type</th>
+      <th>Date</th><th>Time</th><th>Location</th><th>Status</th><th>Actions</th>
+    </tr>
+  </thead>
+  <tbody id="rescheduleTableBody"></tbody>
+</table>
+
+<h2>Cancelled Bookings</h2>
+<table class="dashboard-table">
+  <thead>
+    <tr>
+      <th>Client</th><th>Email</th><th>Phone</th><th>Type</th>
+      <th>Date</th><th>Time</th><th>Location</th><th>Status</th><th>Actions</th>
+    </tr>
+  </thead>
+  <tbody id="cancelTableBody"></tbody>
+</table>
+
+  
+  </div>
+<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script>
+  <script src="../js/config.js"></script>
+  <script src="js/studyabroad.js"></script>
+  <script src="js/consultation.js"></script>
+</body>
+</html>

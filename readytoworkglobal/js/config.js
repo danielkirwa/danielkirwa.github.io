@@ -12,10 +12,8 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
  // Auth reference
-    const auth = firebase.auth();
-    const realtimeDB = firebase.database();
-    const firestoreDB = firebase.firestore();
-    const storage = firebase.storage();
-
+     const auth = firebase.auth();
+    // Database reference
+    const db = firebase.database();
   console.log("Firebase initialized with v8 style!");
 

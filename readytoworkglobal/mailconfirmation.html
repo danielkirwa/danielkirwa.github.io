@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Confirm Email</title>
+</head>
+<body>
+
+
+	<script>
+  const params = new URLSearchParams(window.location.search);
+  const emailKey = params.get("email");
+  const code = params.get("code");
+
+  firebase.database().ref("ConsultationBookings/" + emailKey)
+    .once("value")
+    .then(snapshot => {
+      const booking = snapshot.val();
+      if (booking && booking.ConfirmationCode === code) {
+        snapshot.ref.update({ Status: "Email Confirmed" });
+        document.body.innerHTML = "<h2>Email confirmed ✅</h2>";
+      } else {
+        document.body.innerHTML = "<h2>Invalid or expired confirmation link ❌</h2>";
+      }
+    });
+</script>
+</body>
+</html>

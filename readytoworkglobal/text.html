@@ -1,47 +1,126 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Css class</title>
+  <title>Catch the Falling Object</title>
+  <style>
+    body {
+  font-family: 'Roboto', sans-serif;
+  background: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  padding: 20px;
+}
+
+h2 {
+  color: #3f51b5;
+  font-weight: 500;
+}
+
+#gameArea {
+  width: 400px;
+  height: 500px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+#basket {
+  width: 80px;
+  height: 20px;
+  border-radius: 10px;
+  position: absolute;
+  bottom: 16px;
+  left: 160px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  transition: left 0.1s ease-in-out;
+  font-size: 44px;
+}
+
+.object {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+    font-size: 34px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  transition: top 0.05s linear;
+}
+
+p {
+  font-size: 18px;
+  color: #333;
+  margin-top: 12px;
+}
+
+#score {
+  font-weight: bold;
+  color: #4caf50;
+}
+  </style>
 </head>
-<style>
-  /* this is internal css */
-  body{
-    background: #f1f1f1;
-  }
-  h1{
-    color: teal;
-  }
-
-  button{
-    background: brown;
-    font-size: 24px;
-    padding: 12px;
-    color: white;
-    border-width: 8px;
-    border-color: yellow;
-    border-radius: 25px;
-  }
-  .class2{
-    color: purple;
-  }
-  .class1{
-    color: blue;
-  }
-  .class3{
-    color: crimson;
-  }
-
-</style>
 <body>
+  <h2>Catch the Falling Object Game</h2>
+  <div id="gameArea">
+    <div id="basket"></div>
+  </div>
+  <p>Score: <span id="score">0</span></p>
 
- 
- <h1>Welcome to css</h1>
- <h3 class="class1">This is external css</h3>
-  <h3 class="class2">This is internal css</h3>
-   <h3 class="class3">This is inline css</h3>
-   <button>This button please click</button>
-    <button>This button please click</button>
+  <script>
+    const basket = document.getElementById("basket");
+    const gameArea = document.getElementById("gameArea");
+    let basketPos = 160;
+    let score = 0;
+
+    // Basket movement
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowLeft" && basketPos > 0) {
+        basketPos -= 20;
+      } else if (e.key === "ArrowRight" && basketPos < (gameArea.offsetWidth - basket.offsetWidth)) {
+        basketPos += 20;
+      }
+      basket.style.left = basketPos + "px";
+    });
+
+    // Create falling object
+    function createObject() {
+      const obj = document.createElement("div");
+      obj.classList.add("object");
+      obj.textContent = "🍎"; // apple emoji
+      obj.style.left = Math.floor(Math.random() * (gameArea.offsetWidth - 30)) + "px";
+      gameArea.appendChild(obj);
+
+
+
+      let fallInterval = setInterval(() => {
+        let top = parseInt(obj.style.top || 0);
+        obj.style.top = top + 5 + "px";
+
+        // Collision check
+        if (top > (gameArea.offsetHeight - 50)) {
+          let basketLeft = basket.offsetLeft;
+          let basketRight = basketLeft + basket.offsetWidth;
+          let objLeft = obj.offsetLeft;
+          let objRight = objLeft + obj.offsetWidth;
+
+          if (objRight > basketLeft && objLeft < basketRight) {
+            // caught
+            score++;
+            document.getElementById("score").textContent = score;
+          }
+          obj.remove();
+          clearInterval(fallInterval);
+        }
+      }, 50);
+    }
+
+    // Spawn objects every 2 seconds
+    setInterval(createObject, 2000);
+  </script>
 </body>
 </html>
+

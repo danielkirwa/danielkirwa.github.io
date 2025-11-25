@@ -45,27 +45,27 @@
 </div>
 
 <div class="dashboard-cards">
-  <div class="card">
+  <div class="card lightgreen">
     <h3>Bookings (Last 30 Days)</h3>
     <p id="bookingsLast30">0</p>
   </div>
-  <div class="card">
+  <div class="card lightgreen">
     <h3>Bookings (Next 30 Days)</h3>
     <p id="bookingsNext30">0</p>
   </div>
-  <div class="card">
+  <div class="card lightblue">
     <h3>Reschedules (Last 30 Days)</h3>
     <p id="reschedulesLast30">0</p>
   </div>
-  <div class="card">
+  <div class="card lightblue">
     <h3>Reschedules (Next 30 Days)</h3>
     <p id="reschedulesNext30">0</p>
   </div>
-  <div class="card">
+  <div class="card lightred">
     <h3>Cancellations (Last 30 Days)</h3>
     <p id="cancellationsLast30">0</p>
   </div>
-  <div class="card">
+  <div class="card lightred">
     <h3>Cancellations (Next 30 Days)</h3>
     <p id="cancellationsNext30">0</p>
   </div>
@@ -73,7 +73,7 @@
 
     <!-- Table -->
   <h2>Active Bookings</h2>
-<table class="dashboard-table">
+<table class="dashboard-table lightgreen">
   <thead>
     <tr>
       <th>Client</th><th>Email</th><th>Phone</th><th>Type</th>
@@ -84,8 +84,8 @@
 </table>
 
 <h2>Rescheduled Bookings</h2>
-<table class="dashboard-table">
-  <thead>
+<table class="dashboard-table lightblue">
+  <thead class="lightblue">
     <tr>
       <th>Client</th><th>Email</th><th>Phone</th><th>Type</th>
       <th>Date</th><th>Time</th><th>Location</th><th>Status</th><th>Actions</th>
@@ -95,7 +95,7 @@
 </table>
 
 <h2>Cancelled Bookings</h2>
-<table class="dashboard-table">
+<table class="dashboard-table lightred">
   <thead>
     <tr>
       <th>Client</th><th>Email</th><th>Phone</th><th>Type</th>
@@ -104,9 +104,29 @@
   </thead>
   <tbody id="cancelTableBody"></tbody>
 </table>
-
-  
   </div>
+
+
+<!-- Edit Booking Modal -->
+<div id="editModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h3>Edit Booking</h3>
+    
+    <label for="editDate">New Date</label>
+    <input type="date" id="editDate" required>
+    
+    <label for="editTime">New Time</label>
+    <input type="time" id="editTime" required>
+    
+    <button class="btn confirm" onclick="confirmEdit()">Confirm</button>
+    <button class="btn reopen" onclick="reopenBooking()">Reopen</button>
+  </div>
+</div>
+
+
+
+
 <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-database.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script>

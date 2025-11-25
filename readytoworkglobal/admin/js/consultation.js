@@ -85,7 +85,7 @@ function renderActions(emailKey, status) {
   if (status === "Rescheduled") {
     return `
       <button class="btn edit" onclick="editBooking('${emailKey}')">Edit</button>
-      <button class="btn confirm" onclick="updateStatus('${emailKey}','Approved')">Confirm</button>
+      <button class="btn reopen" onclick="updateStatus('${emailKey}','Approved')">Confirm</button>
     `;
   } else if (status === "Cancelled") {
     return `
@@ -235,3 +235,46 @@ function updateSummaryCardsMontly() {
 }
 
 updateSummaryCardsMontly();
+
+
+
+// edit bookings
+let currentEmailKey = null;
+
+function editBooking(emailKey) {
+  currentEmailKey = emailKey;
+  document.getElementById("editModal").style.display = "block";
+}
+
+function closeModal() {
+  document.getElementById("editModal").style.display = "none";
+  currentEmailKey = null;
+}
+
+function confirmEdit() {
+  const newDate = document.getElementById("editDate").value;
+  const newTime = document.getElementById("editTime").value;
+
+  if (!newDate || !newTime) {
+    alert("Please select both date and time.");
+    return;
+  }
+
+  firebase.database().ref("ConsultationBookings/" + currentEmailKey).update({
+    MeetingDate: newDate,
+    MeetingTime: newTime,
+    Status: "Approved", // moves back to Active table
+    UpdatedAt: new Date().toISOString()
+  });
+
+  closeModal();
+}
+
+function reopenBooking() {
+  firebase.database().ref("ConsultationBookings/" + currentEmailKey).update({
+    Status: "Approved", // moves back to Active table
+    UpdatedAt: new Date().toISOString()
+  });
+
+  closeModal();
+}

@@ -1,4 +1,6 @@
 /* Dashboard cards */
+
+
 .dashboard-cards {
   display: flex;
   gap: 20px;
@@ -57,7 +59,89 @@
   cursor: pointer;
   font-size: 0.85rem;
 }
-.btn.approve { background: #28a745; color: #fff; }
-.btn.reschedule { background: #17a2b8; color: #fff; }
+.btn.approve{ background: #28a745; color: #fff; }
+.btn.reschedule{ background: #17a2b8; color: #fff; }
 .btn.cancel { background: #dc3545; color: #fff; }
+.reopen{ background: #28a745; color: #fff; }
+.edit{ background: #17a2b8; color: #fff; }
 .btn:hover { opacity: 0.9; }
+
+
+
+.modal {
+  display: none; /* hidden by default */
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+  background: #fff;
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+  text-align: center;
+}
+
+.close {
+  float: right;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+/* Input fields inside modal */
+.modal-content input[type="date"],
+.modal-content input[type="time"] {
+  width: 90%;
+  padding: 10px;
+  margin: 10px 0 20px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.2s ease;
+}
+
+.modal-content input[type="date"]:focus,
+.modal-content input[type="time"]:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Buttons inside modal */
+.modal-content .btn {
+  padding: 10px 16px;
+  margin: 10px 5px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.modal-content .btn.confirm {
+  background: #28a745;
+  color: #fff;
+}
+
+.modal-content .btn.reopen {
+  background: #17a2b8;
+  color: #fff;
+}
+
+.modal-content .btn:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+.lightgreen{
+  background: #B8FFB8;
+}
+.lightblue{
+ background:  #87CEEB;
+}
+.lightred{
+background: #FFB8B8;
+}

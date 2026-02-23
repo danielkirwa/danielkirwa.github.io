@@ -1,34 +1,37 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Dashboard Elimu</title>
-	<link rel="stylesheet" type="text/css" href="css/studentdash.css">
+    <meta charset="UTF-8">
+    <title>Student Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/studentdash.css">
 </head>
 <body>
 
 <!-- ================= HEADER ================= -->
-<header>
-    <h1>Student Dashboard</h1>
-    <p>Welcome back, John Doe</p>
+<header class="header">
+    <div class="logo">
+        <h1>Elimu Portal</h1>
+        <p>Welcome back, <span id="studentName">John Doe</span></p>
+    </div>
 
-    <nav>
-        <a href="#">Dashboard</a> |
-        <a href="#">Courses</a> |
-        <a href="#">Assignments</a> |
-        <a href="#">Profile</a> |
+    <button class="menu-toggle">☰</button>
+
+    <nav class="nav">
+        <a href="#">Dashboard</a>
+        <a href="#">Courses</a>
+        <a href="#">Assignments</a>
+        <a href="#">Profile</a>
         <a href="#">Logout</a>
     </nav>
 </header>
 
-<hr>
 
-<!-- ================= MAIN CONTENT ================= -->
-<main>
+<!-- ================= MAIN LAYOUT ================= -->
+<main class="container">
 
-    <!-- ===== Sidebar Section ===== -->
-    <aside>
+    <!-- ===== Sidebar ===== -->
+    <aside class="sidebar">
         <h2>Quick Menu</h2>
         <ul>
             <li><a href="#">View Grades</a></li>
@@ -38,128 +41,122 @@
         </ul>
     </aside>
 
-    <hr>
 
-    <!-- ===== Student Information Section ===== -->
-    <section>
-        <h2>Student Information</h2>
+    <!-- ===== Content Area ===== -->
+    <section class="content">
 
-        <table border="1">
-            <tr>
-                <th>Student ID</th>
-                <td>2026001</td>
-            </tr>
-            <tr>
-                <th>Program</th>
-                <td>BSc Information Technology</td>
-            </tr>
-            <tr>
-                <th>Year</th>
-                <td>Second Year</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>john.doe@email.com</td>
-            </tr>
-        </table>
-    </section>
+        <!-- Student Info Card -->
+        <div class="card">
+            <h2>Student Information</h2>
+            <div class="info-grid">
+                <div><strong>Student ID:</strong> 2026001</div>
+                <div><strong>Program:</strong> BSc Information Technology</div>
+                <div><strong>Year:</strong> Second Year</div>
+                <div><strong>Email:</strong> john.doe@email.com</div>
+            </div>
+        </div>
 
-    <hr>
 
-    <!-- ===== Enrolled Courses Section ===== -->
-    <section>
-        <h2>Enrolled Courses</h2>
+        <!-- Courses Card -->
+        <div class="card">
+            <h2>Enrolled Courses</h2>
 
-        <table border="1">
-            <tr>
-                <th>Course Code</th>
-                <th>Course Name</th>
-                <th>Lecturer</th>
-                <th>Status</th>
-            </tr>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Code</th>
+                            <th>Course</th>
+                            <th>Lecturer</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>WEB201</td>
+                            <td>Basic Web Design</td>
+                            <td>Mr. Smith</td>
+                            <td>Ongoing</td>
+                        </tr>
+                        <tr>
+                            <td>CSC202</td>
+                            <td>Programming Fundamentals</td>
+                            <td>Dr. Brown</td>
+                            <td>Ongoing</td>
+                        </tr>
+                        <tr>
+                            <td>ICT203</td>
+                            <td>Database Systems</td>
+                            <td>Mrs. Green</td>
+                            <td>Completed</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
-            <tr>
-                <td>WEB201</td>
-                <td>Basic Web Design</td>
-                <td>Mr. Smith</td>
-                <td>Ongoing</td>
-            </tr>
 
-            <tr>
-                <td>CSC202</td>
-                <td>Programming Fundamentals</td>
-                <td>Dr. Brown</td>
-                <td>Ongoing</td>
-            </tr>
+        <!-- Assignment Card -->
+        <div class="card">
+            <h2>Submit Assignment</h2>
 
-            <tr>
-                <td>ICT203</td>
-                <td>Database Systems</td>
-                <td>Mrs. Green</td>
-                <td>Completed</td>
-            </tr>
-        </table>
-    </section>
+            <form enctype="multipart/form-data">
+                <div class="form-group">
+                    <label>Select Course</label>
+                    <select>
+                        <option>Basic Web Design</option>
+                        <option>Programming Fundamentals</option>
+                        <option>Database Systems</option>
+                    </select>
+                </div>
 
-    <hr>
+                <div class="form-group">
+                    <label>Assignment Title</label>
+                    <input type="text" placeholder="Enter title">
+                </div>
 
-    <!-- ===== Assignment Submission Section ===== -->
-    <section>
-        <h2>Submit Assignment</h2>
+                <div class="form-group">
+                    <label>Upload File</label>
+                    <input type="file">
+                </div>
 
-        <form action="#" method="post">
+                <div class="form-group">
+                    <label>Comments</label>
+                    <textarea rows="4" placeholder="Optional comments"></textarea>
+                </div>
 
-            <label for="course">Select Course:</label><br>
-            <select id="course" name="course">
-                <option value="web201">Basic Web Design</option>
-                <option value="csc202">Programming Fundamentals</option>
-                <option value="ict203">Database Systems</option>
-            </select>
-            <br><br>
+                <button type="submit" class="btn-primary">
+                    Submit Assignment
+                </button>
+            </form>
+        </div>
 
-            <label for="assignment">Assignment Title:</label><br>
-            <input type="text" id="assignment" name="assignment" placeholder="Enter assignment title">
-            <br><br>
 
-            <label for="file">Upload File:</label><br>
-            <input type="file" id="file" name="file">
-            <br><br>
+        <!-- Announcements Card -->
+        <div class="card">
+            <h2>Recent Announcements</h2>
 
-            <label for="comments">Comments:</label><br>
-            <textarea id="comments" name="comments" rows="4" cols="40" placeholder="Optional comments"></textarea>
-            <br><br>
+            <div class="announcement">
+                <h3>Web Design Assignment Due</h3>
+                <p>The HTML project is due Friday at 11:59 PM.</p>
+            </div>
 
-            <input type="submit" value="Submit Assignment">
-
-        </form>
-    </section>
-
-    <hr>
-
-    <!-- ===== Announcements Section ===== -->
-    <section>
-        <h2>Recent Announcements</h2>
-
-        <article>
-            <h3>Web Design Assignment Due</h3>
-            <p>The HTML project is due on Friday at 11:59 PM.</p>
-        </article>
-
-        <article>
-            <h3>Mid-Semester Test</h3>
-            <p>The test will cover HTML fundamentals and semantic elements.</p>
-        </article>
+            <div class="announcement">
+                <h3>Mid-Semester Test</h3>
+                <p>The test will cover semantic HTML and forms.</p>
+            </div>
+        </div>
 
     </section>
 
 </main>
 
-<hr>
 
 <!-- ================= FOOTER ================= -->
-<footer>
-    <p>&copy; 2026 University Student Portal</p>
-    <p>Contact support: support@university.edu</p>
+<footer class="footer">
+    <p>© 2026 Elimu Student Portal</p>
+    <p>Support: support@university.edu</p>
 </footer>
+
 </body>
 </html>

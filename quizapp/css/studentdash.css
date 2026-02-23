@@ -7,169 +7,215 @@
 
 /* ================= BODY ================= */
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #f4f6f9;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: #f4f6fb;
     color: #333;
     line-height: 1.6;
 }
 
 /* ================= HEADER ================= */
-header {
+.header {
     background-color: #1e3a8a;
     color: white;
-    padding: 20px 15px;
-    text-align: center;
+    padding: 15px;
+    position: relative;
 }
 
-header h1 {
+.header h1 {
+    font-size: 20px;
+}
+
+.header p {
+    font-size: 13px;
+    margin-top: 4px;
+    opacity: 0.9;
+}
+
+/* Menu Button (Mobile) */
+.menu-toggle {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    background: none;
+    border: none;
     font-size: 22px;
-}
-
-header p {
-    font-size: 14px;
-    margin-top: 5px;
+    color: white;
+    cursor: pointer;
 }
 
 /* ================= NAVIGATION ================= */
-nav {
+.nav {
+    display: none;
+    flex-direction: column;
     margin-top: 15px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
     gap: 10px;
 }
 
-nav a {
-    color: white;
+.nav a {
     text-decoration: none;
-    font-weight: bold;
-    font-size: 14px;
+    color: white;
+    padding: 8px;
+    border-radius: 6px;
+    transition: 0.3s ease;
 }
 
-nav a:hover {
-    text-decoration: underline;
+.nav a:hover {
+    background-color: rgba(255,255,255,0.2);
 }
 
-/* ================= MAIN LAYOUT (Mobile First) ================= */
-main {
+/* ================= MAIN CONTAINER ================= */
+.container {
     padding: 15px;
-}
-
-/* Stack everything vertically by default */
-aside,
-section {
-    background-color: white;
-    padding: 15px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
 }
 
 /* ================= SIDEBAR ================= */
-aside h2 {
-    margin-bottom: 10px;
+.sidebar {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.05);
 }
 
-aside ul {
+.sidebar h2 {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #1e3a8a;
+}
+
+.sidebar ul {
     list-style: none;
 }
 
-aside ul li {
+.sidebar li {
     margin-bottom: 8px;
 }
 
-aside ul li a {
+.sidebar a {
     text-decoration: none;
     color: #1e3a8a;
-    font-size: 14px;
+    display: block;
+    padding: 6px;
+    border-radius: 6px;
+    transition: 0.3s;
 }
 
-aside ul li a:hover {
-    text-decoration: underline;
+.sidebar a:hover {
+    background-color: #eef2ff;
 }
 
-/* ================= SECTIONS ================= */
-section h2 {
+/* ================= CONTENT ================= */
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* ================= CARD ================= */
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+.card h2 {
     margin-bottom: 15px;
     font-size: 18px;
     color: #1e3a8a;
 }
 
-/* ================= TABLES (Mobile Friendly) ================= */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
+/* ================= STUDENT INFO GRID ================= */
+.info-grid {
+    display: grid;
+    gap: 10px;
     font-size: 14px;
 }
 
-/* Wrap tables in horizontal scroll */
-section {
+/* ================= TABLE ================= */
+.table-wrapper {
     overflow-x: auto;
 }
 
-table th,
-table td {
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+th, td {
+    padding: 10px;
     border: 1px solid #ddd;
-    padding: 8px;
     text-align: left;
 }
 
-table th {
+th {
     background-color: #1e3a8a;
     color: white;
 }
 
-table tr:nth-child(even) {
-    background-color: #f2f2f2;
+tr:nth-child(even) {
+    background-color: #f9f9f9;
 }
 
-/* ================= FORMS ================= */
-form label {
-    font-weight: bold;
+/* ================= FORM ================= */
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    font-weight: 600;
     font-size: 14px;
 }
 
-form input[type="text"],
-form input[type="file"],
-form select,
-form textarea {
+input,
+select,
+textarea {
     width: 100%;
     padding: 10px;
     margin-top: 5px;
-    margin-bottom: 15px;
-    border-radius: 6px;
+    border-radius: 8px;
     border: 1px solid #ccc;
     font-size: 14px;
 }
 
-form input[type="submit"] {
-    width: 100%;
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: #1e3a8a;
+}
+
+/* Button */
+.btn-primary {
     background-color: #1e3a8a;
     color: white;
     padding: 12px;
     border: none;
-    border-radius: 6px;
+    border-radius: 8px;
     cursor: pointer;
     font-size: 15px;
+    transition: 0.3s ease;
+    width: 100%;
 }
 
-form input[type="submit"]:hover {
+.btn-primary:hover {
     background-color: #162d6a;
 }
 
 /* ================= ANNOUNCEMENTS ================= */
-article {
-    margin-bottom: 15px;
+.announcement {
+    margin-bottom: 12px;
 }
 
-article h3 {
-    margin-bottom: 5px;
+.announcement h3 {
     font-size: 15px;
+    margin-bottom: 5px;
 }
 
 /* ================= FOOTER ================= */
-footer {
+.footer {
+    margin-top: 30px;
     background-color: #1e3a8a;
     color: white;
     text-align: center;
@@ -180,38 +226,54 @@ footer {
 /* ================= TABLET VIEW ================= */
 @media (min-width: 768px) {
 
-    main {
+    .container {
         display: flex;
         gap: 20px;
+        align-items: flex-start;
     }
 
-    aside {
+    .sidebar {
         flex: 1;
         max-width: 250px;
+        margin-bottom: 0;
     }
 
-    section {
+    .content {
         flex: 3;
     }
 
-    form input[type="submit"] {
+    .nav {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .menu-toggle {
+        display: none;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .btn-primary {
         width: auto;
-        padding: 10px 20px;
+        padding: 10px 25px;
     }
 }
 
 /* ================= DESKTOP VIEW ================= */
 @media (min-width: 1024px) {
 
-    header h1 {
-        font-size: 28px;
+    .header h1 {
+        font-size: 26px;
     }
 
-    section h2 {
+    .card h2 {
         font-size: 20px;
     }
 
-    nav a {
-        font-size: 16px;
+    .nav a {
+        font-size: 15px;
     }
 }

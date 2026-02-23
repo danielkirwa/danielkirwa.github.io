@@ -72,9 +72,21 @@
           <li>Approved: 1</li>
         </ul>
       </a>
+      <a href="admin-consultation.html" class="card">
+  <h2>Consultations</h2>
+  <ul>
+    <li>Submitted Today: <span id="submittedToday">0</span></li>
+    <li>Upcoming Today: <span id="upcomingToday">0</span></li>
+    <li>All Pending: <span id="allPending">0</span></li>
+    <li>Approved Past 30 days: <span id="approved30days">0</span></li>
+  </ul>
+</a>
     </div>
   </div>
-
+<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script>
+  <script src="../js/config.js"></script>
   <script src="js/dashbaord.js"></script>
 </body>
 </html>

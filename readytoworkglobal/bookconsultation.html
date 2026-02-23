@@ -68,7 +68,7 @@
     <input type="date" id="preferredDate" name="preferredDate" required>
 
     <label for="preferredTime">Preferred Time *</label>
-    <input type="time" id="preferredTime" name="preferredTime" required>
+    <input type="time" id="preferredTime" name="preferredTime" min="08:00" max="18:00" required>
 
     <!-- Additional Info -->
     <label for="location">Meeting Location *</label>
@@ -148,6 +148,21 @@
     <a href="#top" class="scroll-top">⬆ Back to top</a>
   </div>
 </footer>
+
+
+<!-- Custom Alert Modal -->
+<div id="customAlert" class="alert-modal">
+  <div class="alert-content">
+    <h3 id="alertTitle">Alert Title</h3>
+    <p id="alertMessage">This is the alert message.</p>
+    <div class="alert-buttons">
+      <button class="btn ok" onclick="closeAlert()">OK</button>
+      <button class="btn close" onclick="closeAlert()">Close</button>
+    </div>
+  </div>
+</div>
+
+
 
    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-database.js"></script>

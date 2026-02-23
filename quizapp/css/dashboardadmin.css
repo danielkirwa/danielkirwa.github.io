@@ -1,0 +1,184 @@
+/* ================= RESET ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ================= BODY ================= */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4f6f9;
+    color: #333;
+}
+
+/* ================= HEADER ================= */
+header {
+    background-color: #111827;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* ================= MAIN LAYOUT ================= */
+main {
+    padding: 15px;
+}
+
+/* Mobile first: stacked layout */
+aside {
+    background-color: #1f2937;
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+aside h2 {
+    margin-bottom: 10px;
+}
+
+aside ul {
+    list-style: none;
+}
+
+aside ul li {
+    margin-bottom: 10px;
+}
+
+aside ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+aside ul li a:hover {
+    text-decoration: underline;
+}
+
+/* ================= CONTENT ================= */
+.content section {
+    background-color: white;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.content h2 {
+    margin-bottom: 15px;
+}
+
+/* ================= CARDS ================= */
+.cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.card {
+    background-color: #2563eb;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.card h3 {
+    font-size: 16px;
+}
+
+.card p {
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* ================= TABLE ================= */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+table th,
+table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+table th {
+    background-color: #111827;
+    color: white;
+}
+
+table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* ================= FORM ================= */
+form label {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+form input,
+form select {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0 15px 0;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+form input[type="submit"] {
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+form input[type="submit"]:hover {
+    background-color: #1d4ed8;
+}
+
+/* ================= FOOTER ================= */
+footer {
+    text-align: center;
+    padding: 15px;
+    background-color: #111827;
+    color: white;
+    margin-top: 20px;
+}
+
+/* ================= TABLET VIEW ================= */
+@media (min-width: 768px) {
+
+    main {
+        display: flex;
+        gap: 20px;
+    }
+
+    aside {
+        flex: 1;
+        max-width: 250px;
+        margin-bottom: 0;
+    }
+
+    .content {
+        flex: 4;
+    }
+
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ================= DESKTOP VIEW ================= */
+@media (min-width: 1024px) {
+
+    .cards {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}

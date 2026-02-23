@@ -1,0 +1,57 @@
+:root {
+  --primary-blue: #1ea3ff;
+  --success-green: #00A36C;
+  --error-crimson: #DC143C;
+  --background-grey: #E5E4E2;
+}
+
+body {
+  background-color: var(--background-grey);
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+.card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 400px;
+}
+
+.card h2 {
+  color: var(--primary-blue);
+  margin-bottom: 15px;
+}
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.btn-success { background-color: var(--success-green); }
+.btn-error   { background-color: var(--error-crimson); }
+.btn-primary { background-color: var(--primary-blue); }
+
+a {
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a.forgot {
+  color: var(--primary-blue);
+}
+
+a.register {
+  color: var(--success-green);
+}

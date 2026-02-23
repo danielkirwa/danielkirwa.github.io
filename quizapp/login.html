@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Login</title>
+	 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+
+<style>
+/* ================= RESET ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ================= BODY ================= */
+body {
+    height: 100vh;
+    background: linear-gradient(135deg, #2563eb, #1e3a8a);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* ================= CARD ================= */
+.card {
+    background-color: white;
+    width: 100%;
+    max-width: 400px;
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* ================= TITLE ================= */
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 30px;
+    color: #1e3a8a;
+}
+
+/* ================= INPUT GROUP ================= */
+.input-group {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+    transition: 0.3s ease;
+}
+
+/* Focus effect */
+.input-group input:focus {
+    border-color: #2563eb;
+}
+
+/* ================= FLOATING LABEL ================= */
+.input-group label {
+    position: absolute;
+    left: 12px;
+    top: 12px;
+    color: #888;
+    font-size: 14px;
+    pointer-events: none;
+    transition: 0.3s ease;
+    background-color: white;
+    padding: 0 4px;
+}
+
+/* When input is focused or has text */
+.input-group input:focus + label,
+.input-group input:valid + label {
+    top: -8px;
+    font-size: 12px;
+    color: #2563eb;
+}
+
+/* ================= BUTTONS ================= */
+.btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: 0.3s ease;
+}
+
+/* Login button */
+.login-btn {
+    background-color: #2563eb;
+    color: white;
+}
+
+.login-btn:hover {
+    background-color: #1d4ed8;
+}
+
+/* Home button */
+.home-btn {
+    background-color: #e5e7eb;
+    color: #333;
+}
+
+.home-btn:hover {
+    background-color: #d1d5db;
+}
+
+/* ================= LINKS ================= */
+.links {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.links a {
+    font-size: 13px;
+    text-decoration: none;
+    color: #2563eb;
+}
+
+.links a:hover {
+    text-decoration: underline;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 480px) {
+    .card {
+        padding: 30px 20px;
+    }
+
+    .title {
+        font-size: 20px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <div class="title">Welcome Back</div>
+
+    <div class="input-group">
+        <input type="text" required>
+        <label>Username or Email</label>
+    </div>
+
+    <div class="input-group">
+        <input type="password" required>
+        <label>Password</label>
+    </div>
+    <a href="dashboard.html">
+       <button class="btn login-btn">Login</button>
+   </a>
+    <a href="index.html">
+       <button class="btn home-btn">Back Home</button>
+    </a>
+
+    <div class="links">
+        <a href="#">Forgot Password?</a>
+        <a href="register.html">Create Account</a>
+    </div>
+</div>
+
+</body>
+</html>

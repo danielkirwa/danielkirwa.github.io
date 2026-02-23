@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="../css/dashboardadmin.css">
+</head>
+<body>
+
+<header>
+    <h1>University Admin Dashboard</h1>
+    <p>Administrator Panel</p>
+</header>
+
+<main>
+
+    <!-- ================= SIDEBAR ================= -->
+    <aside>
+        <h2>Menu</h2>
+        <ul>
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Manage Students</a></li>
+            <li><a href="#">Manage Courses</a></li>
+            <li><a href="#">Reports</a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">Logout</a></li>
+        </ul>
+    </aside>
+
+    <!-- ================= CONTENT ================= -->
+    <div class="content">
+
+        <!-- ===== Statistics Cards ===== -->
+        <section class="cards">
+            <div class="card">
+                <h3>Total Students</h3>
+                <p>350</p>
+            </div>
+
+            <div class="card">
+                <h3>Total Courses</h3>
+                <p>25</p>
+            </div>
+
+            <div class="card">
+                <h3>Active Lecturers</h3>
+                <p>18</p>
+            </div>
+
+            <div class="card">
+                <h3>Pending Approvals</h3>
+                <p>7</p>
+            </div>
+        </section>
+
+        <!-- ===== Student Management ===== -->
+        <section>
+            <h2>Manage Students</h2>
+
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Program</th>
+                    <th>Status</th>
+                </tr>
+                <tr>
+                    <td>2026001</td>
+                    <td>John Doe</td>
+                    <td>Information Technology</td>
+                    <td>Active</td>
+                </tr>
+                <tr>
+                    <td>2026002</td>
+                    <td>Jane Smith</td>
+                    <td>Computer Science</td>
+                    <td>Active</td>
+                </tr>
+                <tr>
+                    <td>2026003</td>
+                    <td>Michael Brown</td>
+                    <td>Software Engineering</td>
+                    <td>Suspended</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- ===== Course Management ===== -->
+        <section>
+            <h2>Manage Courses</h2>
+
+            <table>
+                <tr>
+                    <th>Code</th>
+                    <th>Course Name</th>
+                    <th>Lecturer</th>
+                </tr>
+                <tr>
+                    <td>WEB201</td>
+                    <td>Basic Web Design</td>
+                    <td>Mr. Smith</td>
+                </tr>
+                <tr>
+                    <td>CSC202</td>
+                    <td>Programming Fundamentals</td>
+                    <td>Dr. Brown</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- ===== Add New Student Form ===== -->
+        <section>
+            <h2>Add New Student</h2>
+
+            <form>
+                <label>Full Name:</label>
+                <input type="text" placeholder="Enter full name">
+
+                <label>Program:</label>
+                <input type="text" placeholder="Enter program">
+
+                <label>Status:</label>
+                <select>
+                    <option>Active</option>
+                    <option>Suspended</option>
+                </select>
+
+                <input type="submit" value="Add Student">
+            </form>
+        </section>
+
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2026 University Admin Panel</p>
+</footer>
+
+</body>
+</html>

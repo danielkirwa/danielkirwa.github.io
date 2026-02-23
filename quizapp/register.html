@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+  <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root{
+            --primary-blue: #1ea3ff;
+            --success-green: #00A36C;
+            --error-crimson: #DC143C;
+            --background-grey: #E5E4E2;
+        }
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body{
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            background: var(--background-grey);
+        }
+        a{
+            text-decoration: none;
+        }
+
+        .card{
+            width:400px;
+            background:white;
+            padding:35px 30px;
+            border-radius:14px;
+
+            /* Material 3D elevation */
+            box-shadow:
+                0 4px 8px rgba(0,0,0,0.1),
+                0 8px 16px rgba(0,0,0,0.15),
+                0 16px 24px rgba(0,0,0,0.2);
+
+            transition:0.3s;
+        }
+
+        .card:hover{
+            transform: translateY(-5px);
+        }
+
+        .title{
+            text-align:center;
+            margin-bottom:25px;
+            font-size:22px;
+            font-weight:500;
+            color: var(--primary-blue);
+        }
+
+        .input-group{
+            margin-bottom:20px;
+        }
+
+        .input-group input,
+        .input-group select{
+            width:100%;
+            padding:12px 10px;
+            border:none;
+            border-bottom:2px solid #ccc;
+            outline:none;
+            font-size:14px;
+            background:transparent;
+            transition:0.3s;
+        }
+
+        .input-group input:focus,
+        .input-group select:focus{
+            border-bottom:2px solid var(--primary-blue);
+        }
+
+        .btn{
+            width:100%;
+            padding:12px;
+            border:none;
+            border-radius:8px;
+            font-size:15px;
+            cursor:pointer;
+            transition:0.3s;
+            margin-top:10px;
+        }
+
+        .register-btn{
+            background: var(--primary-blue);
+            color:white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .register-btn:hover{
+            background: var(--success-green);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+            transform: translateY(-2px);
+        }
+
+        .back-link{
+            text-align:center;
+            margin-top:15px;
+        }
+
+        .back-link a{
+            text-decoration:none;
+            font-size:13px;
+            color: var(--primary-blue);
+        }
+
+        .back-link a:hover{
+            text-decoration:underline;
+        }
+
+        @media(max-width:450px){
+            .card{
+                width:90%;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div class="title">Create Account</div>
+
+        <div class="input-group">
+            <input type="text" placeholder="Full Name">
+        </div>
+
+        <div class="input-group">
+            <input type="email" placeholder="Email Address">
+        </div>
+
+        <div class="input-group">
+            <input type="text" placeholder="Registration Number">
+        </div>
+
+        <div class="input-group">
+            <input type="tel" placeholder="Phone Number">
+        </div>
+
+        <div class="input-group">
+            <select>
+                <option value="">Select Gender</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+            </select>
+        </div>
+
+        <button class="btn register-btn">Register</button>
+
+        <div class="back-link">
+            <a href="login.html">Already have an account? Login</a>
+        </div>
+    </div>
+</body>
+</html>

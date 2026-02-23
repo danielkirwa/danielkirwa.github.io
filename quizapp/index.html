@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Elimu</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<style>
+    body{
+        background:#f4f4f4;
+    }
+:root{
+    --primary-blue:#1ea3ff;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Roboto', sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+a{
+    text-decoration: none;
+}
+
+
+/* HERO SECTION */
+.hero{
+    height:100vh;
+    background-image: url("https://images.unsplash.com/photo-1508780709619-79562169bc64");
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed; /* Parallax effect */
+
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+}
+
+/* Dark overlay */
+.hero::before{
+    content:"";
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.55);
+    top:0;
+    left:0;
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    max-width:600px;
+    padding:20px;
+}
+
+.hero h1{
+    font-size:40px;
+    margin-bottom:20px;
+    font-weight:500;
+}
+
+.hero p{
+    font-size:18px;
+    margin-bottom:30px;
+    opacity:0.9;
+}
+
+/* Buttons */
+.btn{
+    padding:12px 25px;
+    border:none;
+    border-radius:30px;
+    font-size:15px;
+    cursor:pointer;
+    margin:8px;
+    transition:0.3s ease;
+}
+
+.login-btn{
+    background:var(--primary-blue);
+    color:white;
+    box-shadow:0 4px 12px rgba(0,0,0,0.3);
+}
+
+.login-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 8px 20px rgba(0,0,0,0.4);
+}
+
+.register-btn{
+    background:white;
+    color:#333;
+}
+
+.register-btn:hover{
+    transform:translateY(-3px);
+}
+
+/* Scroll Section */
+.section{
+    padding:80px 20px;
+    text-align:center;
+    background:#f4f4f4;
+    width: 80%;
+    margin-left: 10%;
+}
+
+.section h2{
+    margin-bottom:20px;
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Welcome back to Elimu</h1>
+        <p>Manage your quiz and notes .</p>
+
+        <a href="login.html">
+          <button class="btn login-btn">Login Now</button>
+        </a>
+        <a href="register.html">
+            <button class="btn register-btn">Create Account</button>
+        </a>
+    </div>
+</section>
+
+<!-- SCROLL CONTENT -->
+<section class="section">
+    <h2>Elimu app</h2>
+     <p style="font-size: 22px;">
+    Elimu is your interactive learning companion.<br> Here, you  can 
+    <span style="color: var(--primary-blue); font-weight:600;">Register units</span>, <br>
+    take engaging <span style="color: var(--primary-blue); font-weight:600;">quizzes</span>, <br>
+    and download <span style="color: var(--primary-blue); font-weight:600;">notes</span> anytime.
+  </p>
+  <p style="font-size: 22px;">
+    Track your progress with <br>instant results <br> detailed reports <br>
+    You can connect with admin for help.
+  </p>
+  <p style="font-size: 22px;">
+    Learning made simple, smart, and accessible — all in one place.
+  </p>
+
+
+</section>
+</body>
+</html>

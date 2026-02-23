@@ -7,170 +7,269 @@
 
 /* ================= BODY ================= */
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #f4f6f9;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: #f4f6fb;
     color: #333;
+    line-height: 1.6;
 }
 
 /* ================= HEADER ================= */
-header {
-    background-color: #111827;
+.header {
+    background-color: #1e3a8a;
     color: white;
-    text-align: center;
     padding: 20px;
 }
 
-/* ================= MAIN LAYOUT ================= */
-main {
-    padding: 15px;
+.header h1 {
+    font-size: 22px;
 }
 
-/* Mobile first: stacked layout */
-aside {
-    background-color: #1f2937;
-    color: white;
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-}
-
-aside h2 {
-    margin-bottom: 10px;
-}
-
-aside ul {
-    list-style: none;
-}
-
-aside ul li {
-    margin-bottom: 10px;
-}
-
-aside ul li a {
-    color: white;
-    text-decoration: none;
+.header p {
     font-size: 14px;
+    opacity: 0.9;
 }
 
-aside ul li a:hover {
-    text-decoration: underline;
-}
-
-/* ================= CONTENT ================= */
-.content section {
-    background-color: white;
-    padding: 15px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-}
-
-.content h2 {
-    margin-bottom: 15px;
-}
-
-/* ================= CARDS ================= */
-.cards {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 15px;
-    margin-bottom: 20px;
-}
-
-.card {
-    background-color: #2563eb;
+/* Menu Button (Mobile) */
+.menu-toggle {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    background: none;
+    border: none;
+    font-size: 22px;
     color: white;
-    padding: 20px;
-    border-radius: 8px;
-    text-align: center;
+    cursor: pointer;
 }
 
-.card h3 {
+/* ================= NAVIGATION ================= */
+.nav {
+    display: none;
+    flex-direction: column;
+    margin-top: 15px;
+    gap: 10px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.nav.active {
+    display: flex;
+    max-height: 500px; /* enough to show all menu items */
+}
+
+.nav a {
+    text-decoration: none;
+    color: white;
+    padding: 8px;
+    border-radius: 6px;
+    transition: 0.3s ease;
+}
+
+.nav a:hover {
+    background-color: rgba(255,255,255,0.2);
+}
+
+/* ================= DESKTOP OVERRIDE ================= */
+@media (min-width: 768px) {
+    .nav {
+        display: flex !important;
+        flex-direction: row;
+        justify-content: center;
+        max-height: none;
+    }
+
+    .menu-toggle {
+        display: none;
+    }
+}
+
+.nav a:hover {
+    background-color: rgba(255,255,255,0.2);
+}
+
+
+/* ================= MAIN ================= */
+.container {
+    padding: 15px;
+}
+
+/* ================= SIDEBAR ================= */
+.sidebar {
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+.sidebar h2 {
+    margin-bottom: 10px;
+    color: #1e3a8a;
     font-size: 16px;
 }
 
-.card p {
-    font-size: 22px;
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar li {
+    margin-bottom: 8px;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: #1e3a8a;
+    display: block;
+    padding: 8px;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    background-color: #eef2ff;
+}
+
+/* ================= CONTENT ================= */
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* ================= CARDS GRID ================= */
+.cards-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+
+/* ================= CARD ================= */
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+.card h2 {
+    margin-bottom: 15px;
+    color: #1e3a8a;
+}
+
+.stat-card {
+    text-align: center;
+}
+
+.stat-card h3 {
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.stat-number {
+    font-size: 26px;
     font-weight: bold;
-    margin-top: 10px;
+    color: #1e3a8a;
 }
 
 /* ================= TABLE ================= */
+.table-wrapper {
+    overflow-x: auto;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
     font-size: 14px;
 }
 
-table th,
-table td {
+th, td {
+    padding: 10px;
     border: 1px solid #ddd;
-    padding: 8px;
+    text-align: left;
 }
 
-table th {
-    background-color: #111827;
+th {
+    background-color: #1e3a8a;
     color: white;
 }
 
-table tr:nth-child(even) {
-    background-color: #f2f2f2;
+tr:nth-child(even) {
+    background-color: #f9f9f9;
 }
 
 /* ================= FORM ================= */
-form label {
-    font-weight: bold;
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    font-weight: 600;
     font-size: 14px;
 }
 
-form input,
-form select {
+input,
+select {
     width: 100%;
     padding: 10px;
-    margin: 8px 0 15px 0;
-    border-radius: 6px;
+    margin-top: 5px;
+    border-radius: 8px;
     border: 1px solid #ccc;
+    font-size: 14px;
 }
 
-form input[type="submit"] {
-    background-color: #2563eb;
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #1e3a8a;
+}
+
+/* Button (same as student dashboard) */
+.btn-primary {
+    background-color: #1e3a8a;
     color: white;
+    padding: 12px;
     border: none;
+    border-radius: 8px;
     cursor: pointer;
+    font-size: 15px;
+    transition: 0.3s ease;
+    width: 100%;
 }
 
-form input[type="submit"]:hover {
-    background-color: #1d4ed8;
+.btn-primary:hover {
+    background-color: #162d6a;
 }
 
 /* ================= FOOTER ================= */
-footer {
+.footer {
+    margin-top: 30px;
+    background-color: #1e3a8a;
+    color: white;
     text-align: center;
     padding: 15px;
-    background-color: #111827;
-    color: white;
-    margin-top: 20px;
+    font-size: 14px;
 }
 
 /* ================= TABLET VIEW ================= */
 @media (min-width: 768px) {
 
-    main {
+    .container {
         display: flex;
         gap: 20px;
+        align-items: flex-start;
     }
 
-    aside {
+    .sidebar {
         flex: 1;
         max-width: 250px;
         margin-bottom: 0;
     }
 
     .content {
-        flex: 4;
+        flex: 3;
     }
 
-    .cards {
+    .cards-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
@@ -178,7 +277,7 @@ footer {
 /* ================= DESKTOP VIEW ================= */
 @media (min-width: 1024px) {
 
-    .cards {
+    .cards-grid {
         grid-template-columns: repeat(4, 1fr);
     }
 }

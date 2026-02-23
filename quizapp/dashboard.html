@@ -158,5 +158,21 @@
     <p>Support: support@university.edu</p>
 </footer>
 
+
+<script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('.nav');
+
+    menuToggle.addEventListener('click', function () {
+        nav.classList.toggle('active');
+
+        if (nav.classList.contains('active')) {
+            menuToggle.textContent = "✖";
+        } else {
+            menuToggle.textContent = "☰";
+        }
+    });
+</script>
+
 </body>
 </html>

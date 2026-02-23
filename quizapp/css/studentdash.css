@@ -49,6 +49,14 @@ body {
     flex-direction: column;
     margin-top: 15px;
     gap: 10px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.nav.active {
+    display: flex;
+    max-height: 500px; /* enough to show all menu items */
 }
 
 .nav a {
@@ -57,6 +65,24 @@ body {
     padding: 8px;
     border-radius: 6px;
     transition: 0.3s ease;
+}
+
+.nav a:hover {
+    background-color: rgba(255,255,255,0.2);
+}
+
+/* ================= DESKTOP OVERRIDE ================= */
+@media (min-width: 768px) {
+    .nav {
+        display: flex !important;
+        flex-direction: row;
+        justify-content: center;
+        max-height: none;
+    }
+
+    .menu-toggle {
+        display: none;
+    }
 }
 
 .nav a:hover {

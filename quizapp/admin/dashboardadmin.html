@@ -2,20 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="../css/dashboardadmin.css">
 </head>
 <body>
 
-<header>
-    <h1>University Admin Dashboard</h1>
-    <p>Administrator Panel</p>
+<!-- ================= HEADER ================= -->
+<header class="header">
+    <div>
+        <h1>Elimu Admin Portal</h1>
+        <p>Administrator Panel</p>
+    </div>
+    <button class="menu-toggle">☰</button>
+
+    <nav class="nav">
+        <a href="#">Dashboard</a>
+        <a href="#">Quiz</a>
+        <a href="#">Learning Materials</a>
+        <a href="#">Tutors</a>
+        <a href="#">Alerts</a>
+        <a href="#">Logout</a>
+    </nav>
 </header>
 
-<main>
+<!-- ================= MAIN ================= -->
+<main class="container">
 
-    <!-- ================= SIDEBAR ================= -->
-    <aside>
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="sidebar">
         <h2>Menu</h2>
         <ul>
             <li><a href="#">Dashboard</a></li>
@@ -27,114 +42,151 @@
         </ul>
     </aside>
 
-    <!-- ================= CONTENT ================= -->
-    <div class="content">
+    <!-- ===== CONTENT ===== -->
+    <section class="content">
 
         <!-- ===== Statistics Cards ===== -->
-        <section class="cards">
-            <div class="card">
+        <div class="cards-grid">
+
+            <div class="card stat-card">
                 <h3>Total Students</h3>
-                <p>350</p>
+                <p class="stat-number">350</p>
             </div>
 
-            <div class="card">
+            <div class="card stat-card">
                 <h3>Total Courses</h3>
-                <p>25</p>
+                <p class="stat-number">25</p>
             </div>
 
-            <div class="card">
+            <div class="card stat-card">
                 <h3>Active Lecturers</h3>
-                <p>18</p>
+                <p class="stat-number">18</p>
             </div>
 
-            <div class="card">
+            <div class="card stat-card">
                 <h3>Pending Approvals</h3>
-                <p>7</p>
+                <p class="stat-number">7</p>
             </div>
-        </section>
 
-        <!-- ===== Student Management ===== -->
-        <section>
+        </div>
+
+        <!-- ===== Manage Students ===== -->
+        <div class="card">
             <h2>Manage Students</h2>
 
-            <table>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Program</th>
-                    <th>Status</th>
-                </tr>
-                <tr>
-                    <td>2026001</td>
-                    <td>John Doe</td>
-                    <td>Information Technology</td>
-                    <td>Active</td>
-                </tr>
-                <tr>
-                    <td>2026002</td>
-                    <td>Jane Smith</td>
-                    <td>Computer Science</td>
-                    <td>Active</td>
-                </tr>
-                <tr>
-                    <td>2026003</td>
-                    <td>Michael Brown</td>
-                    <td>Software Engineering</td>
-                    <td>Suspended</td>
-                </tr>
-            </table>
-        </section>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Program</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2026001</td>
+                            <td>John Doe</td>
+                            <td>Information Technology</td>
+                            <td>Active</td>
+                        </tr>
+                        <tr>
+                            <td>2026002</td>
+                            <td>Jane Smith</td>
+                            <td>Computer Science</td>
+                            <td>Active</td>
+                        </tr>
+                        <tr>
+                            <td>2026003</td>
+                            <td>Michael Brown</td>
+                            <td>Software Engineering</td>
+                            <td>Suspended</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
-        <!-- ===== Course Management ===== -->
-        <section>
+        <!-- ===== Manage Courses ===== -->
+        <div class="card">
             <h2>Manage Courses</h2>
 
-            <table>
-                <tr>
-                    <th>Code</th>
-                    <th>Course Name</th>
-                    <th>Lecturer</th>
-                </tr>
-                <tr>
-                    <td>WEB201</td>
-                    <td>Basic Web Design</td>
-                    <td>Mr. Smith</td>
-                </tr>
-                <tr>
-                    <td>CSC202</td>
-                    <td>Programming Fundamentals</td>
-                    <td>Dr. Brown</td>
-                </tr>
-            </table>
-        </section>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Code</th>
+                            <th>Course Name</th>
+                            <th>Lecturer</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>WEB201</td>
+                            <td>Basic Web Design</td>
+                            <td>Mr. Smith</td>
+                        </tr>
+                        <tr>
+                            <td>CSC202</td>
+                            <td>Programming Fundamentals</td>
+                            <td>Dr. Brown</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
-        <!-- ===== Add New Student Form ===== -->
-        <section>
+        <!-- ===== Add Student ===== -->
+        <div class="card">
             <h2>Add New Student</h2>
 
             <form>
-                <label>Full Name:</label>
-                <input type="text" placeholder="Enter full name">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" placeholder="Enter full name">
+                </div>
 
-                <label>Program:</label>
-                <input type="text" placeholder="Enter program">
+                <div class="form-group">
+                    <label>Program</label>
+                    <input type="text" placeholder="Enter program">
+                </div>
 
-                <label>Status:</label>
-                <select>
-                    <option>Active</option>
-                    <option>Suspended</option>
-                </select>
+                <div class="form-group">
+                    <label>Status</label>
+                    <select>
+                        <option>Active</option>
+                        <option>Suspended</option>
+                    </select>
+                </div>
 
-                <input type="submit" value="Add Student">
+                <button type="submit" class="btn-primary">
+                    Add Student
+                </button>
             </form>
-        </section>
+        </div>
 
-    </div>
+    </section>
+
 </main>
 
-<footer>
-    <p>&copy; 2026 University Admin Panel</p>
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+    <p>© 2026 Elimu Admin Panel</p>
 </footer>
+<script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('.nav');
 
+    menuToggle.addEventListener('click', function () {
+        nav.classList.toggle('active');
+
+        if (nav.classList.contains('active')) {
+            menuToggle.textContent = "✖";
+        } else {
+            menuToggle.textContent = "☰";
+        }
+    });
+</script>
 </body>
 </html>

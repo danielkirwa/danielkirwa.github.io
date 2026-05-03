@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lecturer Dashboard</title>
+<link rel="stylesheet" href="../css/dashboardlecturer.css">
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="header">
+    <button class="menu-toggle">☰</button>
+    <h1>Lecturer Panel</h1>
+
+    <nav class="top-nav">
+        <a href="#">🔔 Notifications</a>
+        <a href="#">➕ Create Course</a>
+        <a href="#">➕ Create Quiz</a>
+        <a href="#">📊 Reports</a>
+        <a href="#">👤 Profile</a>
+    </nav>
+</header>
+
+<!-- ================= MAIN ================= -->
+<div class="main-container">
+
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="sidebar">
+        <ul class="menu">
+            <li><a href="#">Dashboard</a></li>
+
+            <li class="has-submenu">
+                <a href="#">My Courses ▾</a>
+                <ul class="submenu">
+                    <li><a href="#">All Courses</a></li>
+                    <li><a href="#">Learning Materials</a></li>
+                </ul>
+            </li>
+
+            <li><a href="#">My Students</a></li>
+
+            <li class="has-submenu">
+                <a href="#">Quiz & Results ▾</a>
+                <ul class="submenu">
+                    <li><a href="#">All Quizzes</a></li>
+                    <li><a href="#">Quiz Results</a></li>
+                </ul>
+            </li>
+
+            <li><a href="#">Reports</a></li>
+            <li><a href="#">Logout</a></li>
+        </ul>
+    </aside>
+
+    <!-- ===== CONTENT ===== -->
+    <section class="content">
+
+        <div class="cards">
+            <div class="card">
+                <h3>Total Courses</h3>
+                <p>12</p>
+            </div>
+
+            <div class="card">
+                <h3>Total Students</h3>
+                <p>320</p>
+            </div>
+
+            <div class="card">
+                <h3>Total Quizzes</h3>
+                <p>18</p>
+            </div>
+
+            <div class="card">
+                <h3>Pending Reviews</h3>
+                <p>5</p>
+            </div>
+        </div>
+
+        <div class="panel">
+            <h2>Welcome Back 👋</h2>
+            <p>Select a module from the sidebar to manage your courses and quizzes.</p>
+        </div>
+
+    </section>
+
+</div>
+
+<script>
+    // Sidebar toggle (mobile)
+const menuToggle = document.querySelector(".menu-toggle");
+const sidebar = document.querySelector(".sidebar");
+
+menuToggle.addEventListener("click", () => {
+    sidebar.classList.toggle("active");
+    menuToggle.textContent = sidebar.classList.contains("active") ? "✖" : "☰";
+});
+
+// Submenu toggle
+const submenuParents = document.querySelectorAll(".has-submenu > a");
+
+submenuParents.forEach(parent => {
+    parent.addEventListener("click", (e) => {
+        e.preventDefault();
+        const submenu = parent.nextElementSibling;
+        submenu.classList.toggle("open");
+    });
+});
+</script>
+</body>
+</html>

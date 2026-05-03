@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<!-- 
+DOCTYPE declaration forces the browser into Standards Mode.
+Without this, the browser may enter Quirks Mode and render inconsistently.
+-->
+
+<html lang="en">
+<!-- 
+The <html> element is the root of the document.
+The lang attribute helps screen readers and search engines understand language.
+-->
+
+<head>
+    <!-- Character encoding declaration.
+         UTF-8 ensures proper rendering of special characters across systems.
+         Without this, text may display incorrectly. -->
+    <meta charset="UTF-8">
+
+    <!-- Viewport meta tag ensures proper scaling on mobile devices.
+         Essential for responsive design. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- The title appears in the browser tab.
+         It is metadata, not visible inside the page body. -->
+    <title>Daniel Kirwa | Personal Bio</title>
+</head>
+
+<body>
+    <!-- 
+    Everything inside <body> is visible content.
+    This is what users interact with.
+    -->
+
+    <!-- 
+    Exactly ONE <h1> per page.
+    This represents the primary topic of the document.
+    -->
+    <h1>Daniel Kirwa</h1>
+
+    <!-- Section element groups related content logically.
+         Improves structure and accessibility. -->
+    <section>
+        <h2>About Me</h2>
+        <p>
+            I am an Information Technology graduate with a strong interest in 
+            web development, structured system design, and engineering-based problem solving. 
+            I enjoy building clean, standards-compliant web applications 
+            with proper version control practices.
+        </p>
+    </section>
+
+    <section>
+        <h2>Technical Skills</h2>
+
+        <!-- 
+        Use <ul> for unordered lists.
+        Never manually create lists using hyphens or asterisks.
+        -->
+        <ul>
+            <li>HTML5 Semantic Structure</li>
+            <li>Git Version Control</li>
+            <li>Firebase Realtime Database</li>
+            <li>Kotlin Android Development</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Current Focus</h2>
+        <p>
+            I am currently strengthening my understanding of browser rendering pipelines,
+            debugging using Developer Tools, and implementing structured Git workflows 
+            for professional software development.
+        </p>
+    </section>
+
+    <section>
+        <h2>Connect With Me</h2>
+
+        <!-- 
+        Link text must be descriptive.
+        Avoid "click here".
+        Fully qualified URL required (https://).
+        -->
+        <p>
+            View my professional projects on my 
+            <a href="https://github.com/" target="_blank">
+                GitHub portfolio page
+            </a>.
+        </p>
+    </section>
+
+    <section>
+        <h2>Profile Image</h2>
+
+        <!-- 
+        The image source must be local (stored in project folder).
+        Example folder structure:
+        project/
+            index.html
+            images/
+                profile.jpg
+
+        alt attribute:
+        - Required for accessibility.
+        - Screen readers read this aloud.
+        - Describes meaning, not just appearance.
+        -->
+        <img src="images/profile.jpg" 
+             alt="Portrait of Daniel Kirwa smiling in a professional setting" 
+             width="300">
+    </section>
+
+    <!-- Footer provides concluding or meta content about the document -->
+    <footer>
+        <p>
+            &copy; 2026 Daniel Kirwa. All rights reserved.
+        </p>
+    </footer>
+
+</body>
+</html>

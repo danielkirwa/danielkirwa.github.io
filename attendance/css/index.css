@@ -1,0 +1,90 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing:  border-box;
+}
+body{
+	background: #f4f6fb;
+	color: #333;
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 20px;
+}
+.main{
+	width: 100%;
+	max-width: 1000px;
+	display: flex;
+	background: white;
+	border-radius: 16px;
+	overflow: hidden;
+	box-shadow: 0 6px 20px rgba(0, 0, 0, 0.09);
+}
+.logo{
+	width: 40%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 40px;
+}
+.card{
+	width: 60%;
+	background: white;
+	padding: 40px;
+}
+.card h2{
+	color: #1e3a8a;
+}
+.form-group{
+	margin-bottom: 18px;
+}
+input{
+	width: 100%;
+	padding: 12px;
+	margin-top: 8px;
+	border-radius: 8px;
+	border: 1px solid #ccc;
+	font-size: 16px;
+}
+input:focus{
+	outline: none;
+	border-color: #1e3a8a;
+}
+.btn-primary{
+	background: #1e3a8a;
+	color: white;
+	padding: 12px;
+	width: 100%;
+	cursor: pointer;
+	border-radius: 8px;
+	font-size: 22px;
+	transition: 0.3s ease;
+	margin-top: 8px;
+}
+.btn-register{
+	background: white;
+	color: #1e3a8a;
+	padding: 12px;
+	width: 100%;
+	cursor: pointer;
+	border-radius: 8px;
+	font-size: 22px;
+	transition: 0.3s ease;
+	outline: none;
+	border: 0px;
+	margin-top: 8px;
+}
+.btn-fogot{
+	background: white;
+	color: #1e3a8a;
+	padding: 12px;
+	width: 100%;
+	cursor: pointer;
+	border-radius: 8px;
+	font-size: 22px;
+	transition: 0.3s ease;
+	outline: none;
+	border: 0px;
+	margin-top: 8px;
+}

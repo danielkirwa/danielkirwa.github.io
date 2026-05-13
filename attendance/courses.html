@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Dashboard</title>
+  <title>Admin Courses</title>
   <link rel="stylesheet" href="css/dashboard.css">
 </head>
 <body>
@@ -22,8 +22,8 @@
 <header class="header">
   <button class="menu-toggle">☰</button>
   <nav class="nav">
-    <a href="#">Dashboard</a>
-    <a href="courses.html">Courses</a>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="#">Courses</a>
     <a href="students.html">Students</a>
     <a href="admins.html">Admins</a>
     <a href="gps.html">GPS</a>
@@ -37,22 +37,25 @@
 
   <!-- Cards -->
   <div class="cards-grid">
-    <div class="card"><h3>Students</h3><p class="stat-number">350</p></div>
-    <div class="card"><h3>Courses</h3><p class="stat-number">25</p></div>
-    <div class="card"><h3>Lecturers</h3><p class="stat-number">18</p></div>
-    <div class="card"><h3>Approvals</h3><p class="stat-number">7</p></div>
+    <div class="card"><h3>Courses</h3><p class="stat-number">350</p></div>
+    <div class="card"><h3>Active</h3><p class="stat-number">25</p></div>
+    <div class="card"><h3>Past </h3><p class="stat-number">18</p></div>
+    <div class="card"><h3>In Session</h3><p class="stat-number">7</p></div>
   </div>
 
   <!-- Table -->
   <div class="card">
-    <h2>Manage Students</h2>
+    <h2>Active courses</h2>
     <div class="table-wrapper">
       <table>
         <thead>
           <tr><th>ID</th><th>Name</th><th>Program</th><th>Status</th></tr>
         </thead>
         <tbody>
-          <tr><td>2026001</td><td>John Doe</td><td>IT</td><td>Active</td></tr>
+          <tr><td>2026001</td><td>John Doe</td><td>IT</td><td>
+            <button style="background: green;">Open Session</button>
+            <button style="background: red ;">Close course</button>
+          </td></tr>
           <tr><td>2026002</td><td>Jane Smith</td><td>CS</td><td>Active</td></tr>
           <tr><td>2026003</td><td>Michael Brown</td><td>SE</td><td>Suspended</td></tr>
         </tbody>
@@ -62,7 +65,7 @@
 
   <!-- Form -->
   <div class="card">
-    <h2>Add Student</h2>
+    <h2>Add course</h2>
     <form>
       <div class="form-group">
         <label>Full Name</label>

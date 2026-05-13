@@ -17,17 +17,20 @@
   	<p>
   		A reset link will be sent if you exist in our database
   	</p>
-  	<form enctype="multipart/form-data">
   		<div class="form-group">
   			<label>Enter email</label>
-  			<input type="" name="" placeholder="exaple@gmail.com">
+  			<input type="" name="" placeholder="exaple@gmail.com" id="txtemail">
   		</div>
-  	    <button class="btn-primary">Send reset link</button>
+  	    <button class="btn-primary" id="btnreset">Send reset link</button>
         <button class="btn-register"><a href="index.html">Back to login</a></button>
-  	</form>
+  	
   </div>
-	
 </div>
+  <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script>
+<script src="js/config.js"></script>
+<script src="js/reset.js"></script>
  
 </body>
 </html>

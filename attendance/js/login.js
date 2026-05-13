@@ -36,8 +36,8 @@ btnlogin.addEventListener("click", () =>{
 			}
 		})
 		.catch((error) =>{
-			alert(error.messages)
-			console.log(error)
+			alert("Wrong Password")
+			//console.log(error)
 			btnlogin.innerHTML = "Log in"
 		})
 	}

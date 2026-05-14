@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Add Admin</title>
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" type="text/css" href="css/form.css">
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="logo">
+    <img src="assets/logo.png" alt="logo" width="20%">
+  </div>
+  <div class="user">
+    <label id="lbusername">username</label>
+  </div>
+</div>
+
+<!-- NAVIGATION -->
+<header class="header">
+  <button class="menu-toggle">☰</button>
+  <nav class="nav">
+    <a href="dashboard.html">Dashboard</a>
+    <a href="courses.html">Courses</a>
+    <a href="students.html">Students</a>
+    <a href="#">Admins</a>
+    <a href="gps.html">GPS</a>
+    <a href="reports.html">Reports</a>
+    <a href="#" onclick="logout()">Logout</a>
+  </nav>
+</header>
+
+<!-- MAIN -->
+<main class="container">
+
+  <!-- Cards -->
+  <div class="cards-grid">
+    <div class="card"><h3>Students</h3><p class="stat-number">350</p></div>
+    <div class="card"><h3>Total</h3><p class="stat-number">25</p></div>
+    <div class="card"><h3>Absent past 30days</h3><p class="stat-number">18</p></div>
+    <div class="card"><h3>Pending Approvals</h3><p class="stat-number">7</p></div>
+  </div>
+
+ 
+
+  <!-- Form -->
+  <div class="card">
+    <h2>Add New Admin</h2>
+      <div class="form-group">
+        <label>First name</label>
+        <input type="text" placeholder="Enter first name" id="txtfname">
+      </div>
+      <div class="form-group">
+        <label>Last name</label>
+        <input type="text" placeholder="Enter last name" id="txtlname">
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="text" placeholder="exaple@gmail.com" id="txtemail">
+      </div>
+      <div class="form-group">
+        <label>Status</label>
+        <select id="slstatus">
+        <option>active</option>
+        <option>inactive</option>
+      </select>
+      </div>
+      <button class="btn-primary btngreen" id="btnaddadmin">Add Admin</button>
+  
+  </div>
+   <!-- Table -->
+  <div class="card">
+    <h2>Active admins</h2>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Email</th>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="tablebody">
+          <tr>
+          <td>###</td>
+          <td>###</td>
+          <td>###</td>
+          <td>
+            <button class="btn btnred"> Suspend</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+    <!-- Table -->
+  <div class="card">
+    <h2>Inactive admins</h2>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Email</th>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="tablebodyinactive">
+          <tr>
+          <td>###</td>
+          <td>###</td>
+          <td>###</td>
+          <td>
+            <button class="btn btngreen"> Activate</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p>© 2026 Elimu Admin Panel</p>
+</footer>
+<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script>
+<script src="js/config.js"></script>
+<script src="js/admin.js"></script>
+
+<script>
+  const menuToggle = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('.nav');
+  menuToggle.addEventListener('click', () => {
+    nav.classList.toggle('active');
+    menuToggle.textContent = nav.classList.contains('active') ? "✖" : "☰";
+  });
+
+let lbusername = document.getElementById('lbusername')
+auth.onAuthStateChanged( function (user) {
+  if (user) {
+    lbusername.innerHTML= user.email
+  }else{
+    window.location.href ="index.html"
+  }
+})
+</script>
+
+</body>
+</html>

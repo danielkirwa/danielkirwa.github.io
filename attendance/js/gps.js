@@ -59,7 +59,6 @@ let btnAdd = document.getElementById("btnaddcourse");
       document.getElementById("txtvenuecode").disabled = false;
       document.getElementById("btnaddcourse").innerText = "Add new GPS";
     })
-
     .catch((error) => {
       alert(error.message);
     });

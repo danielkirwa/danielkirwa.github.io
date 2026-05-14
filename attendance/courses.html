@@ -48,33 +48,37 @@
   <!-- Form -->
   <div class="card">
     <h2>Add course</h2>
-    <form>
+  
       <div class="form-group">
         <label>Course Name</label>
-        <input type="text" placeholder="Enter course name">
+        <input type="text" placeholder="Enter course name" id="txtcoursename">
       </div>
        <div class="form-group">
         <label>Course Code</label>
-        <input type="text" placeholder="Enter code">
+        <input type="text" placeholder="Enter code" id="txtcoursecode">
       </div>
       <div class="form-group">
         <label>Add Lecturer</label>
-        <select><option>Mr. Daniel</option>
-        <option>Mr. Kipchirchir</option></select>
+         <select id="lecturerSelect">
+        <option>Loading...</option>
+         </select>
       </div>
        <div class="form-group">
         <label>Venue GPS</label>
-        <select><option>ABB101</option>
-        <option>ABB102</option></select>
+        <select id="venueSelect">
+          <option>Loading...</option>
+      </select>
       </div>
        <div class="form-group">
         <label>Course Status</label>
-        <select><option>active</option>
-        <option>inactive</option></select>
+        <select id="statusSelect">
+          <option>active</option>
+        <option>inactive</option>
+      </select>
       </div>
 
-      <button type="submit" class="btn-primary btngreen">Add Student</button>
-    </form>
+      <button class="btn-primary btngreen" id="btnaddcourse">Add Student</button>
+
   </div>
 
 
@@ -118,6 +122,7 @@
 <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-database.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script>
 <script src="js/config.js"></script>
+<script src="js/course.js"></script>
 <script>
   const menuToggle = document.querySelector('.menu-toggle');
   const nav = document.querySelector('.nav');
@@ -134,6 +139,9 @@ auth.onAuthStateChanged( function (user) {
     window.location.href ="index.html"
   }
 })
+
+
+
 </script>
 
 </body>

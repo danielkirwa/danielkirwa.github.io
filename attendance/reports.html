@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Report</title>
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="logo">
+    <img src="assets/logo.png" alt="logo" width="20%">
+  </div>
+  <div class="user">
+    <label id="lbusername">username</label>
+  </div>
+</div>
+
+<!-- NAVIGATION -->
+<header class="header">
+  <button class="menu-toggle">☰</button>
+  <nav class="nav">
+    <a href="#">Dashboard</a>
+    <a href="courses.html">Courses</a>
+    <a href="students.html">Students</a>
+    <a href="admins.html">Admins</a>
+    <a href="gps.html">GPS</a>
+    <a href="reports.html">Reports</a>
+    <a href="#" onclick="logout()">Logout</a>
+  </nav>
+</header>
+
+<!-- MAIN -->
+<main class="container" id="report">
+
+  <!-- Cards -->
+  <div class="cards-grid">
+    <div class="card">
+      <h3>Total users chart</h3>
+       <canvas id="mybargraph"></canvas>
+    </div>
+    <div class="card">
+      <h3>Courses</h3>
+        <canvas id="mypiecourses"></canvas>
+    </div>
+    <div class="card">
+      <h3>Lecturers</h3>
+      <canvas id="mypieadmin"></canvas>
+    </div>
+    <div class="card">
+      <h3>GPS Venues</h3>
+      <canvas id="mypiegps"></canvas>
+  </div>
+  </div>
+
+ 
+
+</main>
+<!-- FOOTER -->
+<footer class="footer">
+  <p>© 2026 Elimu Admin Panel</p>
+</footer>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script>
+<script src="js/config.js"></script>
+<script src="js/report.js"></script>
+<script>
+  const menuToggle = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('.nav');
+  menuToggle.addEventListener('click', () => {
+    nav.classList.toggle('active');
+    menuToggle.textContent = nav.classList.contains('active') ? "✖" : "☰";
+  });
+
+let lbusername = document.getElementById('lbusername')
+auth.onAuthStateChanged( function (user) {
+  if (user) {
+    lbusername.innerHTML= user.email
+  }else{
+    window.location.href ="index.html"
+  }
+})
+</script>
+
+</body>
+</html>

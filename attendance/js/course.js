@@ -210,3 +210,33 @@ function activatecourse(courseid){
     })
 
 }
+
+
+// count courses
+
+let lbtotalactivecourses = document.getElementById('lbtotalactivecourses')
+firebase.database().ref("Courses").once("value", function(snapshot) {
+  let total = 0
+  snapshot.forEach(function(childSnapshot){
+    let data = childSnapshot.val()
+    if (data.Status == "active"){
+      total++
+    }
+
+  })
+  lbtotalactivecourses.innerHTML = total
+})
+// inactive 
+let lbtotalinactivecourses = document.getElementById('lbtotalinactivecourses')
+firebase.database().ref("Courses").once("value", function(snapshot) {
+  let total = 0
+  snapshot.forEach(function(childSnapshot){
+    let data = childSnapshot.val()
+    if (data.Status == "inactive"){
+      total++
+    }
+    })
+  lbtotalinactivecourses.innerHTML = total
+})
+
+

@@ -157,3 +157,95 @@ function editVenue(venueCode){
     });
 
 }
+
+// load data of inactive venue
+
+
+
+function loaddatainactive(){
+  // Load venue to the table
+   // table body
+  let tableBody = document.getElementById("tablebodyinactive");
+  // load data
+  firebase.database().ref("GpsVenus").on("value", (snapshot) => {
+    // clear table first
+    tableBody.innerHTML = "";
+    snapshot.forEach((childSnapshot) => {
+      let data = childSnapshot.val();
+      let key = childSnapshot.key; // venueCode key help in modification
+      // only active venues
+      if(data.Status == "inactive"){
+        tableBody.innerHTML += `
+          <tr>
+            <td>${data.VenueCode}</td>
+            <td>${data.VenueName}</td>
+            <td>${data.Latitude}</td>
+            <td>${data.Longitude}</td>
+
+            <td>
+              <button class="btn btngreen" onclick="activatevenue('${key}')">
+                Activate GPS Venue
+              </button>
+            </td>
+
+          </tr>
+
+        `;
+      }
+
+    });
+
+  });
+}
+
+loaddatainactive();
+
+
+// function to open venue (set active)
+  function activatevenue(venueCode) {
+
+    let confirmClose = confirm("Are you sure you want to open this GPS venue?");
+
+    if (!confirmClose) return;
+
+    firebase.database().ref("GpsVenus/" + venueCode).update({
+      Status: "active"
+    })
+    .then(() => {
+      alert("GPS Venue opened successfully");
+    })
+    .catch((error) => {
+      alert(error.message);
+    });
+
+  }
+
+
+
+// count
+
+let lbtoTotalActiveGps = document.getElementById('lbtoTotalActiveGps')
+firebase.database().ref("GpsVenus").once("value", function(snapshot) {
+  let total = 0
+  snapshot.forEach(function(childSnapshot){
+    let data = childSnapshot.val()
+    if (data.Status == "active"){
+      total++
+    }
+
+  })
+  lbtoTotalActiveGps.innerHTML = total
+})
+// inactive 
+let lbtoTotalInactiveGps = document.getElementById('lbtoTotalInactiveGps')
+firebase.database().ref("GpsVenus").once("value", function(snapshot) {
+  let total = 0
+  snapshot.forEach(function(childSnapshot){
+    let data = childSnapshot.val()
+    if (data.Status == "inactive"){
+      total++
+    }
+
+  })
+  lbtoTotalInactiveGps.innerHTML = total
+})

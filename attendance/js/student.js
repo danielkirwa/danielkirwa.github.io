@@ -135,3 +135,31 @@ function activatestudent(studentid){
     })
 
 }
+
+
+
+
+let lbtotalActive = document.getElementById('lbtotalActive')
+firebase.database().ref("userDetails").once("value", function(snapshot) {
+  let total = 0
+  snapshot.forEach(function(childSnapshot){
+    let data = childSnapshot.val()
+    if (data.Status == "active" && data.Role == "Student"){
+      total++
+    }
+
+  })
+  lbtotalActive.innerHTML = total
+})
+// inactive 
+let lbtotalInavtive = document.getElementById('lbtotalInavtive')
+firebase.database().ref("userDetails").once("value", function(snapshot) {
+  let total = 0
+  snapshot.forEach(function(childSnapshot){
+    let data = childSnapshot.val()
+    if (data.Status == "inactive" && data.Role == "Student"){
+      total++
+    }
+    })
+  lbtotalInavtive.innerHTML = total
+})

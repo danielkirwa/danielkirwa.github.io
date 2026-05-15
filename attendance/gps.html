@@ -38,8 +38,14 @@
 
   <!-- Cards -->
   <div class="cards-grid">
-    <div class="card"><h3>Active</h3><p class="stat-number">350</p></div>
-    <div class="card"><h3>Past</h3><p class="stat-number">25</p></div>
+    <div class="card">
+      <h3>Active</h3>
+      <p class="stat-number" id="lbtoTotalActiveGps">loading..</p>
+  </div>
+    <div class="card">
+      <h3>Past</h3>
+    <p class="stat-number" id="lbtoTotalInactiveGps">loading..</p>
+  </div>
   </div>
 
   
@@ -96,6 +102,38 @@
             <td>
               <button class="btn btnred">Close GPS Venue</button>
               <button class="btn btnblue">Edit GPS</button>
+              
+            </td>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+    <!-- Table -->
+  <div class="card">
+    <h2>Inactive GPS</h2>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Venue Code</th>
+            <th>Venue Name</th>
+            <th>Latitude </th>
+            <th>Longitude</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="tablebodyinactive">
+          <tr>
+            <td>###</td>
+            <td>###</td>
+            <td>###</td>
+            <td>###</td>
+            <td>
+              <button class="btn btngreen">Activate GPS Venue</button>
             </td>
 
           </tr>
